@@ -1,36 +1,34 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "rules": {
-    "quotes": 0,
-    "strict": [2, "never"],
-    "semi": [2, "always"],
-    "no-multi-spaces": 0,
-    "key-spacing": 0,
-    "curly": 0,
-    "no-irregular-whitespace": 0,
-    "no-console": 0,
-    "no-octal-escape": 0,
-    "no-unused-vars": [2, {"vars": "all", "args": "none"}],
-    "new-cap": 0,
-    "no-shadow": 0,
-    "camelcase": 0,
-    "react/prop-types": 0
-  },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
+  "extends": ["airbnb"],
   "env": {
     "browser": true,
-    "node": true,
-    "mocha": true,
-    "es6": true
+    "node": true
   },
-  "plugins": [
-    "react"
-  ]
+  "rules": {
+    "no-param-reassign": 0,
+    "comma-dangle": 0,
+    "consistent-return": 0,
+    "import/extensions": false,
+    "import/no-duplicates": false,
+    "import/no-named-as-default-member": false,
+    "import/no-named-as-default": false,
+    "react/jsx-filename-extension": false,
+    "react/jsx-one-expression-per-line": false,
+    "react/jsx-closing-bracket-location": false,
+    "react/prop-types": false,
+    "jsx-a11y/label-has-for": false,
+    "jsx-a11y/label-has-associated-control": false
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["react", "preact-compat"],
+          ["react-dom", "preact-compat"]
+        ],
+        "extensions": [".ts", ".js"]
+      }
+    }
+  }
 }
