@@ -1,9 +1,9 @@
 # BuildFire React Plugin Template
 The following template uses Webpack, React, and Babel in order to provide many features out of the box
 
-- React/JSX
+- React/JSX (Preact Compat)
 - Hot Reloading
-- ES2017 Javascript
+- ES2019 Javascript
 - Modules
 - Minification
 
@@ -16,9 +16,9 @@ Be sure to have the latest [BuildFire CLI](https://github.com/BuildFire/sdk-cli)
     # Once inside the SDK's folder
     $ buildfire init react <pluginName>
 
+    # (Follow the output instructions)
+
 ## Usage
-Be sure to be on the SDK's folder while running the following commands
+Go to the plugin folder and run
 
-`$ buildfire run <pluginName>` - Start the plugin viewer on the selected `pluginName`.
-
-`$ buildfire build <pluginName>` - Build the selected `pluginName`
+`$ npm start`
