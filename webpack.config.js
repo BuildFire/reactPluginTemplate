@@ -51,7 +51,6 @@ const WebpackConfig = {
 
 // Development only settings
 if (DEV) {
-  WebpackConfig.devtool = 'eval-source-map';
   WebpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
   WebpackConfig.plugins.push(new CopyWebpackPlugin([{
     from: path.join(__dirname, '../../styles'),
