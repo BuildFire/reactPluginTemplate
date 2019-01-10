@@ -14,7 +14,7 @@ Be sure to have the latest [BuildFire CLI](https://github.com/BuildFire/sdk-cli)
     $ buildfire create
 
     # Once inside the SDK's folder
-    $ buildfire init react <pluginName>
+    $ buildfire plugin init <pluginName> react
 
     # (Follow the output instructions)
 
