@@ -54,13 +54,13 @@ if (DEV) {
   WebpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
   WebpackConfig.plugins.push(new CopyWebpackPlugin([{
     from: path.join(__dirname, '../../styles'),
-    to: path.join(__dirname, '../styles'),
+    to: 'styles',
   }, {
     from: path.join(__dirname, '../../scripts'),
-    to: path.join(__dirname, '../scripts'),
+    to: 'scripts',
   }, {
     from: path.join(__dirname, '../../fonticons'),
-    to: path.join(__dirname, '../fonticons'),
+    to: 'fonticons',
   }]));
   WebpackConfig.module.rules.push({
     test: /\.less$/,
