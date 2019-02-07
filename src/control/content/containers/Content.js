@@ -1,8 +1,8 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 
 const Content = () => (
   <h1>Content - Hello World!</h1>
 );
 
-export default hot(module)(Content);
+export default hot(Content);

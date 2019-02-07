@@ -21,8 +21,15 @@
   <div id="mount"></div>
 
   <!--
-    Do not include the 'widget.js' script tag!
-    Webpack will inject it automatically to this html's body
+    DO NOT INCLUDE SCRIPT OR LINK TAGS TO YOUR SOURCE CODE.
+
+    Instead, do the following on the index.js file of each section
+    import './style.css';
+    import './theme.less';
+    import api from './api.js';
+
+    Webpack will automatically add the necessary tags to include the
+    dstribution ready files over this template.
   -->
 </body>
 </html>

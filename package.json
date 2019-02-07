@@ -22,10 +22,12 @@
     "@babel/plugin-proposal-decorators": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@intervolga/optimize-cssnano-plugin": "^1.0.6",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -34,8 +36,9 @@
     "eslint-plugin-react": "^7.12.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
-    "preact": "^8.4.2",
-    "preact-compat": "^3.18.4",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.1",
@@ -43,6 +46,8 @@
     "zip-webpack-plugin": "^3.0.0"
   },
   "dependencies": {
-    "react-hot-loader": "^4.6.3"
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-hot-loader": "^4.6.5"
   }
 }
