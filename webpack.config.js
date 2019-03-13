@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ZipWebpackPlugin = require('zip-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 const DEV = process.env.NODE_ENV === 'development';
@@ -89,7 +89,9 @@ if (!DEV) {
   WebpackConfig.plugins.push(
     new CleanWebpackPlugin(['dist', 'plugin.zip'], { verbose: false }),
     new webpack.HashedModuleIdsPlugin(),
-    new ExtractTextPlugin('[name].[chunkhash].css'),
+    new CssExtractPlugin({
+      filename: '[name].[chunkhash].css'
+    }),
     new OptimizeCssnanoPlugin({
       cssnanoOptions: {
         discardComments: { removeAll: true }
@@ -108,16 +110,9 @@ if (!DEV) {
 
   WebpackConfig.module.rules.push({
     test: /\.less$/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        {
-          loader: 'css-loader',
-          options: { importLoaders: 1 }
-        },
-        'less-loader'
-      ]
-    })
+    use: [{
+      loader: CssExtractPlugin.loader
+    }, 'css-loader?-url', 'less-loader']
   });
 }
 
