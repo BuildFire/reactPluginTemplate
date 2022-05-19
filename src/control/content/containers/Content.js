@@ -1,8 +1,11 @@
-import React from 'react';
-import { hot } from 'react-hot-loader/root';
+import React from "react";
+import { hot } from "react-hot-loader/root";
+import LayoutHeader from "../shared/LayoutHeader";
 
 const Content = () => (
-  <h1>Content - Hello World!</h1>
+  <>
+    <LayoutHeader/>
+  </>
 );
 
 export default hot(Content);
