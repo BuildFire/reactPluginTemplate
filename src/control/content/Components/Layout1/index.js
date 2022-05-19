@@ -14,7 +14,7 @@ function index(props) {
   return (
     <>
       <h1>Page Details</h1>
-      <div className="container">
+      <div className="layOutContainer">
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Background Media Type</label>

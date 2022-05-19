@@ -25,7 +25,7 @@ function LayoutHeader() {
         Choose your layout first. Page input fields will populate based on the
         layout you have chosen.
       </p>
-      <div className="layout-container container">
+      <div className="layout-container">
         <div className="row">
           <div className="col-md-2">
             <div className="img_selected_container">
