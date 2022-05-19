@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { hot } from "react-hot-loader/root";
+// import { hot } from "react-hot-loader/root";
 import Layout1 from "../Components/Layout1";
 import "./style.less";
 function LayoutHeader() {
@@ -69,4 +69,4 @@ function LayoutHeader() {
   );
 }
 
-export default hot(LayoutHeader);
+export default LayoutHeader;
