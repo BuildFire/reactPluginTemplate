@@ -13,7 +13,7 @@ function LayoutHeader() {
   useEffect(() => {
     let array = [];
     for (let i = 1; i <= 12; i++) {
-      array.push(`../../assets/images/Layout${i}.png`);
+      array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
   }, []);
@@ -48,7 +48,7 @@ function LayoutHeader() {
                 return (
                   <img
                   key={i}
-                    src="https://i.pinimg.com/originals/39/42/64/394264ead42d45e7588f13f6ae0e9ad3.jpg"
+                    src={image}
                     onClick={() => {
                       selectedLayoutHandler(i);
                     }}

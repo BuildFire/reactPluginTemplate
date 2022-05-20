@@ -55,6 +55,10 @@ if (DEV) {
   WebpackConfig.plugins.push(
     new CopyWebpackPlugin([
       {
+        from: path.join(__dirname, 'src/control/assets/images'),
+        to: path.join(__dirname, 'dist/control/assets/images')
+      },
+      {
         from: path.join(__dirname, '../../styles'),
         to: 'styles'
       },
@@ -158,6 +162,10 @@ WebpackConfig.plugins.push(
   }),
   new CopyWebpackPlugin(
     [
+      {
+        from: path.join(__dirname, 'src/control/assets/images'),
+        to: path.join(__dirname, 'dist/control/assets/images')
+      },
       {
         from: path.join(__dirname, 'src/control'),
         to: path.join(__dirname, 'dist/control')
