@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
-import "../../shared/style.less"
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
@@ -106,11 +105,11 @@ function index(props) {
           </div>
         </div>
       </div>
-      <div class="bottom-actions">
-        <button class="btn btn-default" id="layoutBackBtn">
+      <div className="bottom-actions">
+        <button className="btn btn-default" id="layoutBackBtn">
           Cancel
         </button>
-        <button class="btn btn-success" id="layoutSaveBtn">
+        <button className="btn btn-success" id="layoutSaveBtn">
           Save
         </button>
       </div>

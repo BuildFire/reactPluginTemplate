@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
-import "../../shared/style.less";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
-import "../../../../../../../scripts/buildfire.js";
 function index(props) {
   useEffect(() => {
     let thumbnail4 = new buildfire.components.images.thumbnail(".thumbnail4", {
