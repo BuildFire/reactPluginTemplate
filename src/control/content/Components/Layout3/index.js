@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
-import "../../shared/style.less"
+import "../../shared/style.less";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
@@ -18,7 +18,7 @@ function index(props) {
       <div className="layOutContainer">
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Background Media Type</label>
+            <label className="lable">Main Media Type</label>
           </div>
           <div className="col-md-9">
             <input type="radio" name="mediaType" value="image" defaultChecked />
@@ -29,47 +29,18 @@ function index(props) {
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Background Image</label>
+            <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
             <div className="thumbnail"></div>
           </div>
         </div>
-        <div className="row">
+        <div className="row margin-bottom">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
             <input type="checkBox" name="enableFullScreen" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Title</label>
-          </div>
-          <div className="col-md-9">
-            <input className="form-control fullWidth" type="text" name="title" defaultValue="Title"/>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Subtitle</label>
-          </div>
-          <div className="col-md-9">
-            <input
-              className="form-control fullWidth"
-              type="input"
-              name="subtitle"
-              defaultValue="Subtitle"
-            />
-          </div>
-        </div>
-        <div className="row margin-bottom">
-          <div className="col-md-3">
-            <label className="lable">Body Content</label>
-          </div>
-          <div className="col-md-9">
-            <textarea className="form-control bodyContent"></textarea>
           </div>
         </div>
       </div>

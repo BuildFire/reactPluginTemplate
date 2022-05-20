@@ -5,9 +5,14 @@
       padding-left: 0;
 
       .img_selected_container {
+        display: flex;
+        flex-direction: column;
         img {
           width: 121px;
           height: 234px;
+        }
+        span {
+          margin: 1rem 0 1rem 0;
         }
       }
     }
@@ -71,5 +76,130 @@
         }
       }
     }
+  }
+}
+
+.thumbnail2, .thumbnail3 {
+  border: none;
+
+  .item {
+    .labels {
+      display: none;
+    }
+
+    .main {
+      width: 100%;
+
+      .screens {
+        .screen {
+          a {
+            width: 171px;
+            max-width: 171px;
+            height: 96px;
+            position: relative;
+
+            span {
+              Width: 16px;
+              Height: 16px;
+              Top: 77.5px;
+              margin-top: -85px;
+            }
+          }
+
+          .secondary {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.thumbnail4 {
+  border: none;
+
+  .item {
+    .labels {
+      display: none;
+    }
+
+    .main {
+      width: 100%;
+
+      .screens {
+        .screen {
+          a {
+            width: 150px;
+            max-width: 150px;
+            height: 150px;
+            position: relative;
+
+            span {
+              Width: 16px;
+              Height: 16px;
+              Top: 77.5px;
+              margin-top: -60px;
+            }
+          }
+
+          .secondary {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+.layOutContainer {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .row {
+      margin-top: 1rem;
+      .col-md-3 {
+          padding-left: 0.9375rem;
+      }
+      .col-md-9 {
+          .carousel {
+            .clearfix {
+              span {
+                display: none;
+              }
+              .main {
+                .clearfix {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: flex-end;
+                }
+              }
+            }
+          }
+          input {
+              margin-right: 1rem;
+              width: 1.25rem;
+              height: 1.25rem;
+              border: 2px solid #dddddd;  
+          }
+          .fullWidth {
+              width: 100%;
+              height: 1.875rem;
+          }
+          .lable {
+              width: 6rem;
+              height: 1.25rem;
+              margin-right: 1rem;
+          }
+          .bodyContent {
+              border: 2px solid #dddddd; 
+              resize: none;
+              width: 100%;
+              height: 7rem;
+          }
+
+      }
+  }
+  .margin-bottom {
+      margin-bottom: 5rem !important;
   }
 }

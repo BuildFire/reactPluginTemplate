@@ -11,22 +11,17 @@ function index(props) {
       dimensionsLabel: "Recommended: 675 x 1200",
       multiSelection: false,
     });
+    let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
+        imageUrl: "",
+        title: " ",
+        dimensionsLabel: "Recommended: 1200 x 675",
+        multiSelection: false,
+      });
   }, []);
   return (
     <>
       <h1>Page Details</h1>
       <div className="layOutContainer">
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Background Media Type</label>
-          </div>
-          <div className="col-md-9">
-            <input type="radio" name="mediaType" value="image" defaultChecked />
-            <label className="lable">Image</label>
-            <input type="radio" name="mediaType" value="image" />
-            <label className="lable">Video</label>
-          </div>
-        </div>
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Background Image</label>
@@ -45,31 +40,29 @@ function index(props) {
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Title</label>
+            <label className="lable">Main Media Type</label>
           </div>
           <div className="col-md-9">
-            <input className="form-control fullWidth" type="text" name="title" defaultValue="Title"/>
+            <input type="radio" name="mediaType" value="image" defaultChecked />
+            <label className="lable">Image</label>
+            <input type="radio" name="mediaType" value="image" />
+            <label className="lable">Video</label>
           </div>
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Subtitle</label>
+            <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
-            <input
-              className="form-control fullWidth"
-              type="input"
-              name="subtitle"
-              defaultValue="Subtitle"
-            />
+            <div className="thumbnail2"></div>
           </div>
         </div>
         <div className="row margin-bottom">
           <div className="col-md-3">
-            <label className="lable">Body Content</label>
+            <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent"></textarea>
+            <input type="checkBox" name="enableFullScreen" />
           </div>
         </div>
       </div>

@@ -5,12 +5,18 @@ import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
   useEffect(() => {
-    let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
+    let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
       imageUrl: "",
       title: " ",
-      dimensionsLabel: "Recommended: 675 x 1200",
+      dimensionsLabel: "Recommended: 1200 x 675",
       multiSelection: false,
     });
+    let thumbnail4 = new buildfire.components.images.thumbnail(".thumbnail4", {
+        imageUrl: "",
+        title: " ",
+        dimensionsLabel: "Recommended: 1200 x 1200",
+        multiSelection: false,
+      });
   }, []);
   return (
     <>
@@ -18,21 +24,21 @@ function index(props) {
       <div className="layOutContainer">
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Background Media Type</label>
+            <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input type="radio" name="mediaType" value="image" defaultChecked />
+            <input type="radio" name="topMediaType" value="image" defaultChecked />
             <label className="lable">Image</label>
-            <input type="radio" name="mediaType" value="image" />
+            <input type="radio" name="topMediaType" value="image" />
             <label className="lable">Video</label>
           </div>
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Background Image</label>
+            <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail"></div>
+            <div className="thumbnail2"></div>
           </div>
         </div>
         <div className="row">
@@ -48,7 +54,7 @@ function index(props) {
             <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <input className="form-control fullWidth" type="text" name="title" defaultValue="Title"/>
+            <input className="form-control fullWidth" type="text" name="title" defaultValue="Title" />
           </div>
         </div>
         <div className="row">
@@ -58,18 +64,45 @@ function index(props) {
           <div className="col-md-9">
             <input
               className="form-control fullWidth"
-              type="input"
+              type="text"
               name="subtitle"
               defaultValue="Subtitle"
             />
           </div>
         </div>
-        <div className="row margin-bottom">
+        <div className="row">
           <div className="col-md-3">
             <label className="lable">Body Content</label>
           </div>
           <div className="col-md-9">
             <textarea className="form-control bodyContent"></textarea>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-3">
+            <label className="lable">Main Media Type</label>
+          </div>
+          <div className="col-md-9">
+            <input type="radio" name="mediaType" value="image" defaultChecked />
+            <label className="lable">Image</label>
+            <input type="radio" name="mediaType" value="image" />
+            <label className="lable">Video</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-3">
+            <label className="lable">Main Image</label>
+          </div>
+          <div className="col-md-9">
+            <div className="thumbnail4"></div>
+          </div>
+        </div>
+        <div className="row margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Full Screen</label>
+          </div>
+          <div className="col-md-9">
+            <input type="checkBox" name="enableFullScreen" />
           </div>
         </div>
       </div>

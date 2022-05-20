@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 // import { hot } from "react-hot-loader/root";
 import Layout1 from "../Components/Layout1";
+import Layout2 from "../Components/Layout2";
+import Layout3 from "../Components/Layout3";
+import Layout4 from "../Components/Layout4";
+import Layout5 from "../Components/Layout5";
+import Layout6 from "../Components/Layout6";
 import "./style.less";
 function LayoutHeader() {
   const [images, setImages] = useState([]);
@@ -62,7 +67,23 @@ function LayoutHeader() {
         }
         {
           selectedLayout === 1 && 
-          <span>1</span>
+          <Layout2/>
+        }
+        {
+          selectedLayout === 2 && 
+          <Layout3/>
+        }
+        {
+          selectedLayout === 3 && 
+          <Layout4/>
+        }
+        {
+          selectedLayout === 4 && 
+          <Layout5/>
+        }
+        {
+          selectedLayout === 5 && 
+          <Layout6/>
         }
       </div>
     </>
