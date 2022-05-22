@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
+import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
@@ -10,15 +11,22 @@ function index(props) {
       dimensionsLabel: "Recommended: 1200 x 960",
       multiSelection: false,
     });
-    
-      
-      console.log("hello",props.selectedLayout);
+
+
+    console.log("hello", props.selectedLayout);
   }, []);
+
+
+  function submitForm(values) {
+    console.log('forms values ->', values);
+  }
+  const { handleChange, handleSubmit } = useForm(submitForm);
+
   return (
     <>
       <h1>Page Details</h1>
       <div className="layOutContainer">
-      <div className="row">
+        <div className="row">
           <div className="col-md-3">
             <label className="lable">Top Media Type</label>
           </div>
@@ -94,7 +102,7 @@ function index(props) {
             <input className="form-control fullWidth"></input>
           </div>
         </div>
- 
+
       </div>
       <div className="bottom-actions">
         <button className="btn btn-default" id="layoutBackBtn">

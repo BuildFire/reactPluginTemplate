@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
+import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
@@ -11,6 +12,13 @@ function index(props) {
       multiSelection: false,
     });
   }, []);
+
+  
+function submitForm(values){
+  console.log('forms values ->', values);
+}
+const { handleChange, handleSubmit } = useForm(submitForm);
+
   return (
     <>
       <h1>Page Details</h1>

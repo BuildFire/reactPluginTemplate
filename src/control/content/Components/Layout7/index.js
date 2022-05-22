@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
+import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
@@ -11,20 +12,27 @@ function index(props) {
       multiSelection: false,
     });
     let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
-      let thumbnail3 = new buildfire.components.images.thumbnail(".thumbnail3", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
-      
-      console.log("hello",props.selectedLayout);
+      imageUrl: "",
+      title: " ",
+      dimensionsLabel: "Recommended: 1200 x 675",
+      multiSelection: false,
+    });
+    let thumbnail3 = new buildfire.components.images.thumbnail(".thumbnail3", {
+      imageUrl: "",
+      title: " ",
+      dimensionsLabel: "Recommended: 1200 x 675",
+      multiSelection: false,
+    });
+
+    console.log("hello", props.selectedLayout);
   }, []);
+
+
+  function submitForm(values) {
+    console.log('forms values ->', values);
+  }
+  const { handleChange, handleSubmit } = useForm(submitForm);
+
   return (
     <>
       <h1>Page Details</h1>

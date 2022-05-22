@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
+import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
@@ -15,6 +16,12 @@ function index(props) {
       selector: "#wysiwygContent",
     });
   }, []);
+
+  function submitForm(values) {
+    console.log('forms values ->', values);
+  }
+  const { handleChange, handleSubmit } = useForm(submitForm);
+
   return (
     <>
       <h1>Page Details</h1>
@@ -65,9 +72,9 @@ function index(props) {
         </div>
 
         <div className="row  margin-bottom">
-        <div className="col-md-3">
-          <label className="lable">Body Contant</label>
-        </div>
+          <div className="col-md-3">
+            <label className="lable">Body Contant</label>
+          </div>
         </div>
         <textarea id="wysiwygContent" name="content"></textarea>
       </div>

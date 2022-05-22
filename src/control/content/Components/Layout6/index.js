@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
+import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
@@ -12,6 +13,13 @@ function index(props) {
     });
     let editor = new buildfire.components.carousel.editor(".carousel", []);
   }, []);
+
+
+  function submitForm(values) {
+    console.log('forms values ->', values);
+  }
+  const { handleChange, handleSubmit } = useForm(submitForm);
+
   return (
     <>
       <h1>Page Details</h1>
@@ -61,7 +69,7 @@ function index(props) {
             <label className="lable">Image Carousel</label>
           </div>
           <div className="col-md-9">
-          <div className="carousel"></div>
+            <div className="carousel"></div>
           </div>
         </div>
       </div>
