@@ -35,7 +35,7 @@ function index(props) {
             <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail"></div>
+            <div className="thumbnail horizontal-rectangle" ></div>
           </div>
         </div>
         <div className="row">
@@ -86,7 +86,7 @@ function index(props) {
             <textarea className="form-control bodyContent"></textarea>
           </div>
         </div>
-        <div className="row url-container">
+        <div className="row  margin-bottom">
           <div className="col-md-3">
             <label className="lable">External URL</label>
           </div>

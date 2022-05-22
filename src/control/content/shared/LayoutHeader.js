@@ -45,9 +45,9 @@ function LayoutHeader() {
               <img
                 id="listLayout"
                 className="img_selected"
-                src="https://i.pinimg.com/originals/39/42/64/394264ead42d45e7588f13f6ae0e9ad3.jpg"
+                src={images[selectedLayout]}
               />
-              <span>Layout1</span>
+              <span>Layout {selectedLayout+1}</span>
             </div>
           </div>
           <div className="col-md-10">

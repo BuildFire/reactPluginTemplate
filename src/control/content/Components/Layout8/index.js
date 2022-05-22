@@ -52,7 +52,7 @@ function index(props) {
             <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail"></div>
+            <div className="sequare thumbnail"></div>
           </div>
         </div>
         <div className="row">
@@ -87,7 +87,7 @@ function index(props) {
             <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail2"></div>
+            <div className="sequare thumbnail2"></div>
           </div>
         </div>
 
@@ -123,7 +123,7 @@ function index(props) {
             <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail3"></div>
+            <div className="sequare thumbnail3"></div>
           </div>
         </div>
         <div className="row margin-bottom">
@@ -147,10 +147,10 @@ function index(props) {
             <label className="lable">Bottom Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail4"></div>
+            <div className="horizontal-rectangle thumbnail4"></div>
           </div>
         </div>
-        <div className="row margin-bottom">
+        <div className="row  margin-bottom">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
           </div>

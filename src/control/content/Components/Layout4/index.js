@@ -37,7 +37,7 @@ function index(props) {
             <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail2"></div>
+            <div className="horizontal-rectangle thumbnail2"></div>
           </div>
         </div>
         <div className="row">
@@ -93,7 +93,7 @@ function index(props) {
             <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail3"></div>
+            <div className="horizontal-rectangle thumbnail3"></div>
           </div>
         </div>
         <div className="row">

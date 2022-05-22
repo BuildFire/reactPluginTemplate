@@ -4,13 +4,13 @@ import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
   useEffect(() => {
-    let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
+    let thumbnail1 = new buildfire.components.images.thumbnail(".thumbnail1", {
       imageUrl: "",
       title: " ",
       dimensionsLabel: "Recommended: 1200 x 675",
       multiSelection: false,
     });
-    let thumbnail4 = new buildfire.components.images.thumbnail(".thumbnail4", {
+    let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
         imageUrl: "",
         title: " ",
         dimensionsLabel: "Recommended: 1200 x 1200",
@@ -37,7 +37,7 @@ function index(props) {
             <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail2"></div>
+            <div className="horizontal-rectangle thumbnail1"></div>
           </div>
         </div>
         <div className="row">
@@ -93,7 +93,7 @@ function index(props) {
             <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail4"></div>
+            <div className="thumbnail2 sequare"></div>
           </div>
         </div>
         <div className="row margin-bottom">

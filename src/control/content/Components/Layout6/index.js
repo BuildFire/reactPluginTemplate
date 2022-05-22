@@ -4,7 +4,7 @@ import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
   useEffect(() => {
-    let thumbnail4 = new buildfire.components.images.thumbnail(".thumbnail4", {
+    let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
       imageUrl: "",
       title: " ",
       dimensionsLabel: "Recommended: 1200 x 960",
@@ -37,7 +37,7 @@ function index(props) {
             <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail4"></div>
+            <div className="thumbnail sequare"></div>
           </div>
         </div>
         <div className="row">

@@ -29,7 +29,7 @@ function index(props) {
             <label className="lable">Background Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail"></div>
+            <div className="thumbnail sequare"></div>
           </div>
         </div>
         <div className="row">
@@ -56,7 +56,7 @@ function index(props) {
             <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail2"></div>
+            <div className="thumbnail2 horizontal-rectangle"></div>
           </div>
         </div>
 
@@ -93,7 +93,7 @@ function index(props) {
             <textarea className="form-control bodyContent"></textarea>
           </div>
         </div>
-        <div className="row">
+        <div className="row margin-bottom">
           <div className="col-md-3">
             <label className="lable">Body content 2</label>
           </div>
