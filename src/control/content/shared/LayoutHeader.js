@@ -6,6 +6,14 @@ import Layout3 from "../Components/Layout3";
 import Layout4 from "../Components/Layout4";
 import Layout5 from "../Components/Layout5";
 import Layout6 from "../Components/Layout6";
+import Layout7 from "../Components/Layout7";
+import Layout8 from "../Components/Layout8";
+import Layout9 from "../Components/Layout9";
+import Layout10 from "../Components/Layout10";
+import Layout11 from "../Components/Layout11";
+import Layout12 from "../Components/Layout12";
+
+
 import "./style.less";
 function LayoutHeader() {
   const [images, setImages] = useState([]);
@@ -85,6 +93,31 @@ function LayoutHeader() {
           selectedLayout === 5 && 
           <Layout6 selectedLayout={selectedLayout}/>
         }
+        {
+          selectedLayout === 6 && 
+          <Layout7 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 7 && 
+          <Layout8 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 8 && 
+          <Layout9 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 9 && 
+          <Layout10 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 10 && 
+          <Layout11 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 11 && 
+          <Layout12 selectedLayout={selectedLayout}/>
+        }
+
       </div>
     </>
   );
