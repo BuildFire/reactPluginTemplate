@@ -63,27 +63,27 @@ function LayoutHeader() {
       <div>
         {
           selectedLayout === 0 && 
-          <Layout1/>
+          <Layout1 selectedLayout={selectedLayout}/>
         }
         {
           selectedLayout === 1 && 
-          <Layout2/>
+          <Layout2 selectedLayout={selectedLayout}/>
         }
         {
           selectedLayout === 2 && 
-          <Layout3/>
+          <Layout3 selectedLayout={selectedLayout}/>
         }
         {
           selectedLayout === 3 && 
-          <Layout4/>
+          <Layout4 selectedLayout={selectedLayout}/>
         }
         {
           selectedLayout === 4 && 
-          <Layout5/>
+          <Layout5 selectedLayout={selectedLayout}/>
         }
         {
           selectedLayout === 5 && 
-          <Layout6/>
+          <Layout6 selectedLayout={selectedLayout}/>
         }
       </div>
     </>

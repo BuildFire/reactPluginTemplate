@@ -16,6 +16,7 @@ function index(props) {
         dimensionsLabel: "Recommended: 1200 x 675",
         multiSelection: false,
       });
+      console.log("hello",props.selectedLayout);
   }, []);
   return (
     <>
