@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {dataHandler} from './messaging'
 
 const useForm = (callback) => {
 
@@ -9,9 +10,12 @@ const useForm = (callback) => {
         callback(values);
     };
 
-    const handleChange = (event) => {
+    const handleChange = (event,imageData) => {
         event.persist();
-        setValues(values => ({ ...values, [event.target.name]: event.target.value}));
+        setValues(values => ({ ...values,...imageData, [event.target.name]: event.target.value}));
+        console.log("values >>>",values);
+        dataHandler(values);
+        messaging("values >>>",values);
     };
 
     return {
