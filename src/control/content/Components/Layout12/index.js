@@ -66,9 +66,9 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input onChange={setObjectData} type="radio" name="topMediaType" value="image" defaultChecked />
+            <input onChange={setObjectData} className="checkBox" type="radio" name="topMediaType" value="image" defaultChecked />
             <label className="lable">Image</label>
-            <input onChange={setObjectData} type="radio" name="topMediaType" value="image" />
+            <input onChange={setObjectData} className="checkBox" type="radio" name="topMediaType" value="image" />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -86,7 +86,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input placeholder="Enable Full Screen" onChange={setObjectData} type="checkBox" name="enableFullScreen" id="enableFullScreen" />
+            <input placeholder="Enable Full Screen" onChange={setObjectData} className="checkBox" type="checkBox" name="enableFullScreen" id="enableFullScreen" />
           </div>
         </div>
         <div className="row">
