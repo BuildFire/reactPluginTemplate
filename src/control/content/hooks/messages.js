@@ -1,11 +1,8 @@
 
 const useMessages = () => {
-    
-
     const handleSendMessage = (values) => {
         buildfire.messaging.sendMessageToWidget(values);
     };
-
     return {
         handleSendMessage
     };

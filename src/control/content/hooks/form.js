@@ -18,13 +18,15 @@ const useForm = (callback) => {
 
     const handleChange = (event, imageData) => {
         event.persist();
-        setValues(values => ({ ...values, ...imageData, [event.target.name]: event.target.value}));
-        console.log("My values->", { ...values, ...imageData, [event.target.name]: event.target.value});
+        if(event.target.type == 'checkbox'){
+            setValues(values => ({ ...values, ...imageData, [event.target.name]: event.target.checked}));
+        }else{
+            setValues(values => ({ ...values, ...imageData, [event.target.name]: event.target.value}));
+        }
     };
 
     const handelChangeImage = (imageData) => {
         setValues(values => ({ ...values, ...imageData}));
-        console.log("My values->", { ...values, ...imageData, [event.target.name]: event.target.value});
     }
 
     return {
