@@ -8,12 +8,14 @@ function index(props) {
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
       imageUrl: "",
       title: " ",
-      dimensionsLabel: "Recommended: 1200 x 960",
+      dimensionsLabel: "Recommended: 1200 x 675",
       multiSelection: false,
     });
-    let editor = new buildfire.components.carousel.editor(".carousel", []);
-  }, []);
 
+    tinymce.init({
+      selector: "#wysiwygContent",
+    });
+  }, []);
 
   function submitForm(values) {
     console.log('forms values ->', values);
@@ -29,23 +31,19 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input
-              type="radio"
-              name="topMediaType"
-              value="image"
-              defaultChecked
-            />
+            <input type="radio" name="mediaType" value="image" defaultChecked />
             <label className="lable">Image</label>
-            <input type="radio" name="topMediaType" value="image" />
+            <input type="radio" name="mediaType" value="image" />
             <label className="lable">Video</label>
           </div>
         </div>
+
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail sequare"></div>
+            <div className="thumbnail horizontal-rectangle"></div>
           </div>
         </div>
         <div className="row">
@@ -58,20 +56,27 @@ function index(props) {
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Body Content</label>
+            <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent"></textarea>
+            <input className="form-control fullWidth"></input>
           </div>
         </div>
-        <div className="row margin-bottom">
+        <div className="row">
           <div className="col-md-3">
-            <label className="lable">Image Carousel</label>
+            <label className="lable">Subtitle</label>
           </div>
           <div className="col-md-9">
-            <div className="carousel"></div>
+            <input className="form-control fullWidth"></input>
           </div>
         </div>
+
+        <div className="row  margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Body Contant</label>
+          </div>
+        </div>
+        <textarea id="wysiwygContent" name="content"></textarea>
       </div>
       <div className="bottom-actions">
         <button className="btn btn-default" id="layoutBackBtn">
@@ -84,4 +89,5 @@ function index(props) {
     </>
   );
 }
+
 export default hot(index);

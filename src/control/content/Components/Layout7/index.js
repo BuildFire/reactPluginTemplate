@@ -5,6 +5,12 @@ import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
   useEffect(() => {
+    let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
+      imageUrl: "",
+      title: " ",
+      dimensionsLabel: "Recommended: 675 x 1200",
+      multiSelection: false,
+    });
     let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
       imageUrl: "",
       title: " ",
@@ -17,6 +23,8 @@ function index(props) {
       dimensionsLabel: "Recommended: 1200 x 675",
       multiSelection: false,
     });
+
+    console.log("hello", props.selectedLayout);
   }, []);
 
 
@@ -31,21 +39,10 @@ function index(props) {
       <div className="layOutContainer">
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Top Media Type</label>
+            <label className="lable">Background Image</label>
           </div>
           <div className="col-md-9">
-            <input type="radio" name="topMediaType" value="image" defaultChecked />
-            <label className="lable">Image</label>
-            <input type="radio" name="topMediaType" value="image" />
-            <label className="lable">Video</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Top Image</label>
-          </div>
-          <div className="col-md-9">
-            <div className="horizontal-rectangle thumbnail2"></div>
+            <div className="vertical-rectangle thumbnail"></div>
           </div>
         </div>
         <div className="row">
@@ -58,28 +55,35 @@ function index(props) {
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Top Title</label>
+            <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input className="form-control fullWidth" type="text" name="title" defaultValue="Title" />
+            <input type="radio" name="mediaType" value="image" defaultChecked />
+            <label className="lable">Image</label>
+            <input type="radio" name="mediaType" value="image" />
+            <label className="lable">Video</label>
           </div>
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Subtitle</label>
+            <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
-            <input
-              className="form-control fullWidth"
-              type="text"
-              name="subtitle"
-              defaultValue="Subtitle"
-            />
+            <div className="thumbnail2 horizontal-rectangle"></div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-3">
+            <label className="lable">Enable Full Screen</label>
+          </div>
+          <div className="col-md-9">
+            <input type="checkBox" name="enableFullScreen" />
           </div>
         </div>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Top Body Content</label>
+            <label className="lable">Top Body content</label>
           </div>
           <div className="col-md-9">
             <textarea className="form-control bodyContent"></textarea>
@@ -101,7 +105,7 @@ function index(props) {
             <label className="lable">Main Image</label>
           </div>
           <div className="col-md-9">
-            <div className="horizontal-rectangle thumbnail3"></div>
+            <div className="thumbnail3 horizontal-rectangle"></div>
           </div>
         </div>
         <div className="row">
@@ -114,12 +118,13 @@ function index(props) {
         </div>
         <div className="row margin-bottom">
           <div className="col-md-3">
-            <label className="lable">Main Body Content</label>
+            <label className="lable">Main Body content</label>
           </div>
           <div className="col-md-9">
             <textarea className="form-control bodyContent"></textarea>
           </div>
         </div>
+
       </div>
       <div className="bottom-actions">
         <button className="btn btn-default" id="layoutBackBtn">

@@ -6,6 +6,14 @@ import Layout3 from "../Components/Layout3";
 import Layout4 from "../Components/Layout4";
 import Layout5 from "../Components/Layout5";
 import Layout6 from "../Components/Layout6";
+import Layout7 from "../Components/Layout7";
+import Layout8 from "../Components/Layout8";
+import Layout9 from "../Components/Layout9";
+import Layout10 from "../Components/Layout10";
+import Layout11 from "../Components/Layout11";
+import Layout12 from "../Components/Layout12";
+
+
 import "./style.less";
 function LayoutHeader() {
   const [images, setImages] = useState([]);
@@ -16,12 +24,31 @@ function LayoutHeader() {
       array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
+
+    getSelectedLayOut();
   }, []);
 
   const selectedLayoutHandler = (index) => {
-    console.log(index);
+
+    buildfire.appData.save(
+      { layOut: index },
+      "selectedLayOut",
+      (err, result) => {
+        if (err) return console.error("Error while saving your data", err);
+        console.log("Data saved successfully", result);
+      }
+    );
+
     setSelectedLayout(index);
   };
+
+  function getSelectedLayOut(){
+    buildfire.appData.get("selectedLayOut", (err, result) => {
+      if (err) return console.error("Error while retrieving your data", err);
+      console.log("Main record", result.data);
+      if(result.data.layOut) setSelectedLayout(result.data.layOut);
+    });
+  }
 
   return (
     <>
@@ -61,12 +88,55 @@ function LayoutHeader() {
       </div>
 
       <div>
-        {selectedLayout === 0 && <Layout1 selectedLayout={selectedLayout} />}
-        {selectedLayout === 1 && <Layout2 selectedLayout={selectedLayout} />}
-        {selectedLayout === 2 && <Layout3 selectedLayout={selectedLayout} />}
-        {selectedLayout === 3 && <Layout4 selectedLayout={selectedLayout} />}
-        {selectedLayout === 4 && <Layout5 selectedLayout={selectedLayout} />}
-        {selectedLayout === 5 && <Layout6 selectedLayout={selectedLayout} />}
+        {
+          selectedLayout === 0 && 
+          <Layout1 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 1 && 
+          <Layout2 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 2 && 
+          <Layout3 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 3 && 
+          <Layout4 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 4 && 
+          <Layout5 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 5 && 
+          <Layout6 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 6 && 
+          <Layout7 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 7 && 
+          <Layout8 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 8 && 
+          <Layout9 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 9 && 
+          <Layout10 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 10 && 
+          <Layout11 selectedLayout={selectedLayout}/>
+        }
+        {
+          selectedLayout === 11 && 
+          <Layout12 selectedLayout={selectedLayout}/>
+        }
+
       </div>
     </>
   );
