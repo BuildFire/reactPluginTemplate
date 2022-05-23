@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import { hot } from "react-hot-loader/root";
+import { hot } from "react-hot-loader/root";
+import "../../../../../../styles/control/bf-base.css";
+
 import Layout1 from "../Components/Layout1";
 import Layout2 from "../Components/Layout2";
 import Layout3 from "../Components/Layout3";
@@ -13,8 +15,8 @@ import Layout10 from "../Components/Layout10";
 import Layout11 from "../Components/Layout11";
 import Layout12 from "../Components/Layout12";
 
-
 import "./style.less";
+
 function LayoutHeader() {
   const [images, setImages] = useState([]);
   const [selectedLayout, setSelectedLayout] = useState(0);
@@ -142,4 +144,4 @@ function LayoutHeader() {
   );
 }
 
-export default LayoutHeader;
+export default hot(LayoutHeader);

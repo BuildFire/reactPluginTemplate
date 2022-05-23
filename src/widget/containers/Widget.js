@@ -1,8 +1,11 @@
-import React from 'react';
-import { hot } from 'react-hot-loader/root';
+import React from 'react'
 
-const Widget = () => (
-  <h1>Widget - Hello World!</h1>
-);
+export default function Widget() {
+  buildfire.messaging.onReceivedMessage = (message) => {
+    console.log("Message received", message);
+  };
+  return (
+    <div>Widget</div>
+  )
+}
 
-export default hot(Widget);

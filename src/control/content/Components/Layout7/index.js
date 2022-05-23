@@ -4,7 +4,14 @@ import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
+
+  const [thumbnailImage, setThumbnailImage] = useState(null);
+  const [isEmpty, setIsEmpty] = useState(true);
+  const [layoutId, setLayoutId] = useState("");
+  const [detailsObj, setDetailsObj] = useState({});
+
   useEffect(() => {
+    // thumbnail set up -->
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
       imageUrl: "",
       title: " ",
@@ -24,10 +31,41 @@ function index(props) {
       multiSelection: false,
     });
 
-    console.log("hello", props.selectedLayout);
+    // thumbnail Change image -->
+    thumbnail.onChange = (imageUrl) => {
+      setThumbnailImage(imageUrl);
+    };
+    thumbnail2.onChange = (imageUrl) => {
+      setThumbnailImage(imageUrl);
+    };
+    thumbnail3.onChange = (imageUrl) => {
+      setThumbnailImage(imageUrl);
+    };
+    // thumbnail Delete Image -->
+    thumbnail.onDelete = (imageUrl) => {
+      setThumbnailImage(null)
+    };
+    thumbnail2.onDelete = (imageUrl) => {
+      setThumbnailImage(null)
+    };
+    thumbnail3.onDelete = (imageUrl) => {
+      setThumbnailImage(null)
+    };
   }, []);
 
+  // submit form function 
+  function submitForm(values) {
+    values.backgroundImage = thumbnailImage;
+    if (document.getElementById("enableFullScreen").checked) {
+      values.enableFullScreen = true;
+    } else {
+      values.enableFullScreen = false;
+    }
+    console.log('forms values ->', values);
+    setDetailsObj(values);
+  }
 
+  // use hooks to make our life easier 
   function submitForm(values) {
     console.log('forms values ->', values);
   }
