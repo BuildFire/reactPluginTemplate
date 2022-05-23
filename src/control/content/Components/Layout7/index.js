@@ -71,6 +71,8 @@ function index(props) {
     } else {
       checkBoxes2 = false;
     }
+
+    
     let checkBoxes3;
     if (document.getElementById("enableFullScreen3").checked) {
       checkBoxes3 = true;
