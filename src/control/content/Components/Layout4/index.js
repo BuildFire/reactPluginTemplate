@@ -106,7 +106,7 @@ function index(props) {
             <label className="lable">Top Title</label>
           </div>
           <div className="col-md-9">
-            <input className="form-control fullWidth" type="text" name="title" defaultValue="Title" onChange={changingHandler}/>
+            <input maxLength={80} className="form-control fullWidth" type="text" name="title" defaultValue="Title" onChange={changingHandler}/>
           </div>
         </div>
         <div className="row">
@@ -119,6 +119,7 @@ function index(props) {
               type="text"
               name="subtitle"
               defaultValue="Subtitle"
+              maxLength={100}
               onChange={changingHandler}
             />
           </div>
@@ -128,7 +129,7 @@ function index(props) {
             <label className="lable">Top Body Content</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent" name="bodyContent"  onChange={changingHandler}></textarea>
+            <textarea maxLength={250} className="form-control bodyContent" name="bodyContent"  onChange={changingHandler}></textarea>
           </div>
         </div>
         <div className="row">
@@ -163,7 +164,7 @@ function index(props) {
             <label className="lable">Main Body Content</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent" name="mainBodyContent" onChange={changingHandler}></textarea>
+            <textarea maxLength={200} className="form-control bodyContent" name="mainBodyContent" onChange={changingHandler}></textarea>
           </div>
         </div>
       </div>

@@ -67,7 +67,7 @@ function index(props) {
     <>
       <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
-      <div className="layOutContainer">
+      <div className="layOutContainer layout-container-6">
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Top Media Type</label>
@@ -106,7 +106,7 @@ function index(props) {
             <label className="lable">Body Content</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent" name="bodyContent" onChange={changingHandler}></textarea>
+            <textarea maxLength={300} className="form-control bodyContent" name="bodyContent" onChange={changingHandler}></textarea>
           </div>
         </div>
         <div className="row margin-bottom">
