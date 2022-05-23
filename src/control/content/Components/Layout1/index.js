@@ -3,8 +3,15 @@ import { hot } from "react-hot-loader/root";
 import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
+import Design from "../../../../widget/containers/common/controllers/design.controller";
+import DesignLayoutItems from "../../../../widget/containers/common/models/design.modal";
 function index(props) {
+
   const [thumbnailImage, setThumbnailImage] = useState(null);
+  const [isEmpty, setIsEmpty] = useState(true);
+  const [layoutId, setLayoutId] = useState("");
+  const [detailsObj, setDetailsObj] = useState({});
+
   useEffect(() => {
     // thumbnail set up -->
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
@@ -13,6 +20,7 @@ function index(props) {
       dimensionsLabel: "Recommended: 675 x 1200",
       multiSelection: false,
     });
+    getData(thumbnail);
     // thumbnail Change image -->
     thumbnail.onChange = (imageUrl) => {
       setThumbnailImage(imageUrl);
@@ -23,15 +31,52 @@ function index(props) {
     };
   }, []);
 
+  //  load data -=>
+  const getData = (thumbnail) => {
+    Design.search({
+      filter: {
+        $or: [{ "$json.layout": 0 }],
+      },
+    })
+      .then((result) => {
+        if (result.length === 0) {
+          setIsEmpty(false);
+        } else {
+          thumbnail.loadbackground(result[0].data.backgroundImage);
+          setDetailsObj(result[0].data);
+          setLayoutId(result[0].id);
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+  // send data to datastore
+  const saveData = () => {
+    if (isEmpty) {
+      Design.update(layoutId, detailsObj)
+        .then((result) => {
+          console.log("res", result);
+        })
+        .catch((err) => console.error(err));
+    } else {
+      let newDesign = DesignLayoutItems(detailsObj);
+      Design.insert(newDesign)
+        .then((result) => {
+          console.log("res", result);
+        })
+        .catch((err) => console.error(err));
+    }
+  };
   // submit form function 
   function submitForm(values) {
     values.backgroundImage = thumbnailImage;
-    if(document.getElementById("enableFullScreen").checked){
+    if (document.getElementById("enableFullScreen").checked) {
       values.enableFullScreen = true;
-    }else{
+    } else {
       values.enableFullScreen = false;
     }
     console.log('forms values ->', values);
+    setDetailsObj(values);
+    saveData();
   }
   // use hooks to make our life easier 
   const { handleChange, handleSubmit } = useForm(submitForm);
@@ -102,7 +147,10 @@ function index(props) {
         <button className="btn btn-default" id="layoutBackBtn">
           Cancel
         </button>
-        <button className="btn btn-success" id="layoutSaveBtn">
+        <button
+          className="btn btn-success"
+          id="layoutSaveBtn"
+        >
           Save
         </button>
       </div>

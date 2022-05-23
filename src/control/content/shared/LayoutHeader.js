@@ -24,12 +24,31 @@ function LayoutHeader() {
       array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
+
+    getSelectedLayOut();
   }, []);
 
   const selectedLayoutHandler = (index) => {
-    console.log(index);
+
+    buildfire.appData.save(
+      { layOut: index },
+      "selectedLayOut",
+      (err, result) => {
+        if (err) return console.error("Error while saving your data", err);
+        console.log("Data saved successfully", result);
+      }
+    );
+
     setSelectedLayout(index);
   };
+
+  function getSelectedLayOut(){
+    buildfire.appData.get("selectedLayOut", (err, result) => {
+      if (err) return console.error("Error while retrieving your data", err);
+      console.log("Main record", result.data);
+      if(result.data.layOut) setSelectedLayout(result.data.layOut);
+    });
+  }
 
   return (
     <>
@@ -47,7 +66,7 @@ function LayoutHeader() {
                 className="img_selected"
                 src={images[selectedLayout]}
               />
-              <span>Layout {selectedLayout+1}</span>
+              <span>Layout {selectedLayout + 1}</span>
             </div>
           </div>
           <div className="col-md-10">
@@ -55,7 +74,7 @@ function LayoutHeader() {
               {images.map((image, i) => {
                 return (
                   <img
-                  key={i}
+                    key={i}
                     src={image}
                     onClick={() => {
                       selectedLayoutHandler(i);
