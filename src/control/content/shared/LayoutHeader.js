@@ -37,9 +37,9 @@ function LayoutHeader() {
               <img
                 id="listLayout"
                 className="img_selected"
-                src="https://i.pinimg.com/originals/39/42/64/394264ead42d45e7588f13f6ae0e9ad3.jpg"
+                src={images[selectedLayout]}
               />
-              <span>Layout1</span>
+              <span>Layout {selectedLayout + 1}</span>
             </div>
           </div>
           <div className="col-md-10">
@@ -47,7 +47,7 @@ function LayoutHeader() {
               {images.map((image, i) => {
                 return (
                   <img
-                  key={i}
+                    key={i}
                     src={image}
                     onClick={() => {
                       selectedLayoutHandler(i);
@@ -61,30 +61,12 @@ function LayoutHeader() {
       </div>
 
       <div>
-        {
-          selectedLayout === 0 && 
-          <Layout1 selectedLayout={selectedLayout}/>
-        }
-        {
-          selectedLayout === 1 && 
-          <Layout2 selectedLayout={selectedLayout}/>
-        }
-        {
-          selectedLayout === 2 && 
-          <Layout3 selectedLayout={selectedLayout}/>
-        }
-        {
-          selectedLayout === 3 && 
-          <Layout4 selectedLayout={selectedLayout}/>
-        }
-        {
-          selectedLayout === 4 && 
-          <Layout5 selectedLayout={selectedLayout}/>
-        }
-        {
-          selectedLayout === 5 && 
-          <Layout6 selectedLayout={selectedLayout}/>
-        }
+        {selectedLayout === 0 && <Layout1 selectedLayout={selectedLayout} />}
+        {selectedLayout === 1 && <Layout2 selectedLayout={selectedLayout} />}
+        {selectedLayout === 2 && <Layout3 selectedLayout={selectedLayout} />}
+        {selectedLayout === 3 && <Layout4 selectedLayout={selectedLayout} />}
+        {selectedLayout === 4 && <Layout5 selectedLayout={selectedLayout} />}
+        {selectedLayout === 5 && <Layout6 selectedLayout={selectedLayout} />}
       </div>
     </>
   );

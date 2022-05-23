@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { hot } from "react-hot-loader/root";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
+import Design from "../../../../widget/containers/common/controllers/design.controller";
+import DesignLayoutItems from "../../../../widget/containers/common/models/design.modal";
 function index(props) {
   useEffect(() => {
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
@@ -20,9 +22,17 @@ function index(props) {
             <label className="lable">Background Media Type</label>
           </div>
           <div className="col-md-9">
-            <input type="radio" name="mediaType" value="image" defaultChecked />
+            <input
+              type="radio"
+              name="mediaType"
+              value="image"
+            />
             <label className="lable">Image</label>
-            <input type="radio" name="mediaType" value="image" />
+            <input
+              type="radio"
+              name="mediaType"
+              value="video"
+            />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -39,7 +49,10 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" />
+            <input
+              type="checkBox"
+              name="enableFullScreen"
+            />
           </div>
         </div>
         <div className="row">
@@ -47,7 +60,12 @@ function index(props) {
             <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <input className="form-control fullWidth" type="text" name="title" defaultValue="Title"/>
+            <input
+              className="form-control fullWidth"
+              type="text"
+              name="title"
+              placeholder="Title"
+            />
           </div>
         </div>
         <div className="row">
@@ -59,7 +77,7 @@ function index(props) {
               className="form-control fullWidth"
               type="input"
               name="subtitle"
-              defaultValue="Subtitle"
+              placeholder="Subtitle"
             />
           </div>
         </div>
@@ -68,7 +86,10 @@ function index(props) {
             <label className="lable">Body Content</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent"></textarea>
+            <textarea
+              className="form-control bodyContent"
+              name="bodyContent"
+            ></textarea>
           </div>
         </div>
       </div>
@@ -76,7 +97,10 @@ function index(props) {
         <button className="btn btn-default" id="layoutBackBtn">
           Cancel
         </button>
-        <button className="btn btn-success" id="layoutSaveBtn">
+        <button
+          className="btn btn-success"
+          id="layoutSaveBtn"
+        >
           Save
         </button>
       </div>
