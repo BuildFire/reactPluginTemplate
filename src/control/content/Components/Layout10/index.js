@@ -1,4 +1,4 @@
-import React, { useEffect , useState} from "react";
+import React, { useEffect, useState } from "react";
 import { hot } from "react-hot-loader/root";
 
 import useForm from "../../hooks/form";
@@ -28,27 +28,26 @@ function index(props) {
     thumbnail2.onChange = (imageUrl) => {
       setThumbnailImage2(imageUrl);
     };
-    
+
     // thumbnail Delete Image -->
     thumbnail.onDelete = (imageUrl) => {
-      setThumbnailImage(null)
+      setThumbnailImage(null);
     };
     thumbnail2.onDelete = (imageUrl) => {
-      setThumbnailImage2(null)
+      setThumbnailImage2(null);
     };
-    
 
     console.log("hello", props.selectedLayout);
   }, []);
 
   useEffect(() => {
     setObjectData(null);
-  },[thumbnailImage ,thumbnailImage2])
-  // submit form function 
+  }, [thumbnailImage, thumbnailImage2]);
+  // submit form function
   function submitForm(values) {
-    console.log('forms values ->', values);
+    console.log("forms values ->", values);
   }
-  // use hooks to make our life easier 
+  // use hooks to make our life easier
   const setObjectData = (e) => {
     let checkBoxes;
     if (document.getElementById("enableFullScreen").checked) {
@@ -67,31 +66,25 @@ function index(props) {
       MainImage2: thumbnailImage2,
       enableFullScreen1: checkBoxes,
       enableFullScreen2: checkBoxes2,
-     
 
-      selectedLayOut: props.selectedLayout
-    }
-    if (e) {
+      selectedLayOut: props.selectedLayout,
+    };
+    if (e && e.target.type != "checkbox") {
       handleChange(e, imagesObj);
     } else {
       handelChangeImage(imagesObj);
     }
-  }
-
-
-
+  };
 
   function submitForm(values) {
-    console.log('forms values ->', values);
+    console.log("forms values ->", values);
   }
   const { handleChange, handleSubmit, handelChangeImage } = useForm(submitForm);
-
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
       <div className="layOutContainer">
-
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Background Image</label>
@@ -105,7 +98,12 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input  onChange={setObjectData} type="checkBox" name="enableFullScreen" id="enableFullScreen" />
+            <input
+              onChange={setObjectData}
+              type="checkBox"
+              name="enableFullScreen"
+              id="enableFullScreen"
+            />
           </div>
         </div>
         <div className="row">
@@ -113,9 +111,20 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input  onChange={setObjectData}  type="radio" name="mediaType" value="image" defaultChecked />
+            <input
+              onChange={setObjectData}
+              type="radio"
+              name="mediaType"
+              value="image"
+              defaultChecked
+            />
             <label className="lable">Image</label>
-            <input  onChange={setObjectData} type="radio" name="mediaType" value="video" />
+            <input
+              onChange={setObjectData}
+              type="radio"
+              name="mediaType"
+              value="video"
+            />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -133,7 +142,12 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input  onChange={setObjectData}  type="checkBox" name="enableFullScreen2" id="enableFullScreen2"/>
+            <input
+              onChange={setObjectData}
+              type="checkBox"
+              name="enableFullScreen2"
+              id="enableFullScreen2"
+            />
           </div>
         </div>
 
@@ -142,7 +156,10 @@ function index(props) {
             <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <input  onChange={setObjectData} className="form-control fullWidth"></input>
+            <input
+              onChange={setObjectData}
+              className="form-control fullWidth"
+            ></input>
           </div>
         </div>
         <div className="row">
@@ -150,7 +167,10 @@ function index(props) {
             <label className="lable">Subtitle</label>
           </div>
           <div className="col-md-9">
-            <input  onChange={setObjectData}  className="form-control fullWidth"></input>
+            <input
+              onChange={setObjectData}
+              className="form-control fullWidth"
+            ></input>
           </div>
         </div>
         <div className="row">
@@ -158,7 +178,10 @@ function index(props) {
             <label className="lable">Body content 1</label>
           </div>
           <div className="col-md-9">
-            <textarea  onChange={setObjectData}  className="form-control bodyContent"></textarea>
+            <textarea
+              onChange={setObjectData}
+              className="form-control bodyContent"
+            ></textarea>
           </div>
         </div>
         <div className="row margin-bottom">
@@ -166,7 +189,10 @@ function index(props) {
             <label className="lable">Body content 2</label>
           </div>
           <div className="col-md-9">
-            <textarea  onChange={setObjectData}  className="form-control bodyContent"></textarea>
+            <textarea
+              onChange={setObjectData}
+              className="form-control bodyContent"
+            ></textarea>
           </div>
         </div>
       </div>

@@ -86,7 +86,7 @@ function index(props) {
       enableFullScreen3: checkBoxes3,
       selectedLayOut: props.selectedLayout
     }
-    if (e) {
+    if (e && e.target.type!='checkbox') {
       handleChange(e, imagesObj);
     } else {
       handelChangeImage(imagesObj);
