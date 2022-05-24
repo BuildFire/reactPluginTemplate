@@ -20,7 +20,11 @@ function index(props) {
     };
     let editor = new buildfire.components.carousel.editor(".carousel", []);
     editor.onAddItems = (items) => {
-        setCarouselImages([...carouselImages,items])
+      let newArray=carouselImages;
+      console.log("carousel",carouselImages);
+      newArray=[...newArray,...items];
+      console.log("test>>",newArray);
+        setCarouselImages(newArray);
     };
     editor.onDeleteItem = (item, index) => {
       let newCarousel= carousel.map((element,idx)=>{
@@ -36,32 +40,14 @@ function index(props) {
 
   useEffect(() => {
     console.log("carousel",carouselImages);
-    changingHandler(null);
+    handelImage({thumbnailImage,carouselImages});
   },[thumbnailImage,carouselImages])
   // submit form function 
   function submitForm(values) {
     console.log('forms values ->', values);
   }
-  // use hooks to make our life easier 
-  const changingHandler = (e) => {
-    let checkBoxes;
-    if (document.getElementById("enableFullScreen").checked) {
-      checkBoxes = true;
-    } else {
-      checkBoxes = false;
-    }
-    let imagesObj = {
-      backgroundImage: thumbnailImage,
-      enableFullScreen: checkBoxes,
-      selectedLayOut: props.selectedLayout
-    }
-    if (e) {
-      handleChange(e, imagesObj);
-    } else {
-      handelChangeImage(imagesObj);
-    }
-  }
-  const { handleChange, handleSubmit, handelChangeImage } = useForm(submitForm);
+ 
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
   return (
     <>
@@ -78,10 +64,10 @@ function index(props) {
               name="topMediaType"
               value="image"
               defaultChecked
-              onChange={changingHandler}
+              onChange={handleChange}
             />
             <label className="lable">Image</label>
-            <input type="radio" name="topMediaType" value="video" onChange={changingHandler}/>
+            <input type="radio" name="topMediaType" value="video" onChange={handleChange}/>
             <label className="lable">Video</label>
           </div>
         </div>
@@ -98,7 +84,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={changingHandler}/>
+            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
           </div>
         </div>
         <div className="row">
@@ -106,7 +92,7 @@ function index(props) {
             <label className="lable">Body Content</label>
           </div>
           <div className="col-md-9">
-            <textarea maxLength={300} className="form-control bodyContent" name="bodyContent" onChange={changingHandler}></textarea>
+            <textarea maxLength={300} className="form-control bodyContent" name="bodyContent" onChange={handleChange}></textarea>
           </div>
         </div>
         <div className="row margin-bottom">

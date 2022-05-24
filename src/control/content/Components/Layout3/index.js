@@ -23,32 +23,14 @@ function index(props) {
 
 
   useEffect(() => {
-    changingHandler(null);
+    handelImage({thumbnailImage});
   },[thumbnailImage])
   // submit form function 
   function submitForm(values) {
     console.log('forms values ->', values);
   }
-  // use hooks to make our life easier 
-  const changingHandler = (e) => {
-    let checkBoxes;
-    if (document.getElementById("enableFullScreen").checked) {
-      checkBoxes = true;
-    } else {
-      checkBoxes = false;
-    }
-    let imagesObj = {
-      backgroundImage: thumbnailImage,
-      enableFullScreen: checkBoxes,
-      selectedLayOut: props.selectedLayout
-    }
-    if (e) {
-      handleChange(e, imagesObj);
-    } else {
-      handelChangeImage(imagesObj);
-    }
-  }
-  const { handleChange, handleSubmit, handelChangeImage } = useForm(submitForm);
+
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
   return (
     <>
@@ -60,9 +42,9 @@ function index(props) {
             <label className="lable">Main Media Type</label>
           </div>
           <div className="col-md-9">
-            <input type="radio" name="mediaType" value="image" defaultChecked onChange={changingHandler}/>
+            <input type="radio" name="mediaType" value="image" defaultChecked onChange={handleChange}/>
             <label className="lable">Image</label>
-            <input type="radio" name="mediaType" value="video" onChange={changingHandler} />
+            <input type="radio" name="mediaType" value="video" onChange={handleChange} />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -79,7 +61,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={changingHandler}/>
+            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
           </div>
         </div>
       </div>

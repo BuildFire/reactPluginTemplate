@@ -35,7 +35,7 @@ function index(props) {
   }, []);
 
   useEffect(() => {
-    changingHandler(null);
+    handelImage({thumbnailImage,thumbnailImage2});
   },[thumbnailImage,thumbnailImage2])
 
 // submit form function 
@@ -43,32 +43,7 @@ function index(props) {
     console.log('forms values ->', values);
   }
   // use hooks to make our life easier 
-  const changingHandler = (e) => {
-    let checkBoxes,mainCheckBox;
-    if (document.getElementById("enableFullScreen").checked) {
-      checkBoxes = true;
-    } else {
-      checkBoxes = false;
-    }
-    if (document.getElementById("enableMainFullScreen").checked) {
-      mainCheckBox = true;
-    } else {
-      mainCheckBox = false;
-    }
-    let imagesObj = {
-      backgroundImage: thumbnailImage,
-      mainBackgroundImage: thumbnailImage2,
-      enableFullScreen: checkBoxes,
-      enableMainFullScreen:mainCheckBox,
-      selectedLayOut: props.selectedLayout
-    }
-    if (e) {
-      handleChange(e, imagesObj);
-    } else {
-      handelChangeImage(imagesObj);
-    }
-  }
-  const { handleChange, handleSubmit, handelChangeImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
 
   return (
@@ -89,7 +64,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={changingHandler}/>
+            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
           </div>
         </div>
         <div className="row">
@@ -97,9 +72,9 @@ function index(props) {
             <label className="lable">Main Media Type</label>
           </div>
           <div className="col-md-9">
-            <input type="radio" name="mediaType" value="image" defaultChecked onChange={changingHandler}/>
+            <input type="radio" name="mediaType" value="image" defaultChecked onChange={handleChange}/>
             <label className="lable">Image</label>
-            <input type="radio" name="mediaType" value="video" onChange={changingHandler}/>
+            <input type="radio" name="mediaType" value="video" onChange={handleChange}/>
             <label className="lable">Video</label>
           </div>
         </div>
@@ -116,7 +91,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableMainFullScreen" id="enableMainFullScreen" onChange={changingHandler}/>
+            <input type="checkBox" name="enableMainFullScreen" id="enableMainFullScreen" onChange={handleChange}/>
           </div>
         </div>
       </div>

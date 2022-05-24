@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { hot } from "react-hot-loader/root";
 
 import useForm from "../../hooks/form";
@@ -6,6 +6,9 @@ import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
+  const [thumbnailImage, setThumbnailImage] = useState(null);
+  const [thumbnailImage2, setThumbnailImage2] = useState(null);
+
   useEffect(() => {
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
       imageUrl: "",
@@ -19,22 +22,41 @@ function index(props) {
       dimensionsLabel: "Recommended: 1200 x 675",
       multiSelection: false,
     });
+    thumbnail.onChange = (imageUrl) => {
+      setThumbnailImage(imageUrl);
+    };
+    thumbnail2.onChange = (imageUrl) => {
+      setThumbnailImage2(imageUrl);
+    };
+
+    // thumbnail Delete Image -->
+    thumbnail.onDelete = (imageUrl) => {
+      setThumbnailImage(null);
+    };
+    thumbnail2.onDelete = (imageUrl) => {
+      setThumbnailImage2(null);
+    };
 
     console.log("hello", props.selectedLayout);
   }, []);
 
-
+  useEffect(() => {
+    handelImage({thumbnailImage, thumbnailImage2});
+  }, [thumbnailImage, thumbnailImage2]);
+  // submit form function 
   function submitForm(values) {
-    console.log('forms values ->', values);
+    console.log(`Submit function in layout${props.selectedLayout+1} ->`, values);
+    props.saveData(values);
   }
-  const { handleChange, handleSubmit } = useForm(submitForm);
-
+  function submitForm(values) {
+    console.log("forms values ->", values);
+  }
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
       <div className="layOutContainer">
-
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Background Image</label>
@@ -48,7 +70,12 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" />
+            <input
+              onChange={handleChange}
+              className="checkBox" type="checkBox"
+              name="enableFullScreen"
+              id="enableFullScreen"
+            />
           </div>
         </div>
         <div className="row">
@@ -56,9 +83,20 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input type="radio" name="mediaType" value="image" defaultChecked />
+            <input
+              onChange={handleChange}
+              className="checkBox" type="radio"
+              name="mediaType"
+              value="image"
+              defaultChecked
+            />
             <label className="lable">Image</label>
-            <input type="radio" name="mediaType" value="image" />
+            <input
+              onChange={handleChange}
+              className="checkBox" type="radio"
+              name="mediaType"
+              value="video"
+            />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -71,12 +109,17 @@ function index(props) {
           </div>
         </div>
 
-        <div className="row margin-bottom">
+        <div className="row">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" />
+            <input
+              onChange={handleChange}
+              className="checkBox" type="checkBox"
+              name="enableFullScreen2"
+              id="enableFullScreen2"
+            />
           </div>
         </div>
 
@@ -85,7 +128,11 @@ function index(props) {
             <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <input className="form-control fullWidth"></input>
+            <input
+            placeholder="Title"
+              onChange={handleChange}
+              className="form-control fullWidth"
+            ></input>
           </div>
         </div>
         <div className="row">
@@ -93,7 +140,11 @@ function index(props) {
             <label className="lable">Subtitle</label>
           </div>
           <div className="col-md-9">
-            <input className="form-control fullWidth"></input>
+            <input
+            placeholder="SubTitle"
+              onChange={handleChange}
+              className="form-control fullWidth"
+            ></input>
           </div>
         </div>
         <div className="row">
@@ -101,7 +152,11 @@ function index(props) {
             <label className="lable">Body content 1</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent"></textarea>
+            <textarea
+            placeholder="Body content 1"
+              onChange={handleChange}
+              className="form-control bodyContent"
+            ></textarea>
           </div>
         </div>
         <div className="row margin-bottom">
@@ -109,7 +164,11 @@ function index(props) {
             <label className="lable">Body content 2</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent"></textarea>
+            <textarea
+            placeholder="Body content 2"
+              onChange={handleChange}
+              className="form-control bodyContent"
+            ></textarea>
           </div>
         </div>
       </div>
@@ -121,7 +180,7 @@ function index(props) {
           Save
         </button>
       </div>
-    </>
+    </form>
   );
 }
 
