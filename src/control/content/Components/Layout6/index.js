@@ -65,9 +65,10 @@ function index(props) {
               value="image"
               defaultChecked
               onChange={handleChange}
+              className="checkBox"  
             />
             <label className="lable">Image</label>
-            <input type="radio" name="topMediaType" value="video" onChange={handleChange}/>
+            <input className="checkBox"  type="radio" name="topMediaType" value="video" onChange={handleChange}/>
             <label className="lable">Video</label>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import React from 'react'
+import LayoutManager from '../shared/LayoutManager';
 
 export default function Widget() {
-  buildfire.messaging.onReceivedMessage = (message) => {
-    console.log("Message received", message);
-  };
   return (
-    <div>Widget</div>
+    <>
+    <LayoutManager/>
+    </>
   )
 }
 
