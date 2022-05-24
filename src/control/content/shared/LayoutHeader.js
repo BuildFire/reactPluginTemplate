@@ -16,6 +16,7 @@ import Layout11 from "../Components/Layout11";
 import Layout12 from "../Components/Layout12";
 
 import "./style.less";
+import useMessages from "../hooks/messages";
 
 function LayoutHeader() {
   const [images, setImages] = useState([]);
@@ -32,8 +33,9 @@ function LayoutHeader() {
     getSelectedLayOut();
   }, []);
 
+ const {handleSendMessage}= useMessages()
   const selectedLayoutHandler = (index) => {
-
+    handleSendMessage({selectedLayout:index+1});
     buildfire.appData.save(
       { layOut: index },
       "selectedLayOut",
@@ -47,10 +49,13 @@ function LayoutHeader() {
   };
 
   function getSelectedLayOut() {
+    
     buildfire.appData.get("selectedLayOut", (err, result) => {
       if (err) return console.error("Error while retrieving your data", err);
       console.log("Main record", result.data);
-      if (result.data.layOut) setSelectedLayout(result.data.layOut);
+      if (result.data.layOut) 
+      {setSelectedLayout(result.data.layOut);
+      handleSendMessage({selectedLayout:result.data.layOut+1});}
     });
   }
 

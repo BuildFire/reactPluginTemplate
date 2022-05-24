@@ -42,9 +42,9 @@ function index(props) {
             <label className="lable">Main Media Type</label>
           </div>
           <div className="col-md-9">
-            <input type="radio" name="mediaType" value="image" defaultChecked onChange={handleChange}/>
+            <input className="checkBox"  type="radio" name="mediaType" value="image" defaultChecked onChange={handleChange}/>
             <label className="lable">Image</label>
-            <input type="radio" name="mediaType" value="video" onChange={handleChange} />
+            <input className="checkBox"  type="radio" name="mediaType" value="video" onChange={handleChange} />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -61,7 +61,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
+            <input type="checkBox" className="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
           </div>
         </div>
       </div>
