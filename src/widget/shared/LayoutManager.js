@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./style.less";
 import Layout1 from "../components/Layout1/Index";
+import Layout2 from "../components/Layout2/Index";
+import Layout5 from "../components/Layout5/Index";
 function LayoutManager() {
   const [data, setData] = useState({});
-  const [selectedLayout, setSelectedLayout] = useState(5);
+  const [selectedLayout, setSelectedLayout] = useState(1);
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
@@ -19,11 +21,13 @@ function LayoutManager() {
   return (
     <>
       <div>
-        {selectedLayout === 5 && <Layout1 data={data}/>}
-        {/* {selectedLayout === 2 && <Layout2 />}
+      {selectedLayout === 1 && <Layout1 data={data}/>}
+      {selectedLayout === 2 && <Layout2 data={data}/>}
+      {selectedLayout === 5 && <Layout5 data={data}/>}
+        {/* 
         {selectedLayout === 3 && <Layout3 />}
         {selectedLayout === 4 && <Layout4 />}
-        {selectedLayout === 5 && <Layout5 />}
+        
         {selectedLayout === 6 && <Layout6 />}
         {selectedLayout === 7 && <Layout7 />}
         {selectedLayout === 8 && <Layout8 />}
