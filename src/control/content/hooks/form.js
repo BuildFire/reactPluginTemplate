@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
-import useMessages from './messages'
+import { useState, useEffect } from "react";
+import useMessages from "./messages";
 
 const useForm = (callback) => {
+  const { handleSendMessage } = useMessages();
 
-    const {handleSendMessage} = useMessages();
+  const [values, setValues] = useState({});
 
-    const [values, setValues] = useState({});
+  useEffect(() => {
+    handleSendMessage(values);
+  }, [values]);
 
-    useEffect(()=>{
-        handleSendMessage(values)
-    }, [values])
+  const handleSubmit = (event) => {
+    if (event) event.preventDefault();
+    callback(values);
+  };
 
-    const handleSubmit = (event) => {
-        if (event) event.preventDefault();
-        callback(values);
-    };
+ 
 
     const handleChange = (event) => {
         event.persist();

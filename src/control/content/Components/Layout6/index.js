@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { hot } from "react-hot-loader/root";
+import React, { useEffect,useState } from "react";
 import useForm from "../../hooks/form";
 import "./style.less";
-import "../../../../../../../styles/control/bf-base.css";
 function index(props) {
+  const [thumbnailImage, setThumbnailImage] = useState(null);
+  const [carouselImages, setCarouselImages] = useState([]);
   useEffect(() => {
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
       imageUrl: "",
@@ -11,19 +11,49 @@ function index(props) {
       dimensionsLabel: "Recommended: 1200 x 960",
       multiSelection: false,
     });
+    thumbnail.onChange = (imageUrl) => {
+      setThumbnailImage(imageUrl);
+    };
+    // thumbnail Delete Image -->
+    thumbnail.onDelete = (imageUrl) => {
+      setThumbnailImage(null);
+    };
     let editor = new buildfire.components.carousel.editor(".carousel", []);
+    editor.onAddItems = (items) => {
+      let newArray=carouselImages;
+      console.log("carousel",carouselImages);
+      newArray=[...newArray,...items];
+      console.log("test>>",newArray);
+        setCarouselImages(newArray);
+    };
+    editor.onDeleteItem = (item, index) => {
+      let newCarousel= carousel.map((element,idx)=>{
+        if(index !==idx){
+          return element;
+        }
+      });
+      setCarouselImages(newCarousel);
+    };
   }, []);
 
 
+
+  useEffect(() => {
+    console.log("carousel",carouselImages);
+    handelImage({thumbnailImage,carouselImages});
+  },[thumbnailImage,carouselImages])
+  // submit form function 
   function submitForm(values) {
     console.log('forms values ->', values);
   }
-  const { handleChange, handleSubmit } = useForm(submitForm);
+ 
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
   return (
     <>
+      <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
-      <div className="layOutContainer">
+      <div className="layOutContainer layout-container-6">
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Top Media Type</label>
@@ -34,9 +64,10 @@ function index(props) {
               name="topMediaType"
               value="image"
               defaultChecked
+              onChange={handleChange}
             />
             <label className="lable">Image</label>
-            <input type="radio" name="topMediaType" value="image" />
+            <input type="radio" name="topMediaType" value="video" onChange={handleChange}/>
             <label className="lable">Video</label>
           </div>
         </div>
@@ -53,7 +84,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" name="enableFullScreen" />
+            <input type="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
           </div>
         </div>
         <div className="row">
@@ -61,7 +92,7 @@ function index(props) {
             <label className="lable">Body Content</label>
           </div>
           <div className="col-md-9">
-            <textarea className="form-control bodyContent"></textarea>
+            <textarea maxLength={300} className="form-control bodyContent" name="bodyContent" onChange={handleChange}></textarea>
           </div>
         </div>
         <div className="row margin-bottom">
@@ -74,14 +105,15 @@ function index(props) {
         </div>
       </div>
       <div className="bottom-actions">
-        <button className="btn btn-default" id="layoutBackBtn">
+        <button type="button" className="btn btn-default" id="layoutBackBtn">
           Cancel
         </button>
-        <button className="btn btn-success" id="layoutSaveBtn">
+        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
           Save
         </button>
       </div>
+      </form>
     </>
   );
 }
-export default hot(index);
+export default index;
