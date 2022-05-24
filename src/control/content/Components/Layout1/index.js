@@ -61,7 +61,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input onChange={handleChange} type="checkBox" name="enableFullScreen" id='enableFullScreen' />
+            <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen" id='enableFullScreen' />
           </div>
         </div>
         <div className="row">
