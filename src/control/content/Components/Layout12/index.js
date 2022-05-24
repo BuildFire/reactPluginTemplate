@@ -35,27 +35,16 @@ function index(props) {
   }, []);
 
   useEffect(() => {
-    setObjectData(null);
+    handelImage({thumbnailImage, wysiwygData});
   }, [thumbnailImage, wysiwygData])
 
   // submit form function 
   function submitForm(values) {
-    console.log('forms values ->', values);
+    console.log(`Submit function in layout${props.selectedLayout+1} ->`, values);
+    props.saveData(values);
   }
-  // use hooks to make our life easier 
-  const setObjectData = (e) => {
-    let imagesObj = {
-      wysiwygData,
-      backgroundImage: thumbnailImage,
-      selectedLayOut: props.selectedLayout
-    }
-    if (e) {
-      handleChange(e, imagesObj);
-    } else {
-      handelChangeImage(imagesObj);
-    }
-  }
-  const { handleChange, handleSubmit, handelChangeImage } = useForm(submitForm);
+  
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -66,9 +55,9 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input onChange={setObjectData} className="checkBox" type="radio" name="topMediaType" value="image" defaultChecked />
+            <input onChange={handleChange} className="checkBox" type="radio" name="topMediaType" value="image" defaultChecked />
             <label className="lable">Image</label>
-            <input onChange={setObjectData} className="checkBox" type="radio" name="topMediaType" value="image" />
+            <input onChange={handleChange} className="checkBox" type="radio" name="topMediaType" value="image" />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -86,7 +75,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input placeholder="Enable Full Screen" onChange={setObjectData} className="checkBox" type="checkBox" name="enableFullScreen" id="enableFullScreen" />
+            <input placeholder="Enable Full Screen" onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen" id="enableFullScreen" />
           </div>
         </div>
         <div className="row">
@@ -94,7 +83,7 @@ function index(props) {
             <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <input placeholder="Title" onChange={setObjectData} id="title" name="title" className="form-control fullWidth"></input>
+            <input placeholder="Title" onChange={handleChange} id="title" name="title" className="form-control fullWidth"></input>
           </div>
         </div>
         <div className="row">
@@ -102,7 +91,7 @@ function index(props) {
             <label className="lable">Subtitle</label>
           </div>
           <div className="col-md-9">
-            <input placeholder="Subtitle" onChange={setObjectData} id="subTitle" name="subTitle" className="form-control fullWidth"></input>
+            <input placeholder="Subtitle" onChange={handleChange} id="subTitle" name="subTitle" className="form-control fullWidth"></input>
           </div>
         </div>
 

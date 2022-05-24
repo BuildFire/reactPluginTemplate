@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
@@ -51,32 +51,18 @@ function index(props) {
     };
   }, []);
   useEffect(() => {
-    setObjectData(null);
-  },[thumbnailImage ,thumbnailImage2,thumbnailImage3])
+    handelImage({ thumbnailImage, thumbnailImage2, thumbnailImage3 });
+  }, [thumbnailImage, thumbnailImage2, thumbnailImage3])
   // submit form function 
   function submitForm(values) {
     console.log('forms values ->', values);
   }
-  // use hooks to make our life easier 
-  const setObjectData = (e) => {
-    let imagesObj = {
-      backgroundImage: thumbnailImage,
-      topImage: thumbnailImage2,
-      mainImage: thumbnailImage3,
-      selectedLayOut: props.selectedLayout
-    }
-    if (e) {
-      handleChange(e, imagesObj);
-    } else {
-      handelChangeImage(imagesObj);
-    }
-  }
-
-  // use hooks to make our life easier 
+  // submit form function 
   function submitForm(values) {
-    console.log('forms values ->', values);
+    console.log(`Submit function in layout${props.selectedLayout+1} ->`, values);
+    props.saveData(values);
   }
-  const { handleChange, handleSubmit, handelChangeImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -95,7 +81,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input onChange={setObjectData}  className="checkBox" type="checkBox" name="enableFullScreen1" id="enableFullScreen1" />
+            <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen1" id="enableFullScreen1" />
           </div>
         </div>
         <div className="row">
@@ -103,9 +89,9 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input onChange={setObjectData} className="checkBox" type="radio" name="mediaType" value="image" defaultChecked />
+            <input onChange={handleChange} className="checkBox" type="radio" name="mediaType" value="image" defaultChecked />
             <label className="lable">Image</label>
-            <input onChange={setObjectData} className="checkBox" type="radio" name="mediaType" value="video" />
+            <input onChange={handleChange} className="checkBox" type="radio" name="mediaType" value="video" />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -123,7 +109,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input onChange={setObjectData} className="checkBox" type="checkBox" name="enableFullScreen2" id="enableFullScreen2"/>
+            <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen2" id="enableFullScreen2" />
           </div>
         </div>
         <div className="row">
@@ -131,7 +117,7 @@ function index(props) {
             <label className="lable">Top Body content</label>
           </div>
           <div className="col-md-9">
-            <textarea onChange={setObjectData} className="form-control bodyContent"></textarea>
+            <textarea placeholder="Top Body content" onChange={handleChange} className="form-control bodyContent"></textarea>
           </div>
         </div>
         <div className="row">
@@ -139,9 +125,9 @@ function index(props) {
             <label className="lable">Main Media Type</label>
           </div>
           <div className="col-md-9">
-            <input onChange={setObjectData} className="checkBox" type="radio" name="mediaType2" value="image" defaultChecked />
+            <input onChange={handleChange} className="checkBox" type="radio" name="mediaType2" value="image" defaultChecked />
             <label className="lable">Image</label>
-            <input onChange={setObjectData} className="checkBox" type="radio" name="mediaType2" value="video" />
+            <input onChange={handleChange} className="checkBox" type="radio" name="mediaType2" value="video" />
             <label className="lable">Video</label>
           </div>
         </div>
@@ -158,7 +144,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input onChange={setObjectData} className="checkBox" type="checkBox" name="enableFullScreen3" id="enableFullScreen3"/>
+            <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen3" id="enableFullScreen3" />
           </div>
         </div>
         <div className="row margin-bottom">
@@ -166,7 +152,7 @@ function index(props) {
             <label className="lable">Main Body content</label>
           </div>
           <div className="col-md-9">
-            <textarea onChange={setObjectData} className="form-control bodyContent"></textarea>
+            <textarea placeholder="Main Body content" onChange={handleChange} className="form-control bodyContent"></textarea>
           </div>
         </div>
 

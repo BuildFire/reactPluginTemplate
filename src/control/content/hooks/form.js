@@ -16,23 +16,23 @@ const useForm = (callback) => {
         callback(values);
     };
 
-    const handleChange = (event, imageData) => {
+    const handleChange = (event) => {
         event.persist();
         if(event.target.type == 'checkbox'){
-            setValues(values => ({ ...values, ...imageData, [event.target.name]: event.target.checked}));
+            setValues(values => ({ ...values, [event.target.name]: event.target.checked}));
         }else{
-            setValues(values => ({ ...values, ...imageData, [event.target.name]: event.target.value}));
+            setValues(values => ({ ...values, [event.target.name]: event.target.value}));
         }
     };
 
-    const handelChangeImage = (imageData) => {
+    const handelImage = (imageData) => {
         setValues(values => ({ ...values, ...imageData}));
     }
 
     return {
         handleChange,
         handleSubmit,
-        handelChangeImage,
+        handelImage,
         values
     };
 };

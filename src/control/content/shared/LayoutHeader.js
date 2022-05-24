@@ -20,6 +20,8 @@ import "./style.less";
 function LayoutHeader() {
   const [images, setImages] = useState([]);
   const [selectedLayout, setSelectedLayout] = useState(0);
+  const [savedData, setSavedData] = useState({});
+
   useEffect(() => {
     let array = [];
     for (let i = 1; i <= 12; i++) {
@@ -44,14 +46,21 @@ function LayoutHeader() {
     setSelectedLayout(index);
   };
 
-  function getSelectedLayOut(){
+  function getSelectedLayOut() {
     buildfire.appData.get("selectedLayOut", (err, result) => {
       if (err) return console.error("Error while retrieving your data", err);
       console.log("Main record", result.data);
-      if(result.data.layOut) setSelectedLayout(result.data.layOut);
+      if (result.data.layOut) setSelectedLayout(result.data.layOut);
     });
   }
 
+  function saveData(data) {
+    console.log('Submit function in Shared Submit Function ->', {data,selectedLayout:selectedLayout+1});
+    setSavedData({
+      data,
+      selectedLayout
+    })
+  }
   return (
     <>
       <h1>Layout</h1>
@@ -91,52 +100,52 @@ function LayoutHeader() {
 
       <div>
         {
-          selectedLayout === 0 && 
-          <Layout1 selectedLayout={selectedLayout}/>
+          selectedLayout === 0 &&
+          <Layout1 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 1 && 
-          <Layout2 selectedLayout={selectedLayout}/>
+          selectedLayout === 1 &&
+          <Layout2 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 2 && 
-          <Layout3 selectedLayout={selectedLayout}/>
+          selectedLayout === 2 &&
+          <Layout3 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 3 && 
-          <Layout4 selectedLayout={selectedLayout}/>
+          selectedLayout === 3 &&
+          <Layout4 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 4 && 
-          <Layout5 selectedLayout={selectedLayout}/>
+          selectedLayout === 4 &&
+          <Layout5 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 5 && 
-          <Layout6 selectedLayout={selectedLayout}/>
+          selectedLayout === 5 &&
+          <Layout6 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 6 && 
-          <Layout7 selectedLayout={selectedLayout}/>
+          selectedLayout === 6 &&
+          <Layout7 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 7 && 
-          <Layout8 selectedLayout={selectedLayout}/>
+          selectedLayout === 7 &&
+          <Layout8 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 8 && 
-          <Layout9 selectedLayout={selectedLayout}/>
+          selectedLayout === 8 &&
+          <Layout9 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 9 && 
-          <Layout10 selectedLayout={selectedLayout}/>
+          selectedLayout === 9 &&
+          <Layout10 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 10 && 
-          <Layout11 selectedLayout={selectedLayout}/>
+          selectedLayout === 10 &&
+          <Layout11 saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
-          selectedLayout === 11 && 
-          <Layout12 selectedLayout={selectedLayout}/>
+          selectedLayout === 11 &&
+          <Layout12 saveData={saveData} selectedLayout={selectedLayout} />
         }
 
       </div>
