@@ -3,7 +3,7 @@ import "./style.less";
 import Layout1 from "../components/Layout1/Index";
 function LayoutManager() {
   const [data, setData] = useState({});
-  const [selectedLayout, setSelectedLayout] = useState(null);
+  const [selectedLayout, setSelectedLayout] = useState(5);
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
@@ -19,7 +19,7 @@ function LayoutManager() {
   return (
     <>
       <div>
-        {selectedLayout === 1 && <Layout1 />}
+        {selectedLayout === 5 && <Layout1 data={data}/>}
         {/* {selectedLayout === 2 && <Layout2 />}
         {selectedLayout === 3 && <Layout3 />}
         {selectedLayout === 4 && <Layout4 />}
