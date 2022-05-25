@@ -130,6 +130,8 @@ function submitForm(values) {
           </div>
           <div className="col-md-9">
             <textarea
+                        name="BodyContent"
+
             placeholder="Body content 1"
               onChange={handleChange}
               className="form-control bodyContent"
@@ -186,6 +188,7 @@ function submitForm(values) {
           </div>
           <div className="col-md-9">
             <textarea
+             name="BodyContent2"
             placeholder="Body content 2"
               onChange={handleChange}
               className="form-control bodyContent"
@@ -241,6 +244,7 @@ function submitForm(values) {
           </div>
           <div className="col-md-9">
             <textarea
+             name="BodyContent3"
               onChange={handleChange}
               placeholder="Body content 3"
               className="form-control bodyContent"

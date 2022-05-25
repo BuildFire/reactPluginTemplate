@@ -18,7 +18,11 @@ function index(props) {
     });
     // thumbnail Change image -->
     thumbnail.onChange = (imageUrl) => {
-      setThumbnailImage(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(
+        imageUrl,
+        { size: "full_width", aspect: "16:9" }
+      );
+      setThumbnailImage(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail.onDelete = (imageUrl) => {
@@ -100,7 +104,7 @@ function index(props) {
             <label className="lable">Body Contant</label>
           </div>
         </div>
-        <textarea placeholder="Body Contant ..." className="margin-bottom" id="wysiwygContent" name="content"></textarea>
+        <textarea placeholder="Body Contant ..." className="margin-bottom" id="wysiwygContent" name="wysiwygContent"></textarea>
       </div>
       <div className="bottom-actions">
         <button type="button" className="btn btn-default" id="layoutBackBtn">

@@ -6,6 +6,15 @@ import Layout3 from "../components/Layout3/Index";
 import Layout4 from "../components/Layout4/Index";
 import Layout5 from "../components/Layout5/Index";
 import Layout6 from "../components/Layout6/Index";
+import Layout7 from "../components/Layout7/Index";
+import Layout8 from "../components/Layout8/Index";
+import Layout9 from "../components/Layout9/Index";
+import Layout10 from "../components/Layout10/Index";
+import Layout11 from "../components/Layout11/Index";
+import Layout12 from "../components/Layout12/Index";
+
+
+
 function LayoutManager() {
   const [data, setData] = useState({});
   const [selectedLayout, setSelectedLayout] = useState(1);
@@ -35,18 +44,18 @@ function LayoutManager() {
   return (
     <>
       <div>
-        {selectedLayout === 1 && <Layout1 data={data}/>}
+      {selectedLayout === 1 && <Layout1 data={data}/>}
         {selectedLayout === 2 && <Layout2 data={data} />}
         {selectedLayout === 3 && <Layout3 data={data}/>}
         {selectedLayout === 4 && <Layout4 data={data}/>}
         {selectedLayout === 5 && <Layout5 data={data}/>}
         {selectedLayout === 6 && <Layout6 data={data}/>}
-        {/*{selectedLayout === 7 && <Layout7 />}
-        {selectedLayout === 8 && <Layout8 />}
-        {selectedLayout === 9 && <Layout9 />}
-        {selectedLayout === 10 && <Layout10 />}
-        {selectedLayout === 11 && <Layout11 />}
-  {selectedLayout === 12 && <Layout12 />} */}
+        {selectedLayout === 7 && <Layout7 data={data} />}
+        {selectedLayout === 8 && <Layout8 data={data} />}
+        {selectedLayout === 9 && <Layout9 data={data} />}
+        {selectedLayout === 10 && <Layout10 data={data} />}
+        {selectedLayout === 11 && <Layout11 data={data} />}
+        {selectedLayout === 12 && <Layout12 data={data} />}
       </div>
     </>
   );

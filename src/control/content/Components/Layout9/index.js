@@ -162,6 +162,7 @@ function submitForm(values) {
           </div>
           <div className="col-md-9">
             <input
+            name="title"
             placeholder="Title"
               onChange={handleChange}
               className="form-control fullWidth"
@@ -174,6 +175,7 @@ function submitForm(values) {
           </div>
           <div className="col-md-9">
             <input
+            name="subTitle"
             placeholder="Subtitle"
               onChange={handleChange}
               className="form-control fullWidth"
@@ -186,6 +188,7 @@ function submitForm(values) {
           </div>
           <div className="col-md-9">
             <textarea
+            name="bodyContent"
             placeholder="Body content"
               onChange={handleChange}
               className="form-control bodyContent"

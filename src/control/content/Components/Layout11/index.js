@@ -16,7 +16,11 @@ function index(props) {
     });
     // thumbnail Change image -->
     thumbnail.onChange = (imageUrl) => {
-      setThumbnailImage(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(
+        imageUrl,
+        { size: "full_width", aspect: "16:9" }
+      );
+      setThumbnailImage(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail.onDelete = (imageUrl) => {
@@ -72,7 +76,7 @@ function index(props) {
             <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <input placeholder="Title" onChange={handleChange} id="Title" name="Title" className="form-control fullWidth"></input>
+            <input placeholder="Title" onChange={handleChange} id="title" name="title" className="form-control fullWidth"></input>
           </div>
         </div>
         <div className="row">
@@ -80,7 +84,7 @@ function index(props) {
             <label className="lable">Subtitle</label>
           </div>
           <div className="col-md-9">
-            <input placeholder="Subtitle" onChange={handleChange} id="SubTitle" name="SubTitle" className="form-control fullWidth"></input>
+            <input placeholder="Subtitle" onChange={handleChange} id="subTitle" name="subTitle" className="form-control fullWidth"></input>
           </div>
         </div>
         <div className="row">
@@ -112,7 +116,7 @@ function index(props) {
             <label className="lable">External URL</label>
           </div>
           <div className="col-md-9">
-            <input placeholder="External URL" onChange={handleChange} name="External URL" className="form-control fullWidth"></input>
+            <input placeholder="External URL" onChange={handleChange} name="ExternalURL" className="form-control fullWidth"></input>
           </div>
         </div>
 
