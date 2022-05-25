@@ -1,0 +1,72 @@
+.layout-8-container {
+  word-break: break-word;
+  .Maincontainer {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    background-color: #000;
+
+    .mdc-layout-grid__inner {
+      .row {
+        .upperContainer {
+          margin: 0px 37.5px 0 37.5px;
+          overflow: hidden;
+
+          .img {
+            width: 150px;
+            height: 150px;
+            align-self: stretch;
+            overflow: hidden;
+            flex-grow: 1;
+          }
+
+          p {
+            width: 142px;
+            height: 150px;
+            background-color: black;
+            font-weight: 600;
+            font-size: 14px;
+            color: #ffffff;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 1;
+            overflow: hidden;
+            word-break: break-all;
+            white-space: normal;
+            text-overflow: ellipsis;
+            margin-bottom: 0;
+            padding: 8px;
+          }
+
+          .column {
+            float: left;
+            width: 50%;
+          }
+
+          .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            margin: 0px;
+          }
+        }
+
+        .lowerContainer {
+          overflow: hidden;
+          // height: 150px;
+
+          .buttomImg {
+            width: 100%;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 1;
+          }
+        }
+      }
+    }
+  }
+
+
+}

@@ -129,6 +129,7 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <input
+            name="title"
             placeholder="Title"
               onChange={handleChange}
               className="form-control fullWidth"
@@ -141,6 +142,7 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <input
+            name="subTitle"
             placeholder="SubTitle"
               onChange={handleChange}
               className="form-control fullWidth"
@@ -153,6 +155,7 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <textarea
+            name="bodyContent"
             placeholder="Body content 1"
               onChange={handleChange}
               className="form-control bodyContent"
@@ -165,6 +168,8 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <textarea
+                        name="bodyContent2"
+
             placeholder="Body content 2"
               onChange={handleChange}
               className="form-control bodyContent"
