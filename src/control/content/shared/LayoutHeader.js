@@ -55,7 +55,7 @@ function LayoutHeader() {
       console.log("Main record", result.data);
       if (result.data.layOut) 
       {setSelectedLayout(result.data.layOut);
-      handleSendMessage({selectedLayout:result.data.layOut+1});}
+     }
     });
   }
 

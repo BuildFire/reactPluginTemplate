@@ -8,7 +8,7 @@ import Layout5 from "../components/Layout5/Index";
 import Layout6 from "../components/Layout6/Index";
 function LayoutManager() {
   const [data, setData] = useState({});
-  const [selectedLayout, setSelectedLayout] = useState(4);
+  const [selectedLayout, setSelectedLayout] = useState(1);
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
@@ -19,8 +19,19 @@ function LayoutManager() {
         setData(message);
       }
     };
+    getSelectedLayOut();
   }, []);
 
+  function getSelectedLayOut() {
+    
+    buildfire.appData.get("selectedLayOut", (err, result) => {
+      if (err) return console.error("Error while retrieving your data", err);
+      console.log("Main record", result.data);
+      if (result.data.layOut) 
+      {setSelectedLayout(result.data.layOut+1);
+     }
+    });
+  }
   return (
     <>
       <div>
