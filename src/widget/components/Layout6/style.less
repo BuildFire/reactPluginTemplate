@@ -1,80 +1,84 @@
 .layout-6-container {
-    padding: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  .topImage-container {
+    width: 100%;
     position: relative;
-    .topImage-container {
-      margin-bottom: 6.1875rem;
+    img {
       width: 100%;
-      img {
-        width: 100%;
-        height: 36rem;
-        flex: none;
-        order: 0;
-        align-self: stretch;
-        flex-grow: 1;
+      height: 19.25em;
+      flex: none;
+      order: 0;
+      align-self: stretch;
+      flex-grow: 1;
+    }
+  }
+
+  .ImageCarousel-container {
+    padding: 1rem .5rem 1.25rem;
+    #carousel {
+      .plugin-slide img,
+      .contact-maps img {
+        width: 100% !important;
       }
     }
 
-    .ImageCarousel-container {
-        #carousel {
-            .plugin-slide img, .contact-maps img {
-                width: 100% !important;
-            }
-        }
-        
-        margin: 2.625rem 0.5rem 0 0.5rem;
-        width: calc(100% - 1rem);
-        height: 24.125em;
-    }
-    .info-container {
-        padding: .5rem .5rem 1rem .5rem;
-        //margin: 0.75rem;
-        position: absolute;
-        width: 100%;
-        top: 24.125em;
-      .mdc-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        padding: 0.5rem;
-        gap: 1rem;
-        width: 100%;
-        color: #fff;
-        background: rgba(0, 0, 0, 0.9);
-        .title {
-          font-style: normal;
-          font-weight: 600;
-          font-size: 1rem;
-          line-height: 1.25rem;
-          letter-spacing: 0.03125rem;
-          word-break: break-all;
-          white-space: normal;
-          margin: 0.25rem;
-        }
-        .subtitle {
-          font-style: normal;
-          font-weight: 500;
-          font-size: 0.875rem;
-          line-height: 1.25rem;
-          word-break: break-all;
-          white-space: normal;
-          margin: 0;
-        }
-        .bodyContent {
-          font-style: normal;
-          font-weight: 400;
-          font-size: 0.875rem;
-          line-height: 1.25rem;
-          overflow: hidden;
-          word-break: break-all;
-          white-space: normal;
-          text-overflow: ellipsis;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
-        }
+    margin: 2.625rem 0.5rem 0 0.5rem;
+    width: calc(100% - 1rem);
+  }
+  .info-container {
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+    //margin: 0.75rem;
+    position: absolute;
+    bottom: -3em;
+    z-index: 8;
+    width: 100%;
+    height: fit-content;
+    .mdc-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 0.5rem;
+      gap: 1rem;
+      width: 100%;
+      color: #fff;
+      border-radius: 0;
+      background: var(--mdc-theme-on-surface);
+      .title {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.25rem;
+        letter-spacing: 0.03125rem;
+        word-break: break-all;
+        white-space: normal;
+        margin: 0.25rem;
+      }
+      .subtitle {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        word-break: break-all;
+        white-space: normal;
+        margin: 0;
+      }
+      .bodyContent {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        overflow: hidden;
+        word-break: break-all;
+        white-space: normal;
+        text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
       }
     }
   }
+}

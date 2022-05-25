@@ -33,14 +33,13 @@ function Index(props) {
           <div class="mdc-layout-grid__cell--span-8">
             <div className="topImage-container">
             <img src={props.data.thumbnailImage || holderImage}/>
-            </div>
             <div class="info-container">
               <div className="mdc-card">
-              <h1 class="title">{props.data.title}</h1>
-              <h3 class="subtitle">{props.data.subtitle}</h3>
-              <p className="bodyContent">{props.data.bodyContent}</p>
+              <p className="bodyContent">{props.data.bodyContent || "Body Content"}</p>
               </div>
             </div>
+            </div>
+            
             <div className="ImageCarousel-container">
             <div id="carousel"></div>
             </div>

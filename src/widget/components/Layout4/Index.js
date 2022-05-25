@@ -21,14 +21,15 @@ function Index(props) {
             </div>
             <div className="mainImage-container">
               <img src={props.data.thumbnailImage2 || holderImage} />
-            </div>
-            <div class="mainBody-container">
+              <div class="mainBody-container">
               <div className="mdc-card">
                 <p className="bodyContent">{props.data.mainBodyContent || "Main Body Content"}</p>
               </div>
             </div>
+            </div>
           </div>
         </div>
+       
       </div>
     </>
   );

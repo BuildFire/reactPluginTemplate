@@ -1,6 +1,6 @@
 .layout-4-container {
     padding: 0 !important;
-    position: relative;
+    // position: relative;
     .topImage-container {
       margin-bottom: 4.6875rem;
       width: 100%;
@@ -15,7 +15,7 @@
     }
 
     .mdc-layout-grid__cell--span-8 {
-      height: 100vh;
+      position: relative;
     }
 
     .mainImage-container {
@@ -28,10 +28,9 @@
     }
 
     .mainBody-container {
-      position: absolute;
-      top: 29.9375em;
       width: 100%;
       padding: 0 1rem;
+      margin: 0.5rem 0;
       .mdc-card {
         display: flex;
         flex-direction: column;
@@ -42,7 +41,8 @@
         gap: 1rem;
         width: 100%;
         color: #fff;
-        background: rgba(0, 0, 0, 0.9);
+        border-radius: 0;
+        background: var(--mdc-theme-on-surface);
         
         
         .bodyContent {
@@ -66,7 +66,7 @@
       padding: 0 1rem;
       position: absolute;
       width: 100%;
-      bottom: 26.4375em;
+      bottom:0em;
       .mdc-card {
         display: flex;
         flex-direction: column;
@@ -77,7 +77,7 @@
         gap: 1rem;
         width: 100%;
         color: #fff;
-        background: rgba(0, 0, 0, 0.9);
+        background: var(--mdc-theme-on-surface);
         .title {
           font-style: normal;
           font-weight: 600;
