@@ -6,7 +6,7 @@ function Index(props) {
     if (props.data.thumbnailImage) {
       document.getElementById("mainImage-container").style.backgroundImage = `url(${props.data.thumbnailImage})`;
     } else {
-      document.getElementById("mainImage-container").style.backgroundImage = `url(${holderImage})`;
+      document.getElementById("mainImage-container").style.background = `#d2cfcf`;
     }
 
   }, [props])
