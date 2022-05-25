@@ -14,9 +14,9 @@ function Index(props) {
             </div>
             <div class="info-container">
               <div className="mdc-card">
-                <h1 class="title">{props.data.title}</h1>
-                <h3 class="subtitle">{props.data.subtitle}</h3>
-                <p className="bodyContent">{props.data.bodyContent}</p>
+                <h1 class="title">{props.data.title || "Title"}</h1>
+                <h3 class="subtitle">{props.data.subtitle || "Subtitle"}</h3>
+                <p className="bodyContent">{props.data.bodyContent || "Top Body Content"}</p>
               </div>
             </div>
             <div className="mainImage-container">
@@ -24,7 +24,7 @@ function Index(props) {
             </div>
             <div class="mainBody-container">
               <div className="mdc-card">
-                <p className="bodyContent">{props.data.mainBodyContent}</p>
+                <p className="bodyContent">{props.data.mainBodyContent || "Main Body Content"}</p>
               </div>
             </div>
           </div>

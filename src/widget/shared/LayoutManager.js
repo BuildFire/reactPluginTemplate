@@ -8,7 +8,7 @@ import Layout5 from "../components/Layout5/Index";
 import Layout6 from "../components/Layout6/Index";
 function LayoutManager() {
   const [data, setData] = useState({});
-  const [selectedLayout, setSelectedLayout] = useState(1);
+  const [selectedLayout, setSelectedLayout] = useState(4);
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
