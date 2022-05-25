@@ -17,15 +17,24 @@ function Index(props) {
   const [carouselView , setCarouselView] = useState(null);
 
   useEffect(() => {
-    let view = new buildfire.components.carousel.view("#carousel", carouselImages);
+    if(props.data.allImages){
+      console.log("from console",props.data.allImages);
+      // let view = new buildfire.components.carousel.view("#carousel",props.data.carouselImages);
+      carouselView.loadItems(
+       props.data.allImages
+      );
+    }
+    // setCarouselView(view)
+    // setCarouselImages(props.data.carouselImages);
+    
+    // setCarouselImages(props.carouselImages || [])
+  }, [props])
+  
+  useEffect(() => {
+    let view = new buildfire.components.carousel.view("#carousel");
     setCarouselView(view)
-  }, [])
-  
-  function loadItems(carouselItems){
-    // create an instance and pass it the items if you don't have items yet just pass []
-        carouselView.loadItems(carouselItems);
-}
-  
+  },[])
+
   return (
     <>
       <div class="mdc-layout-grid layout-6-container">
