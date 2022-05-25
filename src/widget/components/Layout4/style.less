@@ -1,0 +1,116 @@
+.layout-4-container {
+    padding: 0 !important;
+    // position: relative;
+    .topImage-container {
+      margin-bottom: 4.6875rem;
+      width: 100%;
+      img {
+        width: 100%;
+        height: 12.6875em;
+        flex: none;
+        order: 0;
+        align-self: stretch;
+        flex-grow: 1;
+      }
+    }
+
+    .mdc-layout-grid__cell--span-8 {
+      position: relative;
+    }
+
+    .mainImage-container {
+      margin: 0 .5rem 0 .5rem; 
+      position: absolute;
+      top: 17.375em;
+      //width: 344px;
+      height: 12.0625em;
+
+    }
+
+    .mainBody-container {
+      width: 100%;
+      padding: 0 1rem;
+      margin: 0.5rem 0;
+      .mdc-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0.7rem;
+        gap: 1rem;
+        width: 100%;
+        color: #fff;
+        border-radius: 0;
+        background: var(--mdc-theme-on-surface);
+        
+        
+        .bodyContent {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+          overflow: hidden;
+          word-break: break-all;
+          white-space: normal;
+          text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+  
+    .info-container {
+      padding: 0 1rem;
+      position: absolute;
+      width: 100%;
+      bottom:0em;
+      .mdc-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0.7rem;
+        gap: 1rem;
+        width: 100%;
+        color: #fff;
+        background: var(--mdc-theme-on-surface);
+        .title {
+          font-style: normal;
+          font-weight: 600;
+          font-size: 1rem;
+          line-height: 1.25rem;
+          letter-spacing: 0.03125rem;
+          word-break: break-all;
+          white-space: normal;
+          margin: 0.25rem;
+        }
+        .subtitle {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+          word-break: break-all;
+          white-space: normal;
+          margin-top: -1rem;
+        }
+        .bodyContent {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+          overflow: hidden;
+          word-break: break-all;
+          white-space: normal;
+          text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+  }
