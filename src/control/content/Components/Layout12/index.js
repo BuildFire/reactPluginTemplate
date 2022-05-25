@@ -100,7 +100,7 @@ function index(props) {
             <label className="lable">Body Contant</label>
           </div>
         </div>
-        <textarea placeholder="Body Contant ..." className="margin-bottom" id="wysiwygContent" name="content"></textarea>
+        <textarea placeholder="Body Contant ..." className="margin-bottom" id="wysiwygContent" name="wysiwygContent"></textarea>
       </div>
       <div className="bottom-actions">
         <button type="button" className="btn btn-default" id="layoutBackBtn">
