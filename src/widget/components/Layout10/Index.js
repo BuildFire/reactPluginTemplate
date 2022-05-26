@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
+import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
+  const [enableFullScreen, setEnableFullScreen] = useState(false);
+  const [enableFullScreen2, setEnableFullScreen2] = useState(false);
+
+  const { imagePreviewer } = useHelper();
   useEffect(() => {
     document.getElementById(
       "topImage-container"
     ).style.backgroundImage = `url(${props.data.thumbnailImage})`;
+    setEnableFullScreen(props.data.enableFullScreen);
+    setEnableFullScreen2(props.data.enableFullScreen2);
+    
+
   }, [props]);
   return (
     <>
@@ -15,7 +24,16 @@ function Index(props) {
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell--span-8">
             <div id="topImage-container">
-              <img src={props.data.thumbnailImage2 || holderImage} />
+            {enableFullScreen2 && props.data.thumbnailImage2 != null ? (
+                <img
+                  onClick={() => {
+                    imagePreviewer(props.data.thumbnailImage2);
+                  }}
+                  src={props.data.thumbnailImage2 || holderImage}
+                />
+              ) : (
+                <img src={props.data.thumbnailImage2 || holderImage} />
+              )}
             </div>
             <div class="info-container">
               <div className="frontInfo">
