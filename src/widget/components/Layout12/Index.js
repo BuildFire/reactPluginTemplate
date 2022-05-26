@@ -4,7 +4,7 @@ function Index(props) {
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
   const [takenImage, setTakenImage] = useState();
   useEffect(() => {
-    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData || '';
+    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."  ;
 
     let image = setImageSize(props.data.thumbnailImage);
     setTakenImage(image)
@@ -21,6 +21,14 @@ function Index(props) {
       return holderImage;
     }
   }
+  useEffect(() => {
+    if (props.themeState.colors) {
+      console.log("my theme in layout 11-=>", props.themeState);
+      props.setTextStyle();
+    }
+
+  }, [props]);
+
   return (
     <>
       <div className="mdc-layout-grid layout-5-container">
@@ -31,13 +39,13 @@ function Index(props) {
                 <div className="imageContainer">
                 <img src={takenImage || holderImage} />
                 </div>
-                <div className="titleContainer">
+                <div className="titleContainer mdc-card">
                   <p className="title">{props.data.title || "Title"}</p>
                   <p className="subtitle">{props.data.subTitle || "SubTitle"}</p>
                 </div>
               </div>
-              <div className="dataContainer">
-                <div id="my_container_div"></div>
+              <div className="dataContainer mdc-card">
+                <div id="my_container_div" className="bodyContent"></div>
               </div>
             </div>
           </div>

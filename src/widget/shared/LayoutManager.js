@@ -20,6 +20,13 @@ function LayoutManager() {
   const [data, setData] = useState({});
   const [selectedLayout, setSelectedLayout] = useState(1);
   const [themeState, setThemeState] = useState({});
+  const [testTheme, setTestTheme] = useState({
+    headerText: "#FFFFFF",
+    bodyText: "#FFFFFF",
+    backgroundColor: "#000000",
+    titleBar: "rgb(0 0 0 / 90%)",
+  });
+
 
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
@@ -77,29 +84,36 @@ function LayoutManager() {
 
   function setTextStyle() {
     // set body background -->
-    document.body.style.background = themeState.colors.backgroundColor;
+    // document.body.style.background = themeState.colors.backgroundColor;
+    document.body.style.background = testTheme.backgroundColor;
     // Titles ->
     let titles = document.querySelectorAll('.title');
     titles.forEach(title => {
-      title.style.color = themeState.colors.headerText;
+      // title.style.color = themeState.colors.headerText;
       title.style.fontName = themeState.fontName;
+      title.style.color = testTheme.headerText;
+
     })
     // Sub Title ->
     let subTitles = document.querySelectorAll('.subtitle');
     subTitles.forEach(subTitle => {
-      subTitle.style.color = themeState.colors.headerText;
+      // subTitle.style.color = themeState.colors.headerText;
+      subTitle.style.color = testTheme.headerText;
       subTitle.style.fontName = themeState.fontName;
     })
     // Body Contents ->
     let bodyContents = document.querySelectorAll('.bodyContent');
     bodyContents.forEach(body => {
-      body.style.color = themeState.colors.bodyText;
+      // body.style.color = themeState.colors.bodyText;
+      body.style.color = testTheme.bodyText;
       body.style.fontName = themeState.fontName;
     })
     // Text Background
     let textBack = document.querySelectorAll(".mdc-card");
     textBack.forEach(back => {
-      back.style.backgroundColor = themeState.colors.titleBar;
+      // back.style.backgroundColor = themeState.colors.titleBar;
+      back.style.backgroundColor = testTheme.titleBar;
+
     })
   }
 

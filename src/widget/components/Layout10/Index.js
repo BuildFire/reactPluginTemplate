@@ -5,9 +5,19 @@ function Index(props) {
     "../../../../../../styles/media/holder-16x9.png"
   );
   useEffect(() => {
-    document.getElementById(
-      "topImage-container"
-    ).style.backgroundImage = `url(${props.data.thumbnailImage})`;
+    if (props.themeState.colors) {
+      console.log("my theme in layout 10-=>", props.themeState);
+      props.setTextStyle();
+    }
+    let img =document.getElementById("topImage-container");
+    if(props.data.thumbnailImage){
+
+      img.style.backgroundImage = `url(${props.data.thumbnailImage})`
+    }
+    else{
+      img.style.background = "#d2cfcf";
+    }
+    img.style.backgroundPosition = "center";
   }, [props]);
   return (
     <>
@@ -17,12 +27,12 @@ function Index(props) {
             <div id="topImage-container">
               <img src={props.data.thumbnailImage2 || holderImage} />
             </div>
-            <div className="info-container">
-              <div className="frontInfo">
+            <div className="info-container " >
+              <div className="frontInfo mdc-card ">
                 <p className="title">{props.data.title || "Title"}</p>
                 <p className="subtitle">{props.data.subTitle || "Sub Title"}</p>
-                <p className="bodyContent">{props.data.bodyContent || "Body Content 1"}</p>
-                <p className="bodyContent">{props.data.bodyContent2 || "Body Content 2"}</p>
+                <p className="bodyContent">{props.data.bodyContent  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor." }</p>
+                <p className="bodyContent">{props.data.bodyContent2  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor." }</p>
               </div>
             </div>
           </div>

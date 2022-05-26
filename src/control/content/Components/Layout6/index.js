@@ -34,8 +34,33 @@ function index(props) {
     };
   }, []);
 
+  function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
+
   useEffect(() => {
     //  back
+    if(allImages.length){
+    console.log("gggggggg", allImages)
+
+    let arr=allImages
+    arr.splice(orderedImages.oldIndex, 1);
+    setAllImages(arr);
+      let ele =orderedImages.item;
+    arr.splice(orderedImages.newIndex, 0, ele);
+    setAllImages(arr)
+    console.log("ffffffff", arr);
+    // setAfterOrderedImages(arr);
+    // let x=array_move(arr,orderedImages.oldIndex,orderedImages.newIndex);
+    //   console.log("ffffffff",x);
+    }
   }, [orderedImages]);
 
   useEffect(() => {
@@ -55,6 +80,7 @@ function index(props) {
     setAllImages([...carouselImages, ...allImages]);
     console.log(" images", carouselImages);
   }, [carouselImages]);
+
 
   useEffect(() => {
     console.log("befor message all images carousel", allImages);
