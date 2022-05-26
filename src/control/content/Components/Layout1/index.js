@@ -73,7 +73,7 @@ function index(props) {
             <label className="lable">Title</label>
           </div>
           <div className="col-md-9">
-            <input maxLength={80} onChange={handleChange} className="form-control fullWidth" type="text" name="title" defaultValue="Title" />
+            <input maxLength={80} onChange={handleChange} className="form-control fullWidth" type="text" name="title"  placeholder="Title"/>
           </div>
         </div>
         <div className="row">
@@ -85,7 +85,7 @@ function index(props) {
               className="form-control fullWidth"
               type="input"
               name="subtitle"
-              defaultValue="Subtitle"
+              placeholder="Subtitle"
               maxLength={100}
               onChange={handleChange}
             />
@@ -96,7 +96,7 @@ function index(props) {
             <label className="lable">Body Content</label>
           </div>
           <div className="col-md-9">
-            <textarea maxLength={350} onChange={handleChange} name="bodyContent" className="form-control bodyContent"></textarea>
+            <textarea maxLength={350} onChange={handleChange} name="bodyContent" className="form-control bodyContent" placeholder="Body Content"></textarea>
           </div>
         </div>
       </div>
