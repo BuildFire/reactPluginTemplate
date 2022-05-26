@@ -1,34 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
+import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
-  const [takenImage, setTakenImage] = useState();
+  const [enableFullScreen, setEnableFullScreen] = useState(false);
+  const { imagePreviewer } = useHelper();
   useEffect(() => {
     document.getElementById("my_container_div").innerHTML = props.data.wysiwygData  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."  ;
 
-    let image = setImageSize(props.data.thumbnailImage);
-    setTakenImage(image)
-  }, [props])
+    setEnableFullScreen(props.data.enableFullScreen);
 
-  function setImageSize(image) {
-    if(image){
-      let croppedImage = buildfire.imageLib.cropImage(
-        image,
-        { size: "full_width", aspect: "16:9" }
-      );
-      return croppedImage;
-    }else{
-      return holderImage;
-    }
-  }
-  useEffect(() => {
     if (props.themeState.colors) {
       console.log("my theme in layout 11-=>", props.themeState);
       props.setTextStyle();
     }
+  }, [props])
 
-  }, [props]);
-
+  
   return (
     <>
       <div className="mdc-layout-grid layout-5-container">
@@ -37,7 +25,16 @@ function Index(props) {
             <div className="main-12-Container">
               <div className="headerContainer">
                 <div className="imageContainer">
-                <img src={takenImage || holderImage} />
+                {enableFullScreen && props.data.thumbnailImage != null ? (
+                <img
+                  onClick={() => {
+                    imagePreviewer(props.data.thumbnailImage);
+                  }}
+                  src={props.data.thumbnailImage || holderImage}
+                />
+              ) : (
+                <img src={props.data.thumbnailImage || holderImage} />
+              )}
                 </div>
                 <div className="titleContainer mdc-card">
                   <p className="title">{props.data.title || "Title"}</p>

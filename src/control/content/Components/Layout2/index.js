@@ -19,14 +19,22 @@ function index(props) {
       });
        // thumbnail Change image -->
     thumbnail.onChange = (imageUrl) => {
-      setThumbnailImage(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(
+        imageUrl,
+        { size: "full_width", aspect: "9:16" }
+      );
+      setThumbnailImage(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail.onDelete = (imageUrl) => {
       setThumbnailImage(null);
     };
     thumbnail2.onChange = (imageUrl) => {
-      setThumbnailImage2(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(
+        imageUrl,
+        { size: "full_width", aspect: "16:9" }
+      );
+      setThumbnailImage2(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail2.onDelete = (imageUrl) => {

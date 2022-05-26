@@ -1,49 +1,52 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
+import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
-  const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png")
-  const [carouselImages, setCarouselImages] = useState([{
-    title: "buildfire",
-    url: "https://www.facebook.com/buildfireapps",
-    action: "linkToWeb",
-    openIn: "_blank",
-    iconUrl: "https://placekitten.com/800/400",
-  },
-  {
-    action: "noAction",
-    iconUrl: "https://placekitten.com/600/300",
-    title: "image"
-  }]);
+  const [holderImage, setHolderImage] = useState(
+    "../../../../../../styles/media/holder-16x9.png"
+  );
+  const [carouselImages, setCarouselImages] = useState([
+    {
+      title: "buildfire",
+      url: "https://www.facebook.com/buildfireapps",
+      action: "linkToWeb",
+      openIn: "_blank",
+      iconUrl: "https://placekitten.com/800/400",
+    },
+    {
+      action: "noAction",
+      iconUrl: "https://placekitten.com/600/300",
+      title: "image",
+    },
+  ]);
   const [carouselView, setCarouselView] = useState(null);
-
+  const [enableFullScreen, setEnableFullScreen] = useState(false);
+  const { imagePreviewer } = useHelper();
   useEffect(() => {
     if (props.data.allImages) {
       console.log("from console", props.data.allImages);
       // let view = new buildfire.components.carousel.view("#carousel",props.data.carouselImages);
-      carouselView.loadItems(
-        props.data.allImages
-      );
+      carouselView.loadItems(props.data.allImages);
     }
     // setCarouselView(view)
     // setCarouselImages(props.data.carouselImages);
 
     // setCarouselImages(props.carouselImages || [])
-  }, [props])
 
-  useEffect(() => {
-    let view = new buildfire.components.carousel.view("#carousel");
-    setCarouselView(view)
-  }, [])
+    setEnableFullScreen(props.data.enableFullScreen);
 
-  // ImageCarousel-container
-  useEffect(() => {
     if(props.themeState.colors){
       console.log('my theme in layout 1 -=>', props.themeState);
       props.setTextStyle();
     }
     document.getElementById("ImageCarousel-container").style.backgroundImage = `url(${holderImage})`;
     document.getElementById("ImageCarousel-container").style.backgroundSize = "cover";
-  },[props])
+  }, [props]);
+
+  useEffect(() => {
+    let view = new buildfire.components.carousel.view("#carousel");
+    setCarouselView(view);
+  }, []);
 
   return (
     <>
@@ -51,10 +54,21 @@ function Index(props) {
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             <div className="topImage-container">
-              <img src={props.data.thumbnailImage || holderImage} />
+              {enableFullScreen && props.data.thumbnailImage != null ? (
+                <img
+                  onClick={() => {
+                    imagePreviewer(props.data.thumbnailImage);
+                  }}
+                  src={props.data.thumbnailImage || holderImage}
+                />
+              ) : (
+                <img src={props.data.thumbnailImage || holderImage} />
+              )}
               <div className="info-container">
                 <div className="mdc-card">
-                  <p className="bodyContent">{props.data.bodyContent || "Body Content"}</p>
+                  <p className="bodyContent">
+                    {props.data.bodyContent || "Body Content"}
+                  </p>
                 </div>
               </div>
             </div>
