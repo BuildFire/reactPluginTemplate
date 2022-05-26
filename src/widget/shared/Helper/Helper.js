@@ -1,4 +1,4 @@
-const useHelper = (callback) => {
+const useHelper = () => {
     const imagePreviewer = (imageUrl) => {
         buildfire.imagePreviewer.show(
             {
