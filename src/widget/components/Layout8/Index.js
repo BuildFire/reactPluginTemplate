@@ -10,40 +10,40 @@ function Index(props) {
       <div className="layout-8-container">
 
         <div
-          class="mdc-layout-grid Maincontainer "
+          className="mdc-layout-grid Maincontainer "
           id="container"
         >
-          <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell--span-8 row">
+          <div className="mdc-layout-grid__inner">
+            <div className="mdc-layout-grid__cell--span-8 row">
               <div className="upperContainer">
-                <div class="mdc-layout-grid__cell--span-8 row">
+                <div className="mdc-layout-grid__cell--span-8 row">
                   <div className="rowmContainer">
                   <img
-                    class="column img"
+                    className="column img"
                     src={props.data.thumbnailImage || holderImage}
                   />
-                  <p class="column">{props.data.BodyContent || "body Content"}</p>
+                  <p className="column">{props.data.BodyContent || "body Content"}</p>
 
                   </div>
                 </div>
-                <div class="mdc-layout-grid__cell--span-8 row">
-                  <p class="column">{props.data.BodyContent2 || "  body Content"}</p>
+                <div className="mdc-layout-grid__cell--span-8 row">
+                  <p className="column">{props.data.BodyContent2 || "  body Content"}</p>
                   <img
-                    class="column img"
+                    className="column img"
                     src={props.data.thumbnailImage2 || holderImage}
                   />
                 </div>
-                <div class="mdc-layout-grid__cell--span-8 row">
+                <div className="mdc-layout-grid__cell--span-8 row">
                   <img
-                    class="column img"
+                    className="column img"
                     src={props.data.thumbnailImage3 || holderImage}
                   />
-                  <p class="column">{props.data.BodyContent3 || "body Content"}</p>
+                  <p className="column">{props.data.BodyContent3 || "body Content"}</p>
                 </div>
               </div>
               <div className="lowerContainer">
                 <img
-                  class="buttomImg"
+                  className="buttomImg"
                   src={props.data.thumbnailImage4 || holderImage}
                 />
               </div>
