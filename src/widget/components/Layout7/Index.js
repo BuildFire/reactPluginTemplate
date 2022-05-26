@@ -5,19 +5,19 @@ import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png")
 
-  const [enableFullScreen, setEnableFullScreen] = useState(false);
+  const [enableFullScreen1, setEnableFullScreen1] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
   const [enableFullScreen3, setEnableFullScreen3] = useState(false);
 
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     
-    {enableFullScreen && props.data.thumbnailImage != null ? (
+    {props.data.thumbnailImage != null ? (
       document.getElementById("container").style.backgroundImage = `url(${props.data.thumbnailImage})`
     ) : (
       document.getElementById("container").style.backgroundImage = `url(${holderImage})`
     )}
-    setEnableFullScreen(props.data.enableFullScreen);
+    setEnableFullScreen1(props.data.enableFullScreen1);
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);
 
@@ -27,7 +27,13 @@ function Index(props) {
   return (
     <>
       <div className="layout-7-container">
-        <div class="mdc-layout-grid  Maincontainer " id="container">
+        <div class="mdc-layout-grid  Maincontainer " id="container" 
+        onClick={() => {
+          enableFullScreen1 && props.data.thumbnailImage != null?
+          imagePreviewer(props.data.thumbnailImage):
+          undefined
+        }}
+        >
           <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell--span-8">
 

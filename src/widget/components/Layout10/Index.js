@@ -23,7 +23,11 @@ function Index(props) {
       <div class="mdc-layout-grid layout-10-container">
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell--span-8">
-            <div id="topImage-container">
+            <div id="topImage-container" onClick={() => {
+                enableFullScreen && props.data.thumbnailImage != null?
+                imagePreviewer(props.data.thumbnailImage):
+                undefined
+              }}>
             {enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                 <img
                   onClick={() => {
