@@ -11,9 +11,9 @@ function Index(props) {
 
   return (
     <>
-      <div class="mdc-layout-grid layout-3-container">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell--span-8">
+      <div className="mdc-layout-grid layout-3-container">
+        <div className="mdc-layout-grid__inner">
+          <div className="mdc-layout-grid__cell--span-8">
             <div className="mainImage-container">
             {enableFullScreen && props.data.thumbnailImage != null ? (
                 <img

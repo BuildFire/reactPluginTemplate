@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
+
+ 
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
@@ -18,62 +20,67 @@ function Index(props) {
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);
     setEnableFullScreen4(props.data.enableFullScreen4);
+
+    if(props.themeState.colors){
+      console.log('my theme in layout 8 -=>', props.themeState);
+      props.setTextStyle();
+    }
   }, [props]);
 
   return (
     <>
       <div className="layout-8-container">
-        <div class="mdc-layout-grid Maincontainer " id="container">
-          <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell--span-8 row">
+        <div className="mdc-layout-grid Maincontainer " id="container">
+          <div className="mdc-layout-grid__inner">
+            <div className="mdc-layout-grid__cell--span-8 row">
               <div className="upperContainer">
-                <div class="mdc-layout-grid__cell--span-8 row">
+                <div className="mdc-layout-grid__cell--span-8 row">
                   <div className="rowmContainer">
                     {enableFullScreen && props.data.thumbnailImage != null ? (
                       <img
-                      class="column img"
+                      className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage);
                         }}
                         src={props.data.thumbnailImage || holderImage}
                       />
                     ) : (
-                      <img class="column img" src={props.data.thumbnailImage || holderImage} />
+                      <img className="column img" src={props.data.thumbnailImage || holderImage} />
                     )}
-                    <p class="column">
+                    <p className="column bodyContent mdc-card ">
                       {props.data.BodyContent || "body Content"}
                     </p>
                   </div>
                 </div>
-                <div class="mdc-layout-grid__cell--span-8 row">
-                  <p class="column">
+                <div className="mdc-layout-grid__cell--span-8 row">
+                  <p className="column bodyContent mdc-card">
                     {props.data.BodyContent2 || "  body Content"}
                   </p>
                   {enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                       <img
-                      class="column img"
+                      className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage2);
                         }}
                         src={props.data.thumbnailImage2 || holderImage}
                       />
                     ) : (
-                      <img class="column img" src={props.data.thumbnailImage2 || holderImage} />
+                      <img className="column img" src={props.data.thumbnailImage2 || holderImage} />
                     )}
                 </div>
-                <div class="mdc-layout-grid__cell--span-8 row">
+                <div className="mdc-layout-grid__cell--span-8 row">
                 {enableFullScreen3 && props.data.thumbnailImage3 != null ? (
                       <img
-                      class="column img"
+                      className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage3);
                         }}
                         src={props.data.thumbnailImage3 || holderImage}
                       />
                     ) : (
-                      <img class="column img" src={props.data.thumbnailImage3 || holderImage} />
+                      <img className="column img" src={props.data.thumbnailImage3 || holderImage} />
                     )}
-                  <p class="column">
+                  <p className="column bodyContent mdc-card">
                     {props.data.BodyContent3 || "body Content"}
                   </p>
                 </div>
@@ -81,14 +88,14 @@ function Index(props) {
               <div className="lowerContainer">
               {enableFullScreen4 && props.data.thumbnailImage4 != null ? (
                       <img
-                      class="column img"
+                      className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage4);
                         }}
                         src={props.data.thumbnailImage4 || holderImage}
                       />
                     ) : (
-                      <img class="column img" src={props.data.thumbnailImage4 || holderImage} />
+                      <img className="column img" src={props.data.thumbnailImage4 || holderImage} />
                     )}
               </div>
             </div>

@@ -6,17 +6,22 @@ function Index(props) {
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer } = useHelper();
   useEffect(() => {
-    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData || '';
+    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."  ;
 
     setEnableFullScreen(props.data.enableFullScreen);
+
+    if (props.themeState.colors) {
+      console.log("my theme in layout 11-=>", props.themeState);
+      props.setTextStyle();
+    }
   }, [props])
 
   
   return (
     <>
-      <div class="mdc-layout-grid layout-5-container">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell--span-8">
+      <div className="mdc-layout-grid layout-5-container">
+        <div className="mdc-layout-grid__inner">
+          <div className="mdc-layout-grid__cell--span-8">
             <div className="main-12-Container">
               <div className="headerContainer">
                 <div className="imageContainer">
@@ -31,13 +36,13 @@ function Index(props) {
                 <img src={props.data.thumbnailImage || holderImage} />
               )}
                 </div>
-                <div className="titleContainer">
+                <div className="titleContainer mdc-card">
                   <p className="title">{props.data.title || "Title"}</p>
                   <p className="subtitle">{props.data.subTitle || "SubTitle"}</p>
                 </div>
               </div>
-              <div className="dataContainer">
-                <div id="my_container_div"></div>
+              <div className="dataContainer mdc-card">
+                <div id="my_container_div" className="bodyContent"></div>
               </div>
             </div>
           </div>

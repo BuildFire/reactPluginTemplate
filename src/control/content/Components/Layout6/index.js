@@ -41,6 +41,17 @@ function index(props) {
     };
   }, []);
 
+  function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
+
   useEffect(() => {
     let newCarousel = allImages;
     newCarousel[onItemChange.index] = onItemChange.item;
@@ -71,6 +82,7 @@ function index(props) {
     setAllImages([...carouselImages, ...allImages]);
     console.log(" images", carouselImages);
   }, [carouselImages]);
+
 
   useEffect(() => {
     console.log("befor message all images carousel", allImages);

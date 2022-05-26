@@ -11,13 +11,18 @@ function Index(props) {
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
+
+    if(props.themeState.colors){
+      console.log('my theme in layout 2 -=>', props.themeState);
+      props.setTextStyle();
+    }
   }, [props]);
 
   return (
     <>
-      <div class="mdc-layout-grid layout-2-container">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell--span-8">
+      <div className="mdc-layout-grid layout-2-container">
+        <div className="mdc-layout-grid__inner">
+          <div className="mdc-layout-grid__cell--span-8">
             <div className="topImage-container">
             {enableFullScreen && props.data.thumbnailImage != null ? (
                 <img

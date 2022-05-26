@@ -12,6 +12,14 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
+    if (props.themeState.colors) {
+      console.log("my theme in layout 9-=>", props.themeState);
+      props.setTextStyle();
+    }
+
+    document.body.style.background = "#d2cfcf";
+    document.body.style.backgroundPosition = "center";
+
     if (props.data.thumbnailImage) {
       document.getElementById(
         "mainImage-container"
@@ -28,9 +36,9 @@ function Index(props) {
 
   return (
     <>
-      <div class="mdc-layout-grid layout-9-container">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell--span-8">
+      <div className="mdc-layout-grid layout-9-container">
+        <div className="mdc-layout-grid__inner">
+          <div className="mdc-layout-grid__cell--span-8">
             <div className="topImage-container">
               {enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                 <img
@@ -55,7 +63,7 @@ function Index(props) {
             >
               {enableFullScreen3 && props.data.thumbnailImage3 != null ? (
                 <img
-                  class="secondImage"
+                  className="secondImage"
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage3);
                   }}
@@ -63,14 +71,14 @@ function Index(props) {
                 />
               ) : (
                 <img
-                  class="secondImage"
+                  className="secondImage"
                   src={props.data.thumbnailImage3 || holderImage}
                 />
               )}
 
-              <div class="info-container">
-                <p class="title">{props.data.title || "Title"}</p>
-                <p class="subtitle">{props.data.subTitle || "subT itle"}</p>
+              <div className="info-container mdc-card ">
+                <p className="title">{props.data.title || "Title"}</p>
+                <p className="subtitle">{props.data.subTitle || "subT itle"}</p>
                 <p className="bodyContent">
                   {props.data.bodyContent || "Body Content"}
                 </p>

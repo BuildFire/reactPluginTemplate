@@ -15,8 +15,18 @@ import Layout12 from "../components/Layout12/Index";
 
  
 function LayoutManager() {
+
   const [data, setData] = useState({});
   const [selectedLayout, setSelectedLayout] = useState(1);
+  const [themeState, setThemeState] = useState({});
+  const [testTheme, setTestTheme] = useState({
+    headerText: "#FFFFFF",
+    bodyText: "#FFFFFF",
+    backgroundColor: "#000000",
+    titleBar: "rgb(0 0 0 / 90%)",
+  });
+
+
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
@@ -27,34 +37,100 @@ function LayoutManager() {
         setData(message);
       }
     };
+    setAppThemeFunction();
     getSelectedLayOut();
   }, []);
 
   function getSelectedLayOut() {
-    
+
     buildfire.appData.get("selectedLayOut", (err, result) => {
       if (err) return console.error("Error while retrieving your data", err);
       console.log("Main record", result.data);
-      if (result.data.layOut) 
-      {setSelectedLayout(result.data.layOut+1);
-     }
+      if (result.data.layOut) {
+        setSelectedLayout(result.data.layOut + 1);
+      }
     });
   }
+
+  function showImage(image) {
+    buildfire.imagePreviewer.show(
+      {
+        images: [image],
+      },
+      () => {
+        console.log("Image previewer closed");
+      }
+    );
+  }
+
+  function setAppThemeFunction() {
+    buildfire.appearance.getAppTheme((err, appTheme) => {
+      if (err) return console.error(err);
+      console.log('appTheme =>', appTheme);
+      setThemeState(appTheme);
+
+      var newStyle = document.createElement('style');
+      newStyle.appendChild(document.createTextNode("\
+      @font-face {\
+          font-family: " + appTheme.fontName + ";\
+          src: url('" + appTheme.fontUrl + "') format('yourFontFormat');\
+      }\
+      "));
+
+      document.head.appendChild(newStyle);
+    });
+  }
+
+  function setTextStyle() {
+    // set body background -->
+    // document.body.style.background = themeState.colors.backgroundColor;
+    document.body.style.background = testTheme.backgroundColor;
+    // Titles ->
+    let titles = document.querySelectorAll('.title');
+    titles.forEach(title => {
+      // title.style.color = themeState.colors.headerText;
+      title.style.fontName = themeState.fontName;
+      title.style.color = testTheme.headerText;
+
+    })
+    // Sub Title ->
+    let subTitles = document.querySelectorAll('.subtitle');
+    subTitles.forEach(subTitle => {
+      // subTitle.style.color = themeState.colors.headerText;
+      subTitle.style.color = testTheme.headerText;
+      subTitle.style.fontName = themeState.fontName;
+    })
+    // Body Contents ->
+    let bodyContents = document.querySelectorAll('.bodyContent');
+    bodyContents.forEach(body => {
+      // body.style.color = themeState.colors.bodyText;
+      body.style.color = testTheme.bodyText;
+      body.style.fontName = themeState.fontName;
+    })
+    // Text Background
+    let textBack = document.querySelectorAll(".mdc-card");
+    textBack.forEach(back => {
+      // back.style.backgroundColor = themeState.colors.titleBar;
+      back.style.backgroundColor = testTheme.titleBar;
+
+    })
+  }
+
   return (
     <>
-      <div>
-      {selectedLayout === 1 && <Layout1 data={data}/>}
-        {selectedLayout === 2 && <Layout2 data={data} />}
-        {selectedLayout === 3 && <Layout3 data={data}/>}
-        {selectedLayout === 4 && <Layout4 data={data}/>}
-        {selectedLayout === 5 && <Layout5 data={data}/>}
-        {selectedLayout === 6 && <Layout6 data={data}/>}
-        {selectedLayout === 7 && <Layout7 data={data} />}
-        {selectedLayout === 8 && <Layout8 data={data} />}
-        {selectedLayout === 9 && <Layout9 data={data} />}
-        {selectedLayout === 10 && <Layout10 data={data} />}
-        {selectedLayout === 11 && <Layout11 data={data} />}
-        {selectedLayout === 12 && <Layout12 data={data} />}
+      <div className="test">
+        {selectedLayout === 1 && <Layout1 themeState={themeState} setTextStyle={setTextStyle} data={data} />}
+        {selectedLayout === 2 && <Layout2 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 3 && <Layout3 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 4 && <Layout4 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 5 && <Layout5 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 6 && <Layout6 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 7 && <Layout7 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 8 && <Layout8 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 9 && <Layout9 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 10 && <Layout10 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 11 && <Layout11 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
+        {selectedLayout === 12 && <Layout12 themeState={themeState} setTextStyle={setTextStyle}  data={data} />}
       </div>
     </>
   );
