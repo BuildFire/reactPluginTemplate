@@ -9,14 +9,11 @@ function Index(props) {
     document.getElementById("my_container_div").innerHTML = props.data.wysiwygData  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."  ;
 
     setEnableFullScreen(props.data.enableFullScreen);
-
     if (props.themeState.colors) {
-      console.log("my theme in layout 11-=>", props.themeState);
       props.setTextStyle();
     }
   }, [props])
 
-  
   return (
     <>
       <div className="mdc-layout-grid layout-5-container">

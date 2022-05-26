@@ -17,12 +17,10 @@ function Index(props) {
     setEnableFullScreen2(props.data.enableFullScreen2);
     
     if (props.themeState.colors) {
-      console.log("my theme in layout 10-=>", props.themeState);
       props.setTextStyle();
     }
     let img =document.getElementById("topImage-container");
     if(props.data.thumbnailImage){
-
       img.style.backgroundImage = `url(${props.data.thumbnailImage})`
     }
     else{
