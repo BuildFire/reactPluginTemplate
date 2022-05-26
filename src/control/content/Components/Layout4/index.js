@@ -18,14 +18,22 @@ function index(props) {
       multiSelection: false,
     });
     thumbnail.onChange = (imageUrl) => {
-      setThumbnailImage(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(
+        imageUrl,
+        { size: "full_width", aspect: "16:9" }
+      );
+      setThumbnailImage(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail.onDelete = (imageUrl) => {
       setThumbnailImage(null);
     };
     thumbnail2.onChange = (imageUrl) => {
-      setThumbnailImage2(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(
+        imageUrl,
+        { size: "full_width", aspect: "16:9" }
+      );
+      setThumbnailImage2(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail2.onDelete = (imageUrl) => {
@@ -131,7 +139,7 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input type="checkBox" className="checkBox" name="enableFullScreen" id="enableMainFullScreen" onChange={handleChange}/>
+            <input type="checkBox" className="checkBox" name="enableMainFullScreen" id="enableMainFullScreen" onChange={handleChange}/>
           </div>
         </div>
         <div className="row margin-bottom">

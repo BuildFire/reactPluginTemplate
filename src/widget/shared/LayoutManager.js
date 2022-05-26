@@ -13,8 +13,7 @@ import Layout10 from "../components/Layout10/Index";
 import Layout11 from "../components/Layout11/Index";
 import Layout12 from "../components/Layout12/Index";
 
-
-
+ 
 function LayoutManager() {
   const [data, setData] = useState({});
   const [selectedLayout, setSelectedLayout] = useState(1);

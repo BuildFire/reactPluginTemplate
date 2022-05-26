@@ -7,7 +7,7 @@ function index(props) {
   const [allImages, setAllImages] = useState([]);
   const [deletedImages, setDeletedImages] = useState({});
   const [orderedImages, setOrderedImages] = useState({});
-  const [afterOrderedImages, setAfterOrderedImages] = useState([]);
+  const [onItemChange, setOnItemChange] = useState({});
   useEffect(() => {
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
       imageUrl: "",
@@ -16,7 +16,11 @@ function index(props) {
       multiSelection: false,
     });
     thumbnail.onChange = (imageUrl) => {
-      setThumbnailImage(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
+        size: "full_width",
+        aspect: "16:9",
+      });
+      setThumbnailImage(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail.onDelete = (imageUrl) => {
@@ -32,16 +36,28 @@ function index(props) {
     editor.onOrderChange = (item, oldIndex, newIndex) => {
       setOrderedImages({ item, oldIndex, newIndex });
     };
+    editor.onItemChange = (item, index) => {
+      setOnItemChange({ item, index });
+    };
   }, []);
 
   useEffect(() => {
-    //  back
-  }, [orderedImages]);
+    let newCarousel = allImages;
+    newCarousel[onItemChange.index] = onItemChange.item;
+    console.log("change", newCarousel);
+    setAllImages(newCarousel);
+  }, [onItemChange]);
 
   useEffect(() => {
-    setAllImages(afterOrderedImages);
-    console.log("afterOrderedImages", afterOrderedImages);
-  }, [afterOrderedImages]);
+    let newCarousel =[];
+    allImages.forEach(element=>{
+      newCarousel.push(element)
+    })
+    newCarousel.splice(orderedImages.oldIndex,1);
+    newCarousel.splice(orderedImages.newIndex,0,orderedImages.item);
+      setAllImages(newCarousel);
+  }, [orderedImages]);
+
 
   useEffect(() => {
     let newCarousel = allImages.filter((element, idx) => {
@@ -59,7 +75,7 @@ function index(props) {
   useEffect(() => {
     console.log("befor message all images carousel", allImages);
     handelImage({ thumbnailImage, allImages });
-  }, [thumbnailImage, allImages]);
+  }, [thumbnailImage, allImages, onItemChange]);
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);

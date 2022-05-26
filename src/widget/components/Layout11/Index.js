@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
+import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
-  const [takenImage, setTakenImage] = useState();
+  
+  
+  const [enableFullScreen, setEnableFullScreen] = useState(false);
+  const { imagePreviewer } = useHelper();
   useEffect(() => {
-    let image = setImageSize(props.data.thumbnailImage);
-    setTakenImage(image)
+    setEnableFullScreen(props.data.enableFullScreen);
   }, [props])
 
-  function setImageSize(image) {
-    if (image) {
-      let croppedImage = buildfire.imageLib.cropImage(
-        image,
-        { size: "full_width", aspect: "16:9" }
-      );
-      return croppedImage;
-    } else {
-      return holderImage;
-    }
-  }
   return (
     <>
       <div class="mdc-layout-grid layout-5-container">
@@ -27,7 +19,16 @@ function Index(props) {
             <div className="main-11-Container">
               <div className="headerContainer">
                 <div className="imageContainer">
-                  <img src={takenImage || holderImage} />
+                {enableFullScreen && props.data.thumbnailImage != null ? (
+                <img
+                  onClick={() => {
+                    imagePreviewer(props.data.thumbnailImage);
+                  }}
+                  src={props.data.thumbnailImage || holderImage}
+                />
+              ) : (
+                <img src={props.data.thumbnailImage || holderImage} />
+              )}
                 </div>
                 <div className="titleContainer">
                   <p className="title">{props.data.title || "Title"}</p>
