@@ -153,6 +153,7 @@ function index(props) {
             <div className="col-md-9">
               <textarea
                 maxLength={300}
+                placeholder="Body Content"
                 className="form-control bodyContent"
                 name="bodyContent"
                 onChange={handleChange}
