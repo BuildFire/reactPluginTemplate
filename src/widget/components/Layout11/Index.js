@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
+
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
-  
-  
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer } = useHelper();
+
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
-
     if (props.themeState.colors) {
       console.log("my theme in layout 11-=>", props.themeState);
       props.setTextStyle();
@@ -45,7 +44,6 @@ function Index(props) {
                 <p className="bodyContent">{props.data.BodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
                 <p className="bodyContent">{props.data.BodyContent3 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
               </div>
-
               {
                 props.data.ExternalURL &&
                 <a className="learnMoreLink">learn more </a>

@@ -8,12 +8,10 @@ function Index(props) {
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
   const [enableFullScreen3, setEnableFullScreen3] = useState(false);
-
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
     if (props.themeState.colors) {
-      console.log("my theme in layout 9-=>", props.themeState);
       props.setTextStyle();
     }
 
@@ -29,6 +27,9 @@ function Index(props) {
         "mainImage-container"
       ).style.background = `#d2cfcf`;
     }
+
+    document.getElementById("mainImage-container").style.backgroundPosition = "center";
+
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);

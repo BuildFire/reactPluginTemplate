@@ -22,7 +22,6 @@ function Index(props) {
     setEnableFullScreen4(props.data.enableFullScreen4);
 
     if(props.themeState.colors){
-      console.log('my theme in layout 8 -=>', props.themeState);
       props.setTextStyle();
     }
   }, [props]);

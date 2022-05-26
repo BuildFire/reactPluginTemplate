@@ -17,12 +17,13 @@ function Index(props) {
     ) : (
       document.getElementById("container").style.backgroundImage = `url(${holderImage})`
     )}
+    document.getElementById("container").style.backgroundPosition = "center";
+
     setEnableFullScreen1(props.data.enableFullScreen1);
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);
 
     if(props.themeState.colors){
-      console.log('my theme in layout 7 -=>', props.themeState);
       props.setTextStyle();
     }
     if(props.data.thumbnailImage){
