@@ -4,7 +4,10 @@ import "./style.less";
 function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
+  const [uploadType, setUploadType] = useState("image");
+  const [videoURL, setVideoURL] = useState("");
   useEffect(() => {
+    if (uploadType == "image") {
     let thumbnail = new buildfire.components.images.thumbnail(".thumbnail1", {
       imageUrl: "",
       title: " ",
@@ -39,15 +42,53 @@ function index(props) {
     thumbnail2.onDelete = (imageUrl) => {
       setThumbnailImage2(null);
     };
-  }, []);
+  }
+  }, [uploadType]);
 
 
   useEffect(() => {
-    handelImage({thumbnailImage,thumbnailImage2});
-  },[thumbnailImage,thumbnailImage2])
+    handelImage({thumbnailImage,thumbnailImage2,videoURL});
+  },[thumbnailImage,thumbnailImage2,videoURL])
   // submit form function 
   function submitForm(values) {
     console.log('forms values ->', values);
+  }
+  function uploadVideoFunc(e) {
+    if (e.target.name != "videoURL-Input") {
+      let progressPercentage = document.getElementById("progressPercentage");
+      let progressContainer = document.getElementById("progress");
+
+      buildfire.services.publicFiles.showDialog(
+        { filter: ["video/mp4"], allowMultipleFilesUpload: true },
+        (onProgress) => {
+          progressContainer.style.display = "block";
+
+          progressPercentage.innerText = `${onProgress.file.percentage}%`;
+          progressPercentage.style.width = `${onProgress.file.percentage}%`;
+        },
+        (onComplete) => {
+          progressPercentage.style.background = "var(--bf-theme-success)";
+          progressPercentage.innerText = "Uploaded Sucessfully";
+          setTimeout(()=>{
+            progressContainer.style.display = "none";
+          }, 4000)
+        },
+        (err, files) => {
+          if (err) return console.error(err);
+          setVideoURL(files[0].url);
+
+          let urlContainer = document.getElementById("videoURL");
+          urlContainer.value = files[0].url;
+        }
+      );
+    } else {
+      setVideoURL(e.target.value);
+    }
+  }
+
+  function handleChangeInputType(e) {
+    setUploadType(e.target.value);
+    handleChange(e);
   }
   // use hooks to make our life easier 
   
@@ -63,20 +104,45 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input className="checkBox" type="radio" name="topMediaType" value="image" defaultChecked onChange={handleChange}/>
+            <input className="checkBox" type="radio" name="topMediaType" value="image" defaultChecked onChange={handleChangeInputType}/>
             <label className="lable">Image</label>
-            <input className="checkBox" type="radio" name="topMediaType" value="video" onChange={handleChange} />
+            <input className="checkBox" type="radio" name="topMediaType" value="video" onChange={handleChangeInputType} />
             <label className="lable">Video</label>
           </div>
         </div>
-        <div className="row">
+       { uploadType == "image" ?(<div className="row">
           <div className="col-md-3">
             <label className="lable">Top Image</label>
           </div>
           <div className="col-md-9">
             <div className="horizontal-rectangle thumbnail1"></div>
           </div>
-        </div>
+        </div>):(
+           <>
+           <div className="row">
+             <div className="col-md-3">
+               <label className="lable">Main Video</label>
+             </div>
+             <div className="col-md-9">
+               <button type="button" onClick={uploadVideoFunc} className="uploadVideo-btn btn btn-success">
+                 + Upload Video
+               </button>
+               <div id="progress" className="progress">
+                 <div className="progress-bar" id="progressPercentage" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+               </div>
+
+             </div>
+           </div>
+           <div className="row">
+             <div className="col-md-3">
+               <label className="lable">Video URL</label>
+             </div>
+             <div className="col-md-9">
+               <input defaultValue={videoURL} placeholder="Video URL" onChange={uploadVideoFunc} id="videoURL" name="videoURL-Input" className="form-control fullWidth"></input>
+             </div>
+           </div>
+         </>
+        )}
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
