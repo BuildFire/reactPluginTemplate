@@ -31,7 +31,9 @@ function index(props) {
   }, []);
 
   useEffect(() => {
-    handelImage({ thumbnailImage, thumbnailImage2, videoURL });
+
+    handelImage({thumbnailImage, thumbnailImage2, videoURL});
+
   }, [thumbnailImage, thumbnailImage2, videoURL]);
   // submit form function 
   function submitForm(values) {
@@ -53,7 +55,9 @@ function index(props) {
           { size: "full_width", aspect: "16:9" }
         );
         setThumbnailImage2(croppedImage);
-      };
+
+            };
+
       thumbnail2.onDelete = (imageUrl) => {
         setThumbnailImage2(null);
       };
@@ -84,7 +88,9 @@ function index(props) {
         (onComplete) => {
           progressPercentage.style.background = "var(--bf-theme-success)";
           progressPercentage.innerText = "Uploaded Sucessfully";
+
           setTimeout(() => {
+
             progressContainer.style.display = "none";
           }, 4000)
         },
@@ -156,6 +162,7 @@ function index(props) {
         {
           uploadType == "image" ?
             (<div className="row">
+
               <div className="col-md-3">
                 <label className="lable">Top Image</label>
               </div>
@@ -164,6 +171,7 @@ function index(props) {
               </div>
             </div>
             ) : (
+
               <>
                 <div className="row">
                   <div className="col-md-3">
