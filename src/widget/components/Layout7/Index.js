@@ -68,7 +68,7 @@ function Index(props) {
                   <img src={props.data.thumbnailImage2 || holderImage} />
                 )
               ) : props.data.videoURL2 ? (
-                <video width="400" controls>
+                <video width="350" controls>
                   <source src={props.data.videoURL2} type="video/mp4" />
                   Your browser does not support videos.
                 </video>
@@ -93,7 +93,7 @@ function Index(props) {
                   <img src={props.data.thumbnailImage3 || holderImage} />
                 )
               ) : props.data.videoURL3 ? (
-                <video width="400" controls>
+                <video width="350" controls>
                   <source src={props.data.videoURL3} type="video/mp4" />
                   Your browser does not support videos.
                 </video>
