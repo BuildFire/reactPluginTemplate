@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
 function Index(props) {
-  const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
-  );
+  const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
+  const [holderVideo, setHolderVideo] = useState("./shared/img/video_player_placeholder.gif");
 
   const { imagePreviewer } = useHelper();
   useEffect(() => {
@@ -15,15 +14,15 @@ function Index(props) {
     ).style.backgroundImage = `url(${props.data.thumbnailImage})`;
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableFullScreen2(props.data.enableFullScreen2);
-    
+
     if (props.themeState.colors) {
       props.setTextStyle();
     }
-    let img =document.getElementById("topImage-container");
-    if(props.data.thumbnailImage){
+    let img = document.getElementById("topImage-container");
+    if (props.data.thumbnailImage) {
       img.style.backgroundImage = `url(${props.data.thumbnailImage})`
     }
-    else{
+    else {
       img.style.background = "#d2cfcf";
     }
     img.style.backgroundPosition = "center";
@@ -34,27 +33,49 @@ function Index(props) {
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             <div id="topImage-container" onClick={() => {
-                enableFullScreen && props.data.thumbnailImage != null?
-                imagePreviewer(props.data.thumbnailImage):
+              enableFullScreen && props.data.thumbnailImage != null ?
+                imagePreviewer(props.data.thumbnailImage) :
                 undefined
-              }}>
-            {enableFullScreen2 && props.data.thumbnailImage2 != null ? (
-                <img
-                  onClick={() => {
-                    imagePreviewer(props.data.thumbnailImage2);
-                  }}
-                  src={props.data.thumbnailImage2 || holderImage}
-                />
-              ) : (
-                <img src={props.data.thumbnailImage2 || holderImage} />
-              )}
+            }}>
+              {
+                props.data.mediaType != "video" ?
+                  (
+                    enableFullScreen2 && props.data.thumbnailImage2 != null ? (
+                      <img
+                        onClick={() => {
+                          imagePreviewer(props.data.thumbnailImage2);
+                        }}
+                        src={props.data.thumbnailImage2 || holderImage}
+                      />
+                    ) : (
+                      <img src={props.data.thumbnailImage2 || holderImage} />
+                    )
+                  ) : (
+                    props.data.videoURL != "" ? (
+                      props.data.enableFullScreen2 ? (
+                        <video className="fullScreenVideo" width="350" controls>
+                          <source src={props.data.videoURL} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      ) : (
+                        <video width="350" controls>
+                          <source src={props.data.videoURL} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      )
+
+                    ) : (
+                      <img src={holderVideo} />
+                    )
+                  )
+              }
             </div>
             <div className="info-container " >
               <div className="frontInfo mdc-card ">
                 <p className="title">{props.data.title || "Title"}</p>
                 <p className="subtitle">{props.data.subTitle || "Sub Title"}</p>
-                <p className="bodyContent">{props.data.bodyContent  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor." }</p>
-                <p className="bodyContent">{props.data.bodyContent2  || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor." }</p>
+                <p className="bodyContent">{props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
+                <p className="bodyContent">{props.data.bodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
               </div>
             </div>
           </div>
