@@ -5,6 +5,9 @@ function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
+  const [holderVideo, setHolderVideo] = useState(
+    "./shared/img/video_player_placeholder.gif"
+  );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
   const [enableFullScreen3, setEnableFullScreen3] = useState(false);
@@ -41,7 +44,8 @@ function Index(props) {
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             <div className="topImage-container">
-              {enableFullScreen2 && props.data.thumbnailImage2 != null ? (
+            {props.data.mediaType != "video" ? (
+              enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                 <img
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage2);
@@ -50,7 +54,14 @@ function Index(props) {
                 />
               ) : (
                 <img src={props.data.thumbnailImage2 || holderImage} />
-              )}
+              )): props.data.videoURL ? (
+                      <video className="img column" controls>
+                        <source src={props.data.videoURL} type="video/mp4" />
+                        Your browser does not support videos.
+                      </video>
+                    ) : (
+                      <img className="img column" src={holderVideo} alt="videoHolder" />
+                    )}
             </div>
 
             <div
