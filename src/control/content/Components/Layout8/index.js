@@ -28,7 +28,11 @@ function index(props) {
     });
     // thumbnail Change image -->
     thumbnail4.onChange = (imageUrl) => {
-      setThumbnailImage4(imageUrl);
+      let croppedImage = buildfire.imageLib.cropImage(
+        imageUrl,
+        { size: "full_width", aspect: "16:9" }
+      );
+      setThumbnailImage4(croppedImage);
     };
     // thumbnail Delete Image -->
     thumbnail4.onDelete = (imageUrl) => {
