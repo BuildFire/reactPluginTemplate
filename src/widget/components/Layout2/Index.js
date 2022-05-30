@@ -7,13 +7,14 @@ function Index(props) {
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableMainFullScreen, setEnableMainFullScreen] = useState(false);
+  const [videoURL, setVideoURL] = useState("");
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
 
-    if(props.themeState.colors){
-      console.log('my theme in layout 2 -=>', props.themeState);
+    if (props.themeState.colors) {
+      console.log("my theme in layout 2 -=>", props.themeState);
       props.setTextStyle();
     }
   }, [props]);
@@ -24,7 +25,7 @@ function Index(props) {
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             <div className="topImage-container">
-            {enableFullScreen && props.data.thumbnailImage != null ? (
+              {enableFullScreen && props.data.thumbnailImage != null ? (
                 <img
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage);
@@ -35,20 +36,31 @@ function Index(props) {
                 <img src={props.data.thumbnailImage || holderImage} />
               )}
             </div>
-            
-            <div className="mainImage-container">
-            {enableMainFullScreen && props.data.thumbnailImage2 != null ? (
-                <img
-                  onClick={() => {
-                    imagePreviewer(props.data.thumbnailImage2);
-                  }}
-                  src={props.data.thumbnailImage2 || holderImage}
-                />
-              ) : (
-                <img src={props.data.thumbnailImage2 || holderImage} />
-              )}
-              
-            </div>
+
+            {props.data.mediaType !== "video" ? (
+              <div className="mainImage-container">
+                {enableMainFullScreen && props.data.thumbnailImage2 != null ? (
+                  <img
+                    onClick={() => {
+                      imagePreviewer(props.data.thumbnailImage2);
+                    }}
+                    src={props.data.thumbnailImage2 || holderImage}
+                  />
+                ) : (
+                  <img src={props.data.thumbnailImage2 || holderImage} />
+                )}
+              </div>
+            ) : props.data.videoURL ? (
+              <div className="video-container">
+                <video autoPlay loop muted>
+                  <source src={props.data.videoURL} type="video/mp4" />
+                </video>
+              </div>
+            ) : (
+              <div className="mainImage-container">
+                <img src={holderImage} />
+              </div>
+            )}
           </div>
         </div>
       </div>

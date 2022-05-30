@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import useHelper from "../../shared/Helper/Helper";
 import "./style.less";
 function Index(props) {
@@ -13,7 +13,7 @@ function Index(props) {
     setEnableMainFullScreen(props.data.enableMainFullScreen);
 
     if (props.themeState.colors) {
-      console.log('my theme in layout 4 -=>', props.themeState);
+      console.log("my theme in layout 4 -=>", props.themeState);
       props.setTextStyle();
     }
   }, [props]);
@@ -22,27 +22,46 @@ function Index(props) {
       <div className="mdc-layout-grid layout-4-container">
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
-            <div className="topImage-container">
-            {enableFullScreen && props.data.thumbnailImage != null ? (
-                <img
-                  onClick={() => {
-                    imagePreviewer(props.data.thumbnailImage);
-                  }}
-                  src={props.data.thumbnailImage || holderImage}
-                />
-              ) : (
-                <img src={props.data.thumbnailImage || holderImage} />
-              )}
-            </div>
+            {props.data.topMediaType !== "video" ? (
+              <div className="topImage-container">
+                {enableFullScreen && props.data.thumbnailImage != null ? (
+                  <img
+                    onClick={() => {
+                      imagePreviewer(props.data.thumbnailImage);
+                    }}
+                    src={props.data.thumbnailImage || holderImage}
+                  />
+                ) : (
+                  <img src={props.data.thumbnailImage || holderImage} />
+                )}
+              </div>
+            ) : props.data.videoURL ? (
+              <div className="video-container">
+                <video autoPlay loop muted>
+                  <source src={props.data.videoURL} type="video/mp4" />
+                </video>
+              </div>
+            ) : (
+              <div className="mainImage-container">
+                <img src={holderImage} />
+              </div>
+            )}
+
             <div className="info-container">
               <div className="mdc-card">
                 <h1 className="title">{props.data.title || "Title"}</h1>
-                <h3 className="subtitle">{props.data.subtitle || "Subtitle"}</h3>
-                <p className="bodyContent">{props.data.bodyContent || "Top Body Content"}</p>
+                <h3 className="subtitle">
+                  {props.data.subtitle || "Subtitle"}
+                </h3>
+                <p className="bodyContent">
+                  {props.data.bodyContent || "Top Body Content"}
+                </p>
               </div>
             </div>
-            <div className="mainImage-container">
-            {enableMainFullScreen && props.data.thumbnailImage2 != null ? (
+
+            {props.data.mainMediaType !== "video" ? (
+              <div className="mainImage-container">
+              {enableMainFullScreen && props.data.thumbnailImage2 != null ? (
                 <img
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage2);
@@ -53,13 +72,26 @@ function Index(props) {
                 <img src={props.data.thumbnailImage2 || holderImage} />
               )}
               <div className="mainBody-container">
-              <div className="mdc-card">
-                <p className="bodyContent">{props.data.mainBodyContent || "Main Body Content"}</p>
+                <div className="mdc-card">
+                  <p className="bodyContent">
+                    {props.data.mainBodyContent || "Main Body Content"}
+                  </p>
+                </div>
               </div>
             </div>
+            ) : props.data.videoURL2 ? (
+              <div className="video-container2">
+                <video autoPlay loop muted>
+                  <source src={props.data.videoURL2} type="video/mp4" />
+                </video>
+              </div>
+            ) : (
+              <div className="mainImage-container">
+                <img src={holderImage} />
+              </div>
+            )}
           </div>
         </div>
-      </div>
       </div>
     </>
   );

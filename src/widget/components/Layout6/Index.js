@@ -53,7 +53,8 @@ function Index(props) {
       <div className="mdc-layout-grid layout-6-container">
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
-            <div className="topImage-container">
+          {props.data.topMediaType !== "video" ? (
+              <div className="topImage-container">
               {enableFullScreen && props.data.thumbnailImage != null ? (
                 <img
                   onClick={() => {
@@ -72,6 +73,33 @@ function Index(props) {
                 </div>
               </div>
             </div>
+            ) : props.data.videoURL ? (
+              <div className="video-container">
+                <video autoPlay loop muted>
+                  <source src={props.data.videoURL} type="video/mp4" />
+                </video>
+                <div className="info-container">
+                <div className="mdc-card">
+                  <p className="bodyContent">
+                    {props.data.bodyContent || "Body Content"}
+                  </p>
+                </div>
+              </div>
+              </div>
+              
+            ) : (
+              <div className="mainImage-container">
+                <img src={holderImage} />
+                <div className="info-container">
+                <div className="mdc-card">
+                  <p className="bodyContent">
+                    {props.data.bodyContent || "Body Content"}
+                  </p>
+                </div>
+              </div>
+              </div>
+            )}
+            
 
             <div id="ImageCarousel-container" className="ImageCarousel-container">
               <div id="carousel"></div>

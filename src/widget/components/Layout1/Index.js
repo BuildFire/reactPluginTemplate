@@ -10,8 +10,8 @@ function Index(props) {
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
 
-    if(props.themeState.colors){
-      console.log('my theme in layout 1 -=>', props.themeState);
+    if (props.themeState.colors) {
+      console.log("my theme in layout 1 -=>", props.themeState);
       props.setTextStyle();
     }
   }, [props]);
@@ -21,18 +21,30 @@ function Index(props) {
       <div className="mdc-layout-grid layout-1-container">
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
-            <div className="topImage-container">
-              {enableFullScreen && props.data.thumbnailImage != null ? (
-                <img
-                  onClick={() => {
-                    imagePreviewer(props.data.thumbnailImage);
-                  }}
-                  src={props.data.thumbnailImage || holderImage}
-                />
-              ) : (
-                <img src={props.data.thumbnailImage || holderImage} />
-              )}
-            </div>
+            {props.data.BackgroundmediaType !== "video" ? (
+              <div className="topImage-container">
+                {enableFullScreen && props.data.thumbnailImage != null ? (
+                  <img
+                    onClick={() => {
+                      imagePreviewer(props.data.thumbnailImage);
+                    }}
+                    src={props.data.thumbnailImage || holderImage}
+                  />
+                ) : (
+                  <img src={props.data.thumbnailImage || holderImage} />
+                )}
+              </div>
+            ) : props.data.videoURL ? (
+              <div className="video-container">
+                <video autoPlay loop="true" muted>
+                  <source src={props.data.videoURL} type="video/mp4" />
+                </video>
+              </div>
+            ) : (
+              <div className="topImage-container">
+              <img src={holderImage} />
+              </div>
+            )}
             <div className="info-container">
               <div className="mdc-card">
                 <h1 className="title">{props.data.title || "Title"}</h1>

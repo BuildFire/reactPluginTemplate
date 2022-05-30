@@ -1,62 +1,69 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
 import "./style.less";
 function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
   const [uploadType, setUploadType] = useState("image");
+  const [uploadType2, setUploadType2] = useState("image");
   const [videoURL, setVideoURL] = useState("");
+  const [videoURL2, setVideoURL2] = useState("");
   useEffect(() => {
     if (uploadType == "image") {
-    let thumbnail = new buildfire.components.images.thumbnail(".thumbnail2", {
-      imageUrl: "",
-      title: " ",
-      dimensionsLabel: "Recommended: 1200 x 675",
-      multiSelection: false,
-    });
-    let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail3", {
-      imageUrl: "",
-      title: " ",
-      dimensionsLabel: "Recommended: 1200 x 675",
-      multiSelection: false,
-    });
-    thumbnail.onChange = (imageUrl) => {
-      let croppedImage = buildfire.imageLib.cropImage(
-        imageUrl,
-        { size: "full_width", aspect: "16:9" }
-      );
-      setThumbnailImage(croppedImage);
-    };
-    // thumbnail Delete Image -->
-    thumbnail.onDelete = (imageUrl) => {
-      setThumbnailImage(null);
-    };
-    thumbnail2.onChange = (imageUrl) => {
-      let croppedImage = buildfire.imageLib.cropImage(
-        imageUrl,
-        { size: "full_width", aspect: "16:9" }
-      );
-      setThumbnailImage2(croppedImage);
-    };
-    // thumbnail Delete Image -->
-    thumbnail2.onDelete = (imageUrl) => {
-      setThumbnailImage2(null);
-    };
-  }
-  }, [uploadType]);
+      let thumbnail = new buildfire.components.images.thumbnail(".thumbnail2", {
+        imageUrl: "",
+        title: " ",
+        dimensionsLabel: "Recommended: 1200 x 675",
+        multiSelection: false,
+      });
 
+      thumbnail.onChange = (imageUrl) => {
+        let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
+          size: "full_width",
+          aspect: "16:9",
+        });
+        setThumbnailImage(croppedImage);
+      };
+      // thumbnail Delete Image -->
+      thumbnail.onDelete = (imageUrl) => {
+        setThumbnailImage(null);
+      };
+    }
+    if (uploadType2 === "image") {
+      let thumbnail2 = new buildfire.components.images.thumbnail(
+        ".thumbnail3",
+        {
+          imageUrl: "",
+          title: " ",
+          dimensionsLabel: "Recommended: 1200 x 675",
+          multiSelection: false,
+        }
+      );
+      thumbnail2.onChange = (imageUrl) => {
+        let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
+          size: "full_width",
+          aspect: "16:9",
+        });
+        setThumbnailImage2(croppedImage);
+      };
+      // thumbnail Delete Image -->
+      thumbnail2.onDelete = (imageUrl) => {
+        setThumbnailImage2(null);
+      };
+    }
+  }, [uploadType, uploadType2]);
 
   useEffect(() => {
-    handelImage({thumbnailImage,thumbnailImage2,videoURL});
-  },[thumbnailImage,thumbnailImage2,videoURL])
-  // submit form function 
+    handelImage({ thumbnailImage, thumbnailImage2, videoURL, videoURL2 });
+  }, [thumbnailImage, thumbnailImage2, videoURL, videoURL2]);
+  // submit form function
   function submitForm(values) {
-    console.log('forms values ->', values);
+    console.log("forms values ->", values);
   }
-  function uploadVideoFunc(e) {
+  function uploadVideoFunc(e,index) {
     if (e.target.name != "videoURL-Input") {
-      let progressPercentage = document.getElementById("progressPercentage");
-      let progressContainer = document.getElementById("progress");
+      let progressPercentage = document.getElementById(`progressPercentage${index}`);
+      let progressContainer = document.getElementById(`progress${index}`);
 
       buildfire.services.publicFiles.showDialog(
         { filter: ["video/mp4"], allowMultipleFilesUpload: true },
@@ -69,166 +76,296 @@ function index(props) {
         (onComplete) => {
           progressPercentage.style.background = "var(--bf-theme-success)";
           progressPercentage.innerText = "Uploaded Sucessfully";
-          setTimeout(()=>{
+          setTimeout(() => {
             progressContainer.style.display = "none";
-          }, 4000)
+          }, 4000);
         },
         (err, files) => {
           if (err) return console.error(err);
-          setVideoURL(files[0].url);
+          if(index===1)setVideoURL(files[0].url);
+          if(index===2)setVideoURL2(files[0].url);
 
-          let urlContainer = document.getElementById("videoURL");
+          let urlContainer = document.getElementById(`videoURL${index}`);
           urlContainer.value = files[0].url;
         }
       );
     } else {
-      setVideoURL(e.target.value);
+      if(index===1)setVideoURL(e.target.value);
+      if(index===2)setVideoURL2(e.target.value);
+      
     }
   }
+  
 
   function handleChangeInputType(e) {
-    setUploadType(e.target.value);
+    if (e.target.name === "topMediaType") {
+      setUploadType(e.target.value);
+    }
+    if (e.target.name === "mainMediaType") {
+      setUploadType2(e.target.value);
+    }
     handleChange(e);
   }
-  // use hooks to make our life easier 
+  // use hooks to make our life easier
   const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <h1>Page Details</h1>
-      <div className="layOutContainer">
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Top Media Type</label>
-          </div>
-          <div className="col-md-9">
-            <input className="checkBox"  type="radio" name="topMediaType" value="image" defaultChecked onChange={handleChangeInputType}/>
-            <label  className="lable">Image</label>
-            <input className="checkBox"  type="radio" name="topMediaType" value="video" onChange={handleChangeInputType}/>
-            <label  className="lable">Video</label>
-          </div>
-        </div>
-        {
-          uploadType == "image" ?
-          (<div className="row">
-          <div className="col-md-3">
-            <label className="lable">Top Image</label>
-          </div>
-          <div className="col-md-9">
-            <div className="horizontal-rectangle thumbnail2"></div>
-          </div>
-        </div>):(
-          <>
+      <form onSubmit={handleSubmit}>
+        <h1>Page Details</h1>
+        <div className="layOutContainer">
           <div className="row">
             <div className="col-md-3">
-              <label className="lable">Main Video</label>
+              <label className="lable">Top Media Type</label>
             </div>
             <div className="col-md-9">
-              <button type="button" onClick={uploadVideoFunc} className="uploadVideo-btn btn btn-success">
-                + Upload Video
-              </button>
-              <div id="progress" className="progress">
-                <div className="progress-bar" id="progressPercentage" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+              <input
+                className="checkBox"
+                type="radio"
+                name="topMediaType"
+                value="image"
+                defaultChecked
+                onChange={handleChangeInputType}
+              />
+              <label className="lable">Image</label>
+              <input
+                className="checkBox"
+                type="radio"
+                name="topMediaType"
+                value="video"
+                onChange={handleChangeInputType}
+              />
+              <label className="lable">Video</label>
+            </div>
+          </div>
+          {uploadType == "image" ? (
+            <div className="row">
+              <div className="col-md-3">
+                <label className="lable">Top Image</label>
               </div>
+              <div className="col-md-9">
+                <div className="horizontal-rectangle thumbnail2"></div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="row">
+                <div className="col-md-3">
+                  <label className="lable">Main Video</label>
+                </div>
+                <div className="col-md-9">
+                  <button
+                    type="button"
+                    onClick={(e)=>{uploadVideoFunc(e,1)}}
+                    className="uploadVideo-btn btn btn-success"
+                  >
+                    + Upload Video
+                  </button>
+                  <div id="progress1" className="progress">
+                    <div
+                      className="progress-bar"
+                      id="progressPercentage1"
+                      role="progressbar"
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      25%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-3">
+                  <label className="lable">Video URL</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    defaultValue={videoURL}
+                    placeholder="Video URL"
+                    onChange={(e)=>{uploadVideoFunc(e,1)}}
+                    id="videoURL1"
+                    name="videoURL-Input"
+                    className="form-control fullWidth"
+                  ></input>
+                </div>
+              </div>
+            </>
+          )}
 
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Enable Full Screen</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                type="checkBox"
+                className="checkBox"
+                name="enableFullScreen"
+                id="enableFullScreen"
+                onChange={handleChange}
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-md-3">
-              <label className="lable">Video URL</label>
+              <label className="lable">Top Title</label>
             </div>
             <div className="col-md-9">
-              <input defaultValue={videoURL} placeholder="Video URL" onChange={uploadVideoFunc} id="videoURL" name="videoURL-Input" className="form-control fullWidth"></input>
+              <input
+                maxLength={80}
+                className="form-control fullWidth"
+                type="text"
+                name="title"
+                placeholder="Title"
+                onChange={handleChange}
+              />
             </div>
           </div>
-        </>
-        )
-        }
-        
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Enable Full Screen</label>
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Subtitle</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                className="form-control fullWidth"
+                type="text"
+                name="subtitle"
+                placeholder="Subtitle"
+                maxLength={100}
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className="col-md-9">
-            <input type="checkBox" className="checkBox" name="enableFullScreen"  id="enableFullScreen" onChange={handleChange}/>
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Top Body Content</label>
+            </div>
+            <div className="col-md-9">
+              <textarea
+                maxLength={250}
+                placeholder="Body Content"
+                className="form-control bodyContent"
+                name="bodyContent"
+                onChange={handleChange}
+              ></textarea>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Main Media Type</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                className="checkBox"
+                type="radio"
+                name="mainMediaType"
+                value="image"
+                defaultChecked
+                onChange={handleChangeInputType}
+              />
+              <label className="lable">Image</label>
+              <input
+                className="checkBox"
+                type="radio"
+                name="mainMediaType"
+                value="video"
+                onChange={handleChangeInputType}
+              />
+              <label className="lable">Video</label>
+            </div>
+          </div>
+          {uploadType2 == "image" ? (
+            <div className="row">
+              <div className="col-md-3">
+                <label className="lable">Main Image</label>
+              </div>
+              <div className="col-md-9">
+                <div className="horizontal-rectangle thumbnail3"></div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="row">
+                <div className="col-md-3">
+                  <label className="lable">Main Video</label>
+                </div>
+                <div className="col-md-9">
+                  <button
+                    type="button"
+                    onClick={(e)=>{uploadVideoFunc(e,2)}}
+                    className="uploadVideo-btn btn btn-success"
+                  >
+                    + Upload Video
+                  </button>
+                  <div id="progress2" className="progress">
+                    <div
+                      className="progress-bar"
+                      id="progressPercentage2"
+                      role="progressbar"
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      25%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-3">
+                  <label className="lable">Video URL</label>
+                </div>
+                <div className="col-md-9">
+                  <input
+                    defaultValue={videoURL2}
+                    placeholder="Video URL"
+                    onChange={(e)=>{uploadVideoFunc(e,2)}}
+                    id="videoURL2"
+                    name="videoURL-Input"
+                    className="form-control fullWidth"
+                  ></input>
+                </div>
+              </div>
+            </>
+          )}
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Enable Full Screen</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                type="checkBox"
+                className="checkBox"
+                name="enableMainFullScreen"
+                id="enableMainFullScreen"
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="row margin-bottom">
+            <div className="col-md-3">
+              <label className="lable">Main Body Content</label>
+            </div>
+            <div className="col-md-9">
+              <textarea
+                maxLength={200}
+                placeholder="Main Body Content"
+                className="form-control bodyContent"
+                name="mainBodyContent"
+                onChange={handleChange}
+              ></textarea>
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Top Title</label>
-          </div>
-          <div className="col-md-9">
-            <input maxLength={80} className="form-control fullWidth" type="text" name="title" placeholder="Title" onChange={handleChange}/>
-          </div>
+        <div className="bottom-actions">
+          <button type="button" className="btn btn-default" id="layoutBackBtn">
+            Cancel
+          </button>
+          <button type="submit" className="btn btn-success" id="layoutSaveBtn">
+            Save
+          </button>
         </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Subtitle</label>
-          </div>
-          <div className="col-md-9">
-            <input
-              className="form-control fullWidth"
-              type="text"
-              name="subtitle"
-              placeholder="Subtitle"
-              maxLength={100}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Top Body Content</label>
-          </div>
-          <div className="col-md-9">
-            <textarea maxLength={250} placeholder="Body Content" className="form-control bodyContent" name="bodyContent"  onChange={handleChange}></textarea>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Main Media Type</label>
-          </div>
-          <div className="col-md-9">
-            <input className="checkBox" type="radio" name="mainMediaType" value="image" defaultChecked onChange={handleChange}/>
-            <label className="lable">Image</label>
-            <input className="checkBox" type="radio" name="mainMediaType" value="video" onChange={handleChange}/>
-            <label className="lable">Video</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Main Image</label>
-          </div>
-          <div className="col-md-9">
-            <div className="horizontal-rectangle thumbnail3"></div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Enable Full Screen</label>
-          </div>
-          <div className="col-md-9">
-            <input type="checkBox" className="checkBox" name="enableMainFullScreen" id="enableMainFullScreen" onChange={handleChange}/>
-          </div>
-        </div>
-        <div className="row margin-bottom">
-          <div className="col-md-3">
-            <label className="lable">Main Body Content</label>
-          </div>
-          <div className="col-md-9">
-            <textarea maxLength={200} placeholder="Main Body Content" className="form-control bodyContent" name="mainBodyContent" onChange={handleChange}></textarea>
-          </div>
-        </div>
-      </div>
-      <div className="bottom-actions">
-        <button type="button" className="btn btn-default" id="layoutBackBtn">
-          Cancel
-        </button>
-        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
-          Save
-        </button>
-      </div>
       </form>
     </>
   );
