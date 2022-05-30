@@ -25,17 +25,19 @@ function index(props) {
     thumbnail.onDelete = (imageUrl) => {
       setThumbnailImage(null);
     };
-   
+
 
     console.log("hello", props.selectedLayout);
   }, []);
 
   useEffect(() => {
+
     handelImage({thumbnailImage, thumbnailImage2, videoURL});
+
   }, [thumbnailImage, thumbnailImage2, videoURL]);
   // submit form function 
   function submitForm(values) {
-    console.log(`Submit function in layout${props.selectedLayout+1} ->`, values);
+    console.log(`Submit function in layout${props.selectedLayout + 1} ->`, values);
     props.saveData(values);
   }
   useEffect(() => {
@@ -53,7 +55,9 @@ function index(props) {
           { size: "full_width", aspect: "16:9" }
         );
         setThumbnailImage2(croppedImage);
+
             };
+
       thumbnail2.onDelete = (imageUrl) => {
         setThumbnailImage2(null);
       };
@@ -84,7 +88,9 @@ function index(props) {
         (onComplete) => {
           progressPercentage.style.background = "var(--bf-theme-success)";
           progressPercentage.innerText = "Uploaded Sucessfully";
-          setTimeout(()=>{
+
+          setTimeout(() => {
+
             progressContainer.style.display = "none";
           }, 4000)
         },
@@ -156,14 +162,16 @@ function index(props) {
         {
           uploadType == "image" ?
             (<div className="row">
-          <div className="col-md-3">
-            <label className="lable">Top Image</label>
-          </div>
-          <div className="col-md-9">
-            <div className="thumbnail2 horizontal-rectangle"></div>
-          </div>
-        </div>
-) : (
+
+              <div className="col-md-3">
+                <label className="lable">Top Image</label>
+              </div>
+              <div className="col-md-9">
+                <div className="thumbnail2 horizontal-rectangle"></div>
+              </div>
+            </div>
+            ) : (
+
               <>
                 <div className="row">
                   <div className="col-md-3">
@@ -210,8 +218,8 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <input
-            name="title"
-            placeholder="Title"
+              name="title"
+              placeholder="Title"
               onChange={handleChange}
               className="form-control fullWidth"
             ></input>
@@ -223,8 +231,8 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <input
-            name="subTitle"
-            placeholder="SubTitle"
+              name="subTitle"
+              placeholder="SubTitle"
               onChange={handleChange}
               className="form-control fullWidth"
             ></input>
@@ -236,8 +244,8 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <textarea
-            name="bodyContent"
-            placeholder="Body content 1"
+              name="bodyContent"
+              placeholder="Body content 1"
               onChange={handleChange}
               className="form-control bodyContent"
             ></textarea>
@@ -249,9 +257,9 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <textarea
-                        name="bodyContent2"
+              name="bodyContent2"
 
-            placeholder="Body content 2"
+              placeholder="Body content 2"
               onChange={handleChange}
               className="form-control bodyContent"
             ></textarea>
