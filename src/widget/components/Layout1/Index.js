@@ -5,6 +5,9 @@ function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
+  const [holderVideo, setHolderVideo] = useState(
+    "./shared/img/video_player_placeholder.gif"
+  );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer } = useHelper();
   useEffect(() => {
@@ -42,7 +45,7 @@ function Index(props) {
               </div>
             ) : (
               <div className="topImage-container">
-              <img src={holderImage} />
+              <img src={holderVideo} />
               </div>
             )}
             <div className="info-container">

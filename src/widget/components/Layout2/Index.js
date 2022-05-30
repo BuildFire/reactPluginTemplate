@@ -5,6 +5,9 @@ function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
+  const [holderVideo, setHolderVideo] = useState(
+    "./shared/img/video_player_placeholder.gif"
+  );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableMainFullScreen, setEnableMainFullScreen] = useState(false);
   const [videoURL, setVideoURL] = useState("");
@@ -58,7 +61,7 @@ function Index(props) {
               </div>
             ) : (
               <div className="mainImage-container">
-                <img src={holderImage} />
+                <img src={holderVideo} />
               </div>
             )}
           </div>
