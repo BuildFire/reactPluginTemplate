@@ -3,6 +3,7 @@ import { hot } from "react-hot-loader/root";
 import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
+import VideoUi from "../../shared/VideoUi";
 function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
@@ -147,49 +148,7 @@ function index(props) {
     props.saveData(values);
   }
   
-  function uploadVideoFunc(e, indexOfMedia) {
-    if (e.target.name != "videoURL-Input") {
-      let progressPercentage;
-      let progressContainer;
-      let urlContainer;
-     
-        progressPercentage = document.getElementById(`progressPercentage${indexOfMedia}`);
-        progressContainer = document.getElementById(`progress${indexOfMedia}`);
-        urlContainer = document.getElementById(`videoURL${indexOfMedia}`);
-    
-
-      buildfire.services.publicFiles.showDialog(
-        { filter: ["video/mp4"], allowMultipleFilesUpload: true },
-        (onProgress) => {
-          progressContainer.style.display = "block";
-
-          progressPercentage.innerText = `${onProgress.file.percentage}%`;
-          progressPercentage.style.width = `${onProgress.file.percentage}%`;
-        },
-        (onComplete) => {
-          progressPercentage.style.background = "var(--bf-theme-success)";
-          progressPercentage.innerText = "Uploaded Sucessfully";
-          setTimeout(() => {
-            progressContainer.style.display = "none";
-          }, 4000);
-        },
-        (err, files) => {
-          if (err) return console.error(err);
-          if(indexOfMedia==1)setVideoURL1(files[0].url);
-          if(indexOfMedia==2)setVideoURL2(files[0].url);
-          if(indexOfMedia==3)setVideoURL3(files[0].url);
-
-          urlContainer.value = files[0].url;
-        }
-      );
-    } else {
-      if(indexOfMedia==1)setVideoURL1(e.target.value);
-      if(indexOfMedia==2)setVideoURL2(e.target.value);
-      if(indexOfMedia==3)setVideoURL3(e.target.value);
-
-
-    }
-  }
+  
 
   const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
   function handleChangeInputType(e, indexOfMedia) {
@@ -247,47 +206,7 @@ function index(props) {
           </div>
         ) : (
           <>
-            <div className="row">
-              <div className="col-md-3">
-                <label className="lable">Main Video</label>
-              </div>
-              <div className="col-md-9">
-                <button
-                  type="button"
-                  onClick={(e)=>uploadVideoFunc(e,1)}
-                  className="uploadVideo-btn btn btn-success"
-                >
-                  + Upload Video
-                </button>
-                <div id="progress1" className="progress">
-                  <div
-                    className="progress-bar"
-                    id="progressPercentage1"
-                    role="progressbar"
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    25%
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-3">
-                <label className="lable">Video URL</label>
-              </div>
-              <div className="col-md-9">
-                <input
-                  defaultValue={videoURL1}
-                  placeholder="Video URL"
-                  onChange={(e)=>uploadVideoFunc(e,1)}
-                  id="videoURL1"
-                  name="videoURL-Input"
-                  className="form-control fullWidth"
-                ></input>
-              </div>
-            </div>
+            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL1} videoURL={videoURL1} index={1}/>
           </>
         )}
         <div className="row">
@@ -352,47 +271,7 @@ function index(props) {
           </div>
         ) : (
           <>
-            <div className="row">
-              <div className="col-md-3">
-                <label className="lable">Main Video</label>
-              </div>
-              <div className="col-md-9">
-                <button
-                  type="button"
-                  onClick={(e)=>uploadVideoFunc(e,2)}
-                  className="uploadVideo-btn btn btn-success"
-                >
-                  + Upload Video
-                </button>
-                <div id="progress2" className="progress">
-                  <div
-                    className="progress-bar"
-                    id="progressPercentage2"
-                    role="progressbar"
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    25%
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-3">
-                <label className="lable">Video URL</label>
-              </div>
-              <div className="col-md-9">
-                <input
-                  defaultValue={videoURL2}
-                  placeholder="Video URL"
-                  onChange={(e)=>uploadVideoFunc(e,2)}
-                  id="videoURL2"
-                  name="videoURL-Input"
-                  className="form-control fullWidth"
-                ></input>
-              </div>
-            </div>
+            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL2} videoURL={videoURL2} index={2}/>
           </>
         )}
 
@@ -458,47 +337,7 @@ function index(props) {
           </div>
         ) : (
           <>
-            <div className="row">
-              <div className="col-md-3">
-                <label className="lable">Main Video</label>
-              </div>
-              <div className="col-md-9">
-                <button
-                  type="button"
-                  onClick={(e)=>uploadVideoFunc(e,3)}
-                  className="uploadVideo-btn btn btn-success"
-                >
-                  + Upload Video
-                </button>
-                <div id="progress3" className="progress">
-                  <div
-                    className="progress-bar"
-                    id="progressPercentage3"
-                    role="progressbar"
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    25%
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-3">
-                <label className="lable">Video URL</label>
-              </div>
-              <div className="col-md-9">
-                <input
-                  defaultValue={videoURL3}
-                  placeholder="Video URL"
-                  onChange={(e)=>uploadVideoFunc(e,3)}
-                  id="videoURL3"
-                  name="videoURL-Input"
-                  className="form-control fullWidth"
-                ></input>
-              </div>
-            </div>
+           <VideoUi handleChange={handleChange} setVideoURL={setVideoURL3} videoURL={videoURL3} index={3}/>
           </>
         )}
 
