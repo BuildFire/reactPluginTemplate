@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
+import VideoUi from "../../shared/VideoUi";
 import "./style.less";
 function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
@@ -41,38 +42,7 @@ function index(props) {
   function submitForm(values) {
     console.log('forms values ->', values);
   }
-  function uploadVideoFunc(e) {
-    if (e.target.name != "videoURL-Input") {
-      let progressPercentage = document.getElementById("progressPercentage");
-      let progressContainer = document.getElementById("progress");
-
-      buildfire.services.publicFiles.showDialog(
-        { filter: ["video/mp4"], allowMultipleFilesUpload: true },
-        (onProgress) => {
-          progressContainer.style.display = "block";
-
-          progressPercentage.innerText = `${onProgress.file.percentage}%`;
-          progressPercentage.style.width = `${onProgress.file.percentage}%`;
-        },
-        (onComplete) => {
-          progressPercentage.style.background = "var(--bf-theme-success)";
-          progressPercentage.innerText = "Uploaded Sucessfully";
-          setTimeout(()=>{
-            progressContainer.style.display = "none";
-          }, 4000)
-        },
-        (err, files) => {
-          if (err) return console.error(err);
-          setVideoURL(files[0].url);
-
-          let urlContainer = document.getElementById("videoURL");
-          urlContainer.value = files[0].url;
-        }
-      );
-    } else {
-      setVideoURL(e.target.value);
-    }
-  }
+  
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
@@ -107,28 +77,7 @@ function index(props) {
               </div>
             </div>) : (
               <>
-                <div className="row">
-                  <div className="col-md-3">
-                    <label className="lable">Main Video</label>
-                  </div>
-                  <div className="col-md-9">
-                    <button type="button" onClick={uploadVideoFunc} className="uploadVideo-btn btn btn-success">
-                      + Upload Video
-                    </button>
-                    <div id="progress" className="progress">
-                      <div className="progress-bar" id="progressPercentage" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                    </div>
-
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-3">
-                    <label className="lable">Video URL</label>
-                  </div>
-                  <div className="col-md-9">
-                    <input defaultValue={videoURL} placeholder="Video URL" onChange={uploadVideoFunc} id="videoURL" name="videoURL-Input" className="form-control fullWidth"></input>
-                  </div>
-                </div>
+                <VideoUi handleChange={handleChange} setVideoURL={setVideoURL}  videoURL={videoURL} index={1}/>
               </>
             )
         }

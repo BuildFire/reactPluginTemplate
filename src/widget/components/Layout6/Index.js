@@ -5,6 +5,9 @@ function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
+  const [holderVideo, setHolderVideo] = useState(
+    "./shared/img/video_player_placeholder.gif"
+  )
   const [carouselImages, setCarouselImages] = useState([
     {
       title: "buildfire",
@@ -89,7 +92,7 @@ function Index(props) {
               
             ) : (
               <div className="mainImage-container">
-                <img src={holderImage} />
+                <img src={holderVideo} />
                 <div className="info-container">
                 <div className="mdc-card">
                   <p className="bodyContent">
