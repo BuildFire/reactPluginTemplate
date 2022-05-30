@@ -67,11 +67,18 @@ function Index(props) {
                 ) : (
                   <img src={props.data.thumbnailImage2 || holderImage} />
                 )
-              ) : props.data.videoURL2 ? (
-                <video width="350" controls>
-                  <source src={props.data.videoURL2} type="video/mp4" />
-                  Your browser does not support videos.
-                </video>
+              ) : props.data.videoURL2 ?(
+                      props.data.enableFullScreen2 ? (
+                        <video className="fullScreenVideo" width="350" controls>
+                          <source src={props.data.videoURL2} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      ) : (
+                        <video width="350" controls>
+                          <source src={props.data.videoURL2} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      )
               ) : (
                 <img src={holderVideo} alt="videoHolder" />
               )}
@@ -93,10 +100,17 @@ function Index(props) {
                   <img src={props.data.thumbnailImage3 || holderImage} />
                 )
               ) : props.data.videoURL3 ? (
-                <video width="350" controls>
-                  <source src={props.data.videoURL3} type="video/mp4" />
-                  Your browser does not support videos.
-                </video>
+                      props.data.enableFullScreen3 ? (
+                        <video className="fullScreenVideo" width="350" controls>
+                          <source src={props.data.videoURL3} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      ) : (
+                        <video width="350" controls>
+                          <source src={props.data.videoURL3} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      )
               ) : (
                 <img src={holderVideo} alt="videoHolder" />
               )}

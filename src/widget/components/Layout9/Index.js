@@ -54,11 +54,17 @@ function Index(props) {
                 />
               ) : (
                 <img src={props.data.thumbnailImage2 || holderImage} />
-              )): props.data.videoURL ? (
-                      <video className="img column" controls>
-                        <source src={props.data.videoURL} type="video/mp4" />
-                        Your browser does not support videos.
-                      </video>
+              )): props.data.videoURL ?  (
+                      props.data.enableFullScreen2 ? (
+                        <video className="fullScreenVideo column img" width="350" controls>
+                          <source src={props.data.videoURL} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      ) : (
+                        <video className="column img" width="350" controls>
+                          <source src={props.data.videoURL} type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>)
                     ) : (
                       <img className="img column" src={holderVideo} alt="videoHolder" />
                     )}
