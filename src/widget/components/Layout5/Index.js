@@ -1,18 +1,15 @@
 import React, { useState,useEffect } from "react";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 import "./style.less";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
-  const [holderVideo, setHolderVideo] = useState(
-    "./shared/img/video_player_placeholder.gif"
-  )
+
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableMainFullScreen, setEnableMainFullScreen] = useState(false);
-  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
-  const [enableAutoPlay2, setEnableAutoPlay2] = useState(false);
-  const { imagePreviewer,fullScreenVideoHandler } = useHelper();
+  const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
@@ -21,20 +18,6 @@ function Index(props) {
       console.log('my theme in layout 1 -=>', props.themeState);
       props.setTextStyle();
     }
-    fullScreenVideoHandler(
-      props.data,
-      props.data.enableFullScreen,
-      props.data.topMediaType,
-      "topVideo"
-    );
-    fullScreenVideoHandler(
-      props.data,
-      props.data.enableMainFullScreen,
-      props.data.mainMediaType,
-      "mainVideo"
-    );
-    setEnableAutoPlay1(props.data.enableAutoPlay1);
-    setEnableAutoPlay2(props.data.enableAutoPlay2);
   }, [props]);
   return (
     <>
@@ -54,21 +37,13 @@ function Index(props) {
                   <img src={props.data.thumbnailImage || holderImage} />
                 )}
               </div>
-            ) : props.data.videoURL ? (
-              <div className="video-container">
-                <video id="topVideo"
-                  loop
-                  muted
-                  controls
-                  autoPlay={enableAutoPlay1}>
-                  <source src={props.data.videoURL} type="video/mp4" />
-                </video>
-              </div>
-            ) : (
-              <div className="topImage-container">
-                <img src={holderVideo} />
-              </div>
-            )}
+            ) : (<VideoUI
+              data={props.data}
+              enableAutoPlay={props.data.enableAutoPlay1}
+              enableFullScreen={props.data.enableFullScreen}
+              url={props.data.videoURL}
+              index={1}
+            />)}
 
             <div className="info-container">
               <div className="mdc-card">
@@ -92,20 +67,14 @@ function Index(props) {
                 <img src={props.data.thumbnailImage2 || holderImage} />
               )}
             </div>
-            ) : props.data.videoURL2 ? (
-              <div className="video-container2">
-                <video loop
-                    muted
-                    controls
-                    autoPlay={enableAutoPlay2}
-                    id="mainVideo">
-                  <source src={props.data.videoURL2} type="video/mp4" />
-                </video>
-              </div>
-            ) : (
-              <div className="mainImage-container">
-                <img src={holderVideo} />
-              </div>
+            ) :(
+              <VideoUI
+              data={props.data}
+              enableAutoPlay={props.data.enableAutoPlay2}
+              enableFullScreen={props.data.enableMainFullScreen}
+              url={props.data.videoURL2}
+              index={2}
+            />
             )}
           </div>
         </div>

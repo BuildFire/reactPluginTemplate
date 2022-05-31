@@ -1,39 +1,13 @@
 import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
+import ThumbnailUI from "../../shared/ThumbnailUI";
 import VideoUi from "../../shared/VideoUi";
 import "./style.less";
 function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
-  useEffect(() => {
-    if (uploadType == "image") {
-      //  set up thumbnail -->
-      let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
-      
-      if (thumbnailImage) {
-        thumbnail.loadbackground(thumbnailImage);
-      }
-      // thumbnail Change image -->
-      thumbnail.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(
-          imageUrl,
-          { size: "full_width", aspect: "16:9" }
-        );
-        setThumbnailImage(croppedImage);
-      };
-      // thumbnail Delete Image -->
-      thumbnail.onDelete = (imageUrl) => {
-        setThumbnailImage(null);
-      };
-    }
-  }, [uploadType])
-
+ 
 
   useEffect(() => {
     handelImage({thumbnailImage,videoURL});
@@ -68,14 +42,16 @@ function index(props) {
         
         {
           uploadType == "image" ?
-            (<div className="row">
-              <div className="col-md-3">
-                <label className="lable">Main Image</label>
-              </div>
-              <div className="col-md-9">
-                <div className="vertical-rectangle thumbnail"></div>
-              </div>
-            </div>) : (
+            (
+              <ThumbnailUI
+              index={1}
+              recommended={"Recommended: 675 x 1200"}
+              thumbnailImage={thumbnailImage}
+              setThumbnailImage={setThumbnailImage}
+              imageTag={"Main Image"}
+              classList={"vertical-rectangle thumbnail"}
+            />
+          ) : (
               <>
                 <VideoUi handleChange={handleChange} setVideoURL={setVideoURL}  videoURL={videoURL} index={1}/>
               </>
