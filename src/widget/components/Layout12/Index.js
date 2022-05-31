@@ -18,13 +18,6 @@ function Index(props) {
       props.setTextStyle();
     }
 
-    if (props.data.topMediaType == "video" && props.data.videoURL == "") {
-      document.getElementById("imageContainer").style.height = "18.688rem";
-    } else if (props.data.topMediaType == "video" && props.data.videoURL != "") {
-      document.getElementById("imageContainer").style.height = "24.688rem";
-    } else {
-      document.getElementById("imageContainer").style.height = "12.688rem";
-    }
   }, [props])
 
   return (
