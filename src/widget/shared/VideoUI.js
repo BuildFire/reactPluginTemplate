@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import useHelper from './Helper/Helper';
 
 export default function VideoUI(props) {
 
@@ -7,8 +8,11 @@ export default function VideoUI(props) {
     );
     const [autoPlayState, setAutoplayState] = useState(false);
 
+    const { fullScreenVideoHandler } = useHelper();
+
     useEffect(() => {
-        if(props.enableAutoPlay != autoPlayState){
+        fullScreenVideoHandler(props.data, props.enableFullScreen, `video${props.index}`)
+        if (props.enableAutoPlay != autoPlayState) {
             setAutoplayState(props.enableAutoPlay);
         }
     }, [props])
@@ -16,27 +20,25 @@ export default function VideoUI(props) {
         let videoPlayer = document.getElementById(`video${props.index}`);
         if (autoPlayState && videoPlayer) {
             videoPlayer.autoplay = true;
-            videoPlayer.load();
+            videoPlayer.play();
             // console.log('https://publicfiles.buildfire.com/file/62965cd29b662d0380530287');
+        }else if(videoPlayer){
+            videoPlayer.pause();
         }
     }, [autoPlayState])
+
+    function test(e){
+        e.preventDefault();
+    }
 
     return (
         <div>
             {
                 props.url != "" ? (
-                    props.enableFullScreen ? (
-                        <video id={`video${props.index}`} className="fullScreenVideo" width="350" controls >
-                            <source src={props.url} type="video/mp4" />
-                            Your browser does not support videos.
-                        </video>
-                    ) : (
-                        <video id={`video${props.index}`} width="350" controls >
-                            <source src={props.url} type="video/mp4" />
-                            Your browser does not support videos.
-                        </video>
-                    )
-
+                    <video id={`video${props.index}`} width="350" controls >
+                        <source src={props.url} type="video/mp4" />
+                        Your browser does not support videos.
+                    </video>
                 ) : (
                     <img className='img' src={holderVideo} />
                 )
