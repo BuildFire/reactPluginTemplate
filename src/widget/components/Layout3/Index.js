@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
-  const [holderVideo, setHolderVideo] = useState(
-    "./shared/img/video_player_placeholder.gif"
-  );
-  const [enableFullScreen, setEnableFullScreen] = useState(false);
-  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
 
-  const { imagePreviewer, fullScreenVideoHandler } = useHelper();
+  const [enableFullScreen, setEnableFullScreen] = useState(false);
+
+
+  const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
-    setEnableAutoPlay1(props.data.enableAutoPlay1);
-    fullScreenVideoHandler(
-      props.data,
-      props.data.enableFullScreen,
-      props.data.mediaType,
-      "topVideo"
-    );
   }, [props]);
 
   return (
@@ -41,23 +33,16 @@ function Index(props) {
                   <img src={props.data.thumbnailImage || holderImage} />
                 )}
               </div>
-            ) : props.data.videoURL != "" ? (
+            ) :(
               <div className="mainImage-container">
-                <video
-                  loop
-                  muted
-                  controls
-                  autoPlay={enableAutoPlay1}
-                  id="topVideo"
-                >
-                  <source src={props.data.videoURL} type="video/mp4" />
-                  Your browser does not support videos.
-                </video>
-              </div>
-            ) : (
-              <div className="mainImage-container">
-                <img src={holderVideo} />
-              </div>
+              <VideoUI
+                data={props.data}
+                enableAutoPlay={props.data.enableAutoPlay1}
+                enableFullScreen={props.data.enableFullScreen}
+                url={props.data.videoURL}
+                index={1}
+              />
+            </div>
             )}
           </div>
         </div>

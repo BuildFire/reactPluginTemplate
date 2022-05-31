@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
   );
-  const [holderVideo, setHolderVideo] = useState(
-    "./shared/img/video_player_placeholder.gif"
-  );
-  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
   const [carouselImages, setCarouselImages] = useState([
     {
       title: "buildfire",
@@ -49,13 +46,6 @@ function Index(props) {
       props.setTextStyle();
     }
 
-    fullScreenVideoHandler(
-      props.data,
-      props.data.enableFullScreen,
-      props.data.topMediaType,
-      "topVideo"
-    );
-    setEnableAutoPlay1(props.data.enableAutoPlay1);
   }, [props]);
 
   useEffect(() => {
@@ -88,36 +78,14 @@ function Index(props) {
                   </div>
                 </div>
               </div>
-            ) : props.data.videoURL ? (
-              <div className="video-container">
-                <video
-                  loop
-                  muted
-                  controls
-                  autoPlay={enableAutoPlay1}
-                  id="topVideo"
-                >
-                  <source src={props.data.videoURL} type="video/mp4" />
-                </video>
-                <div className="info-container">
-                  <div className="mdc-card">
-                    <p className="bodyContent">
-                      {props.data.bodyContent || "Body Content"}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="topImage-container">
-                <img src={holderVideo} />
-                <div className="info-container">
-                  <div className="mdc-card">
-                    <p className="bodyContent">
-                      {props.data.bodyContent || "Body Content"}
-                    </p>
-                  </div>
-                </div>
-              </div>
+            ) :(
+              <VideoUI
+              data={props.data}
+              enableAutoPlay={props.data.enableAutoPlay1}
+              enableFullScreen={props.data.enableFullScreen}
+              url={props.data.videoURL}
+              index={1}
+            />
             )}
 
             <div

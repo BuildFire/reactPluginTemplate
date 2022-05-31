@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
+import ThumbnailUI from "../../shared/ThumbnailUI";
 import VideoUi from "../../shared/VideoUi";
 import "./style.less";
 function index(props) {
@@ -27,38 +28,16 @@ function index(props) {
     };
   }, []);
 
-  useEffect(() => {
-    if (uploadType == "image") {
-      let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 960",
-        multiSelection: false,
-      });
-      thumbnail.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
-          size: "full_width",
-          aspect: "16:9",
-        });
-        setThumbnailImage(croppedImage);
-      };
-      // thumbnail Delete Image -->
-      thumbnail.onDelete = (imageUrl) => {
-        setThumbnailImage(null);
-      };
-    }
-  },[uploadType])
-
   function array_move(arr, old_index, new_index) {
     if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
-        }
+      var k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined);
+      }
     }
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
     return arr; // for testing
-};
+  }
 
   useEffect(() => {
     let newCarousel = allImages;
@@ -68,15 +47,14 @@ function index(props) {
   }, [onItemChange]);
 
   useEffect(() => {
-    let newCarousel =[];
-    allImages.forEach(element=>{
-      newCarousel.push(element)
-    })
-    newCarousel.splice(orderedImages.oldIndex,1);
-    newCarousel.splice(orderedImages.newIndex,0,orderedImages.item);
-      setAllImages(newCarousel);
+    let newCarousel = [];
+    allImages.forEach((element) => {
+      newCarousel.push(element);
+    });
+    newCarousel.splice(orderedImages.oldIndex, 1);
+    newCarousel.splice(orderedImages.newIndex, 0, orderedImages.item);
+    setAllImages(newCarousel);
   }, [orderedImages]);
-
 
   useEffect(() => {
     let newCarousel = allImages.filter((element, idx) => {
@@ -91,11 +69,10 @@ function index(props) {
     console.log(" images", carouselImages);
   }, [carouselImages]);
 
-
   useEffect(() => {
     console.log("befor message all images carousel", allImages);
-    handelImage({ thumbnailImage, allImages,videoURL });
-  }, [thumbnailImage, allImages, onItemChange,videoURL]);
+    handelImage({ thumbnailImage, allImages, videoURL });
+  }, [thumbnailImage, allImages, onItemChange, videoURL]);
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);
@@ -136,17 +113,24 @@ function index(props) {
               <label className="lable">Video</label>
             </div>
           </div>
-          {uploadType == "image" ?(<div className="row">
-            <div className="col-md-3">
-              <label className="lable">Top Image</label>
-            </div>
-            <div className="col-md-9">
-              <div className="thumbnail sequare"></div>
-            </div>
-          </div>):(
+          {uploadType == "image" ? (
+            <ThumbnailUI
+              index={1}
+              recommended={"Recommended: 1200 x 1200"}
+              thumbnailImage={thumbnailImage}
+              setThumbnailImage={setThumbnailImage}
+              imageTag={"Top Image"}
+              classList={"thumbnail sequare"}
+            />
+          ) : (
             <>
-            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL} videoURL={videoURL} index={1}/>
-          </>
+              <VideoUi
+                handleChange={handleChange}
+                setVideoURL={setVideoURL}
+                videoURL={videoURL}
+                index={1}
+              />
+            </>
           )}
           <div className="row">
             <div className="col-md-3">
