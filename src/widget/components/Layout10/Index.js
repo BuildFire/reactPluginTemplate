@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
-  const [holderVideo, setHolderVideo] = useState("./shared/img/video_player_placeholder.gif");
-
+  
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     document.getElementById(
@@ -51,22 +51,7 @@ function Index(props) {
                       <img src={props.data.thumbnailImage2 || holderImage} />
                     )
                   ) : (
-                    props.data.videoURL != "" ? (
-                      props.data.enableFullScreen2 ? (
-                        <video className="fullScreenVideo" width="350" controls>
-                          <source src={props.data.videoURL} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video width="350" controls>
-                          <source src={props.data.videoURL} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      )
-
-                    ) : (
-                      <img src={holderVideo} />
-                    )
+                    <VideoUI enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
                   )
               }
             </div>
