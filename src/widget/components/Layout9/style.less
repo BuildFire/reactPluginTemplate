@@ -3,16 +3,12 @@
   // background-color: #d2cfcf;
 
   .topImage-container {
-    img {
+    img, video {
       width: 100%;
       margin: 0rem !important;
-      height: 8.688rem;
+      height: 11.688rem;
     }
-   video{
-      width: 100%;
-      margin: 0rem !important;
-      height: 8.688rem;
-    }
+    
   }
 
   .info-container {
@@ -34,41 +30,57 @@
     margin-right: auto;
 
     .title {
-      width: 31.25rem;
-      font-family: 'Roboto';
+      font-size: 1.5rem;
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 600;
-      font-size: 1rem;
-      line-height: 1.25rem;
+
+      line-height: 1.5rem;
       letter-spacing: 0.031rem;
       flex: none;
       margin-bottom: 0;
       order: 0;
       flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+          word-break: break-all;
+          white-space: normal;
+          text-overflow: ellipsis;
+          margin-bottom: 0;
+          
     }
 
     .subtitle {
       font-style: normal;
       font-weight: 500;
-      font-size: 0.875rem;
+      font-size: 1.25rem;
       margin-bottom: 1rem !important;
       margin-top: 0.25rem !important;
-      line-height: 1.25rem;
-      word-break: break-word;
-      white-space: normal;
+      line-height: 1.5rem;
+     
       margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-all;
+      white-space: normal;
+      text-overflow: ellipsis;
+      margin-bottom: 0;
+      
     }
 
     .bodyContent {
       font-style: normal;
       font-weight: 400;
-      line-height: 1.25rem;
+      font-size: 1.25rem;
+      line-height: 1.5rem;
       word-break: break-word;
       white-space: normal;
     }
   }
-
-
 
   .mainImage-container {
     width: 100%;
@@ -80,7 +92,7 @@
   }
 
   .secondImage {
-    height: 12.125rem;
+    height: 18.125rem;
     order: 0;
     align-self: stretch;
     margin: 2.938rem 0.5rem;

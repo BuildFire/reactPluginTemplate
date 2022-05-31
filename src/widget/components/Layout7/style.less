@@ -10,13 +10,7 @@
     right: 0;
   }
 
-  .img {
-    min-width: 21.5rem;
-    display: block;
-    height: 12.125rem;
-    margin: auto;
-  }
-  video{
+  .img, video{
     min-width: 21.5rem;
     display: block;
     height: 196px;
@@ -34,7 +28,10 @@
     word-break: break-all;
     white-space: normal;
     text-overflow: ellipsis;
-    text-overflow: ellipsis;
     margin-bottom: 0;
+    text-align: center;
+    display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
   }
 }

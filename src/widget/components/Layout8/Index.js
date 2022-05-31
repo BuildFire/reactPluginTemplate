@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
@@ -51,97 +52,67 @@ function Index(props) {
                           src={props.data.thumbnailImage || holderImage}
                         />
                       )
-                    ) : props.data.videoURL1 ? (
-                      
-                      props.data.enableFullScreen ? (
-                        <video className="fullScreenVideo column img" width="350" controls>
-                          <source src={props.data.videoURL1} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video className="column img" width="350" controls>
-                          <source src={props.data.videoURL1} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      )
                     ) : (
-                      <img className="img column" src={holderVideo} alt="videoHolder" />
+                      <div className="column img">
+                        <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL1} index={1} />
+
+                      </div>
                     )}
 
                     <p className="column bodyContent mdc-card ">
-                      {props.data.BodyContent || "body Content"}
+                      {props.data.BodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
                     </p>
                   </div>
                 </div>
                 <div className="mdc-layout-grid__cell--span-8 row">
-                  <p className="column bodyContent mdc-card">
-                    {props.data.BodyContent2 || "  body Content"}
+                  <p className="column bodyContent mid-text mdc-card">
+                    {props.data.BodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
                   </p>
                   {props.data.mediaType2 != "video" ? (
                     enableFullScreen2 && props.data.thumbnailImage2 != null ? (
-                    <img
-                      className="column img"
-                      onClick={() => {
-                        imagePreviewer(props.data.thumbnailImage2);
-                      }}
-                      src={props.data.thumbnailImage2 || holderImage}
-                    />
-                  ) : (
-                    <img
-                      className="column img"
-                      src={props.data.thumbnailImage2 || holderImage}
-                    />
-                  )) : props.data.videoURL2 ?(
-                      props.data.enableFullScreen2 ? (
-                        <video className="fullScreenVideo column img" width="350" controls>
-                          <source src={props.data.videoURL2} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video className="column img" width="350" controls>
-                          <source src={props.data.videoURL2} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      )
+                      <img
+                        className="column img"
+                        onClick={() => {
+                          imagePreviewer(props.data.thumbnailImage2);
+                        }}
+                        src={props.data.thumbnailImage2 || holderImage}
+                      />
                     ) : (
-                      <img className="img column" src={holderVideo} alt="videoHolder" />
-                    )}
+                      <img
+                        className="column img"
+                        src={props.data.thumbnailImage2 || holderImage}
+                      />
+                    )) : (
+                    <div className="column img">
+                      <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay2} enableFullScreen={props.data.enableFullScreen2} url={props.data.videoURL2} index={2} />
+                    </div>
+                  )}
 
 
-             
+
                 </div>
                 <div className="mdc-layout-grid__cell--span-8 row">
-                {props.data.mediaType3 != "video" ? (
-                  enableFullScreen3 && props.data.thumbnailImage3 != null ? (
-                    <img
-                      className="column img"
-                      onClick={() => {
-                        imagePreviewer(props.data.thumbnailImage3);
-                      }}
-                      src={props.data.thumbnailImage3 || holderImage}
-                    />
-                  ) : (
-                    <img
-                      className="column img"
-                      src={props.data.thumbnailImage3 || holderImage}
-                    />
-                  )) : props.data.videoURL3 ? (
-                      props.data.enableFullScreen3 ? (
-                        <video className="fullScreenVideo column img" width="350" controls>
-                          <source src={props.data.videoURL3} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video className="column img" width="350" controls>
-                          <source src={props.data.videoURL3} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      )
+                  {props.data.mediaType3 != "video" ? (
+                    enableFullScreen3 && props.data.thumbnailImage3 != null ? (
+                      <img
+                        className="column img"
+                        onClick={() => {
+                          imagePreviewer(props.data.thumbnailImage3);
+                        }}
+                        src={props.data.thumbnailImage3 || holderImage}
+                      />
                     ) : (
-                      <img className="img column" src={holderVideo} alt="videoHolder" />
-                    )}
+                      <img
+                        className="column img"
+                        src={props.data.thumbnailImage3 || holderImage}
+                      />
+                    )) : (
+                    <div className="column img">
+                      <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay3} enableFullScreen={props.data.enableFullScreen3} url={props.data.videoURL3} index={3} />
+                    </div>
+                  )}
                   <p className="column bodyContent mdc-card">
-                    {props.data.BodyContent3 || "body Content"}
+                    {props.data.BodyContent3 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
                   </p>
                 </div>
               </div>

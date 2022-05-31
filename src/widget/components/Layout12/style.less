@@ -2,9 +2,9 @@
   position: absolute;
   min-height: 36.688rem;
   height: 100%;
-  left:0rem;
+  left: 0rem;
   width: 100%;
-  top:0rem;
+  top: 0rem;
 
   .headerContainer {
     position: relative;
@@ -13,8 +13,8 @@
       opacity: 0.9;
       position: absolute;
       bottom: 0;
-      left: 0.5rem;
-      right: 0.5rem;
+      left: 1rem;
+      right: 1rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -22,25 +22,43 @@
 
       .title {
         font-weight: 600;
-        font-size: 1rem;
-        line-height: 1.25rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
         letter-spacing: 0.031rem;
+
+        overflow: hidden;
+        word-break: break-all;
+        white-space: normal;
+        text-overflow: ellipsis;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical
       }
 
       .subtitle {
         font-weight: 500;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+
+        overflow: hidden;
+        word-break: break-all;
+        white-space: normal;
+        text-overflow: ellipsis;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical
       }
     }
 
     .imageContainer {
-      height: 12.688rem;
+      height: 17rem;
       overflow: hidden;
 
-      img, video {
-        width: 22.5rem;
-        height: 12.688rem;
+      img,
+      video {
+        width: 100%;
         display: block;
         margin: auto;
       }
@@ -52,11 +70,15 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1.125rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    min-height: 100%;
+    overflow-y: auto;
+    max-height: 65rem;
 
     #my_container_div {
       word-break: break-word;
+      // font-size: 1.25rem;
     }
   }
 }

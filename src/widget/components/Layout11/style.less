@@ -14,39 +14,51 @@
       opacity: 0.9;
       position: absolute;
       bottom: 0;
-      left: 0.5rem;
-      right: 0.5rem;
+      left: 1rem;
+      right: 1rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       padding: 0.75rem 0.75rem;
-      // gap: 1rem;
-      // background: rgba(0, 0, 0, 0.9);
 
       .title {
         font-weight: 600;
-        font-size: 1rem;
-        line-height: 1.25rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
         letter-spacing: 0.031rem;
-        // color: #FFFFFF;
+
+        overflow: hidden;
+        word-break: break-all;
+        white-space: normal;
+        text-overflow: ellipsis;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical
       }
 
       .subtitle {
         font-weight: 500;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-        // color: #FFFFFF;
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+
+        overflow: hidden;
+        word-break: break-all;
+        white-space: normal;
+        text-overflow: ellipsis;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical
       }
     }
 
     .imageContainer {
-      // width: 22.5rem;
-      height: 12.688rem;
+      height: 17rem;
       overflow: hidden;
-      // background-color:#d2cfcf;
+
       img, video {
-        width: 22.5rem;
-        height: 12.688rem;
+        width: 100%;
         display: block;
         margin: auto;
       }
@@ -58,8 +70,8 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1.125rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
     // color: #FFFFFF;
 
     p {
@@ -75,8 +87,8 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
     text-transform: uppercase;
     // color: #FFFFFF;
   }

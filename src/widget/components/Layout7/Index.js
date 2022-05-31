@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 
 
 function Index(props) {
@@ -26,6 +27,7 @@ function Index(props) {
           ).style.backgroundImage = `url(${holderImage})`);
     }
     document.getElementById("container").style.backgroundPosition = "center";
+    document.getElementById("container").style.backgroundSize="cover";
 
     setEnableFullScreen1(props.data.enableFullScreen1);
     setEnableFullScreen2(props.data.enableFullScreen2);
@@ -67,23 +69,11 @@ function Index(props) {
                 ) : (
                   <img src={props.data.thumbnailImage2 || holderImage} />
                 )
-              ) : props.data.videoURL2 ?(
-                      props.data.enableFullScreen2 ? (
-                        <video className="fullScreenVideo" width="350" controls>
-                          <source src={props.data.videoURL2} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video width="350" controls>
-                          <source src={props.data.videoURL2} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      )
               ) : (
-                <img src={holderVideo} alt="videoHolder" />
+                <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen2} url={props.data.videoURL2} index={1} />
               )}
 
-              <p>
+              <p className="bodyContent mdc-card">
                 {props.data.TopBodyContent ||
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
               </p>
@@ -99,20 +89,8 @@ function Index(props) {
                 ) : (
                   <img src={props.data.thumbnailImage3 || holderImage} />
                 )
-              ) : props.data.videoURL3 ? (
-                      props.data.enableFullScreen3 ? (
-                        <video className="fullScreenVideo" width="350" controls>
-                          <source src={props.data.videoURL3} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video width="350" controls>
-                          <source src={props.data.videoURL3} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      )
               ) : (
-                <img src={holderVideo} alt="videoHolder" />
+                <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay2} enableFullScreen={props.data.enableFullScreen3} url={props.data.videoURL3} index={2} />
               )}
 
               <p className="bodyContent mdc-card">

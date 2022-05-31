@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "../../../../../../styles/media/holder-16x9.png"
-  );
-  const [holderVideo, setHolderVideo] = useState(
-    "./shared/img/video_player_placeholder.gif"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
@@ -18,17 +16,14 @@ function Index(props) {
       props.setTextStyle();
     }
 
-    document.body.style.background = "#d2cfcf";
+    // document.body.style.background = "#d2cfcf";
     document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundSize="cover";
 
     if (props.data.thumbnailImage) {
-      document.getElementById(
-        "mainImage-container"
-      ).style.backgroundImage = `url(${props.data.thumbnailImage})`;
+      document.body.style.backgroundImage = `url(${props.data.thumbnailImage})`;
     } else {
-      document.getElementById(
-        "mainImage-container"
-      ).style.background = `#d2cfcf`;
+      document.body.style.background = `#d2cfcf`;
     }
 
     document.getElementById("mainImage-container").style.backgroundPosition = "center";
@@ -54,20 +49,9 @@ function Index(props) {
                 />
               ) : (
                 <img src={props.data.thumbnailImage2 || holderImage} />
-              )): props.data.videoURL ?  (
-                      props.data.enableFullScreen2 ? (
-                        <video className="fullScreenVideo column img" width="350" controls>
-                          <source src={props.data.videoURL} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video className="column img" width="350" controls>
-                          <source src={props.data.videoURL} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>)
-                    ) : (
-                      <img className="img column" src={holderVideo} alt="videoHolder" />
-                    )}
+              )): (
+                <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
+              )}
             </div>
 
             <div
@@ -98,7 +82,7 @@ function Index(props) {
                 <p className="title">{props.data.title || "Title"}</p>
                 <p className="subtitle">{props.data.subTitle || "subT itle"}</p>
                 <p className="bodyContent">
-                  {props.data.bodyContent || "Body Content"}
+                  {props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
                 </p>
               </div>
             </div>

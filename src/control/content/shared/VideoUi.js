@@ -6,6 +6,8 @@ function VideoUi(props) {
         let progressPercentage = document.getElementById(`progressPercentage${props.index}`);
         let progressContainer = document.getElementById(`progress${props.index}`);
 
+        progressPercentage.style.background = "blue";
+
       buildfire.services.publicFiles.showDialog(
         { filter: ["video/mp4"], allowMultipleFilesUpload: true },
         (onProgress) => {

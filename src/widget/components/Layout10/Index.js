@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
+import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
-  const [holderVideo, setHolderVideo] = useState("./shared/img/video_player_placeholder.gif");
-
+  
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     document.getElementById(
@@ -51,22 +51,7 @@ function Index(props) {
                       <img src={props.data.thumbnailImage2 || holderImage} />
                     )
                   ) : (
-                    props.data.videoURL != "" ? (
-                      props.data.enableFullScreen2 ? (
-                        <video className="fullScreenVideo" width="350" controls>
-                          <source src={props.data.videoURL} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      ) : (
-                        <video width="350" controls>
-                          <source src={props.data.videoURL} type="video/mp4" />
-                          Your browser does not support videos.
-                        </video>
-                      )
-
-                    ) : (
-                      <img src={holderVideo} />
-                    )
+                    <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
                   )
               }
             </div>
@@ -74,8 +59,8 @@ function Index(props) {
               <div className="frontInfo mdc-card ">
                 <p className="title">{props.data.title || "Title"}</p>
                 <p className="subtitle">{props.data.subTitle || "Sub Title"}</p>
-                <p className="bodyContent">{props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
-                <p className="bodyContent">{props.data.bodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
+                <p className="bodyContent">{props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan cursus nibh. Phasellus vulputate luctus mauris, sit amet rutrum sapien pulvinar id. Donec id tortor ut neque semper convallis. Nullam non libero lacinia ipsum dignissim ornare. Aliquam at nisi nec est aliquam volutpat et non nulla. Proin imperdiet ullamcorper neque, eget commodo turpis placerat ac. "}</p>
+                <p className="bodyContent">{props.data.bodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan cursus nibh. Phasellus vulputate luctus mauris, sit amet rutrum sapien pulvinar id. Donec id tortor ut neque semper convallis. Nullam non libero lacinia ipsum dignissim ornare. Aliquam at nisi nec est aliquam volutpat et non nulla. Proin imperdiet ullamcorper neque, eget commodo turpis placerat ac. "}</p>
               </div>
             </div>
           </div>
