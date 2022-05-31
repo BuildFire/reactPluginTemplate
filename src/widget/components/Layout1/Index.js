@@ -9,7 +9,8 @@ function Index(props) {
     "./shared/img/video_player_placeholder.gif"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
-  const { imagePreviewer } = useHelper();
+  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
+  const { imagePreviewer, fullScreenVideoHandler } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
 
@@ -17,6 +18,13 @@ function Index(props) {
       console.log("my theme in layout 1 -=>", props.themeState);
       props.setTextStyle();
     }
+    fullScreenVideoHandler(
+      props.data,
+      props.data.enableFullScreen,
+      props.data.BackgroundmediaType,
+      "topVideo"
+    );
+    setEnableAutoPlay1(props.data.enableAutoPlay1);
   }, [props]);
 
   return (
@@ -37,15 +45,20 @@ function Index(props) {
                   <img src={props.data.thumbnailImage || holderImage} />
                 )}
               </div>
-            ) : props.data.videoURL ? (
-              <div className="video-container">
-                <video autoPlay loop="true" muted controls>
-                  <source src={props.data.videoURL} type="video/mp4" />
-                </video>
-              </div>
+            ) : props.data.videoURL != "" ? (
+              <video
+                loop
+                muted
+                controls
+                autoPlay={enableAutoPlay1}
+                id="topVideo"
+              >
+                <source src={props.data.videoURL} type="video/mp4" />
+                Your browser does not support videos.
+              </video>
             ) : (
               <div className="topImage-container">
-              <img src={holderVideo} />
+                <img src={holderVideo} />
               </div>
             )}
             <div className="info-container">
