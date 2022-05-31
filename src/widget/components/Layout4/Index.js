@@ -7,10 +7,12 @@ function Index(props) {
   );
   const [holderVideo, setHolderVideo] = useState(
     "./shared/img/video_player_placeholder.gif"
-  )
+  );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableMainFullScreen, setEnableMainFullScreen] = useState(false);
-  const { imagePreviewer } = useHelper();
+  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
+  const [enableAutoPlay2, setEnableAutoPlay2] = useState(false);
+  const { imagePreviewer, fullScreenVideoHandler } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
@@ -19,7 +21,22 @@ function Index(props) {
       console.log("my theme in layout 4 -=>", props.themeState);
       props.setTextStyle();
     }
+    fullScreenVideoHandler(
+      props.data,
+      props.data.enableFullScreen,
+      props.data.topMediaType,
+      "topVideo"
+    );
+    fullScreenVideoHandler(
+      props.data,
+      props.data.enableMainFullScreen,
+      props.data.mainMediaType,
+      "mainVideo"
+    );
+    setEnableAutoPlay1(props.data.enableAutoPlay1);
+    setEnableAutoPlay2(props.data.enableAutoPlay2);
   }, [props]);
+
   return (
     <>
       <div className="mdc-layout-grid layout-4-container">
@@ -40,7 +57,13 @@ function Index(props) {
               </div>
             ) : props.data.videoURL ? (
               <div className="video-container">
-                <video autoPlay loop muted>
+                <video
+                  id="topVideo"
+                  loop
+                  muted
+                  controls
+                  autoPlay={enableAutoPlay1}
+                >
                   <source src={props.data.videoURL} type="video/mp4" />
                 </video>
               </div>
@@ -64,33 +87,55 @@ function Index(props) {
 
             {props.data.mainMediaType !== "video" ? (
               <div className="mainImage-container">
-              {enableMainFullScreen && props.data.thumbnailImage2 != null ? (
-                <img
-                  onClick={() => {
-                    imagePreviewer(props.data.thumbnailImage2);
-                  }}
-                  src={props.data.thumbnailImage2 || holderImage}
-                />
-              ) : (
-                <img src={props.data.thumbnailImage2 || holderImage} />
-              )}
-              <div className="mainBody-container">
-                <div className="mdc-card">
-                  <p className="bodyContent">
-                    {props.data.mainBodyContent || "Main Body Content"}
-                  </p>
+                {enableMainFullScreen && props.data.thumbnailImage2 != null ? (
+                  <img
+                    onClick={() => {
+                      imagePreviewer(props.data.thumbnailImage2);
+                    }}
+                    src={props.data.thumbnailImage2 || holderImage}
+                  />
+                ) : (
+                  <img src={props.data.thumbnailImage2 || holderImage} />
+                )}
+                <div className="mainBody-container">
+                  <div className="mdc-card">
+                    <p className="bodyContent">
+                      {props.data.mainBodyContent || "Main Body Content"}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
             ) : props.data.videoURL2 ? (
-              <div className="video-container2">
-                <video autoPlay loop muted>
-                  <source src={props.data.videoURL2} type="video/mp4" />
-                </video>
-              </div>
+              <>
+                <div className="video-container2">
+                  <video
+                    loop
+                    muted
+                    controls
+                    autoPlay={enableAutoPlay2}
+                    id="mainVideo"
+                  >
+                    <source src={props.data.videoURL2} type="video/mp4" />
+                  </video>
+                  <div className="mainBody-container">
+                    <div className="mdc-card">
+                      <p className="bodyContent">
+                        {props.data.mainBodyContent || "Main Body Content"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </>
             ) : (
               <div className="mainImage-container">
                 <img src={holderVideo} />
+                <div className="mainBody-container">
+                  <div className="mdc-card">
+                    <p className="bodyContent">
+                      {props.data.mainBodyContent || "Main Body Content"}
+                    </p>
+                  </div>
+                </div>
               </div>
             )}
           </div>

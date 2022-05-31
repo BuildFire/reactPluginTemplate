@@ -7,7 +7,8 @@ function Index(props) {
   );
   const [holderVideo, setHolderVideo] = useState(
     "./shared/img/video_player_placeholder.gif"
-  )
+  );
+  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
   const [carouselImages, setCarouselImages] = useState([
     {
       title: "buildfire",
@@ -24,26 +25,37 @@ function Index(props) {
   ]);
   const [carouselView, setCarouselView] = useState(null);
   const [enableFullScreen, setEnableFullScreen] = useState(false);
-  const { imagePreviewer } = useHelper();
+  const { imagePreviewer, fullScreenVideoHandler } = useHelper();
   useEffect(() => {
     if (props.data.allImages) {
       console.log("from console", props.data.allImages);
-      // let view = new buildfire.components.carousel.view("#carousel",props.data.carouselImages);
       carouselView.loadItems(props.data.allImages);
     }
-    // setCarouselView(view)
-    // setCarouselImages(props.data.carouselImages);
-
-    // setCarouselImages(props.carouselImages || [])
-
+    if (props.data.allImages && props.data.allImages.length > 0) {
+      document.getElementById(
+        "ImageCarousel-container"
+      ).style.backgroundImage = `none`;
+    } else {
+      document.getElementById(
+        "ImageCarousel-container"
+      ).style.backgroundImage = `url(${holderImage})`;
+      document.getElementById("ImageCarousel-container").style.backgroundSize =
+        "cover";
+    }
     setEnableFullScreen(props.data.enableFullScreen);
 
-    if(props.themeState.colors){
-      console.log('my theme in layout 1 -=>', props.themeState);
+    if (props.themeState.colors) {
+      console.log("my theme in layout 1 -=>", props.themeState);
       props.setTextStyle();
     }
-    document.getElementById("ImageCarousel-container").style.backgroundImage = `url(${holderImage})`;
-    document.getElementById("ImageCarousel-container").style.backgroundSize = "cover";
+
+    fullScreenVideoHandler(
+      props.data,
+      props.data.enableFullScreen,
+      props.data.topMediaType,
+      "topVideo"
+    );
+    setEnableAutoPlay1(props.data.enableAutoPlay1);
   }, [props]);
 
   useEffect(() => {
@@ -56,55 +68,62 @@ function Index(props) {
       <div className="mdc-layout-grid layout-6-container">
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
-          {props.data.topMediaType !== "video" ? (
+            {props.data.topMediaType !== "video" ? (
               <div className="topImage-container">
-              {enableFullScreen && props.data.thumbnailImage != null ? (
-                <img
-                  onClick={() => {
-                    imagePreviewer(props.data.thumbnailImage);
-                  }}
-                  src={props.data.thumbnailImage || holderImage}
-                />
-              ) : (
-                <img src={props.data.thumbnailImage || holderImage} />
-              )}
-              <div className="info-container">
-                <div className="mdc-card">
-                  <p className="bodyContent">
-                    {props.data.bodyContent || "Body Content"}
-                  </p>
+                {enableFullScreen && props.data.thumbnailImage != null ? (
+                  <img
+                    onClick={() => {
+                      imagePreviewer(props.data.thumbnailImage);
+                    }}
+                    src={props.data.thumbnailImage || holderImage}
+                  />
+                ) : (
+                  <img src={props.data.thumbnailImage || holderImage} />
+                )}
+                <div className="info-container">
+                  <div className="mdc-card">
+                    <p className="bodyContent">
+                      {props.data.bodyContent || "Body Content"}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
             ) : props.data.videoURL ? (
               <div className="video-container">
-                <video autoPlay loop muted>
+                <video
+                  loop
+                  muted
+                  controls
+                  autoPlay={enableAutoPlay1}
+                  id="topVideo"
+                >
                   <source src={props.data.videoURL} type="video/mp4" />
                 </video>
                 <div className="info-container">
-                <div className="mdc-card">
-                  <p className="bodyContent">
-                    {props.data.bodyContent || "Body Content"}
-                  </p>
+                  <div className="mdc-card">
+                    <p className="bodyContent">
+                      {props.data.bodyContent || "Body Content"}
+                    </p>
+                  </div>
                 </div>
               </div>
-              </div>
-              
             ) : (
-              <div className="mainImage-container">
+              <div className="topImage-container">
                 <img src={holderVideo} />
                 <div className="info-container">
-                <div className="mdc-card">
-                  <p className="bodyContent">
-                    {props.data.bodyContent || "Body Content"}
-                  </p>
+                  <div className="mdc-card">
+                    <p className="bodyContent">
+                      {props.data.bodyContent || "Body Content"}
+                    </p>
+                  </div>
                 </div>
               </div>
-              </div>
             )}
-            
 
-            <div id="ImageCarousel-container" className="ImageCarousel-container">
+            <div
+              id="ImageCarousel-container"
+              className="ImageCarousel-container"
+            >
               <div id="carousel"></div>
             </div>
           </div>
