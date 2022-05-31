@@ -54,7 +54,7 @@ function Index(props) {
                       )
                     ) : (
                       <div className="column img">
-                        <VideoUI enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL1} index={1} />
+                        <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL1} index={1} />
 
                       </div>
                     )}
@@ -84,7 +84,7 @@ function Index(props) {
                       />
                     )) : (
                     <div className="column img">
-                      <VideoUI enableAutoPlay={props.data.enableAutoPlay2} enableFullScreen={props.data.enableFullScreen2} url={props.data.videoURL2} index={2} />
+                      <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay2} enableFullScreen={props.data.enableFullScreen2} url={props.data.videoURL2} index={2} />
                     </div>
                   )}
 
@@ -108,7 +108,7 @@ function Index(props) {
                       />
                     )) : (
                     <div className="column img">
-                      <VideoUI enableAutoPlay={props.data.enableAutoPlay3} enableFullScreen={props.data.enableFullScreen3} url={props.data.videoURL3} index={3} />
+                      <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay3} enableFullScreen={props.data.enableFullScreen3} url={props.data.videoURL3} index={3} />
                     </div>
                   )}
                   <p className="column bodyContent mdc-card">

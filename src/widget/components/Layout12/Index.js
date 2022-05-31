@@ -39,7 +39,7 @@ function Index(props) {
                           <img src={props.data.thumbnailImage || holderImage} />
                         )
                       ) : (
-                        <VideoUI enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
+                        <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
                       )}
                 </div>
                 <div className="titleContainer mdc-card">
