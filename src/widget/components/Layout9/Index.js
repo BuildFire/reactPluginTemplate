@@ -18,17 +18,14 @@ function Index(props) {
       props.setTextStyle();
     }
 
-    document.body.style.background = "#d2cfcf";
+    // document.body.style.background = "#d2cfcf";
     document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundSize="cover";
 
     if (props.data.thumbnailImage) {
-      document.getElementById(
-        "mainImage-container"
-      ).style.backgroundImage = `url(${props.data.thumbnailImage})`;
+      document.body.style.backgroundImage = `url(${props.data.thumbnailImage})`;
     } else {
-      document.getElementById(
-        "mainImage-container"
-      ).style.background = `#d2cfcf`;
+      document.body.style.background = `#d2cfcf`;
     }
 
     document.getElementById("mainImage-container").style.backgroundPosition = "center";
@@ -98,7 +95,7 @@ function Index(props) {
                 <p className="title">{props.data.title || "Title"}</p>
                 <p className="subtitle">{props.data.subTitle || "subT itle"}</p>
                 <p className="bodyContent">
-                  {props.data.bodyContent || "Body Content"}
+                  {props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
                 </p>
               </div>
             </div>
