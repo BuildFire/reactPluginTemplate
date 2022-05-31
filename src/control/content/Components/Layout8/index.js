@@ -157,7 +157,6 @@ function index(props) {
       handleChange(e);
     }
     if (indexOfMedia == 2) {
-      console.log(e.target.value, "kkkkkkkkkkkkk");
       setUploadType2(e.target.value);
       handleChange(e);
     }
@@ -230,6 +229,7 @@ function index(props) {
           <div className="col-md-9">
             <textarea
               name="BodyContent"
+              maxLength={140}
               placeholder="Body content 1"
               onChange={handleChange}
               className="form-control bodyContent"
@@ -296,6 +296,7 @@ function index(props) {
           <div className="col-md-9">
             <textarea
               name="BodyContent2"
+              maxLength={140}
               placeholder="Body content 2"
               onChange={handleChange}
               className="form-control bodyContent"
@@ -362,6 +363,7 @@ function index(props) {
           <div className="col-md-9">
             <textarea
               name="BodyContent3"
+              maxLength={140}
               onChange={handleChange}
               placeholder="Body content 3"
               className="form-control bodyContent"

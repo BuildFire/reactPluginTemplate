@@ -6,10 +6,10 @@
 
   .mdc-layout-grid__inner {
     #topImage-container {
-
-      img,video {
-        width: 21.5rem;
-        height: 12.125rem;
+      img,
+      video {
+        width: 33.5rem;
+        height: 20.125rem;
         flex: none;
         order: 0;
         align-self: stretch;
@@ -19,7 +19,7 @@
       }
 
       padding-top: 1.063rem;
-      padding-bottom: 5.063rem;
+      padding-bottom: 6.063rem;
     }
 
     .info-container {
@@ -28,45 +28,62 @@
       width: 100%;
 
       .frontInfo {
-        margin-left:0.5rem;
-        margin-right:0.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
         position: absolute;
-        top: -4.375rem;
+        top: -4.75rem;
         left: 0;
         right: 0;
         bottom: 0;
-        padding:0.5rem;
+        padding: 0.5rem;
         height: fit-content;
         min-height: 5rem;
 
         .bodyContent {
-          font-family: 'Roboto';
+          font-family: "Roboto";
           font-style: normal;
           font-weight: 400;
-          font-size: 0.875rem;
-          line-height: 1.125rem;
-          margin-top:0.5rem;
-          margin-bottom:0.5rem;
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
+         
         }
 
         .subtitle {
-          width: 20.5rem;
-          font-family: 'Roboto';
+          font-family: "Roboto";
           font-style: normal;
           font-weight: 500;
-          font-size: 0.875rem;
-          line-height: 1.25rem;
+          font-size: 1.25rem;
+          line-height: 1.5rem;
           align-self: stretch;
           margin-bottom: 1.25rem;
+          overflow: hidden;
+          word-break: break-all;
+          white-space: normal;
+          text-overflow: ellipsis;
+          margin-bottom: 0;
+          
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
 
         .title {
-          width: 20.5rem;
           font-style: normal;
           font-weight: 600;
-          font-size: 1rem;
-          line-height: 1.25rem;
+          font-size: 1.5rem;
+          line-height: 2.7rem;
           letter-spacing: 0.031rem;
+          overflow: hidden;
+          word-break: break-all;
+          white-space: normal;
+          text-overflow: ellipsis;
+          margin-bottom: 0;
+          
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
         }
       }
     }

@@ -3,7 +3,7 @@
 
   .Maincontainer {
     position: absolute;
-    left:0rem;
+    left: 0rem;
     top: 0;
     padding: 0rem;
     padding-top: 1rem;
@@ -19,20 +19,22 @@
           width: fit-content;
 
           .img {
-            width:9.375rem;
-            height:9.375rem;
+            width: 15rem;
+            height: 15rem;
             align-self: stretch;
             overflow: hidden;
             flex-grow: 1;
-          }      
+          }
 
           p {
-            width:9.375rem;
-            height:9.375rem;
-            background-color: black;
-            font-weight: 600;
-            font-size: 0.875rem;
+            width: 15rem;
+            height: 15rem;
+            // background-color: black;
+            font-weight: bold;
+            font-size: 1.2rem;
             color: #ffffff;
+
+            line-height: 1.5rem;
             flex: none;
             order: 0;
             align-self: stretch;
@@ -42,7 +44,13 @@
             white-space: normal;
             text-overflow: ellipsis;
             margin-bottom: 0;
-            padding:0.5rem;
+            padding: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+          }
+          .mid-text {
+            text-align: right;
           }
 
           .column {
@@ -55,7 +63,7 @@
             content: "";
             display: table;
             clear: both;
-            margin:0rem;
+            margin: 0rem;
           }
         }
 
@@ -67,8 +75,8 @@
           order: 0;
           align-self: stretch;
           flex-grow: 1;
-          margin-top:0.5rem;
-          height: 10.875rem;
+          margin-top: 0.5rem;
+          height: 11.2rem;
 
           .buttomImg {
             width: 100%;
@@ -77,6 +85,4 @@
       }
     }
   }
-
-
 }

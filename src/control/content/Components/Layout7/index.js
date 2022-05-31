@@ -169,7 +169,7 @@ function index(props) {
             <label className="lable">Top Body content</label>
           </div>
           <div className="col-md-9">
-            <textarea placeholder="Top Body content" name="TopBodyContent" onChange={handleChange} className="form-control bodyContent"></textarea>
+            <textarea placeholder="Top Body content" maxLength={140} name="TopBodyContent" onChange={handleChange} className="form-control bodyContent"></textarea>
           </div>
         </div>
         <div className="row">
@@ -211,7 +211,7 @@ function index(props) {
             <label className="lable">Main Body content</label>
           </div>
           <div className="col-md-9">
-            <textarea placeholder="Main Body content" name="MainBodyContent" onChange={handleChange} className="form-control bodyContent"></textarea>
+            <textarea placeholder="Main Body content"  maxLength={140} name="MainBodyContent" onChange={handleChange} className="form-control bodyContent"></textarea>
           </div>
         </div>
 

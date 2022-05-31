@@ -26,6 +26,7 @@ function Index(props) {
           ).style.backgroundImage = `url(${holderImage})`);
     }
     document.getElementById("container").style.backgroundPosition = "center";
+    document.getElementById("container").style.backgroundSize="cover";
 
     setEnableFullScreen1(props.data.enableFullScreen1);
     setEnableFullScreen2(props.data.enableFullScreen2);
@@ -83,7 +84,7 @@ function Index(props) {
                 <img src={holderVideo} alt="videoHolder" />
               )}
 
-              <p>
+              <p className="bodyContent mdc-card">
                 {props.data.TopBodyContent ||
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
               </p>
