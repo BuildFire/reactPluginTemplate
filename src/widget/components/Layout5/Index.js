@@ -10,7 +10,9 @@ function Index(props) {
   )
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableMainFullScreen, setEnableMainFullScreen] = useState(false);
-  const { imagePreviewer } = useHelper();
+  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
+  const [enableAutoPlay2, setEnableAutoPlay2] = useState(false);
+  const { imagePreviewer,fullScreenVideoHandler } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
@@ -19,6 +21,20 @@ function Index(props) {
       console.log('my theme in layout 1 -=>', props.themeState);
       props.setTextStyle();
     }
+    fullScreenVideoHandler(
+      props.data,
+      props.data.enableFullScreen,
+      props.data.topMediaType,
+      "topVideo"
+    );
+    fullScreenVideoHandler(
+      props.data,
+      props.data.enableMainFullScreen,
+      props.data.mainMediaType,
+      "mainVideo"
+    );
+    setEnableAutoPlay1(props.data.enableAutoPlay1);
+    setEnableAutoPlay2(props.data.enableAutoPlay2);
   }, [props]);
   return (
     <>
@@ -40,7 +56,11 @@ function Index(props) {
               </div>
             ) : props.data.videoURL ? (
               <div className="video-container">
-                <video autoPlay loop muted>
+                <video id="topVideo"
+                  loop
+                  muted
+                  controls
+                  autoPlay={enableAutoPlay1}>
                   <source src={props.data.videoURL} type="video/mp4" />
                 </video>
               </div>
@@ -71,17 +91,14 @@ function Index(props) {
               ) : (
                 <img src={props.data.thumbnailImage2 || holderImage} />
               )}
-              <div className="mainBody-container">
-                <div className="mdc-card">
-                  <p className="bodyContent">
-                    {props.data.mainBodyContent || "Main Body Content"}
-                  </p>
-                </div>
-              </div>
             </div>
             ) : props.data.videoURL2 ? (
               <div className="video-container2">
-                <video autoPlay loop muted>
+                <video loop
+                    muted
+                    controls
+                    autoPlay={enableAutoPlay2}
+                    id="mainVideo">
                   <source src={props.data.videoURL2} type="video/mp4" />
                 </video>
               </div>
