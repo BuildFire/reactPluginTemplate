@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
+import ThumbnailUI from "../../shared/ThumbnailUI";
 import VideoUi from "../../shared/VideoUi";
 import "./style.less";
 function index(props) {
@@ -9,56 +10,6 @@ function index(props) {
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
-
-  useEffect(() => {
-    //  set up thumbnail -->
-    let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
-      imageUrl: "",
-      title: " ",
-      dimensionsLabel: "Recommended: 1200 x 675",
-      multiSelection: false,
-    });
-
-    // thumbnail Change image -->
-    thumbnail.onChange = (imageUrl) => {
-      let croppedImage = buildfire.imageLib.cropImage(
-        imageUrl,
-        { size: "full_width", aspect: "16:9" }
-      );
-      setThumbnailImage(croppedImage);
-    };
-    // thumbnail Delete Image -->
-    thumbnail.onDelete = (imageUrl) => {
-      setThumbnailImage(null);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (uploadType == "image") {
-      let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
-      if(thumbnailImage2){
-        thumbnail.loadbackground(thumbnailImage2);
-      }
-      // thumbnail Change image -->
-      thumbnail2.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(
-          imageUrl,
-          { size: "full_width", aspect: "16:9" }
-        );
-        setThumbnailImage2(croppedImage);
-      };
-      // thumbnail Delete Image -->
-      thumbnail2.onDelete = (imageUrl) => {
-        
-        setThumbnailImage2(null);
-      };
-    }
-  }, [uploadType])
 
   useEffect(() => {
     handelImage({ thumbnailImage, thumbnailImage2, videoURL });
@@ -82,14 +33,14 @@ function index(props) {
       <form onSubmit={handleSubmit}>
         <h1>Page Details</h1>
         <div className="layOutContainer">
-          <div className="row">
-            <div className="col-md-3">
-              <label className="lable">Background Image</label>
-            </div>
-            <div className="col-md-9">
-              <div className="vertical-rectangle thumbnail"></div>
-            </div>
-          </div>
+        <ThumbnailUI
+              index={1}
+              recommended={"Recommended: 675 x 1200"}
+              thumbnailImage={thumbnailImage}
+              setThumbnailImage={setThumbnailImage}
+              imageTag={"Background Image"}
+              classList={"vertical-rectangle thumbnail"}
+            />
           <div className="row">
             <div className="col-md-3">
               <label className="lable">Enable Full Screen</label>
@@ -111,14 +62,16 @@ function index(props) {
           </div>
           {
             uploadType == "image" ?
-              (<div className="row">
-                <div className="col-md-3">
-                  <label className="lable">Main Image</label>
-                </div>
-                <div className="col-md-9">
-                  <div className="horizontal-rectangle thumbnail2"></div>
-                </div>
-              </div>) : (
+              (
+                <ThumbnailUI
+                index={2}
+                recommended={"Recommended: 1200 x 675"}
+                thumbnailImage={thumbnailImage2}
+                setThumbnailImage={setThumbnailImage2}
+                imageTag={"Main Image"}
+                classList={"horizontal-rectangle thumbnail2"}
+              />
+              ) : (
                 <>
                   <VideoUi setVideoURL={setVideoURL} videoURL={videoURL} handleChange={handleChange} index={1} />
                 </>

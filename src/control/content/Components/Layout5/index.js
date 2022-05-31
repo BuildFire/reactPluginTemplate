@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
+import ThumbnailUI from "../../shared/ThumbnailUI";
 import VideoUi from "../../shared/VideoUi";
 import "./style.less";
 function index(props) {
@@ -9,50 +10,7 @@ function index(props) {
   const [uploadType2, setUploadType2] = useState("image");
   const [videoURL, setVideoURL] = useState("");
   const [videoURL2, setVideoURL2] = useState("");
-  useEffect(() => {
-    if (uploadType == "image") {
-      let thumbnail = new buildfire.components.images.thumbnail(".thumbnail1", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
-
-      thumbnail.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
-          size: "full_width",
-          aspect: "16:9",
-        });
-        setThumbnailImage(croppedImage);
-      };
-      // thumbnail Delete Image -->
-      thumbnail.onDelete = (imageUrl) => {
-        setThumbnailImage(null);
-      };
-    }
-    if (uploadType2 === "image") {
-      let thumbnail2 = new buildfire.components.images.thumbnail(
-        ".thumbnail2",
-        {
-          imageUrl: "",
-          title: " ",
-          dimensionsLabel: "Recommended: 1200 x 1200",
-          multiSelection: false,
-        }
-      );
-      thumbnail2.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
-          size: "full_width",
-          aspect: "16:9",
-        });
-        setThumbnailImage2(croppedImage);
-      };
-      // thumbnail Delete Image -->
-      thumbnail2.onDelete = (imageUrl) => {
-        setThumbnailImage2(null);
-      };
-    }
-  }, [uploadType, uploadType2]);
+  
 
   useEffect(() => {
     handelImage({ thumbnailImage, thumbnailImage2, videoURL, videoURL2 });
@@ -105,14 +63,15 @@ function index(props) {
             </div>
           </div>
           {uploadType == "image" ? (
-            <div className="row">
-              <div className="col-md-3">
-                <label className="lable">Top Image</label>
-              </div>
-              <div className="col-md-9">
-                <div className="horizontal-rectangle thumbnail1"></div>
-              </div>
-            </div>
+            <ThumbnailUI
+            index={1}
+            recommended={"Recommended: 1200 x 675"}
+            thumbnailImage={thumbnailImage}
+            setThumbnailImage={setThumbnailImage}
+            imageTag={"Top Image"}
+            classList={"horizontal-rectangle thumbnail1"}
+          />
+            
           ) : (
             <>
               <VideoUi handleChange={handleChange} setVideoURL={setVideoURL} videoURL={videoURL} index={1}/>
@@ -200,14 +159,16 @@ function index(props) {
               <label className="lable">Video</label>
             </div>
           </div>
-          {uploadType2 == "image" ? (<div className="row">
-            <div className="col-md-3">
-              <label className="lable">Main Image</label>
-            </div>
-            <div className="col-md-9">
-              <div className="thumbnail2 sequare"></div>
-            </div>
-          </div>):(
+          {uploadType2 == "image" ? (
+            <ThumbnailUI
+            index={2}
+            recommended={"Recommended: 1200 x 1200"}
+            thumbnailImage={thumbnailImage2}
+            setThumbnailImage={setThumbnailImage2}
+            imageTag={"Main Image"}
+            classList={"thumbnail2 sequare"}
+          />
+          ):(
             <>
             <VideoUi handleChange={handleChange} setVideoURL={setVideoURL2} videoURL={videoURL2} index={2}/>
           </>
