@@ -9,9 +9,11 @@ function Index(props) {
     "./shared/img/video_player_placeholder.gif"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
+  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
+    setEnableAutoPlay1(props.data.enableAutoPlay1);
 
     if (props.themeState.colors) {
       console.log("my theme in layout 1 -=>", props.themeState);
@@ -37,13 +39,20 @@ function Index(props) {
                   <img src={props.data.thumbnailImage || holderImage} />
                 )}
               </div>
-            ) : props.data.videoURL ? (
-              <div className="video-container">
-                <video autoPlay loop="true" muted>
+            ) : props.data.videoURL != "" ? (
+              props.data.enableFullScreen ? (
+                <video className="fullScreenVideo" width="350" controls autoPlay={enableAutoPlay1} muted>
                   <source src={props.data.videoURL} type="video/mp4" />
+                  Your browser does not support videos.
                 </video>
-              </div>
-            ) : (
+              ) : (
+                <video width="350" controls autoPlay={enableAutoPlay1} muted>
+                  <source src={props.data.videoURL} type="video/mp4" />
+                  Your browser does not support videos.
+                </video>
+              )
+
+            )  : (
               <div className="topImage-container">
               <img src={holderVideo} />
               </div>

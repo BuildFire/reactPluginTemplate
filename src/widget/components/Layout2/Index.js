@@ -11,10 +11,12 @@ function Index(props) {
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableMainFullScreen, setEnableMainFullScreen] = useState(false);
   const [videoURL, setVideoURL] = useState("");
+  const [enableAutoPlay1, setEnableAutoPlay1] = useState(false);
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
+    setEnableAutoPlay1(props.data.enableAutoPlay1);
 
     if (props.themeState.colors) {
       console.log("my theme in layout 2 -=>", props.themeState);
@@ -53,12 +55,23 @@ function Index(props) {
                   <img src={props.data.thumbnailImage2 || holderImage} />
                 )}
               </div>
-            ) : props.data.videoURL ? (
-              <div className="video-container">
-                <video autoPlay loop muted>
+            ) : props.data.videoURL != "" ? (
+              props.data.enableMainFullScreen ? (
+                <div className="mainImage-container">
+                <video className="fullScreenVideo" controls autoPlay={enableAutoPlay1} muted>
                   <source src={props.data.videoURL} type="video/mp4" />
+                  Your browser does not support videos.
                 </video>
-              </div>
+                </div>
+              ) : (
+                <div className="mainImage-container">
+                <video controls autoPlay={enableAutoPlay1} muted>
+                  <source src={props.data.videoURL} type="video/mp4" />
+                  Your browser does not support videos.
+                </video>
+                </div>
+              )
+
             ) : (
               <div className="mainImage-container">
                 <img src={holderVideo} />
