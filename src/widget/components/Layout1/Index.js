@@ -39,7 +39,7 @@ function Index(props) {
               </div>
             ) : props.data.videoURL ? (
               <div className="video-container">
-                <video autoPlay loop="true" muted>
+                <video autoPlay loop="true" muted controls>
                   <source src={props.data.videoURL} type="video/mp4" />
                 </video>
               </div>
