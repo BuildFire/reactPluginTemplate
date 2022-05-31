@@ -5,58 +5,31 @@ import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 import VideoUi from "../../shared/VideoUi";
+import ThumbnailUI from "../../shared/ThumbnailUI";
+
 function index(props) {
-  
+
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
 
 
-  useEffect(() => {
-    if (uploadType == "image") {
-      //  set up thumbnail -->
-      let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
-      
-      if (thumbnailImage) {
-        thumbnail.loadbackground(thumbnailImage);
-      }
-      // thumbnail Change image -->
-      thumbnail.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(
-          imageUrl,
-          { size: "full_width", aspect: "16:9" }
-        );
-        setThumbnailImage(croppedImage);
-      };
-      // thumbnail Delete Image -->
-      thumbnail.onDelete = (imageUrl) => {
-        setThumbnailImage(null);
-      };
-    }
-  }, [uploadType])
 
   useEffect(() => {
-    handelImage({thumbnailImage, videoURL});
-  },[thumbnailImage, videoURL])
+    handelImage({ thumbnailImage, videoURL });
+  }, [thumbnailImage, videoURL])
   // submit form function 
   function submitForm(values) {
-    console.log(`Submit function in layout${props.selectedLayout+1} ->`, values);
+    console.log(`Submit function in layout${props.selectedLayout + 1} ->`, values);
     props.saveData(values);
   }
- 
-  
 
   const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
   }
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
@@ -75,16 +48,13 @@ function index(props) {
 
         {
           uploadType == "image" ?
-            (<div className="row">
-              <div className="col-md-3">
-                <label className="lable">Top Image</label>
-              </div>
-              <div className="col-md-9">
-                <div className="thumbnail horizontal-rectangle"></div>
-              </div>
-            </div>) : (
+            (
               <>
-                <VideoUi handleChange={handleChange} setVideoURL={setVideoURL} videoURL={videoURL} index={1}/>
+                <ThumbnailUI index={1} recommended={"Recommended: 1200 x 675"} thumbnailImage={thumbnailImage} setThumbnailImage={setThumbnailImage} imageTag={"Top Image"} classList={"thumbnail horizontal-rectangle"} />
+              </>
+            ) : (
+              <>
+                <VideoUi handleChange={handleChange} setVideoURL={setVideoURL} videoURL={videoURL} index={1} />
               </>
             )
         }

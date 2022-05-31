@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { hot } from "react-hot-loader/root";
-
 import useForm from "../../hooks/form";
-
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 import VideoUi from "../../shared/VideoUi";
+import ThumbnailUI from "../../shared/ThumbnailUI";
+
 function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
@@ -13,64 +13,11 @@ function index(props) {
   const [videoURL, setVideoURL] = useState("");
 
   useEffect(() => {
-    let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
-      imageUrl: "",
-      title: " ",
-      dimensionsLabel: "Recommended: 1200 x 960",
-      multiSelection: false,
-    });
-    thumbnail.onChange = (imageUrl) => {
-      let croppedImage = buildfire.imageLib.cropImage(
-        imageUrl,
-        { size: "full_width", aspect: "16:9" }
-      );
-      setThumbnailImage(croppedImage);
-    };
-    // thumbnail Delete Image -->
-    thumbnail.onDelete = (imageUrl) => {
-      setThumbnailImage(null);
-    };
 
-
-    console.log("hello", props.selectedLayout);
-  }, []);
-
-  useEffect(() => {
-
-    handelImage({thumbnailImage, thumbnailImage2, videoURL});
+    handelImage({ thumbnailImage, thumbnailImage2, videoURL });
 
   }, [thumbnailImage, thumbnailImage2, videoURL]);
-  // submit form function 
-  function submitForm(values) {
-    console.log(`Submit function in layout${props.selectedLayout + 1} ->`, values);
-    props.saveData(values);
-  }
-  useEffect(() => {
-    if (uploadType == "image") {
-      //  set up thumbnail -->
-      let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
-      thumbnail2.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(
-          imageUrl,
-          { size: "full_width", aspect: "16:9" }
-        );
-        setThumbnailImage2(croppedImage);
 
-            };
-
-      thumbnail2.onDelete = (imageUrl) => {
-        setThumbnailImage2(null);
-      };
-      if (thumbnailImage2) {
-        thumbnail2.loadbackground(thumbnailImage2);
-      }
-    }
-  }, [uploadType])
   // submit form function 
   function submitForm(values) {
     console.log(`Submit function in layout${props.selectedLayout + 1} ->`, values);
@@ -87,12 +34,15 @@ function index(props) {
     <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
       <div className="layOutContainer">
+        <>
+          <ThumbnailUI index={1} recommended={"Recommended: 1200 x 960"} thumbnailImage={thumbnailImage} setThumbnailImage={setThumbnailImage} imageTag={"Background Image"} classList={"thumbnail sequare"} />
+        </>
         <div className="row">
           <div className="col-md-3">
-            <label className="lable">Background Image</label>
+            <label className="lable"></label>
           </div>
           <div className="col-md-9">
-            <div className="thumbnail sequare"></div>
+            <div className=""></div>
           </div>
         </div>
         <div className="row">
@@ -132,19 +82,14 @@ function index(props) {
         </div>
         {
           uploadType == "image" ?
-            (<div className="row">
-
-              <div className="col-md-3">
-                <label className="lable">Top Image</label>
-              </div>
-              <div className="col-md-9">
-                <div className="thumbnail2 horizontal-rectangle"></div>
-              </div>
-            </div>
+            (
+              <>
+                <ThumbnailUI index={2} recommended={"Recommended: 1200 x 675"} thumbnailImage={thumbnailImage2} setThumbnailImage={setThumbnailImage2} imageTag={"Top Image"} classList={"thumbnail2 horizontal-rectangle"} />
+              </>
             ) : (
 
               <>
-                <VideoUi handleChange={handleChange} setVideoURL={setVideoURL} videoURL={videoURL} index={1}/>
+                <VideoUi handleChange={handleChange} setVideoURL={setVideoURL} videoURL={videoURL} index={1} />
               </>
             )
         }
