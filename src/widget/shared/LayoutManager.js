@@ -12,6 +12,7 @@ import Layout9 from "../components/Layout9/Index";
 import Layout10 from "../components/Layout10/Index";
 import Layout11 from "../components/Layout11/Index";
 import Layout12 from "../components/Layout12/Index";
+import Layout13 from "../components/external/Layout13";
 import Ribbon from "./Ui_components/Ribbon";
 import ProgressBar from "./Ui_components/ProgressBar";
 
@@ -202,6 +203,13 @@ function LayoutManager() {
         )}
         {selectedLayout === 12 && (
           <Layout12
+            themeState={themeState}
+            setTextStyle={setTextStyle}
+            data={data}
+          />
+        )}
+        {selectedLayout === "external1" && (
+          <Layout13
             themeState={themeState}
             setTextStyle={setTextStyle}
             data={data}

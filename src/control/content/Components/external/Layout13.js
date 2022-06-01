@@ -3,14 +3,14 @@ import useForm from "../../hooks/form";
 import VideoUi from "../../shared/VideoUi";
 import ThumbnailUI from "../../shared/ThumbnailUI";
 import "./style.less";
-
+import useMessages from "../../hooks/messages";
 function Layout13(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
   const [layoutsAdded, setLayoutsAdded] = useState([]);
 
-
+  const {handleSendMessage}= useMessages()
   useEffect(() => {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
@@ -18,11 +18,19 @@ function Layout13(props) {
   function submitForm(values) {
     console.log("forms values ->", values);
   }
+  handleSendMessage({selectedLayout:"external1"});
 
   const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
+  }
+  function changeLayOut(e) {
+    let oldSelect = document.getElementsByClassName("selected-left-btn");
+    for (let i = 0; i < oldSelect.length; i++) {
+      oldSelect[i].className = "btn left-btns";
+    }
+    e.target.classList.add("selected-left-btn");
   }
 
   return (
@@ -30,9 +38,9 @@ function Layout13(props) {
       <div className="layout-13-Container ">
         <div className="row">
           <div className="col-md-3">
-              <button type="button" class="btn left-btns">Content Pages</button>
-              <button type="button" class="btn left-btns">Recap & Portfolio</button>
-              <button type="button" class="btn left-btns">Details</button>
+            <button onClick={changeLayOut} type="button" class="btn left-btns selected-left-btn">Content Pages</button>
+            <button onClick={changeLayOut} type="button" class="btn left-btns">Recap & Portfolio</button>
+            <button onClick={changeLayOut} type="button" class="btn left-btns">Details</button>
           </div>
           <div className="col-md-9">
             <form onSubmit={handleSubmit}>
@@ -151,11 +159,19 @@ function Layout13(props) {
 
                 <div className="row">
                   <div className="col-md-3 ">
-                    drop down ---
+                    <div className="border-radius-four border-grey sortContainer ">
+                      <span>Sort:</span>
+                      <select name="cars" id="cars">
+                        <option value="Manual">Manual 0</option>
+                        <option value="Manual">Manual 1</option>
+                        <option value="Manual">Manual 2</option>
+                        <option value="Manual">Manual 3</option>
+                      </select>
+                    </div>
                   </div>
                   <div className="col-md-6"></div>
                   <div className="col-md-3">
-                    <button type="button" className="btn btn-success addLayOut-Btn" onClick={()=>props.setActiveComponent("header")} >
+                    <button type="button" className="btn btn-success addLayOut-Btn" onClick={() => props.setActiveComponent("header")} >
                       + Add Page
                     </button>
                   </div>
@@ -174,7 +190,7 @@ function Layout13(props) {
 
               </div>
               <div className="bottom-actions row">
-                <button type="button" className="btn btn-default" id="layoutBackBtn" onClick={()=>props.setActiveComponent("home")}>
+                <button type="button" className="btn btn-default" id="layoutBackBtn" onClick={() => props.setActiveComponent("home")}>
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-success" id="layoutSaveBtn">
