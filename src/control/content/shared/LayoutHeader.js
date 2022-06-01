@@ -17,16 +17,15 @@ import Layout12 from "../Components/Layout12";
 
 import "./style.less";
 import useMessages from "../hooks/messages";
-import Layout13 from "../Components/external/Layout13";
 
-function LayoutHeader() {
+function LayoutHeader(props) {
   const [images, setImages] = useState([]);
   const [selectedLayout, setSelectedLayout] = useState(0);
   const [savedData, setSavedData] = useState({});
 
   useEffect(() => {
     let array = [];
-    for (let i = 1; i <= 13; i++) {
+    for (let i = 1; i <= 12; i++) {
       array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
@@ -79,7 +78,6 @@ function LayoutHeader() {
           <div className="col-md-2">
             <div className="img_selected_container">
               <img
-              alt={`selected layout - ${selectedLayout + 1}`}
                 id="listLayout"
                 className="img_selected"
                 src={images[selectedLayout]}
@@ -92,7 +90,6 @@ function LayoutHeader() {
               {images.map((image, i) => {
                 return (
                   <img
-                    alt={`layout-${i+1}`}
                     key={i}
                     src={image}
                     onClick={() => {
@@ -106,60 +103,54 @@ function LayoutHeader() {
         </div>
       </div>
 
-      
-      
       <div>
         {
           selectedLayout === 0 &&
-          <Layout1 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout1 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 1 &&
-          <Layout2 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout2 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 2 &&
-          <Layout3 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout3 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 3 &&
-          <Layout4 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout4 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 4 &&
-          <Layout5 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout5 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 5 &&
-          <Layout6 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout6 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 6 &&
-          <Layout7 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout7 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 7 &&
-          <Layout8 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout8 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 8 &&
-          <Layout9 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout9 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 9 &&
-          <Layout10 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout10 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 10 &&
-          <Layout11 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout11 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 11 &&
-          <Layout12 saveData={saveData} selectedLayout={selectedLayout} />
-        }
-        {
-          selectedLayout === 12 &&
-          <Layout13 saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout12 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
 
       </div>

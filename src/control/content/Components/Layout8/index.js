@@ -272,10 +272,10 @@ function index(props) {
         </div>
       </div>
       <div className="bottom-actions">
-        <button className="btn btn-default" id="layoutBackBtn">
+        <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">
           Cancel
         </button>
-        <button className="btn btn-success" id="layoutSaveBtn">
+        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
           Save
         </button>
       </div>

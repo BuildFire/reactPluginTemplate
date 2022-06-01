@@ -103,7 +103,7 @@ function index(props) {
         <textarea placeholder="Body Contant ..." className="margin-bottom" id="wysiwygContent" name="wysiwygContent"></textarea>
       </div>
       <div className="bottom-actions">
-        <button type="button" className="btn btn-default" id="layoutBackBtn">
+        <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">
           Cancel
         </button>
         <button type="submit" className="btn btn-success" id="layoutSaveBtn">
