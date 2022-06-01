@@ -79,6 +79,7 @@ function Index(props) {
                 </div>
               </div>
             ) :(
+              <div className="topImage-container">
               <VideoUI
               data={props.data}
               enableAutoPlay={props.data.enableAutoPlay1}
@@ -86,6 +87,14 @@ function Index(props) {
               url={props.data.videoURL}
               index={1}
             />
+               <div className="info-container">
+                  <div className="mdc-card">
+                    <p className="bodyContent">
+                      {props.data.bodyContent || "Body Content"}
+                    </p>
+                  </div>
+                </div>
+            </div>
             )}
 
             <div
