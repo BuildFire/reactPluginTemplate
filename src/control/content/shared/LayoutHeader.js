@@ -17,6 +17,7 @@ import Layout12 from "../Components/Layout12";
 
 import "./style.less";
 import useMessages from "../hooks/messages";
+import Layout13 from "../Components/external/Layout13";
 
 function LayoutHeader() {
   const [images, setImages] = useState([]);
@@ -25,7 +26,7 @@ function LayoutHeader() {
 
   useEffect(() => {
     let array = [];
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 13; i++) {
       array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
@@ -78,6 +79,7 @@ function LayoutHeader() {
           <div className="col-md-2">
             <div className="img_selected_container">
               <img
+              alt={`selected layout - ${selectedLayout + 1}`}
                 id="listLayout"
                 className="img_selected"
                 src={images[selectedLayout]}
@@ -90,6 +92,7 @@ function LayoutHeader() {
               {images.map((image, i) => {
                 return (
                   <img
+                    alt={`layout-${i+1}`}
                     key={i}
                     src={image}
                     onClick={() => {
@@ -103,6 +106,8 @@ function LayoutHeader() {
         </div>
       </div>
 
+      
+      
       <div>
         {
           selectedLayout === 0 &&
@@ -151,6 +156,10 @@ function LayoutHeader() {
         {
           selectedLayout === 11 &&
           <Layout12 saveData={saveData} selectedLayout={selectedLayout} />
+        }
+        {
+          selectedLayout === 12 &&
+          <Layout13 saveData={saveData} selectedLayout={selectedLayout} />
         }
 
       </div>

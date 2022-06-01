@@ -40,7 +40,7 @@ export default function VideoUI(props) {
                         Your browser does not support videos.
                     </video>
                 ) : (
-                    <img className='img' src={holderVideo} />
+                    <img alt="Video Placeholder" className='img' src={holderVideo} />
                 )
             }
         </div>
