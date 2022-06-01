@@ -146,6 +146,7 @@ function index(props) {
               />
             </div>
           </div>
+          
           <div className="row">
             <div className="col-md-3">
               <label className="lable">Body Content</label>
@@ -160,7 +161,7 @@ function index(props) {
               ></textarea>
             </div>
           </div>
-          <div className="row margin-bottom">
+          <div className="row">
             <div className="col-md-3">
               <label className="lable">Image Carousel</label>
             </div>
@@ -168,6 +169,20 @@ function index(props) {
               <div className="carousel"></div>
             </div>
           </div>
+          <div className="row  margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Prizes</label>
+          </div>
+          <div className="col-md-9">
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enablePrizes"
+              id="enablePrizes"
+            />
+          </div>
+        </div>
         </div>
         <div className="bottom-actions">
           <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">

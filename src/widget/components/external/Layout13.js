@@ -19,7 +19,7 @@ function Layout13(props) {
 
   return (
     <>
-      <div className="mdc-layout-grid layout-1-container">
+      <div className="mdc-layout-grid layout-13-container">
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             {props.data.BackgroundmediaType !== "video" ? (
@@ -47,10 +47,10 @@ function Layout13(props) {
             )}
             <div className="info-container">
               <div className="mdc-card">
-                <h1 className="title">{props.data.title || "Title"}</h1>
-                <h3 className="subtitle">
+                <p className="title">{props.data.title || "Title"}</p>
+                <p className="subtitle">
                   {props.data.subtitle || "Subtitle"}
-                </h3>
+                </p>
                 <p className="bodyContent">
                   {props.data.bodyContent || "Body Content"}
                 </p>

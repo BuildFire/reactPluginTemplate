@@ -206,12 +206,27 @@ function index(props) {
             <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen3" id="enableFullScreen3" />
           </div>
         </div>
-        <div className="row margin-bottom">
+        
+        <div className="row ">
           <div className="col-md-3">
             <label className="lable">Main Body content</label>
           </div>
           <div className="col-md-9">
             <textarea placeholder="Main Body content"  maxLength={140} name="MainBodyContent" onChange={handleChange} className="form-control bodyContent"></textarea>
+          </div>
+        </div>
+        <div className="row  margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Prizes</label>
+          </div>
+          <div className="col-md-9">
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enablePrizes"
+              id="enablePrizes"
+            />
           </div>
         </div>
 

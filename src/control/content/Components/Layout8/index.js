@@ -256,7 +256,7 @@ function index(props) {
         <>
           <ThumbnailUI index={4} recommended={"Recommended: 1200 x 302"} thumbnailImage={thumbnailImage4} setThumbnailImage={setThumbnailImage4} imageTag={"Bottom Image"} classList={"horizontal-rectangle thumbnail4"} />
         </>
-        <div className="row margin-bottom">
+        <div className="row">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
           </div>
@@ -267,6 +267,20 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen4"
               id="enableFullScreen4"
+            />
+          </div>
+        </div>
+        <div className="row  margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Prizes</label>
+          </div>
+          <div className="col-md-9">
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enablePrizes"
+              id="enablePrizes"
             />
           </div>
         </div>
