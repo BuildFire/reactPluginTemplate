@@ -73,11 +73,11 @@ function LayoutManager() {
           "\
       @font-face {\
           font-family: " +
-            appTheme.fontName +
-            ";\
+          appTheme.fontName +
+          ";\
           src: url('" +
-            appTheme.fontUrl +
-            "') format('yourFontFormat');\
+          appTheme.fontUrl +
+          "') format('yourFontFormat');\
       }\
       "
         )
@@ -210,14 +210,14 @@ function LayoutManager() {
       </div>
       <div className="progressBar-container">
         <div className="sub-container">
-        <Ribbon />
-        <ProgressBar />
+          <Ribbon />
+          <ProgressBar />
         </div>
         <div className="navigation-container">
         </div>
       </div>
 
-      
+
     </>
   );
 }
