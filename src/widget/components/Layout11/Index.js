@@ -28,13 +28,14 @@ function Index(props) {
                       (
                         props.data.enableFullScreen && props.data.thumbnailImage != null ? (
                           <img
+                          alt="Top image"
                             onClick={() => {
                               imagePreviewer(props.data.thumbnailImage);
                             }}
                             src={props.data.thumbnailImage || holderImage}
                           />
                         ) : (
-                          <img src={props.data.thumbnailImage || holderImage} />
+                          <img alt="Top image" src={props.data.thumbnailImage || holderImage} />
                         )
                       ) : (
                         <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
