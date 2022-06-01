@@ -151,7 +151,7 @@ function index(props) {
             ></input>
           </div>
         </div>
-        <div className="row  margin-bottom">
+        <div className="row ">
           <div className="col-md-3">
             <label className="lable">Body content </label>
           </div>
@@ -163,6 +163,20 @@ function index(props) {
               onChange={handleChange}
               className="form-control bodyContent"
             ></textarea>
+          </div>
+        </div>
+        <div className="row  margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Prizes</label>
+          </div>
+          <div className="col-md-9">
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enablePrizes"
+              id="enablePrizes"
+            />
           </div>
         </div>
       </div>

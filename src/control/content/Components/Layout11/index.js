@@ -107,12 +107,26 @@ function index(props) {
             <textarea placeholder="Body content 3" onChange={handleChange} maxLength="200" name="BodyContent3" className="form-control bodyContent"></textarea>
           </div>
         </div>
-        <div className="row  margin-bottom">
+        <div className="row">
           <div className="col-md-3">
             <label className="lable">External URL</label>
           </div>
           <div className="col-md-9">
             <input placeholder="External URL" onChange={handleChange} name="ExternalURL" className="form-control fullWidth"></input>
+          </div>
+        </div>
+        <div className="row  margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Prizes</label>
+          </div>
+          <div className="col-md-9">
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enablePrizes"
+              id="enablePrizes"
+            />
           </div>
         </div>
 
