@@ -1,11 +1,10 @@
 import React from "react";
 import { hot } from "react-hot-loader/root";
-import LayoutHeader from "../shared/LayoutHeader";
-
+import Home from "../Components/Home/Home";
 const Content = () => {
   return (
     <>
-      <LayoutHeader />
+      <Home />
     </>
   );
 };
