@@ -30,13 +30,14 @@ function Index(props) {
               <div className="topImage-container">
                 {enableFullScreen && props.data.thumbnailImage != null ? (
                   <img
+                  alt="Top image"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage);
                     }}
                     src={props.data.thumbnailImage || holderImage}
                   />
                 ) : (
-                  <img src={props.data.thumbnailImage || holderImage} />
+                  <img alt="Top image" src={props.data.thumbnailImage || holderImage} />
                 )}
               </div>
             ) : (
@@ -67,13 +68,14 @@ function Index(props) {
               <div className="mainImage-container">
                 {enableMainFullScreen && props.data.thumbnailImage2 != null ? (
                   <img
+                  alt="Main image"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage2);
                     }}
                     src={props.data.thumbnailImage2 || holderImage}
                   />
                 ) : (
-                  <img src={props.data.thumbnailImage2 || holderImage} />
+                  <img alt="Main image" src={props.data.thumbnailImage2 || holderImage} />
                 )}
                 <div className="mainBody-container">
                   <div className="mdc-card">

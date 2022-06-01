@@ -40,6 +40,7 @@ function Index(props) {
                     {props.data.mediaType != "video" ? (
                       enableFullScreen && props.data.thumbnailImage != null ? (
                         <img
+                        alt="Top image" 
                           className="column img"
                           onClick={() => {
                             imagePreviewer(props.data.thumbnailImage);
@@ -48,6 +49,7 @@ function Index(props) {
                         />
                       ) : (
                         <img
+                        alt="Top image" 
                           className="column img"
                           src={props.data.thumbnailImage || holderImage}
                         />
@@ -71,6 +73,7 @@ function Index(props) {
                   {props.data.mediaType2 != "video" ? (
                     enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                       <img
+                      alt="Main image" 
                         className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage2);
@@ -79,6 +82,7 @@ function Index(props) {
                       />
                     ) : (
                       <img
+                      alt="Main image" 
                         className="column img"
                         src={props.data.thumbnailImage2 || holderImage}
                       />
@@ -95,6 +99,7 @@ function Index(props) {
                   {props.data.mediaType3 != "video" ? (
                     enableFullScreen3 && props.data.thumbnailImage3 != null ? (
                       <img
+                      alt="Main image" 
                         className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage3);
@@ -103,6 +108,7 @@ function Index(props) {
                       />
                     ) : (
                       <img
+                      alt="Main image" 
                         className="column img"
                         src={props.data.thumbnailImage3 || holderImage}
                       />
@@ -119,6 +125,7 @@ function Index(props) {
               <div className="lowerContainer">
                 {enableFullScreen4 && props.data.thumbnailImage4 != null ? (
                   <img
+                  alt="Bottom image" 
                     className="column img"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage4);
@@ -127,6 +134,7 @@ function Index(props) {
                   />
                 ) : (
                   <img
+                  alt="Bottom image" 
                     className="column img"
                     src={props.data.thumbnailImage4 || holderImage}
                   />

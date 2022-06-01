@@ -42,13 +42,14 @@ function Index(props) {
             {props.data.mediaType != "video" ? (
               enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                 <img
+                alt="Top image" 
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage2);
                   }}
                   src={props.data.thumbnailImage2 || holderImage}
                 />
               ) : (
-                <img src={props.data.thumbnailImage2 || holderImage} />
+                <img alt="Top image"  src={props.data.thumbnailImage2 || holderImage} />
               )): (
                 <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
               )}
@@ -65,6 +66,7 @@ function Index(props) {
             >
               {enableFullScreen3 && props.data.thumbnailImage3 != null ? (
                 <img
+                alt="Main image" 
                   className="secondImage"
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage3);
@@ -73,6 +75,7 @@ function Index(props) {
                 />
               ) : (
                 <img
+                alt="Main image" 
                   className="secondImage"
                   src={props.data.thumbnailImage3 || holderImage}
                 />

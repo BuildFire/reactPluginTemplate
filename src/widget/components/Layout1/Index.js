@@ -26,13 +26,14 @@ function Index(props) {
               <div className="topImage-container">
                 {enableFullScreen && props.data.thumbnailImage != null ? (
                   <img
+                    alt="top image"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage);
                     }}
                     src={props.data.thumbnailImage || holderImage}
                   />
                 ) : (
-                  <img src={props.data.thumbnailImage || holderImage} />
+                  <img alt="top image" src={props.data.thumbnailImage || holderImage} />
                 )}
               </div>
             ) : (
