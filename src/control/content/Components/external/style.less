@@ -7,17 +7,47 @@
         line-height: 20px;
         text-align: start;
         padding: 5px;
-        font-size:13px;
+        font-size: 13px;
         background: #0000;
         border: 1px solid gray;
         opacity: 0.6;
     }
-    .left-btns:hover{
+
+    .left-btns:hover {
         transition: 0.2s;
         cursor: pointer;
         background: gray;
         color: white;
         opacity: 0.8;
+    }
+
+    .selected-left-btn {
+        border: 1px solid #05ACF0;
+        color: #05ACF0;
+    }
+
+    .selected-left-btn:hover {
+        background: #05ACF0;
+    }
+
+    .sortContainer {
+        height: 34px;
+        padding-left: 10px;
+        font-size: 14px;
+        min-width: 180px;
+        width: fit-content;
+        line-height: 34px;
+        display: flex;
+
+        span {
+            opacity: 0.6;
+            margin-right: 10px;
+        }
+
+        select {
+            border: none;
+            width: -webkit-fill-available;
+        }
     }
 
     .addLayOut-Btn {
