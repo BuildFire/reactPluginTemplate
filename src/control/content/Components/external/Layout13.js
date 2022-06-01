@@ -155,7 +155,7 @@ function Layout13(props) {
                   </div>
                   <div className="col-md-6"></div>
                   <div className="col-md-3">
-                    <button type="button" className="btn btn-success addLayOut-Btn" >
+                    <button type="button" className="btn btn-success addLayOut-Btn" onClick={()=>props.setActiveComponent("header")} >
                       + Add Page
                     </button>
                   </div>
@@ -174,7 +174,7 @@ function Layout13(props) {
 
               </div>
               <div className="bottom-actions row">
-                <button type="button" className="btn btn-default" id="layoutBackBtn">
+                <button type="button" className="btn btn-default" id="layoutBackBtn" onClick={()=>props.setActiveComponent("home")}>
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-success" id="layoutSaveBtn">
