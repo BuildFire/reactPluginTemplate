@@ -14,6 +14,7 @@ import Layout9 from "../Layout9";
 import Layout10 from "../Layout10";
 import Layout11 from "../Layout11";
 import Layout12 from "../Layout12";
+import Layout13 from "../Layout13";
 import Layout14 from "../Layout14";
 
 import "./style.less";
@@ -152,6 +153,10 @@ function LayoutHeader(props) {
         {
           selectedLayout === 11 &&
           <Layout12 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
+        }
+        {
+          selectedLayout === 12 &&
+          <Layout13 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 13 &&
