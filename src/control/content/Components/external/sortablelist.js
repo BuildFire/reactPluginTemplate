@@ -54,7 +54,7 @@ export default function SortablelistComponent(props) {
                 }}
                 useDragHandle>
                 {props.items.map((value, index) => (
-                    <SortableItem key={`item-${value}`} index={index} value={value} />
+                    <SortableItem key={`item-${index}`} index={index} value={value} />
                 ))}
             </SortableContainer>
 

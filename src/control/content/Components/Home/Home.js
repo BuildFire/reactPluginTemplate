@@ -4,13 +4,13 @@ import LayoutHeader from "../LayoutHeader/LayoutHeader";
 import Layout13 from "../external/Layout13";
 import dummyObjects from "../../../assets/dummyData";
 import SortablelistComponent from "../external/sortablelist";
-
+import useMessages from "../../hooks/messages";
 function Home(props) {
-
   const [activeComponent, setActiveComponent] = useState("home");
   const [addedData, setAddedData] = useState(dummyObjects)
   const [sortType, setSortType] = useState("manually");
-
+  const { handleSendMessage } = useMessages()
+  
   useEffect(() => {
     // props.setShowHome()
   }, [props]);
@@ -55,12 +55,12 @@ function Home(props) {
     }
     setAddedData(newItems);
   }, [sortType])
-
+  
   function setSortTypeFun() {
     let newSort = document.getElementById("sortType-Selector").value;
     setSortType(newSort);
   }
-
+  handleSendMessage({ selectedLayout: "external1" });
   return (
     <>
       {activeComponent === "home" ? (
