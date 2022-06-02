@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./style.less";
 import LayoutHeader from "../LayoutHeader/LayoutHeader";
 import Layout13 from "../external/Layout13";
+
 function Home(props) {
+
   const [activeComponent, setActiveComponent] = useState("home");
+
   useEffect(() => {
     // props.setShowHome()
   }, [props]);

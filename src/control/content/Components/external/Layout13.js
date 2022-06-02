@@ -3,7 +3,7 @@ import useForm from "../../hooks/form";
 import VideoUi from "../../shared/VideoUi";
 import ThumbnailUI from "../../shared/ThumbnailUI";
 import "./style.less";
-
+import useMessages from "../../hooks/messages";
 function Layout13(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
@@ -13,6 +13,7 @@ function Layout13(props) {
   const [layoutsTypes, setLayoutsTypes] = useState(["Details", "Recap & Portfolio", "Content Pages"]);
   const [selectedTab, setSelectedTab] = useState("Details");
 
+  const {handleSendMessage}= useMessages()
   useEffect(() => {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
@@ -20,6 +21,7 @@ function Layout13(props) {
   function submitForm(values) {
     console.log("forms values ->", values);
   }
+  handleSendMessage({selectedLayout:"external1"});
 
   const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
   function handleChangeInputType(e) {
