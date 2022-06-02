@@ -74,11 +74,11 @@ function LayoutManager() {
           "\
       @font-face {\
           font-family: " +
-            appTheme.fontName +
-            ";\
+          appTheme.fontName +
+          ";\
           src: url('" +
-            appTheme.fontUrl +
-            "') format('yourFontFormat');\
+          appTheme.fontUrl +
+          "') format('yourFontFormat');\
       }\
       "
         )
@@ -220,7 +220,7 @@ function LayoutManager() {
       </div>
       
 
-      
+
     </>
   );
 }

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { hot } from "react-hot-loader/root";
-import "../../../../../../styles/control/bf-base.css";
+import "../../../../../../../styles/control/bf-base.css";
 
-import Layout1 from "../Components/Layout1";
-import Layout2 from "../Components/Layout2";
-import Layout3 from "../Components/Layout3";
-import Layout4 from "../Components/Layout4";
-import Layout5 from "../Components/Layout5";
-import Layout6 from "../Components/Layout6";
-import Layout7 from "../Components/Layout7";
-import Layout8 from "../Components/Layout8";
-import Layout9 from "../Components/Layout9";
-import Layout10 from "../Components/Layout10";
-import Layout11 from "../Components/Layout11";
-import Layout12 from "../Components/Layout12";
+import Layout1 from "../Layout1";
+import Layout2 from "../Layout2";
+import Layout3 from "../Layout3";
+import Layout4 from "../Layout4";
+import Layout5 from "../Layout5";
+import Layout6 from "../Layout6";
+import Layout7 from "../Layout7";
+import Layout8 from "../Layout8";
+import Layout9 from "../Layout9";
+import Layout10 from "../Layout10";
+import Layout11 from "../Layout11";
+import Layout12 from "../Layout12";
 
 import "./style.less";
-import useMessages from "../hooks/messages";
+import useMessages from "../../hooks/messages";
 
 function LayoutHeader(props) {
   const [images, setImages] = useState([]);
