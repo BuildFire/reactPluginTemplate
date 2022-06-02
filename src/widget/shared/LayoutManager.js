@@ -12,7 +12,9 @@ import Layout9 from "../components/Layout9/Index";
 import Layout10 from "../components/Layout10/Index";
 import Layout11 from "../components/Layout11/Index";
 import Layout12 from "../components/Layout12/Index";
-import Layout13 from "../components/external/Layout13";
+import Layout13 from "../components/Layout13/Index";
+import Layout14 from "../components/Layout14/Index"
+import ExternalLayout from "../components/external/Layout13";
 import Ribbon from "./Ui_components/Ribbon";
 import ProgressBar from "./Ui_components/ProgressBar";
 
@@ -123,7 +125,7 @@ function LayoutManager() {
 
   return (
     <>
-      <div className="test">
+      <div className="widget-layouts-container">
         {selectedLayout === 1 && (
           <Layout1
             themeState={themeState}
@@ -208,8 +210,22 @@ function LayoutManager() {
             data={data}
           />
         )}
-        {selectedLayout === "external1" && (
+        {selectedLayout === 13 && (
           <Layout13
+            themeState={themeState}
+            setTextStyle={setTextStyle}
+            data={data}
+          />
+        )}
+        {selectedLayout === 14 && (
+          <Layout14
+            themeState={themeState}
+            setTextStyle={setTextStyle}
+            data={data}
+          />
+        )}
+        {selectedLayout === "external1" && (
+          <ExternalLayout
             themeState={themeState}
             setTextStyle={setTextStyle}
             data={data}
