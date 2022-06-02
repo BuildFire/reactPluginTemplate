@@ -14,7 +14,7 @@ import Layout9 from "../Layout9";
 import Layout10 from "../Layout10";
 import Layout11 from "../Layout11";
 import Layout12 from "../Layout12";
-import Layout14 from "../Layout14";
+import Layout14 from "../Layout14/Index";
 
 import "./style.less";
 import useMessages from "../../hooks/messages";

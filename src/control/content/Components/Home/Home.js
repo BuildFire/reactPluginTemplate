@@ -122,6 +122,7 @@ function Home(props) {
               }
 
             </div>
+           
           </div>
         </>
       ) : activeComponent === "header" ? (
