@@ -241,7 +241,7 @@ function Layout13(props) {
                       </div>
                     ) : (
                       <div className="layouts-Added-List">
-                        <SortablelistComponent sortType={sortType} items={layoutsAdded} setItems={setLayoutsAdded} />
+                        <SortablelistComponent listFor={"SponsorShip"} sortType={sortType} items={layoutsAdded} setItems={setLayoutsAdded} />
                       </div>
                     )
                   }

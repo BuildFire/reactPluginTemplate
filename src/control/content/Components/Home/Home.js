@@ -73,7 +73,6 @@ function Home(props) {
               </p>
             </div>
             <div className="row">
-              <div className="col-md-12">
                 <div className="input-group margin-bottom-twenty">
                   <input
                     type="text"
@@ -87,10 +86,9 @@ function Home(props) {
                     </button>
                   </span>
                 </div>
-              </div>
             </div>
             <div className="row">
-              <div className="col-md-3">
+              <div className="col-md-3 padding-zero">
                 <div className="border-radius-four border-grey sortContainer ">
                   <span>Sort:</span>
                   <select onChange={() => setSortTypeFun()} id="sortType-Selector">
@@ -103,8 +101,8 @@ function Home(props) {
                 </div>
               </div>
               <div className="col-md-6"></div>
-              <div className="col-md-3">
-                <button className="btn btn-success" onClick={() => setActiveComponent("external1")}>
+              <div className="col-md-3 padding-zero">
+                <button className="btn btn-success addHome-Content" onClick={() => setActiveComponent("external1")}>
                   add content <span className="icon icon-chevron-down"></span>
                 </button>
               </div>
@@ -118,7 +116,7 @@ function Home(props) {
                     </div>
                   ) : (
                     <div className="layouts-Added-List">
-                      <SortablelistComponent sortType={sortType} items={addedData} setItems={setAddedData} />
+                      <SortablelistComponent listFor={"Home"} sortType={sortType} items={addedData} setItems={setAddedData} />
                     </div>
                   )
               }
