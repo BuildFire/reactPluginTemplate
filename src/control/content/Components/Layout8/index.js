@@ -94,11 +94,23 @@ function index(props) {
 
         {uploadType == "image" ? (
           <>
-            <ThumbnailUI index={1} recommended={"Recommended: 1200 x 1200"} thumbnailImage={thumbnailImage} setThumbnailImage={setThumbnailImage} imageTag={"Top Image"} classList={"thumbnail sequare"} />
+            <ThumbnailUI
+              index={1}
+              recommended={"Recommended: 1200 x 1200"}
+              thumbnailImage={thumbnailImage}
+              setThumbnailImage={setThumbnailImage}
+              imageTag={"Top Image"}
+              classList={"thumbnail sequare"}
+            />
           </>
         ) : (
           <>
-            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL1} videoURL={videoURL1} index={1} />
+            <VideoUi
+              handleChange={handleChange}
+              setVideoURL={setVideoURL1}
+              videoURL={videoURL1}
+              index={1}
+            />
           </>
         )}
         <div className="row">
@@ -155,11 +167,23 @@ function index(props) {
         </div>
         {uploadType2 == "image" ? (
           <>
-            <ThumbnailUI index={2} recommended={"Recommended: 1200 x 1200"} thumbnailImage={thumbnailImage2} setThumbnailImage={setThumbnailImage2} imageTag={"Main Image"} classList={"sequare thumbnail2"} />
+            <ThumbnailUI
+              index={2}
+              recommended={"Recommended: 1200 x 1200"}
+              thumbnailImage={thumbnailImage2}
+              setThumbnailImage={setThumbnailImage2}
+              imageTag={"Main Image"}
+              classList={"sequare thumbnail2"}
+            />
           </>
         ) : (
           <>
-            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL2} videoURL={videoURL2} index={2} />
+            <VideoUi
+              handleChange={handleChange}
+              setVideoURL={setVideoURL2}
+              videoURL={videoURL2}
+              index={2}
+            />
           </>
         )}
 
@@ -217,11 +241,23 @@ function index(props) {
         </div>
         {uploadType3 == "image" ? (
           <>
-          <ThumbnailUI index={3} recommended={"Recommended: 1200 x 1200"} thumbnailImage={thumbnailImage3} setThumbnailImage={setThumbnailImage3} imageTag={"Main Image"} classList={"sequare thumbnail3"} />
-        </>
+            <ThumbnailUI
+              index={3}
+              recommended={"Recommended: 1200 x 1200"}
+              thumbnailImage={thumbnailImage3}
+              setThumbnailImage={setThumbnailImage3}
+              imageTag={"Main Image"}
+              classList={"sequare thumbnail3"}
+            />
+          </>
         ) : (
           <>
-            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL3} videoURL={videoURL3} index={3} />
+            <VideoUi
+              handleChange={handleChange}
+              setVideoURL={setVideoURL3}
+              videoURL={videoURL3}
+              index={3}
+            />
           </>
         )}
 
@@ -254,7 +290,14 @@ function index(props) {
           </div>
         </div>
         <>
-          <ThumbnailUI index={4} recommended={"Recommended: 1200 x 302"} thumbnailImage={thumbnailImage4} setThumbnailImage={setThumbnailImage4} imageTag={"Bottom Image"} classList={"horizontal-rectangle thumbnail4"} />
+          <ThumbnailUI
+            index={4}
+            recommended={"Recommended: 1200 x 302"}
+            thumbnailImage={thumbnailImage4}
+            setThumbnailImage={setThumbnailImage4}
+            imageTag={"Bottom Image"}
+            classList={"horizontal-rectangle thumbnail4"}
+          />
         </>
         <div className="row">
           <div className="col-md-3">
@@ -272,21 +315,30 @@ function index(props) {
         </div>
         <div className="row  margin-bottom">
           <div className="col-md-3">
-            <label className="lable">Enable Prizes</label>
+            <label className="lable">Show Info Ribbon</label>
           </div>
           <div className="col-md-9">
-            <input
-              onChange={handleChange}
-              className="checkBox"
-              type="checkBox"
-              name="enablePrizes"
-              id="enablePrizes"
-            />
+            <div class="button-switch">
+              <input
+                onChange={handleChange}
+                className="checkBox"
+                name="showInfoRibbon"
+                id="showInfoRibbon"
+                type="checkbox"
+                value="true"
+              />
+              <label for="showInfoRibbon" class="label-success"></label>
+            </div>
           </div>
         </div>
       </div>
       <div className="bottom-actions">
-        <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">
+        <button
+          type="button"
+          onClick={() => props.setActiveComponent("external1")}
+          className="btn btn-default"
+          id="layoutBackBtn"
+        >
           Cancel
         </button>
         <button type="submit" className="btn btn-success" id="layoutSaveBtn">

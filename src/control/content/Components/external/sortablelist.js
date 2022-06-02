@@ -35,6 +35,7 @@ export default function SortablelistComponent(props) {
             </div>
         </div>
     ));
+    console.log(props.items);
     const onSortEnd = ({ oldIndex, newIndex }) => {
         let newArr = props.items;
         props.setItems([]);
@@ -53,7 +54,7 @@ export default function SortablelistComponent(props) {
                 }}
                 useDragHandle>
                 {props.items.map((value, index) => (
-                    <SortableItem key={`item-${value}`} index={index} value={value} />
+                    <SortableItem key={`item-${index}`} index={index} value={value} />
                 ))}
             </SortableContainer>
 

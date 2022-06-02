@@ -14,6 +14,7 @@ import Layout9 from "../Layout9";
 import Layout10 from "../Layout10";
 import Layout11 from "../Layout11";
 import Layout12 from "../Layout12";
+import Layout14 from "../Layout14";
 
 import "./style.less";
 import useMessages from "../../hooks/messages";
@@ -25,7 +26,7 @@ function LayoutHeader(props) {
 
   useEffect(() => {
     let array = [];
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 14; i++) {
       array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
@@ -151,6 +152,10 @@ function LayoutHeader(props) {
         {
           selectedLayout === 11 &&
           <Layout12 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
+        }
+        {
+          selectedLayout === 13 &&
+          <Layout14 setActiveComponent={props.setActiveComponent} saveData={saveData} selectedLayout={selectedLayout} />
         }
 
       </div>

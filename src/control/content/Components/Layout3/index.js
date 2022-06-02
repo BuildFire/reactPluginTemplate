@@ -7,16 +7,15 @@ function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
- 
 
   useEffect(() => {
-    handelImage({thumbnailImage,videoURL});
-  },[thumbnailImage,videoURL])
-  // submit form function 
+    handelImage({ thumbnailImage, videoURL });
+  }, [thumbnailImage, videoURL]);
+  // submit form function
   function submitForm(values) {
-    console.log('forms values ->', values);
+    console.log("forms values ->", values);
   }
-  
+
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
@@ -25,25 +24,36 @@ function index(props) {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <h1>Page Details</h1>
-      <div className="layOutContainer">
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Main Media Type</label>
+      <form onSubmit={handleSubmit}>
+        <h1>Page Details</h1>
+        <div className="layOutContainer">
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Main Media Type</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                className="checkBox"
+                type="radio"
+                name="mediaType"
+                value="image"
+                defaultChecked
+                onChange={handleChangeInputType}
+              />
+              <label className="lable">Image</label>
+              <input
+                className="checkBox"
+                type="radio"
+                name="mediaType"
+                value="video"
+                onChange={handleChangeInputType}
+              />
+              <label className="lable">Video</label>
+            </div>
           </div>
-          <div className="col-md-9">
-            <input className="checkBox"  type="radio" name="mediaType" value="image" defaultChecked onChange={handleChangeInputType}/>
-            <label className="lable">Image</label>
-            <input className="checkBox"  type="radio" name="mediaType" value="video" onChange={handleChangeInputType} />
-            <label className="lable">Video</label>
-          </div>
-        </div>
-        
-        {
-          uploadType == "image" ?
-            (
-              <ThumbnailUI
+
+          {uploadType == "image" ? (
+            <ThumbnailUI
               index={1}
               recommended={"Recommended: 675 x 1200"}
               thumbnailImage={thumbnailImage}
@@ -52,42 +62,61 @@ function index(props) {
               classList={"vertical-rectangle thumbnail"}
             />
           ) : (
-              <>
-                <VideoUi handleChange={handleChange} setVideoURL={setVideoURL}  videoURL={videoURL} index={1}/>
-              </>
-            )
-        }
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Enable Full Screen</label>
+            <>
+              <VideoUi
+                handleChange={handleChange}
+                setVideoURL={setVideoURL}
+                videoURL={videoURL}
+                index={1}
+              />
+            </>
+          )}
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Enable Full Screen</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                type="checkBox"
+                className="checkBox"
+                name="enableFullScreen"
+                id="enableFullScreen"
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className="col-md-9">
-            <input type="checkBox" className="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
+          <div className="row margin-bottom">
+            <div className="col-md-3">
+              <label className="lable">Show Info Ribbon</label>
+            </div>
+            <div className="col-md-9">
+              <div class="button-switch">
+                <input
+                  onChange={handleChange}
+                  className="checkBox"
+                  name="showInfoRibbon"
+                  id="showInfoRibbon"
+                  type="checkbox"
+                  value="true"
+                />
+                <label for="showInfoRibbon" class="label-success"></label>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="row margin-bottom">
-          <div className="col-md-3">
-            <label className="lable">Enable Prizes</label>
-          </div>
-          <div className="col-md-9">
-            <input
-              onChange={handleChange}
-              className="checkBox"
-              type="checkBox"
-              name="enablePrizes"
-              id="enablePrizes"
-            />
-          </div>
+        <div className="bottom-actions">
+          <button
+            type="button"
+            onClick={() => props.setActiveComponent("external1")}
+            className="btn btn-default"
+            id="layoutBackBtn"
+          >
+            Cancel
+          </button>
+          <button type="submit" className="btn btn-success" id="layoutSaveBtn">
+            Save
+          </button>
         </div>
-      </div>
-      <div className="bottom-actions">
-        <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">
-          Cancel
-        </button>
-        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
-          Save
-        </button>
-      </div>
       </form>
     </>
   );
