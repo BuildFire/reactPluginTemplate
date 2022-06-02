@@ -46,8 +46,10 @@
     "zip-webpack-plugin": "^3.0.0"
   },
   "dependencies": {
+    "array-move": "^4.0.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-hot-loader": "^4.6.5"
+    "react-hot-loader": "^4.6.5",
+    "react-sortable-hoc": "^2.0.0"
   }
 }

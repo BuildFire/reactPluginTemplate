@@ -4,16 +4,19 @@ import VideoUi from "../../shared/VideoUi";
 import ThumbnailUI from "../../shared/ThumbnailUI";
 import "./style.less";
 import useMessages from "../../hooks/messages";
+import SortablelistComponent from "./sortablelist";
+import dummyObjects from "../../../assets/dummyData";
+
 function Layout13(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
-  const [layoutsAdded, setLayoutsAdded] = useState([]);
+  const [layoutsAdded, setLayoutsAdded] = useState(dummyObjects);
 
   const [layoutsTypes, setLayoutsTypes] = useState(["Details", "Recap & Portfolio", "Content Pages"]);
   const [selectedTab, setSelectedTab] = useState("Details");
 
-  const {handleSendMessage}= useMessages()
+  const { handleSendMessage } = useMessages()
   useEffect(() => {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
@@ -21,7 +24,7 @@ function Layout13(props) {
   function submitForm(values) {
     console.log("forms values ->", values);
   }
-  handleSendMessage({selectedLayout:"external1"});
+  handleSendMessage({ selectedLayout: "external1" });
 
   const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
   function handleChangeInputType(e) {
@@ -189,7 +192,7 @@ function Layout13(props) {
                       </div>
                     ) : (
                       <div className="layouts-Added-List">
-                        +++++++
+                        <SortablelistComponent items={layoutsAdded} setItems={setLayoutsAdded} />
                       </div>
                     )
                   }
