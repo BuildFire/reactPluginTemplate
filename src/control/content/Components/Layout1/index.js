@@ -88,7 +88,7 @@ function index(props) {
             />
           </div>
         </div>
-        
+
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Title</label>
@@ -135,21 +135,23 @@ function index(props) {
         </div>
         <div className="row  margin-bottom">
           <div className="col-md-3">
-            <label className="lable">Enable Prizes</label>
+            <label className="lable">Show Info Ribbon</label>
           </div>
           <div className="col-md-9">
-            <input
-              onChange={handleChange}
-              className="checkBox"
-              type="checkBox"
-              name="enablePrizes"
-              id="enablePrizes"
-            />
+            <div class="button-switch">
+              <input onChange={handleChange} className="checkBox" name="showInfoRibbon" id="showInfoRibbon" type="checkbox" value="true" />
+              <label for="showInfoRibbon" class="label-success"></label>
+            </div>
           </div>
         </div>
       </div>
       <div className="bottom-actions">
-        <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn" >
+        <button
+          type="button"
+          onClick={() => props.setActiveComponent("external1")}
+          className="btn btn-default"
+          id="layoutBackBtn"
+        >
           Cancel
         </button>
         <button type="submit" className="btn btn-success" id="layoutSaveBtn">

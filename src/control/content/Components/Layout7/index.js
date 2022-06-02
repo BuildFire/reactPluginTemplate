@@ -4,7 +4,6 @@ import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 import VideoUi from "../../shared/VideoUi";
 function index(props) {
-
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
   const [thumbnailImage3, setThumbnailImage3] = useState(null);
@@ -14,7 +13,6 @@ function index(props) {
 
   const [videoURL2, setVideoURL2] = useState("");
   const [videoURL3, setVideoURL3] = useState("");
-
 
   useEffect(() => {
     // thumbnail set up -->
@@ -27,29 +25,31 @@ function index(props) {
 
     // thumbnail Change image -->
     thumbnail.onChange = (imageUrl) => {
-      let croppedImage = buildfire.imageLib.cropImage(
-        imageUrl,
-        { size: "full_width", aspect: "16:9" }
-      );
+      let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
+        size: "full_width",
+        aspect: "16:9",
+      });
       setThumbnailImage(croppedImage);
     };
-   
+
     // thumbnail Delete Image -->
     thumbnail.onDelete = (imageUrl) => {
-      setThumbnailImage(null)
+      setThumbnailImage(null);
     };
-   
   }, []);
 
   useEffect(() => {
     if (uploadType2 == "image") {
       //  set up thumbnail -->
-      let thumbnail2 = new buildfire.components.images.thumbnail(".thumbnail2", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
+      let thumbnail2 = new buildfire.components.images.thumbnail(
+        ".thumbnail2",
+        {
+          imageUrl: "",
+          title: " ",
+          dimensionsLabel: "Recommended: 1200 x 675",
+          multiSelection: false,
+        }
+      );
       thumbnail2.onChange = (imageUrl) => {
         let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
           size: "full_width",
@@ -65,12 +65,15 @@ function index(props) {
       }
     }
     if (uploadType3 == "image") {
-      let thumbnail3 = new buildfire.components.images.thumbnail(".thumbnail3", {
-        imageUrl: "",
-        title: " ",
-        dimensionsLabel: "Recommended: 1200 x 675",
-        multiSelection: false,
-      });
+      let thumbnail3 = new buildfire.components.images.thumbnail(
+        ".thumbnail3",
+        {
+          imageUrl: "",
+          title: " ",
+          dimensionsLabel: "Recommended: 1200 x 675",
+          multiSelection: false,
+        }
+      );
       thumbnail3.onChange = (imageUrl) => {
         let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
           size: "full_width",
@@ -87,16 +90,23 @@ function index(props) {
     }
   }, [uploadType2, uploadType3]);
 
-  
   useEffect(() => {
-    handelImage({ thumbnailImage, thumbnailImage2, thumbnailImage3, videoURL2, videoURL3 });;
-  }, [thumbnailImage, thumbnailImage2, thumbnailImage3, videoURL2, videoURL3])
-  // submit form function 
+    handelImage({
+      thumbnailImage,
+      thumbnailImage2,
+      thumbnailImage3,
+      videoURL2,
+      videoURL3,
+    });
+  }, [thumbnailImage, thumbnailImage2, thumbnailImage3, videoURL2, videoURL3]);
+  // submit form function
   function submitForm(values) {
-    console.log(`Submit function in layout${props.selectedLayout+1} ->`, values);
+    console.log(
+      `Submit function in layout${props.selectedLayout + 1} ->`,
+      values
+    );
     props.saveData(values);
   }
-  
 
   const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
   function handleChangeInputType(e, indexOfMedia) {
@@ -126,7 +136,13 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen1" id="enableFullScreen1" />
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enableFullScreen1"
+              id="enableFullScreen1"
+            />
           </div>
         </div>
         <div className="row">
@@ -134,34 +150,57 @@ function index(props) {
             <label className="lable">Top Media Type</label>
           </div>
           <div className="col-md-9">
-            <input onChange={(e) => handleChangeInputType(e, 2)} className="checkBox" type="radio" name="mediaType2" value="image" defaultChecked />
+            <input
+              onChange={(e) => handleChangeInputType(e, 2)}
+              className="checkBox"
+              type="radio"
+              name="mediaType2"
+              value="image"
+              defaultChecked
+            />
             <label className="lable">Image</label>
-            <input onChange={(e) => handleChangeInputType(e, 2)} className="checkBox" type="radio" name="mediaType2" value="video" />
+            <input
+              onChange={(e) => handleChangeInputType(e, 2)}
+              className="checkBox"
+              type="radio"
+              name="mediaType2"
+              value="video"
+            />
             <label className="lable">Video</label>
           </div>
         </div>
         {uploadType2 == "image" ? (
           <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Top Image</label>
+            <div className="col-md-3">
+              <label className="lable">Top Image</label>
+            </div>
+            <div className="col-md-9">
+              <div className="thumbnail2 horizontal-rectangle"></div>
+            </div>
           </div>
-          <div className="col-md-9">
-            <div className="thumbnail2 horizontal-rectangle"></div>
-          </div>
-        </div>
-
         ) : (
           <>
-            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL2} videoURL={videoURL2} index={1}/>
+            <VideoUi
+              handleChange={handleChange}
+              setVideoURL={setVideoURL2}
+              videoURL={videoURL2}
+              index={1}
+            />
           </>
         )}
-        
+
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen2" id="enableFullScreen2" />
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enableFullScreen2"
+              id="enableFullScreen2"
+            />
           </div>
         </div>
         <div className="row">
@@ -169,7 +208,13 @@ function index(props) {
             <label className="lable">Top Body content</label>
           </div>
           <div className="col-md-9">
-            <textarea placeholder="Top Body content" maxLength={140} name="TopBodyContent" onChange={handleChange} className="form-control bodyContent"></textarea>
+            <textarea
+              placeholder="Top Body content"
+              maxLength={140}
+              name="TopBodyContent"
+              onChange={handleChange}
+              className="form-control bodyContent"
+            ></textarea>
           </div>
         </div>
         <div className="row">
@@ -177,24 +222,42 @@ function index(props) {
             <label className="lable">Main Media Type</label>
           </div>
           <div className="col-md-9">
-            <input onChange={(e) => handleChangeInputType(e, 3)} className="checkBox" type="radio" name="mediaType3" value="image" defaultChecked />
+            <input
+              onChange={(e) => handleChangeInputType(e, 3)}
+              className="checkBox"
+              type="radio"
+              name="mediaType3"
+              value="image"
+              defaultChecked
+            />
             <label className="lable">Image</label>
-            <input onChange={(e) => handleChangeInputType(e, 3)} className="checkBox" type="radio" name="mediaType3" value="video" />
+            <input
+              onChange={(e) => handleChangeInputType(e, 3)}
+              className="checkBox"
+              type="radio"
+              name="mediaType3"
+              value="video"
+            />
             <label className="lable">Video</label>
           </div>
         </div>
         {uploadType3 == "image" ? (
           <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Main Image</label>
+            <div className="col-md-3">
+              <label className="lable">Main Image</label>
+            </div>
+            <div className="col-md-9">
+              <div className="thumbnail3 horizontal-rectangle"></div>
+            </div>
           </div>
-          <div className="col-md-9">
-            <div className="thumbnail3 horizontal-rectangle"></div>
-          </div>
-        </div>
         ) : (
           <>
-            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL3} videoURL={videoURL3} index={2}/>
+            <VideoUi
+              handleChange={handleChange}
+              setVideoURL={setVideoURL3}
+              videoURL={videoURL3}
+              index={2}
+            />
           </>
         )}
 
@@ -203,36 +266,56 @@ function index(props) {
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
-            <input onChange={handleChange} className="checkBox" type="checkBox" name="enableFullScreen3" id="enableFullScreen3" />
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enableFullScreen3"
+              id="enableFullScreen3"
+            />
           </div>
         </div>
-        
+
         <div className="row ">
           <div className="col-md-3">
             <label className="lable">Main Body content</label>
           </div>
           <div className="col-md-9">
-            <textarea placeholder="Main Body content"  maxLength={140} name="MainBodyContent" onChange={handleChange} className="form-control bodyContent"></textarea>
+            <textarea
+              placeholder="Main Body content"
+              maxLength={140}
+              name="MainBodyContent"
+              onChange={handleChange}
+              className="form-control bodyContent"
+            ></textarea>
           </div>
         </div>
         <div className="row  margin-bottom">
           <div className="col-md-3">
-            <label className="lable">Enable Prizes</label>
+            <label className="lable">Show Info Ribbon</label>
           </div>
           <div className="col-md-9">
-            <input
-              onChange={handleChange}
-              className="checkBox"
-              type="checkBox"
-              name="enablePrizes"
-              id="enablePrizes"
-            />
+            <div class="button-switch">
+              <input
+                onChange={handleChange}
+                className="checkBox"
+                name="showInfoRibbon"
+                id="showInfoRibbon"
+                type="checkbox"
+                value="true"
+              />
+              <label for="showInfoRibbon" class="label-success"></label>
+            </div>
           </div>
         </div>
-
       </div>
       <div className="bottom-actions">
-        <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">
+        <button
+          type="button"
+          onClick={() => props.setActiveComponent("external1")}
+          className="btn btn-default"
+          id="layoutBackBtn"
+        >
           Cancel
         </button>
         <button type="submit" className="btn btn-success" id="layoutSaveBtn">

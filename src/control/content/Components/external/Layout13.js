@@ -16,10 +16,53 @@ function Layout13(props) {
   const [layoutsTypes, setLayoutsTypes] = useState(["Details", "Recap & Portfolio", "Content Pages"]);
   const [selectedTab, setSelectedTab] = useState("Details");
 
+  const [sortType, setSortType] = useState("manually");
+
   const { handleSendMessage } = useMessages()
   useEffect(() => {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
+
+  useEffect(() => {
+    // desendDate"asenedDate"asenedTitle"desendTitle
+    let newItems = layoutsAdded;
+    setLayoutsAdded([]);
+    console.log(sortType);
+    if (sortType == "asenedDate") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return 1
+        } else {
+          return -1
+        }
+      })
+    } else if (sortType == "desendDate") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    } else if (sortType == "asenedTitle") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return 1
+        } else {
+          return -1
+        }
+      })
+    } else if (sortType == "desendTitle") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    }
+    setLayoutsAdded(newItems);
+  }, [sortType])
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);
@@ -38,6 +81,11 @@ function Layout13(props) {
     }
     e.target.classList.add("selected-left-btn");
     setSelectedTab(e.target.textContent);
+  }
+
+  function setSortTypeFun() {
+    let newSort = document.getElementById("sortType-Selector").value;
+    setSortType(newSort);
   }
 
   return (
@@ -170,11 +218,12 @@ function Layout13(props) {
                     <div className="col-md-3 ">
                       <div className="border-radius-four border-grey sortContainer ">
                         <span>Sort:</span>
-                        <select name="cars" id="cars">
-                          <option value="Manual">Manual 0</option>
-                          <option value="Manual">Manual 1</option>
-                          <option value="Manual">Manual 2</option>
-                          <option value="Manual">Manual 3</option>
+                        <select onChange={() => setSortTypeFun()} id="sortType-Selector">
+                          <option value="manually">Manually</option>
+                          <option value="asenedTitle">Title A - Z</option>
+                          <option value="desendTitle">Title Z - A</option>
+                          <option value="asenedDate">Newest Entry</option>
+                          <option value="desendDate">Latest Entry</option>
                         </select>
                       </div>
                     </div>
@@ -192,7 +241,7 @@ function Layout13(props) {
                       </div>
                     ) : (
                       <div className="layouts-Added-List">
-                        <SortablelistComponent items={layoutsAdded} setItems={setLayoutsAdded} />
+                        <SortablelistComponent sortType={sortType} items={layoutsAdded} setItems={setLayoutsAdded} />
                       </div>
                     )
                   }
