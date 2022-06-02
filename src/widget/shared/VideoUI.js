@@ -11,11 +11,14 @@ export default function VideoUI(props) {
     const { fullScreenVideoHandler } = useHelper();
 
     useEffect(() => {
-        fullScreenVideoHandler(props.data, props.enableFullScreen, `video${props.index}`)
-        if (props.enableAutoPlay != autoPlayState) {
-            setAutoplayState(props.enableAutoPlay);
+        if(props.url != ""){
+            fullScreenVideoHandler(props.data, props.enableFullScreen, `video${props.index}`)
+            if (props.enableAutoPlay != autoPlayState) {
+                setAutoplayState(props.enableAutoPlay);
+            }
         }
     }, [props])
+
     useEffect(() => {
         let videoPlayer = document.getElementById(`video${props.index}`);
         if (autoPlayState && videoPlayer) {
