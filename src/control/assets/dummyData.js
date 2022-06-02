@@ -1,15 +1,4 @@
-const dummyObjects = [{
-    layout: 1,
-    BackgroundmediaType: "video",
-    bodyContent: "body",
-    enableAutoPlay1: true,
-    enableFullScreen: true,
-    enablePrizes: true,
-    subtitle: "subtitle",
-    thumbnailImage: null,
-    title: "title 1",
-    videoURL: "https://publicfiles.buildfire.com/file/6296646d9b662d038053028e"
-},
+const dummyObjects = [
 {
     layout: 8,
     BodyContent: "new body content test",
@@ -20,6 +9,7 @@ const dummyObjects = [{
     enableFullScreen4: true,
     enablePrizes: true,
     mediaType2: "video",
+    title:"aaaa",
     thumbnailImage: "https://alnnibitpo.cloudimg.io/v7/https://images.unsplash.com/photo-1613323593608-abc90fec84ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0NDA1fDB8MXxzZWFyY2h8N3x8aW1hZ2V8ZW58MHx8fHwxNjUzMzE1Njgy&ixlib=rb-1.2.1&q=80&w=1080&func=crop&width=480&height=270",
     thumbnailImage2: null,
     thumbnailImage3: null,
@@ -27,6 +17,20 @@ const dummyObjects = [{
     videoURL1: "",
     videoURL2: "https://publicfiles.buildfire.com/file/6296646d9b662d038053028e",
     videoURL3: "",
+    date: new Date(2022, 4, 31)
+},
+{
+    layout: 1,
+    BackgroundmediaType: "video",
+    bodyContent: "body",
+    enableAutoPlay1: true,
+    enableFullScreen: true,
+    enablePrizes: true,
+    subtitle: "subtitle",
+    thumbnailImage: null,
+    title: "title 1",
+    videoURL: "https://publicfiles.buildfire.com/file/6296646d9b662d038053028e",
+    date: new Date(2022, 4, 30)
 },
 {
     layout: 10,
@@ -40,6 +44,7 @@ const dummyObjects = [{
     thumbnailImage2: "https://alnnibitpo.cloudimg.io/v7/https://images.unsplash.com/photo-1613323593608-abc90fec84ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0NDA1fDB8MXxzZWFyY2h8N3x8aW1hZ2V8ZW58MHx8fHwxNjUzMzE1Njgy&ixlib=rb-1.2.1&q=80&w=1080&func=crop&width=480&height=270",
     title: "test title",
     videoURL: "",
+    date: new Date(2022, 5, 1)
 }]
 
 export default dummyObjects;

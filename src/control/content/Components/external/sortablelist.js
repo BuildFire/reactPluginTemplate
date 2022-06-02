@@ -35,6 +35,7 @@ export default function SortablelistComponent(props) {
             </div>
         </div>
     ));
+    console.log(props.items);
     const onSortEnd = ({ oldIndex, newIndex }) => {
         let newArr = props.items;
         props.setItems([]);

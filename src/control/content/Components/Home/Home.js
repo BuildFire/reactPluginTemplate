@@ -2,14 +2,65 @@ import React, { useState, useEffect } from "react";
 import "./style.less";
 import LayoutHeader from "../LayoutHeader/LayoutHeader";
 import Layout13 from "../external/Layout13";
+import dummyObjects from "../../../assets/dummyData";
+import SortablelistComponent from "../external/sortablelist";
 
 function Home(props) {
 
   const [activeComponent, setActiveComponent] = useState("home");
+  const [addedData, setAddedData] = useState(dummyObjects)
+  const [sortType, setSortType] = useState("manually");
 
   useEffect(() => {
     // props.setShowHome()
   }, [props]);
+
+  useEffect(() => {
+    // desendDate"asenedDate"asenedTitle"desendTitle
+    let newItems = addedData;
+    setAddedData([]);
+    console.log(sortType);
+    if (sortType == "asenedDate") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return 1
+        } else {
+          return -1
+        }
+      })
+    } else if (sortType == "desendDate") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    } else if (sortType == "asenedTitle") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return 1
+        } else {
+          return -1
+        }
+      })
+    } else if (sortType == "desendTitle") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    }
+    setAddedData(newItems);
+  }, [sortType])
+
+  function setSortTypeFun() {
+    let newSort = document.getElementById("sortType-Selector").value;
+    setSortType(newSort);
+  }
+
   return (
     <>
       {activeComponent === "home" ? (
@@ -40,28 +91,45 @@ function Home(props) {
             </div>
             <div className="row">
               <div className="col-md-3">
-                <button className="btn btn-light">
-                  Latest First <span className="icon icon-chevron-down"></span>
-                </button>
+                <div className="border-radius-four border-grey sortContainer ">
+                  <span>Sort:</span>
+                  <select onChange={() => setSortTypeFun()} id="sortType-Selector">
+                    <option value="manually">Manually</option>
+                    <option value="asenedTitle">Title A - Z</option>
+                    <option value="desendTitle">Title Z - A</option>
+                    <option value="asenedDate">Newest Entry</option>
+                    <option value="desendDate">Latest Entry</option>
+                  </select>
+                </div>
               </div>
               <div className="col-md-6"></div>
               <div className="col-md-3">
-                <button className="btn btn-success" onClick={()=>setActiveComponent("external1")}>
+                <button className="btn btn-success" onClick={() => setActiveComponent("external1")}>
                   add content <span className="icon icon-chevron-down"></span>
                 </button>
               </div>
             </div>
             <div className="row">
-              <div className="empty-state-lg border-radius-four border-grey">
-                <p>You haven’t added anything yet</p>
-              </div>
+              {
+                addedData.length == 0 ?
+                  (
+                    <div className="empty-state-lg border-radius-four border-grey">
+                      <p>You haven’t added anything yet</p>
+                    </div>
+                  ) : (
+                    <div className="layouts-Added-List">
+                      <SortablelistComponent sortType={sortType} items={addedData} setItems={setAddedData} />
+                    </div>
+                  )
+              }
+
             </div>
           </div>
         </>
       ) : activeComponent === "header" ? (
-        <LayoutHeader setActiveComponent={setActiveComponent}/>
+        <LayoutHeader setActiveComponent={setActiveComponent} />
       ) : (
-        <Layout13 setActiveComponent={setActiveComponent}/>
+        <Layout13 setActiveComponent={setActiveComponent} />
       )}
     </>
   );

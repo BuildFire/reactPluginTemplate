@@ -22,6 +22,47 @@ function Layout13(props) {
   useEffect(() => {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
+
+  useEffect(() => {
+    // desendDate"asenedDate"asenedTitle"desendTitle
+    let newItems = layoutsAdded;
+    setLayoutsAdded([]);
+    console.log(sortType);
+    if (sortType == "asenedDate") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return 1
+        } else {
+          return -1
+        }
+      })
+    } else if (sortType == "desendDate") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    } else if (sortType == "asenedTitle") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return 1
+        } else {
+          return -1
+        }
+      })
+    } else if (sortType == "desendTitle") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+    }
+    setLayoutsAdded(newItems);
+  }, [sortType])
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);
@@ -42,7 +83,7 @@ function Layout13(props) {
     setSelectedTab(e.target.textContent);
   }
 
-  function setSortTypeFun(){
+  function setSortTypeFun() {
     let newSort = document.getElementById("sortType-Selector").value;
     setSortType(newSort);
   }
@@ -177,7 +218,7 @@ function Layout13(props) {
                     <div className="col-md-3 ">
                       <div className="border-radius-four border-grey sortContainer ">
                         <span>Sort:</span>
-                        <select onChange={()=>setSortTypeFun()} id="sortType-Selector">
+                        <select onChange={() => setSortTypeFun()} id="sortType-Selector">
                           <option value="manually">Manually</option>
                           <option value="asenedTitle">Title A - Z</option>
                           <option value="desendTitle">Title Z - A</option>
