@@ -85,7 +85,7 @@ function Index(props) {
           </div>
         </div>
       </div>
-      {props.data.enablePrizes && <>
+      {props.data.showInfoRibbon && <>
      <ProgressRibbon/>
       </>
       }

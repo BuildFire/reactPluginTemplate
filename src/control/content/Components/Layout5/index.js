@@ -10,7 +10,6 @@ function index(props) {
   const [uploadType2, setUploadType2] = useState("image");
   const [videoURL, setVideoURL] = useState("");
   const [videoURL2, setVideoURL2] = useState("");
-  
 
   useEffect(() => {
     handelImage({ thumbnailImage, thumbnailImage2, videoURL, videoURL2 });
@@ -64,17 +63,21 @@ function index(props) {
           </div>
           {uploadType == "image" ? (
             <ThumbnailUI
-            index={1}
-            recommended={"Recommended: 1200 x 675"}
-            thumbnailImage={thumbnailImage}
-            setThumbnailImage={setThumbnailImage}
-            imageTag={"Top Image"}
-            classList={"horizontal-rectangle thumbnail1"}
-          />
-            
+              index={1}
+              recommended={"Recommended: 1200 x 675"}
+              thumbnailImage={thumbnailImage}
+              setThumbnailImage={setThumbnailImage}
+              imageTag={"Top Image"}
+              classList={"horizontal-rectangle thumbnail1"}
+            />
           ) : (
             <>
-              <VideoUi handleChange={handleChange} setVideoURL={setVideoURL} videoURL={videoURL} index={1}/>
+              <VideoUi
+                handleChange={handleChange}
+                setVideoURL={setVideoURL}
+                videoURL={videoURL}
+                index={1}
+              />
             </>
           )}
           <div className="row">
@@ -91,7 +94,7 @@ function index(props) {
               />
             </div>
           </div>
-         
+
           <div className="row">
             <div className="col-md-3">
               <label className="lable">Title</label>
@@ -162,17 +165,22 @@ function index(props) {
           </div>
           {uploadType2 == "image" ? (
             <ThumbnailUI
-            index={2}
-            recommended={"Recommended: 1200 x 1200"}
-            thumbnailImage={thumbnailImage2}
-            setThumbnailImage={setThumbnailImage2}
-            imageTag={"Main Image"}
-            classList={"thumbnail2 sequare"}
-          />
-          ):(
+              index={2}
+              recommended={"Recommended: 1200 x 1200"}
+              thumbnailImage={thumbnailImage2}
+              setThumbnailImage={setThumbnailImage2}
+              imageTag={"Main Image"}
+              classList={"thumbnail2 sequare"}
+            />
+          ) : (
             <>
-            <VideoUi handleChange={handleChange} setVideoURL={setVideoURL2} videoURL={videoURL2} index={2}/>
-          </>
+              <VideoUi
+                handleChange={handleChange}
+                setVideoURL={setVideoURL2}
+                videoURL={videoURL2}
+                index={2}
+              />
+            </>
           )}
           <div className="row">
             <div className="col-md-3">
@@ -189,22 +197,31 @@ function index(props) {
             </div>
           </div>
           <div className="row  margin-bottom">
-          <div className="col-md-3">
-            <label className="lable">Enable Prizes</label>
+            <div className="col-md-3">
+              <label className="lable">Show Info Ribbon</label>
+            </div>
+            <div className="col-md-9">
+              <div class="button-switch">
+                <input
+                  onChange={handleChange}
+                  className="checkBox"
+                  name="showInfoRibbon"
+                  id="showInfoRibbon"
+                  type="checkbox"
+                  value="true"
+                />
+                <label for="showInfoRibbon" class="label-success"></label>
+              </div>
+            </div>
           </div>
-          <div className="col-md-9">
-            <input
-              onChange={handleChange}
-              className="checkBox"
-              type="checkBox"
-              name="enablePrizes"
-              id="enablePrizes"
-            />
-          </div>
-        </div>
         </div>
         <div className="bottom-actions">
-          <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">
+          <button
+            type="button"
+            onClick={() => props.setActiveComponent("external1")}
+            className="btn btn-default"
+            id="layoutBackBtn"
+          >
             Cancel
           </button>
           <button type="submit" className="btn btn-success" id="layoutSaveBtn">
