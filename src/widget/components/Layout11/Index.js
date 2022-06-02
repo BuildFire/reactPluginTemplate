@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
+import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
+
 function Index(props) {
 
   const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
@@ -59,6 +61,10 @@ function Index(props) {
           </div>
         </div>
       </div>
+      {props.data.enablePrizes && <>
+     <ProgressRibbon/>
+      </>
+      }
     </>
   );
 }

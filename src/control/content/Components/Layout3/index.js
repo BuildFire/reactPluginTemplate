@@ -57,12 +57,26 @@ function index(props) {
               </>
             )
         }
-        <div className="row margin-bottom">
+        <div className="row">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
           </div>
           <div className="col-md-9">
             <input type="checkBox" className="checkBox" name="enableFullScreen" id="enableFullScreen" onChange={handleChange}/>
+          </div>
+        </div>
+        <div className="row margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Prizes</label>
+          </div>
+          <div className="col-md-9">
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enablePrizes"
+              id="enablePrizes"
+            />
           </div>
         </div>
       </div>

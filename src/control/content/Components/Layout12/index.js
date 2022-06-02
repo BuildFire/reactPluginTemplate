@@ -100,7 +100,22 @@ function index(props) {
             <label className="lable">Body Contant</label>
           </div>
         </div>
-        <textarea placeholder="Body Contant ..." className="margin-bottom" id="wysiwygContent" name="wysiwygContent"></textarea>
+        <textarea placeholder="Body Contant ..." id="wysiwygContent" name="wysiwygContent"></textarea>
+        <div className="row  margin-bottom">
+          <div className="col-md-3">
+            <label className="lable">Enable Prizes</label>
+          </div>
+          <div className="col-md-9">
+            <input
+              onChange={handleChange}
+              className="checkBox"
+              type="checkBox"
+              name="enablePrizes"
+              id="enablePrizes"
+            />
+          </div>
+        </div>
+      
       </div>
       <div className="bottom-actions">
         <button type="button" onClick={()=>props.setActiveComponent("external1")}  className="btn btn-default" id="layoutBackBtn">

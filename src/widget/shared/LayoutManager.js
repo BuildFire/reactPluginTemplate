@@ -216,14 +216,9 @@ function LayoutManager() {
           />
         )}
       </div>
-      <div className="progressBar-container">
-        <div className="sub-container">
-          <Ribbon />
-          <ProgressBar />
-        </div>
-        <div className="navigation-container">
-        </div>
+      <div className="navigation-container">
       </div>
+      
 
 
     </>
