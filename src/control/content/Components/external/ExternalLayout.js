@@ -7,7 +7,7 @@ import useMessages from "../../hooks/messages";
 import SortablelistComponent from "./sortablelist";
 import dummyObjects from "../../../assets/dummyData";
 
-function Layout13(props) {
+function ExternalLayout(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
@@ -90,7 +90,7 @@ function Layout13(props) {
 
   return (
     <>
-      <div className="layout-13-Container ">
+      <div className="layout-13-Container slide-in">
         <div className="row">
           <div className="col-md-3">
             <button onClick={changeLayOut} type="button" className="btn left-btns selected-left-btn">{layoutsTypes[0]}</button>
@@ -265,4 +265,4 @@ function Layout13(props) {
   );
 }
 
-export default Layout13;
+export default ExternalLayout;

@@ -36,7 +36,7 @@ function index(props) {
     <>
       <form onSubmit={handleSubmit}>
         <h1>Page Details</h1>
-        <div className="layOutContainer">
+        <div className="layOutContainer slide-in">
           <div className="row">
             <div className="col-md-3">
               <label className="lable">Top Media Type</label>
