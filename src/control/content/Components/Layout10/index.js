@@ -33,7 +33,7 @@ function index(props) {
   return (
     <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
-      <div className="layOutContainer">
+      <div className="layOutContainer slide-in">
         <>
           <ThumbnailUI
             index={1}

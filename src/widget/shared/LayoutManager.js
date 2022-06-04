@@ -14,7 +14,7 @@ import Layout11 from "../components/Layout11/Index";
 import Layout12 from "../components/Layout12/Index";
 import Layout13 from "../components/Layout13/Index";
 import Layout14 from "../components/Layout14/Index"
-import ExternalLayout from "../components/external/Layout13";
+import ExternalLayout from "../components/external/ExternalLayout";
 import Ribbon from "./Ui_components/Ribbon";
 import ProgressBar from "./Ui_components/ProgressBar";
 
