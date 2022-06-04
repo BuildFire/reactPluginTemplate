@@ -4,7 +4,7 @@ import useHelper from './Helper/Helper';
 export default function VideoUI(props) {
 
     const [holderVideo, setHolderVideo] = useState(
-        "./shared/img/video_player_placeholder.gif"
+        "./assets/images/video_player_placeholder.gif"
     );
     const [autoPlayState, setAutoplayState] = useState(false);
 

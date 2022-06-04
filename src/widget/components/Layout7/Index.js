@@ -33,10 +33,6 @@ function Index(props) {
     setEnableFullScreen1(props.data.enableFullScreen1);
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);
-
-    if (props.themeState.colors) {
-      props.setTextStyle();
-    }
     if (props.data.thumbnailImage) {
       document.body.style.backgroundImage = `url(${props.data.thumbnailImage})`;
     } else {

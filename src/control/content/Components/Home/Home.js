@@ -14,9 +14,7 @@ function Home(props) {
   const { handleSendMessage } = useMessages();
 
   useEffect(() => {
-    setTimeout(() => {
       handleSendMessage({ selectedLayout: "external1" });
-    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -106,7 +104,7 @@ function Home(props) {
                       }
                       data-toggle="dropdown"
                       dropdown-toggle
-                      aria-expanded="true"
+                      aria-expanded={true}
                     >
                       <span className="pull-left">
                         <span className="lable">Sort:{sortType}</span>
@@ -191,7 +189,7 @@ function Home(props) {
                       }
                       data-toggle="dropdown"
                       dropdown-toggle
-                      aria-expanded="true"
+                      aria-expanded={true}
                       style={{
                         backgroundColor: "#14CB5D",
                         border: "none",

@@ -31,35 +31,34 @@ function LayoutHeader(props) {
       array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
-
-    getSelectedLayOut();
+    // getSelectedLayOut();
   }, []);
 
  const {handleSendMessage}= useMessages()
   const selectedLayoutHandler = (index) => {
     handleSendMessage({selectedLayout:index+1});
-    buildfire.appData.save(
-      { layOut: index },
-      "selectedLayOut",
-      (err, result) => {
-        if (err) return console.error("Error while saving your data", err);
-        console.log("Data saved successfully", result);
-      }
-    );
+    // buildfire.appData.save(
+    //   { layOut: index },
+    //   "selectedLayOut",
+    //   (err, result) => {
+    //     if (err) return console.error("Error while saving your data", err);
+    //     console.log("Data saved successfully", result);
+    //   }
+    // );
 
     setSelectedLayout(index);
   };
 
-  function getSelectedLayOut() {
+  // function getSelectedLayOut() {
     
-    buildfire.appData.get("selectedLayOut", (err, result) => {
-      if (err) return console.error("Error while retrieving your data", err);
-      console.log("Main record", result.data);
-      if (result.data.layOut) 
-      {setSelectedLayout(result.data.layOut);
-     }
-    });
-  }
+  //   buildfire.appData.get("selectedLayOut", (err, result) => {
+  //     if (err) return console.error("Error while retrieving your data", err);
+  //     console.log("Main record", result.data);
+  //     if (result.data.layOut) 
+  //     {setSelectedLayout(result.data.layOut);
+  //    }
+  //   });
+  // }
 
   function saveData(data) {
     console.log('Submit function in Shared Submit Function ->', {data,selectedLayout:selectedLayout+1});

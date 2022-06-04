@@ -42,12 +42,6 @@ function Index(props) {
         "cover";
     }
     setEnableFullScreen(props.data.enableFullScreen);
-
-    if (props.themeState.colors) {
-      console.log("my theme in layout 1 -=>", props.themeState);
-      props.setTextStyle();
-    }
-
   }, [props]);
 
   useEffect(() => {

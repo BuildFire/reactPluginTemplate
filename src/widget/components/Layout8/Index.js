@@ -6,7 +6,7 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "../../../../../../styles/media/holder-1x1.png"
   );
   const [holderVideo, setHolderVideo] = useState(
     "./shared/img/video_player_placeholder.gif"
@@ -24,10 +24,6 @@ function Index(props) {
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);
     setEnableFullScreen4(props.data.enableFullScreen4);
-
-    if (props.themeState.colors) {
-      props.setTextStyle();
-    }
   }, [props]);
 
   return (

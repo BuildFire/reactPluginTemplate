@@ -210,7 +210,7 @@ function index(props) {
                   type="checkbox"
                   value="true"
                 />
-                <label htmlFor="showInfoRibbon" class="label-success"></label>
+                <label htmlFor="showInfoRibbon" className="label-success"></label>
               </div>
             </div>
           </div>
