@@ -20,7 +20,7 @@ export default function SortablelistComponent(props) {
             <div className="listedItem" style={{ alignItems: 'center', display: 'flex' }}>
                 <div className="pull-left cursor-grab ui-sortable-handle ">
                     {
-                        props.sortType == "manually" && 
+                        props.sortType == "Manually" && 
                         <DragHandle />
                     }
                 </div>

@@ -15,9 +15,6 @@ import Layout12 from "../components/Layout12/Index";
 import Layout13 from "../components/Layout13/Index";
 import Layout14 from "../components/Layout14/Index"
 import ExternalLayout from "../components/external/ExternalLayout";
-import Ribbon from "./Ui_components/Ribbon";
-import ProgressBar from "./Ui_components/ProgressBar";
-
 function LayoutManager() {
   const [data, setData] = useState({});
   const [selectedLayout, setSelectedLayout] = useState(1);
@@ -52,18 +49,6 @@ function LayoutManager() {
       }
     });
   }
-
-  function showImage(image) {
-    buildfire.imagePreviewer.show(
-      {
-        images: [image],
-      },
-      () => {
-        console.log("Image previewer closed");
-      }
-    );
-  }
-
   function setAppThemeFunction() {
     buildfire.appearance.getAppTheme((err, appTheme) => {
       if (err) return console.error(err);

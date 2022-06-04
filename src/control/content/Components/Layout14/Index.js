@@ -285,13 +285,17 @@ function Index() {
               <label className="lable">Enable Prizes</label>
             </div>
             <div className="col-md-9">
-              <input
-                onChange={handleChange}
-                className="checkBox"
-                type="checkBox"
-                name="enablePrizes"
-                id="enablePrizes"
-              />
+            <div className="button-switch">
+            <input
+                  onChange={handleChange}
+                  className="checkBox"
+                  name="showInfoRibbon"
+                  id="showInfoRibbon"
+                  type="checkbox"
+                  value="true"
+                />
+              <label htmlFor="showInfoRibbon" class="label-success"></label>
+              </div>
             </div>
           </div>
         </div>
