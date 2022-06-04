@@ -14,7 +14,9 @@ function Home(props) {
   const { handleSendMessage } = useMessages();
 
   useEffect(() => {
-    handleSendMessage({ selectedLayout: "external1" });
+    setTimeout(() => {
+      handleSendMessage({ selectedLayout: "external1" });
+    }, 1000);
   }, []);
 
   useEffect(() => {
