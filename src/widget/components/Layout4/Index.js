@@ -16,11 +16,6 @@ function Index(props) {
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
-
-    if (props.themeState.colors) {
-      console.log("my theme in layout 4 -=>", props.themeState);
-      props.setTextStyle();
-    }
   }, [props]);
 
   return (

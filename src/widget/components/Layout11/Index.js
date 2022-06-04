@@ -10,10 +10,6 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    if (props.themeState.colors) {
-      console.log("my theme in layout 11-=>", props.themeState);
-      props.setTextStyle();
-    }
 
   }, [props])
 

@@ -14,10 +14,6 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    if (props.themeState.colors) {
-      props.setTextStyle();
-    }
-
     // document.body.style.background = "#d2cfcf";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundSize="cover";

@@ -13,10 +13,6 @@ function Index(props) {
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
 
-    if (props.themeState.colors) {
-      console.log("my theme in layout 13 -=>", props.themeState);
-      props.setTextStyle();
-    }
   }, [props]);
   return (
     <>

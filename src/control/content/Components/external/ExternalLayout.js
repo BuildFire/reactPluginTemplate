@@ -251,7 +251,7 @@ function ExternalLayout(props) {
                             }
                             data-toggle="dropdown"
                             dropdown-toggle
-                            aria-expanded="true"
+                            aria-expanded={true}
                           >
                             <span className="pull-left">
                               <span className="lable">Sort:{sortType}</span>

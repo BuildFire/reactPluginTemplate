@@ -10,11 +10,6 @@ function Layout13(props) {
   const { imagePreviewer,  } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
-
-    if (props.themeState.colors) {
-      console.log("my theme in layout 1 -=>", props.themeState);
-      props.setTextStyle();
-    }
   }, [props]);
 
   return (
@@ -37,6 +32,7 @@ function Layout13(props) {
                 )}
               </div>
             ) : (
+              <div className="topVideo-container">
               <VideoUI
                 data={props.data}
                 enableAutoPlay={props.data.enableAutoPlay1}
@@ -44,6 +40,7 @@ function Layout13(props) {
                 url={props.data.videoURL}
                 index={1}
               />
+              </div>
             )}
             <div className="info-container">
               <div className="mdc-card">

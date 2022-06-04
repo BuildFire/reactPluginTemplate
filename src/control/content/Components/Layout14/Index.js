@@ -3,6 +3,7 @@ import ThumbnailUI from "../../shared/ThumbnailUI";
 import VideoUi from "../../shared/VideoUi";
 import useForm from "../../hooks/form";
 import "./style.less";
+import WysiwygEditor from "../../shared/WysiwygEditor";
 function Index() {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
@@ -31,32 +32,6 @@ function Index() {
     }
     handleChange(e);
   }
-
-  useEffect(() => {
-    // set up WYSIWYG -->
-    tinymce.init({
-      selector: "#wysiwygContent",
-      setup: (editor) => {
-        editor.on("input", (e) =>
-          setWysiwygData(tinymce.activeEditor.getContent())
-        );
-        editor.on("change", (e) =>
-          setWysiwygData(tinymce.activeEditor.getContent())
-        );
-      },
-    });
-    tinymce.init({
-      selector: "#wysiwygContent2",
-      setup: (editor) => {
-        editor.on("input", (e) =>
-          setWysiwygData2(tinymce.activeEditor.getContent())
-        );
-        editor.on("change", (e) =>
-          setWysiwygData2(tinymce.activeEditor.getContent())
-        );
-      },
-    });
-  }, []);
   useEffect(() => {
     handelImage({
       thumbnailImage,
@@ -69,7 +44,6 @@ function Index() {
   }, [
     thumbnailImage,
     thumbnailImage2,
-    ,
     videoURL,
     videoURL2,
     wysiwygData,
@@ -174,11 +148,7 @@ function Index() {
               <label className="lable">Body Contant</label>
             </div>
           </div>
-          <textarea
-            placeholder="WYSIWYG"
-            id="wysiwygContent"
-            name="wysiwygContent"
-          ></textarea>
+          <WysiwygEditor index={1} setWysiwygData={setWysiwygData}/>
 
           <div className="row">
             <div className="col-md-3">
@@ -274,11 +244,7 @@ function Index() {
               <label className="lable">Body Contant</label>
             </div>
           </div>
-          <textarea
-            placeholder="WYSIWYG"
-            id="wysiwygContent2"
-            name="wysiwygContent2"
-          ></textarea>
+          <WysiwygEditor index={2} setWysiwygData={setWysiwygData2}/>
 
           <div className="row  margin-bottom">
             <div className="col-md-3">
@@ -294,7 +260,7 @@ function Index() {
                   type="checkbox"
                   value="true"
                 />
-              <label htmlFor="showInfoRibbon" class="label-success"></label>
+              <label htmlFor="showInfoRibbon" className="label-success"></label>
               </div>
             </div>
           </div>

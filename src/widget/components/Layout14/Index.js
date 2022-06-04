@@ -22,10 +22,6 @@ function Index(props) {
       props.data.wysiwygData2 ||
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor. ";
 
-    if (props.themeState.colors) {
-      console.log("my theme in layout 1 -=>", props.themeState);
-      props.setTextStyle();
-    }
   }, [props]);
 
 
