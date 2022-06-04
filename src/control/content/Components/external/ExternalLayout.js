@@ -13,12 +13,16 @@ function ExternalLayout(props) {
   const [videoURL, setVideoURL] = useState("");
   const [layoutsAdded, setLayoutsAdded] = useState(dummyObjects);
 
-  const [layoutsTypes, setLayoutsTypes] = useState(["Details", "Recap & Portfolio", "Content Pages"]);
+  const [layoutsTypes, setLayoutsTypes] = useState([
+    "Details",
+    "Recap & Portfolio",
+    "Content Pages",
+  ]);
   const [selectedTab, setSelectedTab] = useState("Details");
+  const [openSortDropdown, setOpenSortDropdown] = useState(false);
+  const [sortType, setSortType] = useState("Manually");
 
-  const [sortType, setSortType] = useState("manually");
-
-  const { handleSendMessage } = useMessages()
+  const { handleSendMessage } = useMessages();
   useEffect(() => {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
@@ -28,41 +32,41 @@ function ExternalLayout(props) {
     let newItems = layoutsAdded;
     setLayoutsAdded([]);
     console.log(sortType);
-    if (sortType == "asenedDate") {
+    if (sortType == "Newest Entry") {
       newItems.sort(function (a, b) {
         if (a.date > b.date) {
-          return 1
+          return 1;
         } else {
-          return -1
+          return -1;
         }
-      })
-    } else if (sortType == "desendDate") {
+      });
+    } else if (sortType == "Latest Entry") {
       newItems.sort(function (a, b) {
         if (a.date > b.date) {
-          return -1
+          return -1;
         } else {
-          return 1
+          return 1;
         }
-      })
-    } else if (sortType == "asenedTitle") {
+      });
+    } else if (sortType == "Title A - Z") {
       newItems.sort(function (a, b) {
         if (a.title.toUpperCase() > b.title.toUpperCase()) {
-          return 1
+          return 1;
         } else {
-          return -1
+          return -1;
         }
-      })
-    } else if (sortType == "desendTitle") {
+      });
+    } else if (sortType == "Title Z - A") {
       newItems.sort(function (a, b) {
         if (a.title.toUpperCase() > b.title.toUpperCase()) {
-          return -1
+          return -1;
         } else {
-          return 1
+          return 1;
         }
-      })
+      });
     }
     setLayoutsAdded(newItems);
-  }, [sortType])
+  }, [sortType]);
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);
@@ -83,26 +87,41 @@ function ExternalLayout(props) {
     setSelectedTab(e.target.textContent);
   }
 
-  function setSortTypeFun() {
-    let newSort = document.getElementById("sortType-Selector").value;
-    setSortType(newSort);
-  }
-
   return (
     <>
       <div className="layout-13-Container slide-in">
         <div className="row">
           <div className="col-md-3">
-            <button onClick={changeLayOut} type="button" className="btn left-btns selected-left-btn">{layoutsTypes[0]}</button>
-            <button onClick={changeLayOut} type="button" className="btn left-btns">{layoutsTypes[1]}</button>
-            <button onClick={changeLayOut} type="button" className="btn left-btns">{layoutsTypes[2]}</button>
+            <button
+              onClick={changeLayOut}
+              type="button"
+              className="btn left-btns selected-left-btn"
+            >
+              {layoutsTypes[0]}
+            </button>
+            <button
+              onClick={changeLayOut}
+              type="button"
+              className="btn left-btns"
+            >
+              {layoutsTypes[1]}
+            </button>
+            <button
+              onClick={changeLayOut}
+              type="button"
+              className="btn left-btns"
+            >
+              {layoutsTypes[2]}
+            </button>
           </div>
           <div className="col-md-9">
-            {
-              selectedTab == layoutsTypes[0] &&
+            {selectedTab == layoutsTypes[0] && (
               <form onSubmit={handleSubmit}>
                 <h1>Title Card</h1>
-                <p className="info-note">This is the title card of this Incentive. It will be shown in the main feed.</p>
+                <p className="info-note">
+                  This is the title card of this Incentive. It will be shown in
+                  the main feed.
+                </p>
                 <div className="layOutContainer">
                   <div className="row">
                     <div className="col-md-3">
@@ -212,55 +231,140 @@ function ExternalLayout(props) {
                 </div>
                 <h1>Internal Pages</h1>
                 <div className="internalPageContainer ">
-                  <p className="info-note">You can add internal pages for this incentive here. </p>
+                  <p className="info-note">
+                    You can add internal pages for this incentive here.{" "}
+                  </p>
 
                   <div className="row">
-                    <div className="col-md-3 ">
-                      <div className="border-radius-four border-grey sortContainer ">
-                        <span>Sort:</span>
-                        <select onChange={() => setSortTypeFun()} id="sortType-Selector">
-                          <option value="manually">Manually</option>
-                          <option value="asenedTitle">Title A - Z</option>
-                          <option value="desendTitle">Title Z - A</option>
-                          <option value="asenedDate">Newest Entry</option>
-                          <option value="desendDate">Latest Entry</option>
-                        </select>
+                    <div className="col-md-4">
+                      <div className="sort-dropdown-container">
+                        <div
+                          className={
+                            !openSortDropdown ? "dropdown" : "dropdown open"
+                          }
+                          dropdown
+                        >
+                          <button
+                            className="btn btn-default  text-left dropdown-toggle sort-dropdown"
+                            onClick={() =>
+                              setOpenSortDropdown(!openSortDropdown)
+                            }
+                            data-toggle="dropdown"
+                            dropdown-toggle
+                            aria-expanded="true"
+                          >
+                            <span className="pull-left">
+                              <span className="lable">Sort:{sortType}</span>
+                            </span>
+                            <span className="chevron icon-chevron-down pull-right"></span>
+                          </button>
+                          <ul className="dropdown-menu extended" role="menu">
+                            <li>
+                              <a
+                                className=""
+                                onClick={() => {
+                                  setSortType("Manually");
+                                  setOpenSortDropdown(!openSortDropdown);
+                                }}
+                              >
+                                Manually
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                className=""
+                                onClick={() => {
+                                  setSortType("Title A - Z");
+                                  setOpenSortDropdown(!openSortDropdown);
+                                }}
+                              >
+                                Title A - Z
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                className=""
+                                onClick={() => {
+                                  setSortType("Title Z - A");
+                                  setOpenSortDropdown(!openSortDropdown);
+                                }}
+                              >
+                                Title Z - A
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                className=""
+                                onClick={() => {
+                                  setSortType("Newest Entry");
+                                  setOpenSortDropdown(!openSortDropdown);
+                                }}
+                              >
+                                Newest Entry
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                className=""
+                                onClick={() => {
+                                  setSortType("Latest Entry");
+                                  setOpenSortDropdown(!openSortDropdown);
+                                }}
+                              >
+                                Latest Entry
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                    <div className="col-md-6"></div>
-                    <div className="col-md-3">
-                      <button type="button" className="btn btn-success addLayOut-Btn" onClick={() => props.setActiveComponent("header")} >
+                    <div className="col-md-4"></div>
+                    <div className="col-md-4">
+                      <button
+                        type="button"
+                        className="btn btn-success addLayOut-Btn"
+                        onClick={() => props.setActiveComponent("header")}
+                      >
                         + Add Page
                       </button>
                     </div>
                   </div>
-                  {
-                    layoutsAdded.length == 0 ? (
-                      <div className="empty-state-lg border-radius-four border-grey">
-                        <p>You haven’t added anything yet</p>
-                      </div>
-                    ) : (
-                      <div className="layouts-Added-List">
-                        <SortablelistComponent sortType={sortType} items={layoutsAdded} setItems={setLayoutsAdded} />
-                      </div>
-                    )
-                  }
-
+                  {layoutsAdded.length == 0 ? (
+                    <div className="empty-state-lg border-radius-four border-grey">
+                      <p>You haven’t added anything yet</p>
+                    </div>
+                  ) : (
+                    <div className="layouts-Added-List">
+                      <SortablelistComponent
+                        sortType={sortType}
+                        items={layoutsAdded}
+                        setItems={setLayoutsAdded}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className="bottom-actions row">
-                  <button type="button" className="btn btn-default" id="layoutBackBtn" onClick={() => props.setActiveComponent("home")}>
+                  <button
+                    type="button"
+                    className="btn btn-default"
+                    id="layoutBackBtn"
+                    onClick={() => props.setActiveComponent("home")}
+                  >
                     Cancel
                   </button>
-                  <button type="submit" className="btn btn-success" id="layoutSaveBtn">
+                  <button
+                    type="submit"
+                    className="btn btn-success"
+                    id="layoutSaveBtn"
+                  >
                     Save
                   </button>
                 </div>
               </form>
-            }
+            )}
           </div>
         </div>
       </div>
-
     </>
   );
 }

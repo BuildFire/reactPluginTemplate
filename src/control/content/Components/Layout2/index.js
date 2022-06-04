@@ -116,7 +116,7 @@ function index(props) {
               <label className="lable">Show Info Ribbon</label>
             </div>
             <div className="col-md-9">
-              <div class="button-switch">
+              <div className="button-switch">
                 <input
                   onChange={handleChange}
                   className="checkBox"
@@ -125,7 +125,7 @@ function index(props) {
                   type="checkbox"
                   value="true"
                 />
-                <label for="showInfoRibbon" class="label-success"></label>
+                <label htmlFor="showInfoRibbon" class="label-success"></label>
               </div>
             </div>
           </div>
