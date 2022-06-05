@@ -40,7 +40,18 @@ function index(props) {
     videoURL3,
   ]);
   useEffect(() => {
-    getOldData(props.data)
+    getOldData(props.data);
+    setThumbnailImage(props.data.thumbnailImage)
+    setThumbnailImage2(props.data.thumbnailImage2)
+    setThumbnailImage3(props.data.thumbnailImage3)
+    setThumbnailImage4(props.data.thumbnailImage4)
+    setVideoURL1(props.data.videoURL1);
+    setVideoURL2(props.data.videoURL2);
+    setVideoURL3(props.data.videoURL3);
+    setUploadType(props.data.mediaType);
+    setUploadType2(props.data.mediaType2);
+    setUploadType3(props.data.mediaType3);
+
   },[props])
   // submit form function
   function submitForm(values) {
@@ -81,7 +92,7 @@ function index(props) {
               type="radio"
               name="mediaType"
               value="image"
-              defaultChecked
+              defaultChecked={props.data.mediaType ==="video"?false:true}
             />
             <label className="lable">Image</label>
             <input
@@ -90,12 +101,13 @@ function index(props) {
               type="radio"
               name="mediaType"
               value="video"
+              defaultChecked={props.data.mediaType ==="video"?true:false}
             />
             <label className="lable">Video</label>
           </div>
         </div>
 
-        {uploadType == "image" ? (
+        {uploadType !== "video" ? (
           <>
             <ThumbnailUI
               index={1}
@@ -127,6 +139,7 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen"
               id="enableFullScreen"
+              defaultChecked={props.data.enableFullScreen}
             />
           </div>
         </div>
@@ -141,6 +154,7 @@ function index(props) {
               placeholder="Body content 1"
               onChange={handleChange}
               className="form-control bodyContent"
+              defaultValue={props.data.BodyContent}
             ></textarea>
           </div>
         </div>
@@ -155,7 +169,7 @@ function index(props) {
               type="radio"
               name="mediaType2"
               value="image"
-              defaultChecked
+              defaultChecked={props.data.mediaType2 ==="video"?false:true}
             />
             <label className="lable">Image</label>
             <input
@@ -164,11 +178,12 @@ function index(props) {
               type="radio"
               name="mediaType2"
               value="video"
+              defaultChecked={props.data.mediaType2 ==="video"?true:false}
             />
             <label className="lable">Video</label>
           </div>
         </div>
-        {uploadType2 == "image" ? (
+        {uploadType2 !== "video" ? (
           <>
             <ThumbnailUI
               index={2}
@@ -201,6 +216,7 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen2"
               id="enableFullScreen2"
+              defaultChecked={props.data.enableFullScreen2}
             />
           </div>
         </div>
@@ -215,6 +231,7 @@ function index(props) {
               placeholder="Body content 2"
               onChange={handleChange}
               className="form-control bodyContent"
+              defaultValue={props.data.BodyContent2}
             ></textarea>
           </div>
         </div>
@@ -229,7 +246,7 @@ function index(props) {
               type="radio"
               name="mediaType3"
               value="image"
-              defaultChecked
+              defaultChecked={props.data.mediaType3 ==="video"?false:true}
             />
             <label className="lable">Image</label>
             <input
@@ -238,11 +255,12 @@ function index(props) {
               type="radio"
               name="mediaType3"
               value="video"
+              defaultChecked={props.data.mediaType3 ==="video"?true:false}
             />
             <label className="lable">Video</label>
           </div>
         </div>
-        {uploadType3 == "image" ? (
+        {uploadType3 !== "video" ? (
           <>
             <ThumbnailUI
               index={3}
@@ -275,6 +293,7 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen3"
               id="enableFullScreen3"
+              defaultChecked={props.data.enableFullScreen3}
             />
           </div>
         </div>
@@ -289,6 +308,7 @@ function index(props) {
               onChange={handleChange}
               placeholder="Body content 3"
               className="form-control bodyContent"
+              defaultValue={props.data.BodyContent3}
             ></textarea>
           </div>
         </div>
@@ -313,6 +333,7 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen4"
               id="enableFullScreen4"
+              defaultChecked={props.data.enableFullScreen4}
             />
           </div>
         </div>
@@ -329,6 +350,7 @@ function index(props) {
                 id="showInfoRibbon"
                 type="checkbox"
                 value="true"
+                defaultChecked={props.data.showInfoRibbon}
               />
               <label htmlFor="showInfoRibbon" className="label-success"></label>
             </div>
