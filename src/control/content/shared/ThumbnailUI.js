@@ -1,7 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 
 export default function ThumbnailUI(props) {
-
   useEffect(() => {
     let thumbnail = new buildfire.components.images.thumbnail(`#thumbnail${props.index}`, {
       imageUrl: "",
@@ -25,8 +24,7 @@ export default function ThumbnailUI(props) {
     thumbnail.onDelete = (imageUrl) => {
       props.setThumbnailImage(null);
     };
-  },[])
-
+  },[props])
   return (
     <div className="row">
       <div className="col-md-3">
