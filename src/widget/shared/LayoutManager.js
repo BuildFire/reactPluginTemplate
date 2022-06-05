@@ -17,7 +17,7 @@ import Layout14 from "../components/Layout14/Index";
 import ExternalLayout from "../components/external/ExternalLayout";
 function LayoutManager() {
   const [data, setData] = useState({});
-  const [selectedLayout, setSelectedLayout] = useState(1);
+  const [selectedLayout, setSelectedLayout] = useState("external1");
   const [themeState, setThemeState] = useState({});
   const [testTheme, setTestTheme] = useState({
     headerText: "#FFFFFF",
@@ -25,12 +25,13 @@ function LayoutManager() {
     backgroundColor: "#000000",
     titleBar: "rgb(0 0 0 / 90%)",
   });
-
+  const [testData, setTestData] = useState({})
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
-        console.log("Message received <layout>", message.selectedLayout);
+        console.log("Message received <layout>", message);
         setSelectedLayout(message.selectedLayout);
+        setTestData(message)
       } else {
         console.log("Message received <Data>", message);
         setData(message);
@@ -122,10 +123,10 @@ function LayoutManager() {
           <Layout14 themeState={themeState} data={data} />
         )}
         {selectedLayout === "external1" && (
-          <ExternalLayout themeState={themeState} data={data} />
+          <ExternalLayout themeState={themeState} data={data} testData={testData} />
         )}
       </div>
-      <div className="navigation-container"></div>
+      {/* <div className="navigation-container"></div> */}
     </>
   );
 }

@@ -12,9 +12,17 @@ function Home(props) {
   const [openContentTypeDropdown, setOpenContentTypeDropdown] = useState(false);
   const [openSortDropdown, setOpenSortDropdown] = useState(false);
   const { handleSendMessage } = useMessages();
-
+  const [apiData, setApiData] = useState({})
   useEffect(() => {
       handleSendMessage({ selectedLayout: "external1" });
+
+        buildfire.datastore.get("test", (err, result) => {
+          if (err) return console.error("Error while retrieving your data", err);
+          console.log("Main record", result.data);
+          setApiData(result.data);
+          handleSendMessage({selectedLayout: "external1",...result.data});
+        });
+
   }, []);
 
   return (

@@ -7,49 +7,78 @@ function Layout13(props) {
     "./assets/images/holder-16x9.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
-  const { imagePreviewer,  } = useHelper();
-  useEffect(() => {
-    setEnableFullScreen(props.data.enableFullScreen);
-  }, [props]);
-
+  const { imagePreviewer } = useHelper();
+  const [apiData, setApiData] = useState({})
+  useEffect( () => {
+    // buildfire.datastore.get("test", (err, result) => {
+    //   if (err) return console.error("Error while retrieving your apiData", err);
+    //   console.log("Main record", result.data);
+    //   setApiData(result.data);
+    //   // handleSendMessage({selectedLayout: "external1",...result.apiData});
+    // });
+    return new Promise((resolve, reject) => {
+      buildfire.datastore.get("test", (err, result) => {
+        if (err) return console.error("Error while retrieving your apiData", err);
+        resolve(
+          setApiData(result.data)
+        )
+        console.log("Main record", result.data);
+        // setApiData(result.data);
+        // handleSendMessage({selectedLayout: "external1",...result.apiData});
+      });
+    })
+    
+  }, []);
+  // useEffect(() => {
+  //   console.log("apiData.title ",apiData );
+  //   setEnableFullScreen(apiData.enableFullScreen);
+  // },[apiData])
   return (
     <>
       <div className="mdc-layout-grid layout-external-container">
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
-            {props.data.BackgroundmediaType !== "video" ? (
+            {apiData.BackgroundmediaType !== "video"
+            ? (
               <div className="topImage-container">
-                {enableFullScreen && props.data.thumbnailImage != null ? (
+                {apiData.enableFullScreen && apiData.thumbnailImage != null ? (
                   <img
                     alt="top image"
                     onClick={() => {
-                      imagePreviewer(props.data.thumbnailImage);
+                      imagePreviewer(apiData.thumbnailImage);
                     }}
-                    src={props.data.thumbnailImage || holderImage}
+                    src={apiData.thumbnailImage || holderImage}
                   />
                 ) : (
-                  <img alt="top image" src={props.data.thumbnailImage || holderImage} />
+                  <img
+                    alt="top image"
+                    src={apiData.thumbnailImage || holderImage}
+                  />
                 )}
               </div>
             ) : (
               <div className="topVideo-container">
-              <VideoUI
-                data={props.data}
-                enableAutoPlay={props.data.enableAutoPlay1}
-                enableFullScreen={props.data.enableFullScreen}
-                url={props.data.videoURL}
-                index={1}
-              />
+                <VideoUI
+                  data={apiData}
+                  enableAutoPlay={
+                    apiData.enableAutoPlay1
+                  }
+                  enableFullScreen={
+                    apiData.enableFullScreen
+                  }
+                  url={apiData.videoURL || apiData.videoURL}
+                  index={1}
+                />
               </div>
             )}
             <div className="info-container">
               <div className="mdc-card">
-                <p className="title">{props.data.title || "Title"}</p>
+                <p className="title">{apiData.title || "Title"}</p>
                 <p className="subtitle">
-                  {props.data.subtitle || "Subtitle"}
+                  {apiData.subtitle || "Subtitle"}
                 </p>
                 <p className="bodyContent">
-                  {props.data.bodyContent || "Body Content"}
+                  {apiData.bodyContent || "Body Content"}
                 </p>
               </div>
             </div>
