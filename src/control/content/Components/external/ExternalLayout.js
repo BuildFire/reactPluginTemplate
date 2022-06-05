@@ -25,14 +25,33 @@ function ExternalLayout(props) {
   const [sortType, setSortType] = useState("Manually");
 
   const { handleSendMessage } = useMessages();
+  
+  const [apiData, setApiData] = useState({})
+
   useEffect(() => {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
 
-
+useEffect(() => {
+  buildfire.datastore.get("test", (err, result) => {
+    if (err) return console.error("Error while retrieving your data", err);
+    console.log("Main record", result.data);
+    setApiData(result.data);
+    handleSendMessage({selectedLayout: "external1",...result.data});
+  });
+},[])
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);
+    buildfire.datastore.save(
+      values,
+      "test",
+      (err, result) => {
+        if (err) return console.error("Error while saving your data", err);
+    
+        console.log("Data saved successfully", result);
+      }
+    );
   }
   handleSendMessage({ selectedLayout: "external1" });
 
@@ -159,6 +178,7 @@ function ExternalLayout(props) {
                         type="text"
                         name="title"
                         placeholder="Title"
+                        defaultValue={apiData.title}
                       />
                     </div>
                   </div>

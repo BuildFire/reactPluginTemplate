@@ -19,6 +19,7 @@ export default function SortablelistComponent(props) {
     setItems([]);
     console.log(props.sortType);
     if (props.sortType == "Newest Entry") {
+      console.log("from newest entry");
       newItems.sort(function (a, b) {
         if (a.date > b.date) {
           return 1;
@@ -52,7 +53,7 @@ export default function SortablelistComponent(props) {
       });
     }
     setItems(newItems);
-  }, [props]);
+  }, [props.sortType]);
 
 
   const DragHandle = sortableHandle(() => (
@@ -161,10 +162,8 @@ export default function SortablelistComponent(props) {
         }}
         useDragHandle
       >
-        {console.log("-----> in return ", items)}
         {
         items.map((value, index) => {
-          console.log("+value ->", value);
           return(
           <SortableItem key={`item-${index}`} index={index} value={value} />
         )})
