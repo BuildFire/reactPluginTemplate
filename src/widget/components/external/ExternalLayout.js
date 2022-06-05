@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
-import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
-function Index(props) {
+function Layout13(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer,  } = useHelper();
@@ -15,7 +14,7 @@ function Index(props) {
 
   return (
     <>
-      <div className="mdc-layout-grid layout-1-container">
+      <div className="mdc-layout-grid layout-external-container">
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             {props.data.BackgroundmediaType !== "video" ? (
@@ -57,12 +56,8 @@ function Index(props) {
           </div>
         </div>
       </div>
-      {props.data.showInfoRibbon && <>
-     <ProgressRibbon/>
-      </>
-      }
     </>
   );
 }
 
-export default Index;
+export default Layout13;

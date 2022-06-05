@@ -34,6 +34,58 @@ const dummyObjects = [
     date: new Date(2022, 4, 30)
 },
 {
+    layout: 1,
+    BackgroundmediaType: "video",
+    bodyContent: "body",
+    enableAutoPlay1: true,
+    enableFullScreen: true,
+    showInfoRibbon: true,
+    subtitle: "subtitle",
+    thumbnailImage: null,
+    title: "title 1",
+    videoURL: "https://publicfiles.buildfire.com/file/6296646d9b662d038053028e",
+    date: new Date(2022, 4, 30)
+},
+{
+    layout: 1,
+    BackgroundmediaType: "video",
+    bodyContent: "body",
+    enableAutoPlay1: true,
+    enableFullScreen: true,
+    showInfoRibbon: true,
+    subtitle: "subtitle",
+    thumbnailImage: null,
+    title: "title 1",
+    videoURL: "https://publicfiles.buildfire.com/file/6296646d9b662d038053028e",
+    date: new Date(2022, 4, 30)
+},
+{
+    layout: 1,
+    BackgroundmediaType: "video",
+    bodyContent: "body",
+    enableAutoPlay1: true,
+    enableFullScreen: true,
+    showInfoRibbon: true,
+    subtitle: "subtitle",
+    thumbnailImage: null,
+    title: "title 1",
+    videoURL: "https://publicfiles.buildfire.com/file/6296646d9b662d038053028e",
+    date: new Date(2022, 4, 30)
+},
+{
+    layout: 1,
+    BackgroundmediaType: "video",
+    bodyContent: "body",
+    enableAutoPlay1: true,
+    enableFullScreen: true,
+    showInfoRibbon: true,
+    subtitle: "subtitle",
+    thumbnailImage: null,
+    title: "title 1",
+    videoURL: "https://publicfiles.buildfire.com/file/6296646d9b662d038053028e",
+    date: new Date(2022, 4, 30)
+},
+{
     layout: 10,
     bodyContent: "body 1",
     bodyContent2: "body 2",

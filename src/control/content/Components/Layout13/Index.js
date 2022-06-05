@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useForm from "../../hooks/form";
-import ThumbnailUI from "../../shared/ThumbnailUI";
 import VideoUi from "../../shared/VideoUi";
+import ThumbnailUI from "../../shared/ThumbnailUI";
 import "./style.less";
-function index(props) {
+
+function Index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
@@ -15,13 +16,11 @@ function index(props) {
   function submitForm(values) {
     console.log("forms values ->", values);
   }
-
+  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
   }
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
-
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -29,63 +28,111 @@ function index(props) {
         <div className="layOutContainer slide-in">
           <div className="row">
             <div className="col-md-3">
-              <label className="lable">Main Media Type</label>
+              <label className="lable">Cover Media Type</label>
             </div>
             <div className="col-md-9">
               <input
+                onChange={handleChangeInputType}
                 className="checkBox"
                 type="radio"
-                name="mediaType"
+                name="BackgroundmediaType"
                 value="image"
                 defaultChecked
-                onChange={handleChangeInputType}
               />
               <label className="lable">Image</label>
               <input
+                onChange={handleChangeInputType}
                 className="checkBox"
                 type="radio"
-                name="mediaType"
+                name="BackgroundmediaType"
                 value="video"
-                onChange={handleChangeInputType}
               />
               <label className="lable">Video</label>
             </div>
           </div>
 
           {uploadType == "image" ? (
-            <ThumbnailUI
-              index={1}
-              recommended={"Recommended: 675 x 1200"}
-              thumbnailImage={thumbnailImage}
-              setThumbnailImage={setThumbnailImage}
-              imageTag={"Main Image"}
-              classList={"vertical-rectangle thumbnail"}
-            />
+            <>
+              <ThumbnailUI
+                index={1}
+                recommended={"Recommended: 675 x 1200"}
+                thumbnailImage={thumbnailImage}
+                setThumbnailImage={setThumbnailImage}
+                imageTag={"Cover Image"}
+                classList={"vertical-rectangle thumbnail"}
+              />
+            </>
           ) : (
             <>
               <VideoUi
-                handleChange={handleChange}
                 setVideoURL={setVideoURL}
                 videoURL={videoURL}
                 index={1}
+                handleChange={handleChange}
               />
             </>
           )}
+
           <div className="row">
             <div className="col-md-3">
               <label className="lable">Enable Full Screen</label>
             </div>
             <div className="col-md-9">
               <input
-                type="checkBox"
+                onChange={handleChange}
                 className="checkBox"
+                type="checkBox"
                 name="enableFullScreen"
                 id="enableFullScreen"
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Title</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                maxLength={80}
+                onChange={handleChange}
+                className="form-control fullWidth"
+                type="text"
+                name="title"
+                placeholder="Title"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-3">
+              <label className="lable">Summary</label>
+            </div>
+            <div className="col-md-9">
+              <input
+                className="form-control fullWidth"
+                type="input"
+                name="subtitle"
+                placeholder="Summary"
+                maxLength={100}
                 onChange={handleChange}
               />
             </div>
           </div>
-          <div className="row margin-bottom">
+          <div className="row ">
+            <div className="col-md-3">
+              <label className="lable">Body Content</label>
+            </div>
+            <div className="col-md-9">
+              <textarea
+                maxLength={350}
+                onChange={handleChange}
+                name="bodyContent"
+                className="form-control bodyContent"
+                placeholder="Body Content"
+              ></textarea>
+            </div>
+          </div>
+          <div className="row  margin-bottom">
             <div className="col-md-3">
               <label className="lable">Show Info Ribbon</label>
             </div>
@@ -105,21 +152,21 @@ function index(props) {
           </div>
         </div>
         <div className="bottom-actions">
-          <button
-            type="button"
-            onClick={() => props.setActiveComponent("external1")}
-            className="btn btn-default"
-            id="layoutBackBtn"
-          >
-            Cancel
-          </button>
-          <button type="submit" className="btn btn-success" id="layoutSaveBtn">
-            Save
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => props.setActiveComponent("external1")}
+          className="btn btn-default"
+          id="layoutBackBtn"
+        >
+          Cancel
+        </button>
+        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
+          Save
+        </button>
+      </div>
       </form>
     </>
   );
 }
 
-export default index;
+export default Index;

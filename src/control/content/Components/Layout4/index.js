@@ -35,7 +35,7 @@ function index(props) {
     <>
       <form onSubmit={handleSubmit}>
         <h1>Page Details</h1>
-        <div className="layOutContainer">
+        <div className="layOutContainer slide-in">
           <div className="row">
             <div className="col-md-3">
               <label className="lable">Top Media Type</label>
@@ -215,7 +215,7 @@ function index(props) {
               <label className="lable">Show Info Ribbon</label>
             </div>
             <div className="col-md-9">
-              <div class="button-switch">
+              <div className="button-switch">
                 <input
                   onChange={handleChange}
                   className="checkBox"
@@ -224,7 +224,7 @@ function index(props) {
                   type="checkbox"
                   value="true"
                 />
-                <label for="showInfoRibbon" class="label-success"></label>
+                <label htmlFor="showInfoRibbon" className="label-success"></label>
               </div>
             </div>
           </div>

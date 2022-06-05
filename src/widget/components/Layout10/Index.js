@@ -5,7 +5,7 @@ import VideoUI from "../../shared/VideoUI";
 import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
-  const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
+  const [holderImage, setHolderImage] = useState("./assets/images/holder-16x9.png");
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
   
@@ -16,10 +16,6 @@ function Index(props) {
     ).style.backgroundImage = `url(${props.data.thumbnailImage})`;
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableFullScreen2(props.data.enableFullScreen2);
-
-    if (props.themeState.colors) {
-      props.setTextStyle();
-    }
     let img = document.getElementById("topImage-container");
     if (props.data.thumbnailImage) {
       img.style.backgroundImage = `url(${props.data.thumbnailImage})`

@@ -6,7 +6,7 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
   const [carouselImages, setCarouselImages] = useState([
     {
@@ -42,12 +42,6 @@ function Index(props) {
         "cover";
     }
     setEnableFullScreen(props.data.enableFullScreen);
-
-    if (props.themeState.colors) {
-      console.log("my theme in layout 1 -=>", props.themeState);
-      props.setTextStyle();
-    }
-
   }, [props]);
 
   useEffect(() => {

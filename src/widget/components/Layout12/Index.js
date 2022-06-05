@@ -6,16 +6,12 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
 
-  const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
+  const [holderImage, setHolderImage] = useState("./assets/images/holder-16x9.png");
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
     document.getElementById("my_container_div").innerHTML = props.data.wysiwygData || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.";
 
-
-    if (props.themeState.colors) {
-      props.setTextStyle();
-    }
 
   }, [props])
 

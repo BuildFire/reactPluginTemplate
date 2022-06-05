@@ -6,7 +6,7 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 import "./style.less";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
 
   const [enableFullScreen, setEnableFullScreen] = useState(false);
@@ -15,11 +15,6 @@ function Index(props) {
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableMainFullScreen(props.data.enableMainFullScreen);
-
-    if(props.themeState.colors){
-      console.log('my theme in layout 1 -=>', props.themeState);
-      props.setTextStyle();
-    }
   }, [props]);
   return (
     <>

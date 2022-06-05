@@ -5,7 +5,7 @@ import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
@@ -22,11 +22,8 @@ function Index(props) {
       props.data.wysiwygData2 ||
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor. ";
 
-    if (props.themeState.colors) {
-      console.log("my theme in layout 1 -=>", props.themeState);
-      props.setTextStyle();
-    }
   }, [props]);
+
 
   return (
     <>
@@ -118,7 +115,7 @@ function Index(props) {
           </div>
         </div>
       </div>
-      {props.data.enablePrizes && (
+      {props.data.showInfoRibbon && (
         <>
           <ProgressRibbon />
         </>

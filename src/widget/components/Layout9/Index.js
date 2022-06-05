@@ -6,7 +6,7 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);
@@ -14,10 +14,6 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    if (props.themeState.colors) {
-      props.setTextStyle();
-    }
-
     // document.body.style.background = "#d2cfcf";
     document.body.style.backgroundPosition = "center";
     document.body.style.backgroundSize="cover";

@@ -6,14 +6,10 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
 
-  const [holderImage, setHolderImage] = useState("../../../../../../styles/media/holder-16x9.png");
+  const [holderImage, setHolderImage] = useState("./assets/images/holder-16x9.png");
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    if (props.themeState.colors) {
-      console.log("my theme in layout 11-=>", props.themeState);
-      props.setTextStyle();
-    }
 
   }, [props])
 

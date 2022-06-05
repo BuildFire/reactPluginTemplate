@@ -5,8 +5,56 @@ import {
   sortableHandle,
 } from "react-sortable-hoc";
 import "./listStyle.less";
+import dummyObjects from "../../../assets/dummyData";
+
 
 export default function SortablelistComponent(props) {
+
+  const [items, setItems] = useState(dummyObjects);
+  const [layoutsAdded, setLayoutsAdded] = useState(dummyObjects);
+
+  useEffect(() => {
+    // desendDate"asenedDate"asenedTitle"desendTitle
+    let newItems = layoutsAdded;
+    setItems([]);
+    console.log(props.sortType);
+    if (props.sortType == "Newest Entry") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+    } else if (props.sortType == "Latest Entry") {
+      newItems.sort(function (a, b) {
+        if (a.date > b.date) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+    } else if (props.sortType == "Title A - Z") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+    } else if (props.sortType == "Title Z - A") {
+      newItems.sort(function (a, b) {
+        if (a.title.toUpperCase() > b.title.toUpperCase()) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+    }
+    setItems(newItems);
+  }, [props]);
+
+
   const DragHandle = sortableHandle(() => (
     <i
       style={{ cursor: "pointer", fontSize: 24, color: "#999" }}
@@ -26,7 +74,7 @@ export default function SortablelistComponent(props) {
           style={{ alignItems: "center", display: "flex" }}
         >
           <div className="pull-left cursor-grab ui-sortable-handle ">
-            {props.sortType == "manually" && <DragHandle />}
+            {props.sortType == "Manually" && <DragHandle />}
           </div>
           <div className="layout-Name-Container">
             <p className="layout-Name"> Layout {value.layout} - Title </p>
@@ -53,10 +101,10 @@ export default function SortablelistComponent(props) {
           style={{ alignItems: "center", display: "flex" }}
         >
           <div className="pull-left cursor-grab ui-sortable-handle ">
-            {props.sortType == "manually" && <DragHandle />}
+            {props.sortType == "Manually" && <DragHandle />}
           </div>
           <div className="layout-Name-Container">
-            <p className="layout-Name"> SponsorShip Title </p>
+            <p className="layout-Name"> SponsorShip Title - {value.layout} </p>
             <p> SponsorShip </p>
           </div>
           <div className="controlsList">
@@ -92,14 +140,14 @@ export default function SortablelistComponent(props) {
     ));
 
   }
-  console.log(props.items);
+
   const onSortEnd = ({ oldIndex, newIndex }) => {
-    let newArr = props.items;
-    props.setItems([]);
+    let newArr = items;
+    setItems([]);
     let oldItem = newArr[oldIndex];
     newArr.splice(oldIndex, 1);
     newArr.splice(newIndex, 0, oldItem);
-    props.setItems(newArr);
+    setItems(newArr);
   };
 
   return (
@@ -113,9 +161,14 @@ export default function SortablelistComponent(props) {
         }}
         useDragHandle
       >
-        {props.items.map((value, index) => (
+        {console.log("-----> in return ", items)}
+        {
+        items.map((value, index) => {
+          console.log("+value ->", value);
+          return(
           <SortableItem key={`item-${index}`} index={index} value={value} />
-        ))}
+        )})
+      }
       </SortableContainer>
     </div>
   );

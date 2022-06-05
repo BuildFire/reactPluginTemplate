@@ -2,21 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./style.less";
 import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
-function Layout13(props) {
+import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
+
+function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
-  const { imagePreviewer,  } = useHelper();
+  const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
 
-    if (props.themeState.colors) {
-      console.log("my theme in layout 1 -=>", props.themeState);
-      props.setTextStyle();
-    }
   }, [props]);
-
   return (
     <>
       <div className="mdc-layout-grid layout-13-container">
@@ -33,7 +30,10 @@ function Layout13(props) {
                     src={props.data.thumbnailImage || holderImage}
                   />
                 ) : (
-                  <img alt="top image" src={props.data.thumbnailImage || holderImage} />
+                  <img
+                    alt="top image"
+                    src={props.data.thumbnailImage || holderImage}
+                  />
                 )}
               </div>
             ) : (
@@ -48,9 +48,7 @@ function Layout13(props) {
             <div className="info-container">
               <div className="mdc-card">
                 <p className="title">{props.data.title || "Title"}</p>
-                <p className="subtitle">
-                  {props.data.subtitle || "Subtitle"}
-                </p>
+                <p className="subtitle">{props.data.subtitle || "Subtitle"}</p>
                 <p className="bodyContent">
                   {props.data.bodyContent || "Body Content"}
                 </p>
@@ -59,8 +57,13 @@ function Layout13(props) {
           </div>
         </div>
       </div>
+      {props.data.showInfoRibbon && (
+        <>
+          <ProgressRibbon />
+        </>
+      )}
     </>
   );
 }
 
-export default Layout13;
+export default Index;
