@@ -12,18 +12,25 @@ function Home(props) {
   const [openContentTypeDropdown, setOpenContentTypeDropdown] = useState(false);
   const [openSortDropdown, setOpenSortDropdown] = useState(false);
   const { handleSendMessage } = useMessages();
-  const [apiData, setApiData] = useState({})
-  useEffect(() => {
-      handleSendMessage({ selectedLayout: "external1" });
+  const [apiData, setApiData] = useState(dummyObjects)
+  const [activeObject, setActiveObject] = useState({})
+  
+  // useEffect(() => {
+  //   handleSendMessage({ selectedLayout: "external1" });
 
-        buildfire.datastore.get("test", (err, result) => {
-          if (err) return console.error("Error while retrieving your data", err);
-          console.log("Main record", result.data);
-          setApiData(result.data);
-          handleSendMessage({selectedLayout: "external1",...result.data});
-        });
+  //   buildfire.datastore.get("test", (err, result) => {
+  //     if (err) return console.error("Error while retrieving your data", err);
+  //     console.log("Main record", result.data);
+  //     setApiData(result.data);
+  //     handleSendMessage({ selectedLayout: "external1", ...result.data });
+  //   });
 
-  }, []);
+  // }, []);
+
+  function openExternal(objData){
+    setActiveObject(objData);
+    setActiveComponent("external1");
+  }
 
   return (
     <>
@@ -37,22 +44,22 @@ function Home(props) {
               </p>
             </div>
             <div className="row">
-                <div className="input-group margin-bottom-twenty">
-                  <input
-                    type="text"
-                    placeholder="Search by Name"
-                    className="form-control"
-                    id="searchInput"
-                  />
-                  <span className="input-group-btn">
-                    <button
-                      className="btn btn-info btn-md stretch"
-                      id="searchButton"
-                    >
-                      <span className="icon icon-magnifier"></span>
-                    </button>
-                  </span>
-                </div>
+              <div className="input-group margin-bottom-twenty">
+                <input
+                  type="text"
+                  placeholder="Search by Name"
+                  className="form-control"
+                  id="searchInput"
+                />
+                <span className="input-group-btn">
+                  <button
+                    className="btn btn-info btn-md stretch"
+                    id="searchButton"
+                  >
+                    <span className="icon icon-magnifier"></span>
+                  </button>
+                </span>
+              </div>
             </div>
             <div className="row">
               <div className="col-md-3">
@@ -172,7 +179,7 @@ function Home(props) {
                       <li>
                         <a
                           className=""
-                          onClick={() => {setActiveComponent("external1");setOpenContentTypeDropdown();}}
+                          onClick={() => { openExternal({}); setOpenContentTypeDropdown(); }}
                         >
                           Sponsorship
                         </a>
@@ -196,19 +203,19 @@ function Home(props) {
               ) : (
                 <div className="layouts-Added-List">
                   <SortablelistComponent
-                  listFor={"Home"}
+                    listFor={"Home"}
                     sortType={sortType}
+                    data={apiData}
+                    openExternal={openExternal}
                   />
                 </div>
               )}
             </div>
-           
+
           </div>
         </>
-      ) : activeComponent === "header" ? (
-        <LayoutHeader setActiveComponent={setActiveComponent} />
       ) : (
-        <ExternalLayout setActiveComponent={setActiveComponent} />
+        <ExternalLayout activeObject={activeObject} setActiveComponent={setActiveComponent} />
       )}
     </>
   );

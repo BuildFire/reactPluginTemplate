@@ -15,27 +15,30 @@ const useForm = (callback) => {
     callback(values);
   };
 
- 
+  const getOldData = data => {
+    setValues(data);
+  }
 
-    const handleChange = (event) => {
-        event.persist();
-        if(event.target.type == 'checkbox'){
-            setValues(values => ({ ...values, [event.target.name]: event.target.checked}));
-        }else{
-            setValues(values => ({ ...values, [event.target.name]: event.target.value}));
-        }
-    };
-
-    const handelImage = (imageData) => {
-        setValues(values => ({ ...values, ...imageData}));
+  const handleChange = (event) => {
+    event.persist();
+    if (event.target.type == 'checkbox') {
+      setValues(values => ({ ...values, [event.target.name]: event.target.checked }));
+    } else {
+      setValues(values => ({ ...values, [event.target.name]: event.target.value }));
     }
+  };
 
-    return {
-        handleChange,
-        handleSubmit,
-        handelImage,
-        values
-    };
+  const handelImage = (imageData) => {
+    setValues(values => ({ ...values, ...imageData }));
+  }
+
+  return {
+    handleChange,
+    handleSubmit,
+    handelImage,
+    getOldData,
+    values
+  };
 };
 
 export default useForm;
