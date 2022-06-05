@@ -5,7 +5,7 @@ import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableFullScreen2, setEnableFullScreen2] = useState(false);

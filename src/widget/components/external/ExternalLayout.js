@@ -4,7 +4,7 @@ import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
 function Layout13(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-16x9.png"
+    "./assets/images/holder-16x9.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer,  } = useHelper();
