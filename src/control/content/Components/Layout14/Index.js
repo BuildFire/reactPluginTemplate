@@ -4,7 +4,7 @@ import VideoUi from "../../shared/VideoUi";
 import useForm from "../../hooks/form";
 import "./style.less";
 import WysiwygEditor from "../../shared/WysiwygEditor";
-function Index() {
+function Index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
   const [uploadType, setUploadType] = useState("image");
@@ -265,6 +265,19 @@ function Index() {
             </div>
           </div>
         </div>
+        <div className="bottom-actions">
+        <button
+          type="button"
+          onClick={() => props.setActiveComponent("external1")}
+          className="btn btn-default"
+          id="layoutBackBtn"
+        >
+          Cancel
+        </button>
+        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
+          Save
+        </button>
+      </div>
       </form>
     </>
   );

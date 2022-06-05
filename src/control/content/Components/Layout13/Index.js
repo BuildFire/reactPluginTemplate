@@ -4,7 +4,7 @@ import VideoUi from "../../shared/VideoUi";
 import ThumbnailUI from "../../shared/ThumbnailUI";
 import "./style.less";
 
-function Index() {
+function Index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
@@ -152,18 +152,18 @@ function Index() {
           </div>
         </div>
         <div className="bottom-actions">
-          <button
-            type="button"
-            onClick={() => props.setActiveComponent("external1")}
-            className="btn btn-default"
-            id="layoutBackBtn"
-          >
-            Cancel
-          </button>
-          <button type="submit" className="btn btn-success" id="layoutSaveBtn">
-            Save
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => props.setActiveComponent("external1")}
+          className="btn btn-default"
+          id="layoutBackBtn"
+        >
+          Cancel
+        </button>
+        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
+          Save
+        </button>
+      </div>
       </form>
     </>
   );

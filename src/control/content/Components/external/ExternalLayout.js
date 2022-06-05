@@ -7,10 +7,12 @@ import useMessages from "../../hooks/messages";
 import SortablelistComponent from "./sortablelist";
 import dummyObjects from "../../../assets/dummyData";
 
+
 function ExternalLayout(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [uploadType, setUploadType] = useState("image");
   const [videoURL, setVideoURL] = useState("");
+ 
   const [layoutsAdded, setLayoutsAdded] = useState(dummyObjects);
 
   const [layoutsTypes, setLayoutsTypes] = useState([
@@ -27,46 +29,7 @@ function ExternalLayout(props) {
     handelImage({ thumbnailImage, videoURL });
   }, [thumbnailImage, videoURL]);
 
-  useEffect(() => {
-    // desendDate"asenedDate"asenedTitle"desendTitle
-    let newItems = layoutsAdded;
-    setLayoutsAdded([]);
-    console.log(sortType);
-    if (sortType == "Newest Entry") {
-      newItems.sort(function (a, b) {
-        if (a.date > b.date) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-    } else if (sortType == "Latest Entry") {
-      newItems.sort(function (a, b) {
-        if (a.date > b.date) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-    } else if (sortType == "Title A - Z") {
-      newItems.sort(function (a, b) {
-        if (a.title.toUpperCase() > b.title.toUpperCase()) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-    } else if (sortType == "Title Z - A") {
-      newItems.sort(function (a, b) {
-        if (a.title.toUpperCase() > b.title.toUpperCase()) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-    }
-    setLayoutsAdded(newItems);
-  }, [sortType]);
+
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);
@@ -329,19 +292,18 @@ function ExternalLayout(props) {
                       </button>
                     </div>
                   </div>
-                  {layoutsAdded.length == 0 ? (
-                    <div className="empty-state-lg border-radius-four border-grey">
-                      <p>You haven’t added anything yet</p>
-                    </div>
-                  ) : (
-                    <div className="layouts-Added-List">
-                      <SortablelistComponent
-                        sortType={sortType}
-                        items={layoutsAdded}
-                        setItems={setLayoutsAdded}
-                      />
-                    </div>
-                  )}
+                  {
+                    layoutsAdded.length == 0 ? (
+                      <div className="empty-state-lg border-radius-four border-grey">
+                        <p>You haven’t added anything yet</p>
+                      </div>
+                    ) : (
+                      <div className="layouts-Added-List">
+                        <SortablelistComponent listFor={"SponsorShip"} sortType={sortType} />
+                      </div>
+                    )
+                  }
+
                 </div>
                 <div className="bottom-actions row">
                   <button

@@ -17,48 +17,6 @@ function Home(props) {
       handleSendMessage({ selectedLayout: "external1" });
   }, []);
 
-  useEffect(() => {
-    // desendDate"asenedDate"asenedTitle"desendTitle
-    let newItems = addedData;
-    setAddedData([]);
-    console.log(sortType);
-    if (sortType == "Newest Entry") {
-      newItems.sort(function (a, b) {
-        if (a.date > b.date) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-    } else if (sortType == "Latest Entry") {
-      newItems.sort(function (a, b) {
-        if (a.date > b.date) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-    } else if (sortType == "Title A - Z") {
-      newItems.sort(function (a, b) {
-        if (a.title.toUpperCase() > b.title.toUpperCase()) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
-    } else if (sortType == "Title Z - A") {
-      newItems.sort(function (a, b) {
-        if (a.title.toUpperCase() > b.title.toUpperCase()) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-    }
-    setAddedData(newItems);
-  }, [sortType]);
-
-  
   return (
     <>
       {activeComponent === "home" ? (
@@ -71,7 +29,6 @@ function Home(props) {
               </p>
             </div>
             <div className="row">
-              <div className="col-md-12">
                 <div className="input-group margin-bottom-twenty">
                   <input
                     type="text"
@@ -88,7 +45,6 @@ function Home(props) {
                     </button>
                   </span>
                 </div>
-              </div>
             </div>
             <div className="row">
               <div className="col-md-3">
@@ -232,13 +188,13 @@ function Home(props) {
               ) : (
                 <div className="layouts-Added-List">
                   <SortablelistComponent
+                  listFor={"Home"}
                     sortType={sortType}
-                    items={addedData}
-                    setItems={setAddedData}
                   />
                 </div>
               )}
             </div>
+           
           </div>
         </>
       ) : activeComponent === "header" ? (
