@@ -14,6 +14,7 @@ function index(props) {
   // submit form function
   function submitForm(values) {
     console.log("forms values ->", values);
+    props.saveData(values)
   }
 
   function handleChangeInputType(e) {
@@ -107,7 +108,7 @@ function index(props) {
         <div className="bottom-actions">
           <button
             type="button"
-            onClick={() => props.setActiveComponent("external1")}
+            onClick={() => props.setConetnt("main")}
             className="btn btn-default"
             id="layoutBackBtn"
           >

@@ -16,20 +16,20 @@ function index(props) {
   const [uploadType2, setUploadType2] = useState("image");
   const [uploadType3, setUploadType3] = useState("image");
 
-  const [videoURL1, setVideoURL1] = useState("");
-  const [videoURL2, setVideoURL2] = useState("");
-  const [videoURL3, setVideoURL3] = useState("");
+  const [videoURL1, setVideoURL1] = useState(null);
+  const [videoURL2, setVideoURL2] = useState(null);
+  const [videoURL3, setVideoURL3] = useState(null);
 
   useEffect(() => {
-    handelImage({
-      thumbnailImage,
-      thumbnailImage2,
-      thumbnailImage3,
-      thumbnailImage4,
-      videoURL1,
-      videoURL2,
-      videoURL3,
-    });
+        handelImage({
+          thumbnailImage,
+          thumbnailImage2,
+          thumbnailImage3,
+          thumbnailImage4,
+          videoURL1,
+          videoURL2,
+          videoURL3,
+        });
   }, [
     thumbnailImage,
     thumbnailImage2,
@@ -39,6 +39,9 @@ function index(props) {
     videoURL2,
     videoURL3,
   ]);
+  useEffect(() => {
+    getOldData(props.data)
+  },[props])
   // submit form function
   function submitForm(values) {
     console.log(
@@ -48,7 +51,7 @@ function index(props) {
     props.saveData(values);
   }
 
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
   function handleChangeInputType(e, indexOfMedia) {
     if (indexOfMedia == 1) {
       setUploadType(e.target.value);
@@ -335,7 +338,7 @@ function index(props) {
       <div className="bottom-actions">
         <button
           type="button"
-          onClick={() => props.setActiveComponent("external1")}
+          onClick={() => props.setConetnt("main")}
           className="btn btn-default"
           id="layoutBackBtn"
         >

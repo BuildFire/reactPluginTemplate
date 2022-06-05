@@ -10,12 +10,12 @@ import dummyObjects from "../../../assets/dummyData";
 
 export default function SortablelistComponent(props) {
 
-  const [items, setItems] = useState(dummyObjects);
-  const [layoutsAdded, setLayoutsAdded] = useState(dummyObjects);
+  const [items, setItems] = useState([]);
+  const [layoutsAdded, setLayoutsAdded] = useState([]);
 
   useEffect(() => {
     // desendDate"asenedDate"asenedTitle"desendTitle
-    let newItems = layoutsAdded;
+    let newItems = props.data;
     setItems([]);
     console.log(props.sortType);
     if (props.sortType == "Newest Entry") {
@@ -53,8 +53,7 @@ export default function SortablelistComponent(props) {
       });
     }
     setItems(newItems);
-  }, [props.sortType]);
-
+  }, [props]);
 
   const DragHandle = sortableHandle(() => (
     <i
@@ -78,11 +77,12 @@ export default function SortablelistComponent(props) {
             {props.sortType == "Manually" && <DragHandle />}
           </div>
           <div className="layout-Name-Container">
-            <p className="layout-Name"> Layout {value.layout} - Title </p>
+            <p className="layout-Name" onClick={()=>props.openLayOut(value)}> Layout {value.layout} - Title </p>
             <p> Layout {value.layout} - Info </p>
           </div>
           <div className="controlsList">
             <i
+             onClick={()=>props.openLayOut(value)}
               style={{ cursor: "pointer", fontSize: 24, color: "#999" }}
               className="control-List-Icon icon icon-pencil3"
             />
@@ -105,7 +105,7 @@ export default function SortablelistComponent(props) {
             {props.sortType == "Manually" && <DragHandle />}
           </div>
           <div className="layout-Name-Container">
-            <p className="layout-Name"> SponsorShip Title - {value.layout} </p>
+            <p className="layout-Name" onClick={()=>props.openExternal(value)}> SponsorShip Title - {value.title} </p>
             <p> SponsorShip </p>
           </div>
           <div className="controlsList">
@@ -125,6 +125,7 @@ export default function SortablelistComponent(props) {
               className="control-List-Icon icon icon-graph"
             />
             <i
+              onClick={()=>props.openExternal(value)}
               style={{ cursor: "pointer", fontSize: 24, color: "#999" }}
               className="control-List-Icon icon icon-pencil3"
             />

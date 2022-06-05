@@ -37,46 +37,11 @@ function LayoutManager() {
         setData(message);
       }
     };
-    // setAppThemeFunction();
-    // getSelectedLayOut();
   }, []);
 
-  // function getSelectedLayOut() {
-  //   buildfire.appData.get("selectedLayOut", (err, result) => {
-  //     if (err) return console.error("Error while retrieving your data", err);
-  //     console.log("Main record", result.data);
-  //     if (result.data.layOut) {
-  //       setSelectedLayout(result.data.layOut + 1);
-  //     }
-  //   });
-  // }
-  // function setAppThemeFunction() {
-  //   buildfire.appearance.getAppTheme((err, appTheme) => {
-  //     if (err) return console.error(err);
-  //     console.log("appTheme =>", appTheme);
-  //     setThemeState(appTheme);
-
-  //     var newStyle = document.createElement("style");
-  //     newStyle.appendChild(
-  //       document.createTextNode(
-  //         "\
-  //     @font-face {\
-  //         font-family: " +
-  //           appTheme.fontName +
-  //           ";\
-  //         src: url('" +
-  //           appTheme.fontUrl +
-  //           "') format('yourFontFormat');\
-  //     }\
-  //     "
-  //       )
-  //     );
-
-  //     document.head.appendChild(newStyle);
-  //   });
-  // }
-
- 
+  useEffect(() => {
+    console.log(selectedLayout);
+  }, [selectedLayout])
   return (
     <>
       <div className="widget-layouts-container">
