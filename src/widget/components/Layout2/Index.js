@@ -8,6 +8,9 @@ function Index(props) {
   const [holderImage, setHolderImage] = useState(
     "./assets/images/holder-16x9.png"
   );
+  const [holderImage2, setHolderImage2] = useState(
+    "./assets/images/holder-9x16.png"
+  );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const [enableMainFullScreen, setEnableMainFullScreen] = useState(false);
   const { imagePreviewer } = useHelper();
@@ -28,10 +31,10 @@ function Index(props) {
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage);
                   }}
-                  src={props.data.thumbnailImage || holderImage}
+                  src={props.data.thumbnailImage || holderImage2}
                 />
               ) : (
-                <img alt="Background image" src={props.data.thumbnailImage || holderImage} />
+                <img alt="Background image" src={props.data.thumbnailImage || holderImage2} />
               )}
             </div>
 

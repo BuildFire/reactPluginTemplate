@@ -27,7 +27,6 @@ function Index(props) {
   const { imagePreviewer, fullScreenVideoHandler } = useHelper();
   useEffect(() => {
     if (props.data.allImages) {
-      console.log("from console", props.data.allImages);
       carouselView.loadItems(props.data.allImages);
     }
     if (props.data.allImages && props.data.allImages.length > 0) {

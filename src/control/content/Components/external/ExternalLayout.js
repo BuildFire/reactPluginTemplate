@@ -42,7 +42,6 @@ function ExternalLayout(props) {
   }, [])
   // submit form function
   function submitForm(values) {
-    console.log("forms values ->", values);
     buildfire.datastore.save(
       values,
       "test",
@@ -62,7 +61,6 @@ function ExternalLayout(props) {
     setThumbnailImage(props.activeObject.thumbnailImage)
     setVideoURL(props.activeObject.videoURL);
     setUploadType(props.activeObject.BackgroundmediaType);
-    console.log(props.activeObject);
     }
   },[props])
 
@@ -167,7 +165,7 @@ function ExternalLayout(props) {
                       </div>
                     </div>
   
-                    {uploadType == "image" ? (
+                    {uploadType  !== "video"? (
                       <>
                         <ThumbnailUI
 
@@ -177,6 +175,7 @@ function ExternalLayout(props) {
                           setThumbnailImage={setThumbnailImage}
                           imageTag={"Background Image"}
                           classList={"vertical-rectangle thumbnail"}
+                          aspectRatio={"9x16"}
                         />
                       </>
                     ) : (
@@ -266,7 +265,7 @@ function ExternalLayout(props) {
                             className={
                               !openSortDropdown ? "dropdown" : "dropdown open"
                             }
-                            dropdown
+                            dropdown="true"
                           >
                             <button
                               className="btn btn-default  text-left dropdown-toggle sort-dropdown"
@@ -274,7 +273,7 @@ function ExternalLayout(props) {
                                 setOpenSortDropdown(!openSortDropdown)
                               }
                               data-toggle="dropdown"
-                              dropdown-toggle
+                              dropdown-toggle="true"
                               aria-expanded={true}
                             >
                               <span className="pull-left">

@@ -47,7 +47,7 @@ function index(props) {
               type="radio"
               name="BackgroundmediaType"
               value="image"
-              defaultChecked={props.data.BackgroundmediaType!="video"?true:false}
+              defaultChecked={props.data.BackgroundmediaType==="video"?false:true}
             />
             <label className="lable">Image</label>
             <input
@@ -62,7 +62,7 @@ function index(props) {
           </div>
         </div>
 
-        {uploadType == "image" ? (
+        {uploadType !== "video" ? (
           <>
             <ThumbnailUI
               index={1}
@@ -71,6 +71,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage}
               imageTag={"Background Image"}
               classList={"vertical-rectangle thumbnail"}
+              aspectRatio={"9x16"}
             />
           </>
         ) : (

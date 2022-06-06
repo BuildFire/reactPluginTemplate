@@ -17,9 +17,7 @@ export default function SortablelistComponent(props) {
     // desendDate"asenedDate"asenedTitle"desendTitle
     let newItems = props.data;
     setItems([]);
-    console.log(props.sortType);
     if (props.sortType == "Newest Entry") {
-      console.log("from newest entry");
       newItems.sort(function (a, b) {
         if (a.date > b.date) {
           return 1;
@@ -111,14 +109,14 @@ export default function SortablelistComponent(props) {
           </div>
           <div className="controlsList">
           
-            <span class="button-switch">
+            <span className="button-switch">
               <input
                 className="checkBox"
                 id={`show${++index}`}
                 type="checkbox"
                 value="true"
               />
-              <label for={`show${index}`} class="label-success"></label>
+              <label htmlFor={`show${index}`} className="label-success"></label>
             </span>
 
             <i

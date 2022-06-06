@@ -21,7 +21,6 @@ function index(props) {
   // use hooks to make our life easier
   const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
   useEffect(() => {
-    console.log(props.data);
     if(props.data){
     getOldData(props.data);
     setThumbnailImage(props.data.thumbnailImage)
@@ -48,6 +47,7 @@ function index(props) {
             setThumbnailImage={setThumbnailImage}
             imageTag={"Background Image"}
             classList={"vertical-rectangle thumbnail"}
+            aspectRatio={"9x16"}
           />
           <div className="row">
             <div className="col-md-3">
@@ -89,7 +89,7 @@ function index(props) {
               <label className="lable">Video</label>
             </div>
           </div>
-          {uploadType == "image" ? (
+          {uploadType  !== "video" ? (
             <ThumbnailUI
               index={2}
               recommended={"Recommended: 1200 x 675"}
@@ -97,6 +97,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage2}
               imageTag={"Main Image"}
               classList={"horizontal-rectangle thumbnail2"}
+              aspectRatio={"16x9"}
             />
           ) : (
             <>

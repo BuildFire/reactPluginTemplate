@@ -9,7 +9,7 @@ function Index(props) {
     "../../../../../../styles/media/holder-1x1.png"
   );
   const [holderVideo, setHolderVideo] = useState(
-    "./shared/img/video_player_placeholder.gif"
+    "./shared/img/video_player_placeholder.png"
   );
 
   const [enableFullScreen, setEnableFullScreen] = useState(false);

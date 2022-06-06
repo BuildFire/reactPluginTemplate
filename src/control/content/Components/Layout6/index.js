@@ -42,7 +42,6 @@ function index(props) {
   useEffect(() => {
     let newCarousel = allImages;
     newCarousel[onItemChange.index] = onItemChange.item;
-    console.log("change", newCarousel);
     setAllImages(newCarousel);
   }, [onItemChange]);
 
@@ -60,17 +59,14 @@ function index(props) {
     let newCarousel = allImages.filter((element, idx) => {
       return element !== deletedImages;
     });
-    console.log("newCarousel", newCarousel);
     setAllImages(newCarousel);
   }, [deletedImages]);
 
   useEffect(() => {
     setAllImages([...carouselImages, ...allImages]);
-    console.log(" images", carouselImages);
   }, [carouselImages]);
 
   useEffect(() => {
-    console.log("befor message all images carousel", allImages);
     handelImage({ thumbnailImage, allImages, videoURL });
   }, [thumbnailImage, allImages, onItemChange, videoURL]);
   // submit form function
@@ -115,7 +111,7 @@ function index(props) {
               <label className="lable">Video</label>
             </div>
           </div>
-          {uploadType == "image" ? (
+          {uploadType  !== "video" ? (
             <ThumbnailUI
               index={1}
               recommended={"Recommended: 1200 x 1200"}
@@ -123,6 +119,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage}
               imageTag={"Top Image"}
               classList={"thumbnail sequare"}
+              aspectRatio={"16x9"}
             />
           ) : (
             <>

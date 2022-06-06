@@ -62,7 +62,7 @@ function index(props) {
             </div>
           </div>
 
-          {uploadType == "image" ? (
+          {uploadType  !== "video" ? (
             <ThumbnailUI
               index={1}
               recommended={"Recommended: 675 x 1200"}
@@ -70,6 +70,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage}
               imageTag={"Main Image"}
               classList={"vertical-rectangle thumbnail"}
+              aspectRatio={"9x16"}
             />
           ) : (
             <>

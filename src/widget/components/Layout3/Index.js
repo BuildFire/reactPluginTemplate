@@ -6,7 +6,7 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "./assets/images/holder-16x9.png"
+    "./assets/images/holder-9x16.png"
   );
 
   const [enableFullScreen, setEnableFullScreen] = useState(false);
@@ -44,6 +44,7 @@ function Index(props) {
                 enableFullScreen={props.data.enableFullScreen}
                 url={props.data.videoURL}
                 index={1}
+                placeholder={"9x16"}
               />
             </div>
             )}
