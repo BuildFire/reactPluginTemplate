@@ -37,7 +37,7 @@ export default function VideoUI(props) {
     return (
         <div>
             {
-                props.url != "" ? (
+                (props.url != "" && props.url) ? (
                     <video id={`video${props.index}`} width="350" controls loop >
                         <source src={props.url} type="video/mp4" />
                         Your browser does not support videos.

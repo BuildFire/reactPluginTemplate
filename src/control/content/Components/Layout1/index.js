@@ -22,7 +22,7 @@ function index(props) {
     if(props.data){
     getOldData(props.data);
     setThumbnailImage(props.data.thumbnailImage)
-    setVideoURL(props.data.videoURL);
+    setVideoURL(props.data.videoURL || "");
     setUploadType(props.data.BackgroundmediaType);
     }
   },[props])

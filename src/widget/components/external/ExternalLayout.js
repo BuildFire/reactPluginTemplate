@@ -18,6 +18,12 @@ function Layout13(props) {
     });
   }, []);
   
+  useEffect( () => {
+    if(props.data){
+      setApiData(props.data)
+    }
+  },[props])
+
   return (
     <>
       <div className="mdc-layout-grid layout-external-container">
@@ -63,7 +69,7 @@ function Layout13(props) {
                   {apiData.subtitle || "Subtitle"}
                 </p>
                 <p className="bodyContent">
-                  {apiData.bodyContent || "Body Content"}
+                  {apiData.BodyContent || "Body Content"}
                 </p>
               </div>
             </div>

@@ -245,7 +245,7 @@ function ExternalLayout(props) {
                         <textarea
                           maxLength={350}
                           onChange={handleChange}
-                          name="bodyContent"
+                          name="BodyContent"
                           className="form-control bodyContent"
                           placeholder="Body Content"
                           defaultValue={props.activeObject.BodyContent}
@@ -372,7 +372,7 @@ function ExternalLayout(props) {
                     }
   
                   </div>
-                  <div className="bottom-actions row">
+                  <div className="bottom-actions ">
                     <button
                       type="button"
                       className="btn btn-default"

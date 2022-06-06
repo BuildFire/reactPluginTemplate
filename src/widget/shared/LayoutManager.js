@@ -91,7 +91,7 @@ function LayoutManager() {
           <ExternalLayout themeState={themeState} data={data} testData={testData} />
         )}
       </div>
-      {/* <div className="navigation-container"></div> */}
+      <div className="navigation-container"></div>
     </>
   );
 }
