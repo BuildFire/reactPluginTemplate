@@ -108,7 +108,20 @@ function index(props) {
     props.saveData(values);
   }
 
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+  useEffect(() => {
+    if(props.data){
+    getOldData(props.data);
+    setThumbnailImage(props.data.thumbnailImage)
+    setThumbnailImage2(props.data.thumbnailImage2)
+    setThumbnailImage3(props.data.thumbnailImage3)
+    setVideoURL2(props.data.videoURL2);
+    setVideoURL3(props.data.videoURL3);
+    setUploadType2(props.data.mediaType2);
+    setUploadType3(props.data.mediaType3);
+    }
+  },[props])
+
   function handleChangeInputType(e, indexOfMedia) {
     if (indexOfMedia == 2) {
       setUploadType2(e.target.value);
@@ -142,7 +155,8 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen1"
               id="enableFullScreen1"
-            />
+              defaultChecked={props.data.enableFullScreen1?true:false}
+              />
           </div>
         </div>
         <div className="row">
@@ -156,7 +170,7 @@ function index(props) {
               type="radio"
               name="mediaType2"
               value="image"
-              defaultChecked
+              defaultChecked={props.data.mediaType2!="video"?true:false}
             />
             <label className="lable">Image</label>
             <input
@@ -165,6 +179,7 @@ function index(props) {
               type="radio"
               name="mediaType2"
               value="video"
+              defaultChecked={props.data.mediaType2=="video"?true:false}
             />
             <label className="lable">Video</label>
           </div>
@@ -200,6 +215,7 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen2"
               id="enableFullScreen2"
+              defaultChecked={props.data.enableFullScreen2?true:false}
             />
           </div>
         </div>
@@ -214,6 +230,7 @@ function index(props) {
               name="TopBodyContent"
               onChange={handleChange}
               className="form-control bodyContent"
+              defaultValue={props.data.TopBodyContent}
             ></textarea>
           </div>
         </div>
@@ -228,7 +245,7 @@ function index(props) {
               type="radio"
               name="mediaType3"
               value="image"
-              defaultChecked
+              defaultChecked={props.data.mediaType3!="video"?true:false}
             />
             <label className="lable">Image</label>
             <input
@@ -237,6 +254,7 @@ function index(props) {
               type="radio"
               name="mediaType3"
               value="video"
+              defaultChecked={props.data.mediaType3=="video"?true:false}
             />
             <label className="lable">Video</label>
           </div>
@@ -272,6 +290,7 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen3"
               id="enableFullScreen3"
+              defaultChecked={props.data.enableFullScreen3?true:false}
             />
           </div>
         </div>
@@ -287,6 +306,7 @@ function index(props) {
               name="MainBodyContent"
               onChange={handleChange}
               className="form-control bodyContent"
+              defaultValue={props.data.MainBodyContent}
             ></textarea>
           </div>
         </div>
@@ -303,6 +323,7 @@ function index(props) {
                 id="showInfoRibbon"
                 type="checkbox"
                 value="true"
+                defaultChecked={props.data.showInfoRibbon?true:false}
               />
               <label htmlFor="showInfoRibbon" className="label-success"></label>
             </div>

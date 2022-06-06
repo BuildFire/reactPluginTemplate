@@ -40,6 +40,7 @@ function index(props) {
     videoURL3,
   ]);
   useEffect(() => {
+    if(props.data.layout == 8){
     getOldData(props.data);
     setThumbnailImage(props.data.thumbnailImage)
     setThumbnailImage2(props.data.thumbnailImage2)
@@ -51,7 +52,7 @@ function index(props) {
     setUploadType(props.data.mediaType);
     setUploadType2(props.data.mediaType2);
     setUploadType3(props.data.mediaType3);
-
+    }
   },[props])
   // submit form function
   function submitForm(values) {

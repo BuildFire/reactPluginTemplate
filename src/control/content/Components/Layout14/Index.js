@@ -14,7 +14,20 @@ function Index(props) {
   const [wysiwygData, setWysiwygData] = useState(null);
   const [wysiwygData2, setWysiwygData2] = useState(null);
 
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+  useEffect(() => {
+    if (props.data) {
+      getOldData(props.data);
+      setThumbnailImage(props.data.thumbnailImage)
+      setThumbnailImage2(props.data.thumbnailImage2)
+      setVideoURL(props.data.videoURL);
+      setVideoURL2(props.data.videoURL2);
+      setUploadType(props.data.topMediaType);
+      setUploadType2(props.data.bottomMediaType);
+      setWysiwygData(props.data.wysiwygData);
+      setWysiwygData2(props.data.wysiwygData2);
+    }
+  }, [props])
   // submit form function
   function submitForm(values) {
     console.log(
@@ -65,7 +78,7 @@ function Index(props) {
                 type="radio"
                 name="topMediaType"
                 value="image"
-                defaultChecked
+                defaultChecked={props.data.topMediaType != "video" ? true : false}
               />
               <label className="lable">Image</label>
               <input
@@ -74,6 +87,7 @@ function Index(props) {
                 type="radio"
                 name="topMediaType"
                 value="video"
+                defaultChecked={props.data.topMediaType == "video" ? true : false}
               />
               <label className="lable">Video</label>
             </div>
@@ -110,6 +124,7 @@ function Index(props) {
                 type="checkBox"
                 name="enableFullScreen"
                 id="enableFullScreen"
+                defaultChecked={props.data.enableFullScreen ? true : false}
               />
             </div>
           </div>
@@ -125,6 +140,7 @@ function Index(props) {
                 placeholder="Title"
                 onChange={handleChange}
                 className="form-control fullWidth"
+                defaultValue={props.data.title}
               ></input>
             </div>
           </div>
@@ -139,6 +155,7 @@ function Index(props) {
                 placeholder="Subtitle"
                 onChange={handleChange}
                 className="form-control fullWidth"
+                defaultValue={props.data.subTitle}
               ></input>
             </div>
           </div>
@@ -148,7 +165,7 @@ function Index(props) {
               <label className="lable">Body Contant</label>
             </div>
           </div>
-          <WysiwygEditor index={1} setWysiwygData={setWysiwygData}/>
+          <WysiwygEditor index={1} setWysiwygData={setWysiwygData} />
 
           <div className="row">
             <div className="col-md-3">
@@ -161,7 +178,7 @@ function Index(props) {
                 type="radio"
                 name="bottomMediaType"
                 value="image"
-                defaultChecked
+                defaultChecked={props.data.bottomMediaType != "video" ? true : false}
               />
               <label className="lable">Image</label>
               <input
@@ -170,6 +187,7 @@ function Index(props) {
                 type="radio"
                 name="bottomMediaType"
                 value="video"
+                defaultChecked={props.data.bottomMediaType == "video" ? true : false}
               />
               <label className="lable">Video</label>
             </div>
@@ -195,7 +213,7 @@ function Index(props) {
               />
             </>
           )}
-           <div className="row">
+          <div className="row">
             <div className="col-md-3">
               <label className="lable">Enable Full Screen</label>
             </div>
@@ -206,6 +224,7 @@ function Index(props) {
                 type="checkBox"
                 name="enableFullScreen2"
                 id="enableFullScreen2"
+                defaultChecked={props.data.enableFullScreen2 ? true : false}
               />
             </div>
           </div>
@@ -221,6 +240,7 @@ function Index(props) {
                 placeholder="Title"
                 onChange={handleChange}
                 className="form-control fullWidth"
+                defaultValue={props.data.BottomTitle}
               ></input>
             </div>
           </div>
@@ -235,6 +255,7 @@ function Index(props) {
                 placeholder="Subtitle"
                 onChange={handleChange}
                 className="form-control fullWidth"
+                defaultValue={props.data.BottomSubTitle}
               ></input>
             </div>
           </div>
@@ -244,40 +265,41 @@ function Index(props) {
               <label className="lable">Body Contant</label>
             </div>
           </div>
-          <WysiwygEditor index={2} setWysiwygData={setWysiwygData2}/>
+          <WysiwygEditor index={2} setWysiwygData={setWysiwygData2} />
 
           <div className="row  margin-bottom">
             <div className="col-md-3">
               <label className="lable">Enable Prizes</label>
             </div>
             <div className="col-md-9">
-            <div className="button-switch">
-            <input
+              <div className="button-switch">
+                <input
                   onChange={handleChange}
                   className="checkBox"
                   name="showInfoRibbon"
                   id="showInfoRibbon"
                   type="checkbox"
                   value="true"
+                  defaultChecked={props.data.showInfoRibbon ? true : false}
                 />
-              <label htmlFor="showInfoRibbon" className="label-success"></label>
+                <label htmlFor="showInfoRibbon" className="label-success"></label>
               </div>
             </div>
           </div>
         </div>
         <div className="bottom-actions">
-        <button
-          type="button"
-          onClick={() => props.setConetnt("main")}
-          className="btn btn-default"
-          id="layoutBackBtn"
-        >
-          Cancel
-        </button>
-        <button type="submit" className="btn btn-success" id="layoutSaveBtn">
-          Save
-        </button>
-      </div>
+          <button
+            type="button"
+            onClick={() => props.setConetnt("main")}
+            className="btn btn-default"
+            id="layoutBackBtn"
+          >
+            Cancel
+          </button>
+          <button type="submit" className="btn btn-success" id="layoutSaveBtn">
+            Save
+          </button>
+        </div>
       </form>
     </>
   );

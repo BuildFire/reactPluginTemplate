@@ -30,7 +30,18 @@ function index(props) {
   }
   // use hooks to make our life easier
 
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+  useEffect(() => {
+    if(props.data){
+    getOldData(props.data);
+    setThumbnailImage(props.data.thumbnailImage)
+    setThumbnailImage2(props.data.thumbnailImage2)
+    setVideoURL(props.data.videoURL);
+    setVideoURL2(props.data.videoURL2);
+    setUploadType(props.data.topMediaType);
+    setUploadType2(props.data.mainMediaType);
+    }
+  },[props])
 
   return (
     <>
@@ -47,8 +58,9 @@ function index(props) {
                 type="radio"
                 name="topMediaType"
                 value="image"
-                defaultChecked
                 onChange={handleChangeInputType}
+                defaultChecked={props.data.topMediaType!="video"?true:false}
+
               />
               <label className="lable">Image</label>
               <input
@@ -57,6 +69,8 @@ function index(props) {
                 name="topMediaType"
                 value="video"
                 onChange={handleChangeInputType}
+                defaultChecked={props.data.topMediaType=="video"?true:false}
+
               />
               <label className="lable">Video</label>
             </div>
@@ -91,6 +105,7 @@ function index(props) {
                 name="enableFullScreen"
                 id="enableFullScreen"
                 onChange={handleChange}
+                defaultChecked={props.data.enableFullScreen?true:false}
               />
             </div>
           </div>
@@ -107,6 +122,7 @@ function index(props) {
                 name="title"
                 placeholder="Title"
                 onChange={handleChange}
+                defaultValue={props.data.title}
               />
             </div>
           </div>
@@ -122,6 +138,7 @@ function index(props) {
                 placeholder="Subtitle"
                 maxLength={100}
                 onChange={handleChange}
+                defaultValue={props.data.subtitle}
               />
             </div>
           </div>
@@ -136,7 +153,8 @@ function index(props) {
                 className="form-control bodyContent"
                 name="bodyContent"
                 onChange={handleChange}
-              ></textarea>
+                defaultValue={props.data.bodyContent}
+                ></textarea>
             </div>
           </div>
           <div className="row">
@@ -149,8 +167,9 @@ function index(props) {
                 type="radio"
                 name="mainMediaType"
                 value="image"
-                defaultChecked
                 onChange={handleChangeInputType}
+                defaultChecked={props.data.mainMediaType!="video"?true:false}
+
               />
               <label className="lable">Image</label>
               <input
@@ -159,6 +178,7 @@ function index(props) {
                 name="mainMediaType"
                 value="video"
                 onChange={handleChangeInputType}
+                defaultChecked={props.data.mainMediaType=="video"?true:false}
               />
               <label className="lable">Video</label>
             </div>
@@ -193,6 +213,7 @@ function index(props) {
                 name="enableMainFullScreen"
                 id="enableMainFullScreen"
                 onChange={handleChange}
+                defaultChecked={props.data.enableMainFullScreen?true:false}
               />
             </div>
           </div>
@@ -209,6 +230,7 @@ function index(props) {
                   id="showInfoRibbon"
                   type="checkbox"
                   value="true"
+                defaultChecked={props.data.showInfoRibbon?true:false}
                 />
                 <label htmlFor="showInfoRibbon" className="label-success"></label>
               </div>
