@@ -54,6 +54,7 @@ function index(props) {
             setThumbnailImage={setThumbnailImage}
             imageTag={"Background Image"}
             classList={"vertical-rectangle thumbnail"}
+            aspectRatio={"16x9"}
           />
         </>
         <div className="row">
@@ -105,7 +106,7 @@ function index(props) {
             <label className="lable">Video</label>
           </div>
         </div>
-        {uploadType == "image" ? (
+        {uploadType  !== "video" ? (
           <>
             <ThumbnailUI
               index={2}
@@ -114,6 +115,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage2}
               imageTag={"Top Image"}
               classList={"thumbnail2 horizontal-rectangle"}
+              aspectRatio={"16x9"}
             />
           </>
         ) : (

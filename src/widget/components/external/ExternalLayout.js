@@ -4,7 +4,7 @@ import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
 function Layout13(props) {
   const [holderImage, setHolderImage] = useState(
-    "./assets/images/holder-16x9.png"
+    "./assets/images/holder-9x16.png"
   );
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer } = useHelper();
@@ -59,6 +59,7 @@ function Layout13(props) {
                   }
                   url={apiData.videoURL || apiData.videoURL}
                   index={1}
+                  placeholder={"9x16"}
                 />
               </div>
             )}

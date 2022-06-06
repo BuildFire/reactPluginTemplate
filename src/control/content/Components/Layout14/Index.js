@@ -92,7 +92,7 @@ function Index(props) {
               <label className="lable">Video</label>
             </div>
           </div>
-          {uploadType == "image" ? (
+          {uploadType  !== "video"? (
             <>
               <ThumbnailUI
                 index={1}
@@ -101,6 +101,7 @@ function Index(props) {
                 setThumbnailImage={setThumbnailImage}
                 imageTag={"Top Image"}
                 classList={"thumbnail sequare"}
+                aspectRatio={"1x1"}
               />
             </>
           ) : (
@@ -192,7 +193,7 @@ function Index(props) {
               <label className="lable">Video</label>
             </div>
           </div>
-          {uploadType2 == "image" ? (
+          {uploadType2  !== "video" ? (
             <>
               <ThumbnailUI
                 index={2}
@@ -201,6 +202,7 @@ function Index(props) {
                 setThumbnailImage={setThumbnailImage2}
                 imageTag={"Bottom Image"}
                 classList={"thumbnail2 sequare"}
+                aspectRatio={"1x1"}
               />
             </>
           ) : (

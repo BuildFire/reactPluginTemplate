@@ -72,7 +72,7 @@ function Home(props) {
                 <div className="sort-dropdown-container">
                   <div
                     className={!openSortDropdown ? "dropdown" : "dropdown open"}
-                    dropdown
+                    dropdown="true"
                   >
                     <button
                       className="btn btn-default  text-left dropdown-toggle sort-dropdown"
@@ -80,7 +80,7 @@ function Home(props) {
                         setOpenSortDropdown(!openSortDropdown)
                       }
                       data-toggle="dropdown"
-                      dropdown-toggle
+                      dropdown-toggle="true"
                       aria-expanded={true}
                     >
                       <span className="pull-left">
@@ -157,7 +157,7 @@ function Home(props) {
                     className={
                       !openContentTypeDropdown ? "dropdown" : "dropdown open"
                     }
-                    dropdown
+                    dropdown="true"
                   >
                     <button
                       className="btn btn-default  text-left dropdown-toggle sort-dropdown"
@@ -165,7 +165,7 @@ function Home(props) {
                         setOpenContentTypeDropdown(!openContentTypeDropdown)
                       }
                       data-toggle="dropdown"
-                      dropdown-toggle
+                      dropdown-toggle="true"
                       aria-expanded={true}
                       style={{
                         backgroundColor: "#14CB5D",

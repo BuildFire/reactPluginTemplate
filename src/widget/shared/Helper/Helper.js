@@ -4,9 +4,6 @@ const useHelper = () => {
       {
         images: [imageUrl],
       },
-      () => {
-        console.log("Image previewer closed");
-      }
     );
   };
   const fullScreenVideoHandler=(data,enableFullScreen,videoId)=> {

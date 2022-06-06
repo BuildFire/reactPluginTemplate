@@ -3,6 +3,7 @@ import useForm from "../../hooks/form";
 import "./style.less";
 import "../../../../../../../styles/control/bf-base.css";
 import VideoUi from "../../shared/VideoUi";
+import ThumbnailUI from "../../shared/ThumbnailUI";
 function index(props) {
   const [thumbnailImage, setThumbnailImage] = useState(null);
   const [thumbnailImage2, setThumbnailImage2] = useState(null);
@@ -13,82 +14,6 @@ function index(props) {
 
   const [videoURL2, setVideoURL2] = useState("");
   const [videoURL3, setVideoURL3] = useState("");
-
-  useEffect(() => {
-    // thumbnail set up -->
-    let thumbnail = new buildfire.components.images.thumbnail(".thumbnail", {
-      imageUrl: "",
-      title: " ",
-      dimensionsLabel: "Recommended: 675 x 1200",
-      multiSelection: false,
-    });
-
-    // thumbnail Change image -->
-    thumbnail.onChange = (imageUrl) => {
-      let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
-        size: "full_width",
-        aspect: "16:9",
-      });
-      setThumbnailImage(croppedImage);
-    };
-
-    // thumbnail Delete Image -->
-    thumbnail.onDelete = (imageUrl) => {
-      setThumbnailImage(null);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (uploadType2 == "image") {
-      //  set up thumbnail -->
-      let thumbnail2 = new buildfire.components.images.thumbnail(
-        ".thumbnail2",
-        {
-          imageUrl: "",
-          title: " ",
-          dimensionsLabel: "Recommended: 1200 x 675",
-          multiSelection: false,
-        }
-      );
-      thumbnail2.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
-          size: "full_width",
-          aspect: "16:9",
-        });
-        setThumbnailImage2(croppedImage);
-      };
-      thumbnail2.onDelete = (imageUrl) => {
-        setThumbnailImage2(null);
-      };
-      if (thumbnailImage2) {
-        thumbnail2.loadbackground(thumbnailImage2);
-      }
-    }
-    if (uploadType3 == "image") {
-      let thumbnail3 = new buildfire.components.images.thumbnail(
-        ".thumbnail3",
-        {
-          imageUrl: "",
-          title: " ",
-          dimensionsLabel: "Recommended: 1200 x 675",
-          multiSelection: false,
-        }
-      );
-      thumbnail3.onChange = (imageUrl) => {
-        let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
-          size: "full_width",
-          aspect: "16:9",
-        });
-        setThumbnailImage3(croppedImage);
-      };
-      thumbnail3.onDelete = (imageUrl) => {
-        setThumbnailImage3(null);
-      };
-      if (thumbnailImage3) {
-        thumbnail3.loadbackground(thumbnailImage3);
-      }
-    }
-  }, [uploadType2, uploadType3]);
 
   useEffect(() => {
     handelImage({
@@ -136,14 +61,15 @@ function index(props) {
     <form onSubmit={handleSubmit}>
       <h1>Page Details</h1>
       <div className="layOutContainer slide-in">
-        <div className="row">
-          <div className="col-md-3">
-            <label className="lable">Background Image</label>
-          </div>
-          <div className="col-md-9">
-            <div className="vertical-rectangle thumbnail"></div>
-          </div>
-        </div>
+      <ThumbnailUI
+              index={1}
+              recommended={"Recommended: 675 x 1200"}
+              thumbnailImage={thumbnailImage}
+              setThumbnailImage={setThumbnailImage}
+              imageTag={"Background Image"}
+              classList={"vertical-rectangle thumbnail"}
+              aspectRatio={"9x16"}
+            />
         <div className="row">
           <div className="col-md-3">
             <label className="lable">Enable Full Screen</label>
@@ -184,15 +110,16 @@ function index(props) {
             <label className="lable">Video</label>
           </div>
         </div>
-        {uploadType2 == "image" ? (
-          <div className="row">
-            <div className="col-md-3">
-              <label className="lable">Top Image</label>
-            </div>
-            <div className="col-md-9">
-              <div className="thumbnail2 horizontal-rectangle"></div>
-            </div>
-          </div>
+        {uploadType2  !== "video" ? (
+          <ThumbnailUI
+          index={2}
+          recommended={"Recommended: 1200 x 675"}
+          thumbnailImage={thumbnailImage2}
+          setThumbnailImage={setThumbnailImage2}
+          imageTag={"Top Image"}
+          classList={"thumbnail2 horizontal-rectangle"}
+          aspectRatio={"16x9"}
+        />
         ) : (
           <>
             <VideoUi
@@ -259,15 +186,18 @@ function index(props) {
             <label className="lable">Video</label>
           </div>
         </div>
-        {uploadType3 == "image" ? (
-          <div className="row">
-            <div className="col-md-3">
-              <label className="lable">Main Image</label>
-            </div>
-            <div className="col-md-9">
-              <div className="thumbnail3 horizontal-rectangle"></div>
-            </div>
-          </div>
+        {uploadType3  !== "video" ? (
+          <>
+           <ThumbnailUI
+           index={3}
+           recommended={"Recommended: 1200 x 675"}
+           thumbnailImage={thumbnailImage3}
+           setThumbnailImage={setThumbnailImage3}
+           imageTag={"Main Image"}
+           classList={"thumbnail3 horizontal-rectangle"}
+           aspectRatio={"16x9"}
+         />
+         </>
         ) : (
           <>
             <VideoUi

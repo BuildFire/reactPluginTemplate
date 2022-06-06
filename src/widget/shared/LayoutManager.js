@@ -29,19 +29,13 @@ function LayoutManager() {
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
-        console.log("Message received <layout>", message);
         setSelectedLayout(message.selectedLayout);
         setTestData(message)
       } else {
-        console.log("Message received <Data>", message);
         setData(message);
       }
     };
   }, []);
-
-  useEffect(() => {
-    console.log(selectedLayout);
-  }, [selectedLayout])
   return (
     <>
       <div className="widget-layouts-container">

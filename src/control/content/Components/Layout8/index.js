@@ -117,6 +117,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage}
               imageTag={"Top Image"}
               classList={"thumbnail sequare"}
+              aspectRatio={"1x1"}
             />
           </>
         ) : (
@@ -193,6 +194,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage2}
               imageTag={"Main Image"}
               classList={"sequare thumbnail2"}
+              aspectRatio={"1x1"}
             />
           </>
         ) : (
@@ -270,6 +272,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage3}
               imageTag={"Main Image"}
               classList={"sequare thumbnail3"}
+              aspectRatio={"1x1"}
             />
           </>
         ) : (
@@ -321,6 +324,7 @@ function index(props) {
             setThumbnailImage={setThumbnailImage4}
             imageTag={"Bottom Image"}
             classList={"horizontal-rectangle thumbnail4"}
+            aspectRatio={"16x9"}
           />
         </>
         <div className="row">

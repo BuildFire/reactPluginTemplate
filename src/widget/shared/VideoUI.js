@@ -4,7 +4,10 @@ import useHelper from './Helper/Helper';
 export default function VideoUI(props) {
 
     const [holderVideo, setHolderVideo] = useState(
-        "./assets/images/video_player_placeholder.gif"
+        "./assets/images/video_player_placeholder.png"
+    );
+    const [holderVideo2, setHolderVideo2] = useState(
+        "./assets/images/video_player_placeholder9x16.png"
     );
     const [autoPlayState, setAutoplayState] = useState(false);
 
@@ -24,7 +27,6 @@ export default function VideoUI(props) {
         if (autoPlayState && videoPlayer) {
             videoPlayer.autoplay = true;
             videoPlayer.play();
-            // console.log('https://publicfiles.buildfire.com/file/62965cd29b662d0380530287');
         }else if(videoPlayer){
             videoPlayer.pause();
         }
@@ -43,7 +45,7 @@ export default function VideoUI(props) {
                         Your browser does not support videos.
                     </video>
                 ) : (
-                    <img alt="Video Placeholder" className='img' src={holderVideo} />
+                    <img alt="Video Placeholder" className='img' src={props.placeholder==="9x16"?holderVideo2:holderVideo} />
                 )
             }
         </div>
