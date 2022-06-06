@@ -10,7 +10,8 @@ const dummyObjects = [
         enableFullScreen4: true,
         enablePrizes: true,
         date: new Date(2022, 4, 20),
-        mediaType2: "video",
+        BackgroundmediaType: "video",
+        videoURL:"https://publicfiles.buildfire.com/file/6296390b0e0faa0383579f1f",
         pages: [
             {
                 layout: 8,
@@ -65,6 +66,7 @@ const dummyObjects = [
         title: "ext. 2",
         subtitle: "sub ext. 2",
         BodyContent: "new body content test",
+        videoURL:"https://publicfiles.buildfire.com/file/6296390b0e0faa0383579f1f",
         BodyContent2: "test video body contetnt",
         enableAutoPlay2: true,
         enableFullScreen: true,
@@ -128,7 +130,8 @@ const dummyObjects = [
         subtitle: "sub ext. 4",
         BodyContent: "new body content test",
         BodyContent2: "test video body contetnt",
-        enableAutoPlay2: true,
+        videoURL:"https://publicfiles.buildfire.com/file/6296390b0e0faa0383579f1f",
+        enableAutoPlay1: true,
         enableFullScreen: true,
         enableFullScreen2: true,
         enableFullScreen4: true,
@@ -188,6 +191,7 @@ const dummyObjects = [
     {
         title: "ext. 3",
         subtitle: "sub ext. 3",
+        videoURL:"https://publicfiles.buildfire.com/file/6296390b0e0faa0383579f1f",
         BodyContent: "new body content test",
         BodyContent2: "test video body contetnt",
         enableAutoPlay2: true,

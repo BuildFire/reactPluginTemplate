@@ -31,41 +31,24 @@ function LayoutHeader(props) {
       array.push(`../assets/images/Layout${i}.png`);
     }
     setImages(array);
-    // getSelectedLayOut();
   }, []);
 
   useEffect(() => {
-    if (props.activeLayout) {
+    if (props.activeLayout.layout) {
       setSelectedLayout(props.activeLayout.layout - 1)
       handleSendMessage({ selectedLayout: props.activeLayout.layout });
+    }else{
+      handleSendMessage({ selectedLayout: 1 });
     }
   }, [props])
 
   const { handleSendMessage } = useMessages()
   const selectedLayoutHandler = (index) => {
    
-    // buildfire.appData.save(
-    //   { layOut: index },
-    //   "selectedLayOut",
-    //   (err, result) => {
-    //     if (err) return console.error("Error while saving your data", err);
-    //     console.log("Data saved successfully", result);
-    //   }
-    // );
+    handleSendMessage({ selectedLayout: index+1 });
 
     setSelectedLayout(index);
   };
-
-  // function getSelectedLayOut() {
-
-  //   buildfire.appData.get("selectedLayOut", (err, result) => {
-  //     if (err) return console.error("Error while retrieving your data", err);
-  //     console.log("Main record", result.data);
-  //     if (result.data.layOut) 
-  //     {setSelectedLayout(result.data.layOut);
-  //    }
-  //   });
-  // }
 
   function saveData(data) {
     console.log('Submit function in Shared Submit Function ->', { data, selectedLayout: selectedLayout + 1 });
@@ -114,31 +97,31 @@ function LayoutHeader(props) {
       <div>
         {
           selectedLayout === 0 &&
-          <Layout1  setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout1 data={props.activeLayout}  setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 1 &&
-          <Layout2 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout2 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 2 &&
-          <Layout3 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout3 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 3 &&
-          <Layout4 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout4 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 4 &&
-          <Layout5 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout5 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 5 &&
-          <Layout6 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout6 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 6 &&
-          <Layout7 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout7 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 7 &&
@@ -146,27 +129,27 @@ function LayoutHeader(props) {
         }
         {
           selectedLayout === 8 &&
-          <Layout9 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout9 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 9 &&
-          <Layout10 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout10 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 10 &&
-          <Layout11 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout11 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 11 &&
-          <Layout12 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout12 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 12 &&
-          <Layout13 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout13 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
         {
           selectedLayout === 13 &&
-          <Layout14 setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
+          <Layout14 data={props.activeLayout} setConetnt={props.setConetnt} saveData={saveData} selectedLayout={selectedLayout} />
         }
 
       </div>

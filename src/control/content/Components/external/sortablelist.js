@@ -87,6 +87,7 @@ export default function SortablelistComponent(props) {
               className="control-List-Icon icon icon-pencil3"
             />
             <i
+            onClick={()=>props.deleteObj(value.title, value)}
               style={{ cursor: "pointer", fontSize: 24, color: "#999" }}
               className="control-List-Icon icon icon-cross"
             />
@@ -130,6 +131,7 @@ export default function SortablelistComponent(props) {
               className="control-List-Icon icon icon-pencil3"
             />
             <i
+              onClick={()=>props.deleteObj(value.title, value)}
               style={{ cursor: "pointer", fontSize: 24, color: "#999" }}
               className="control-List-Icon icon icon-cross"
             />

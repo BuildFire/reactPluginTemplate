@@ -16,7 +16,15 @@ function Index(props) {
   function submitForm(values) {
     console.log("forms values ->", values);
   }
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+  useEffect(() => {
+    if(props.data){
+    getOldData(props.data);
+    setThumbnailImage(props.data.thumbnailImage)
+    setVideoURL(props.data.videoURL);
+    setUploadType(props.data.BackgroundmediaType);
+    }
+  },[props])
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
@@ -37,7 +45,8 @@ function Index(props) {
                 type="radio"
                 name="BackgroundmediaType"
                 value="image"
-                defaultChecked
+                defaultChecked={props.data.BackgroundmediaType!="video"?true:false}
+
               />
               <label className="lable">Image</label>
               <input
@@ -46,6 +55,7 @@ function Index(props) {
                 type="radio"
                 name="BackgroundmediaType"
                 value="video"
+                defaultChecked={props.data.BackgroundmediaType=="video"?true:false}
               />
               <label className="lable">Video</label>
             </div>
@@ -84,6 +94,7 @@ function Index(props) {
                 type="checkBox"
                 name="enableFullScreen"
                 id="enableFullScreen"
+                defaultChecked={props.data.enableFullScreen?true:false}
               />
             </div>
           </div>
@@ -100,6 +111,7 @@ function Index(props) {
                 type="text"
                 name="title"
                 placeholder="Title"
+                defaultValue={props.data.title}
               />
             </div>
           </div>
@@ -115,6 +127,7 @@ function Index(props) {
                 placeholder="Summary"
                 maxLength={100}
                 onChange={handleChange}
+                defaultValue={props.data.subtitle}
               />
             </div>
           </div>
@@ -129,7 +142,8 @@ function Index(props) {
                 name="bodyContent"
                 className="form-control bodyContent"
                 placeholder="Body Content"
-              ></textarea>
+                defaultValue={props.data.bodyContent}
+                ></textarea>
             </div>
           </div>
           <div className="row  margin-bottom">
@@ -145,6 +159,7 @@ function Index(props) {
                   id="showInfoRibbon"
                   type="checkbox"
                   value="true"
+                  defaultChecked={props.data.showInfoRibbon?true:false}
                 />
                 <label htmlFor="showInfoRibbon" className="label-success"></label>
               </div>

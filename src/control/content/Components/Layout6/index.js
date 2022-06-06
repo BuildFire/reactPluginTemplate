@@ -82,7 +82,8 @@ function index(props) {
     setUploadType(e.target.value);
     handleChange(e);
   }
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+
 
   return (
     <>
@@ -98,9 +99,9 @@ function index(props) {
                 type="radio"
                 name="topMediaType"
                 value="image"
-                defaultChecked
                 onChange={handleChangeInputType}
                 className="checkBox"
+                defaultChecked={props.data.topMediaType!="video"?true:false}
               />
               <label className="lable">Image</label>
               <input
@@ -109,6 +110,7 @@ function index(props) {
                 name="topMediaType"
                 value="video"
                 onChange={handleChangeInputType}
+                defaultChecked={props.data.topMediaType=="video"?true:false}
               />
               <label className="lable">Video</label>
             </div>
@@ -143,6 +145,8 @@ function index(props) {
                 name="enableFullScreen"
                 id="enableFullScreen"
                 onChange={handleChange}
+                defaultChecked={props.data.enableFullScreen?true:false}
+
               />
             </div>
           </div>
@@ -158,6 +162,7 @@ function index(props) {
                 className="form-control bodyContent"
                 name="bodyContent"
                 onChange={handleChange}
+                defaultValue={props.data.bodyContent}
               ></textarea>
             </div>
           </div>

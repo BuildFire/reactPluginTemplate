@@ -21,7 +21,15 @@ function index(props) {
     setUploadType(e.target.value);
     handleChange(e);
   }
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+  useEffect(() => {
+    if(props.data){
+    getOldData(props.data);
+    setThumbnailImage(props.data.thumbnailImage)
+    setVideoURL(props.data.videoURL);
+    setUploadType(props.data.mediaType);
+    }
+  },[props])
 
   return (
     <>
@@ -38,8 +46,8 @@ function index(props) {
                 type="radio"
                 name="mediaType"
                 value="image"
-                defaultChecked
                 onChange={handleChangeInputType}
+                defaultChecked={props.data.mediaType!="video"?true:false}
               />
               <label className="lable">Image</label>
               <input
@@ -48,6 +56,7 @@ function index(props) {
                 name="mediaType"
                 value="video"
                 onChange={handleChangeInputType}
+                defaultChecked={props.data.mediaType=="video"?true:false}
               />
               <label className="lable">Video</label>
             </div>
@@ -83,6 +92,7 @@ function index(props) {
                 name="enableFullScreen"
                 id="enableFullScreen"
                 onChange={handleChange}
+                defaultChecked={props.data.enableFullScreen?true:false}
               />
             </div>
           </div>
@@ -99,6 +109,7 @@ function index(props) {
                   id="showInfoRibbon"
                   type="checkbox"
                   value="true"
+                defaultChecked={props.data.showInfoRibbon?true:false}
                 />
                 <label htmlFor="showInfoRibbon" className="label-success"></label>
               </div>

@@ -17,7 +17,16 @@ function index(props) {
     console.log("forms values ->", values);
   }
 
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+  useEffect(() => {
+    if(props.data){
+    getOldData(props.data);
+    setThumbnailImage(props.data.thumbnailImage)
+    setVideoURL(props.data.videoURL);
+    setUploadType(props.data.BackgroundmediaType);
+    }
+  },[props])
+
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
@@ -38,7 +47,7 @@ function index(props) {
               type="radio"
               name="BackgroundmediaType"
               value="image"
-              defaultChecked
+              defaultChecked={props.data.BackgroundmediaType!="video"?true:false}
             />
             <label className="lable">Image</label>
             <input
@@ -47,6 +56,7 @@ function index(props) {
               type="radio"
               name="BackgroundmediaType"
               value="video"
+              defaultChecked={props.data.BackgroundmediaType=="video"?true:false}
             />
             <label className="lable">Video</label>
           </div>
@@ -85,6 +95,7 @@ function index(props) {
               type="checkBox"
               name="enableFullScreen"
               id="enableFullScreen"
+              defaultChecked={props.data.enableFullScreen?true:false}
             />
           </div>
         </div>
@@ -101,6 +112,8 @@ function index(props) {
               type="text"
               name="title"
               placeholder="Title"
+              defaultValue={props.data.title}
+
             />
           </div>
         </div>
@@ -116,6 +129,8 @@ function index(props) {
               placeholder="Subtitle"
               maxLength={100}
               onChange={handleChange}
+              defaultValue={props.data.subtitle}
+
             />
           </div>
         </div>
@@ -130,6 +145,8 @@ function index(props) {
               name="bodyContent"
               className="form-control bodyContent"
               placeholder="Body Content"
+              defaultValue={props.data.bodyContent}
+
             ></textarea>
           </div>
         </div>
@@ -139,7 +156,7 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <div className="button-switch">
-              <input onChange={handleChange} className="checkBox" name="showInfoRibbon" id="showInfoRibbon" type="checkbox" value="true" />
+              <input defaultChecked={props.data.showInfoRibbon?true:false} onChange={handleChange} className="checkBox" name="showInfoRibbon" id="showInfoRibbon" type="checkbox" value="true" />
               <label htmlFor="showInfoRibbon" className="label-success"></label>
             </div>
           </div>

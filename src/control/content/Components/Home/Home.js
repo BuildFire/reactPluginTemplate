@@ -14,18 +14,24 @@ function Home(props) {
   const { handleSendMessage } = useMessages();
   const [apiData, setApiData] = useState(dummyObjects)
   const [activeObject, setActiveObject] = useState({})
-  
-  // useEffect(() => {
-  //   handleSendMessage({ selectedLayout: "external1" });
 
-  //   buildfire.datastore.get("test", (err, result) => {
-  //     if (err) return console.error("Error while retrieving your data", err);
-  //     console.log("Main record", result.data);
-  //     setApiData(result.data);
-  //     handleSendMessage({ selectedLayout: "external1", ...result.data });
-  //   });
-
-  // }, []);
+  function deleteObj(title, item){
+    buildfire.dialog.confirm(
+      {
+        title: `Delete ${title}!`,
+        subtitle: "Are you sure!",
+        message: `You can't undo the process ...`,
+        isMessageHTML: true,
+      },
+      (err, isConfirmed) => {
+        if (err) console.error(err);
+        if(isConfirmed){
+          // function to delete the item 
+          console.log("Item deleted successfully ");
+        }
+      }
+    );
+  }
 
   function openExternal(objData){
     setActiveObject(objData);
@@ -207,6 +213,7 @@ function Home(props) {
                     sortType={sortType}
                     data={apiData}
                     openExternal={openExternal}
+                    deleteObj={deleteObj}
                   />
                 </div>
               )}

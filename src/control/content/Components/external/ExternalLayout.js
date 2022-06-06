@@ -15,8 +15,6 @@ function ExternalLayout(props) {
   const [videoURL, setVideoURL] = useState("");
   const [conetnt, setConetnt] = useState("main");
 
-  const [layoutsAdded, setLayoutsAdded] = useState(dummyObjects);
-
   const [layoutsTypes, setLayoutsTypes] = useState([
     "Details",
     "Recap & Portfolio",
@@ -57,7 +55,17 @@ function ExternalLayout(props) {
   }
   handleSendMessage({ selectedLayout: "external1" });
 
-  const { handleChange, handleSubmit, handelImage } = useForm(submitForm);
+  const { handleChange, handleSubmit, handelImage, getOldData } = useForm(submitForm);
+  useEffect(() => {
+    if(props.activeObject){
+    getOldData(props.activeObject);
+    setThumbnailImage(props.activeObject.thumbnailImage)
+    setVideoURL(props.activeObject.videoURL);
+    setUploadType(props.activeObject.BackgroundmediaType);
+    console.log(props.activeObject);
+    }
+  },[props])
+
   function handleChangeInputType(e) {
     setUploadType(e.target.value);
     handleChange(e);
@@ -74,6 +82,24 @@ function ExternalLayout(props) {
   function openLayOut(objData){
     setActiveLayout(objData);
     setConetnt("header");
+  }
+
+  function deleteObj(title, item){
+    buildfire.dialog.confirm(
+      {
+        title: `Delete ${title}!`,
+        subtitle: "Are you sure!",
+        message: `You can't undo the process ...`,
+        isMessageHTML: true,
+      },
+      (err, isConfirmed) => {
+        if (err) console.error(err);
+        if(isConfirmed){
+          // function to delete the item 
+          console.log("Item deleted successfully ");
+        }
+      }
+    );
   }
 
   return (
@@ -126,7 +152,7 @@ function ExternalLayout(props) {
                           type="radio"
                           name="BackgroundmediaType"
                           value="image"
-                          defaultChecked
+                          defaultChecked={props.activeObject.BackgroundmediaType!="video"?true:false}
                         />
                         <label className="lable">Image</label>
                         <input
@@ -135,6 +161,7 @@ function ExternalLayout(props) {
                           type="radio"
                           name="BackgroundmediaType"
                           value="video"
+                          defaultChecked={props.activeObject.BackgroundmediaType=="video"?true:false}
                         />
                         <label className="lable">Video</label>
                       </div>
@@ -174,6 +201,7 @@ function ExternalLayout(props) {
                           type="checkBox"
                           name="enableFullScreen"
                           id="enableFullScreen"
+                          defaultChecked={props.activeObject.enableFullScreen?true:false}
                         />
                       </div>
                     </div>
@@ -333,7 +361,7 @@ function ExternalLayout(props) {
                         </div>
                         ):(
                           <div className="layouts-Added-List">
-                            <SortablelistComponent openLayOut={openLayOut} data={props.activeObject.pages} listFor={"SponsorShip"} sortType={sortType} />
+                            <SortablelistComponent deleteObj={deleteObj} openLayOut={openLayOut} data={props.activeObject.pages} listFor={"SponsorShip"} sortType={sortType} />
                           </div>
                         )
                       ) : (
