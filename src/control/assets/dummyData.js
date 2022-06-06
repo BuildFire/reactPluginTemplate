@@ -4,7 +4,7 @@ const dummyObjects = [
         subtitle: "sub ext. 1",
         BodyContent: "new body content test",
         BodyContent2: "test video body contetnt",
-        enableAutoPlay2: true,
+        enableAutoPlay1: true,
         enableFullScreen: true,
         enableFullScreen2: true,
         enableFullScreen4: true,
@@ -68,12 +68,12 @@ const dummyObjects = [
         BodyContent: "new body content test",
         videoURL:"https://publicfiles.buildfire.com/file/6296390b0e0faa0383579f1f",
         BodyContent2: "test video body contetnt",
-        enableAutoPlay2: true,
+        enableAutoPlay1: true,
         enableFullScreen: true,
         enableFullScreen2: true,
         enableFullScreen4: true,
         enablePrizes: true,
-        mediaType2: "video",
+        BackgroundmediaType: "video",
         date: new Date(2022, 4, 25),
         pages: [
             {
@@ -136,7 +136,7 @@ const dummyObjects = [
         enableFullScreen2: true,
         enableFullScreen4: true,
         enablePrizes: true,
-        mediaType2: "video",
+        BackgroundmediaType: "video",
         date: new Date(2022, 4, 30),
         pages: [
             {
@@ -194,12 +194,12 @@ const dummyObjects = [
         videoURL:"https://publicfiles.buildfire.com/file/6296390b0e0faa0383579f1f",
         BodyContent: "new body content test",
         BodyContent2: "test video body contetnt",
-        enableAutoPlay2: true,
+        enableAutoPlay1: true,
         enableFullScreen: true,
         enableFullScreen2: true,
         enableFullScreen4: true,
         enablePrizes: true,
-        mediaType2: "video",
+        BackgroundmediaType: "video",
         date: new Date(2022, 4, 31),
         pages: [
             {
