@@ -121,7 +121,7 @@ function Index(props) {
                 </div>
               </div>
               <div className="lowerContainer">
-                {enableFullScreen4 && props.data.thumbnailImage4 != null ? (
+                {enableFullScreen4 && props.data.thumbnailImage4 ? (
                   <img
                   alt="Bottom image" 
                     className="column img"
