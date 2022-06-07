@@ -18,7 +18,7 @@ export default function ThumbnailUI(props) {
     // thumbnail Change image -->
     thumbnail.onChange = (imageUrl) => {
       let croppedImage = buildfire.imageLib.cropImage(imageUrl, {
-        size: "half_width",
+        size: "full_width",
         aspect:
           props.aspectRatio === "9x16"
             ? "9:16"
