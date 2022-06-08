@@ -65,7 +65,7 @@ function Layout13(props) {
             )}
             <div className="info-container">
               <div className="mdc-card">
-                <p className="title">{apiData.title || "Title"}</p>
+                <p className="title" onClick={()=>props.setAll()}>{apiData.title || "Title"}</p>
                 <p className="subtitle">
                   {apiData.subtitle || "Subtitle"}
                 </p>
