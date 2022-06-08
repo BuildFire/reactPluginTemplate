@@ -1,87 +1,94 @@
-.layout-10-container {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  word-break: break-word;
+body {
+  background-color: black;
 
-  .mdc-layout-grid__inner {
-    #topImage-container {
-      img,
-      video {
-        width: 33.5rem;
-        height: 20.125rem;
-        flex: none;
-        order: 0;
-        align-self: stretch;
-        flex-grow: 1;
-        display: block;
-        margin: auto;
+  .layout-10-container {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    word-break: break-word;
+
+    .mdc-layout-grid__inner {
+      #topImage-container {
+
+        img,
+        video {
+          height: 20.125rem;
+          flex: none;
+          order: 0;
+          align-self: stretch;
+          flex-grow: 1;
+          display: block;
+          margin: auto;
+          margin-left: 2%;
+          margin-right: 2%;
+          width: 96%;
+        }
+
+        padding-top: 1.063rem;
+        padding-bottom: 6.063rem;
       }
 
-      padding-top: 1.063rem;
-      padding-bottom: 6.063rem;
-    }
+      .info-container {
+        position: relative;
+        min-height: 100%;
+        width: 100%;
 
-    .info-container {
-      position: relative;
-      min-height: 100%;
-      width: 100%;
+        .frontInfo {
+          margin-left: 1rem;
+          margin-right: 1rem;
+          position: absolute;
+          top: -4.75rem;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 1rem;
+          height: fit-content;
+          min-height: 5rem;
 
-      .frontInfo {
-        margin-left: 1rem;
-        margin-right: 1rem;
-        position: absolute;
-        top: -4.75rem;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 1rem;
-        height: fit-content;
-        min-height: 5rem;
+          .bodyContent {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.355rem;
+            line-height: 1.7rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
 
-        .bodyContent {
-          font-style: normal;
-          font-weight: 400;
-          font-size: 1.355rem;
-          line-height: 1.7rem;
-          margin-top: 2rem;
-          margin-bottom: 0.5rem;
-         
-        }
+          }
 
-        .subtitle {
-          font-style: normal;
-          font-weight: 500;
-          font-size: 1.355rem;
-          line-height: 1.5rem;
-          align-self: stretch;
-          margin-bottom: 1.25rem;
-          overflow: hidden;
-           word-wrap: break-word;
-          white-space: normal;
-          text-overflow: ellipsis;
-          margin-bottom: 0;
-          
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-        }
+          .subtitle {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.355rem;
+            line-height: 1.5rem;
+            align-self: stretch;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            word-wrap: break-word;
+            white-space: normal;
+            text-overflow: ellipsis;
+            margin-bottom: 0;
 
-        .title {
-          font-style: normal;
-          font-weight: 600;
-          font-size: 1.6rem;
-          line-height: 2.7rem;
-          letter-spacing: 0.031rem;
-          overflow: hidden;
-           word-wrap: break-word;
-          white-space: normal;
-          text-overflow: ellipsis;
-          margin-bottom: 0;
-          
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
+
+          .title {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.6rem;
+            line-height: 2.7rem;
+            letter-spacing: 0.031rem;
+            overflow: hidden;
+            word-wrap: break-word;
+            white-space: normal;
+            text-overflow: ellipsis;
+            margin-bottom: 0;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
         }
       }
     }

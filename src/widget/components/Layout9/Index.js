@@ -16,7 +16,7 @@ function Index(props) {
   useEffect(() => {
     // document.body.style.background = "#d2cfcf";
     document.body.style.backgroundPosition = "center";
-    document.body.style.backgroundSize="cover";
+    document.body.style.backgroundSize = "cover";
 
     if (props.data.thumbnailImage) {
       document.body.style.backgroundImage = `url(${props.data.thumbnailImage})`;
@@ -29,26 +29,34 @@ function Index(props) {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);
+
+    if (props.data.showInfoRibbon) {
+      dataContainer.style.marginBottom = "25rem";
+      dataContainer.style.position = "relative";
+    } else {
+      dataContainer.style.marginBottom = "20rem";
+      dataContainer.style.position = "relative";
+    }
   }, [props]);
 
   return (
     <>
       <div className="mdc-layout-grid layout-9-container">
         <div className="mdc-layout-grid__inner">
-          <div className="mdc-layout-grid__cell--span-8">
+          <div className="mdc-layout-grid__cell--span-8" id="dataContainer">
             <div className="topImage-container">
-            {props.data.mediaType != "video" ? (
-              enableFullScreen2 && props.data.thumbnailImage2 != null ? (
-                <img
-                alt="Top image" 
-                  onClick={() => {
-                    imagePreviewer(props.data.thumbnailImage2);
-                  }}
-                  src={props.data.thumbnailImage2 || holderImage}
-                />
-              ) : (
-                <img alt="Top image"  src={props.data.thumbnailImage2 || holderImage} />
-              )): (
+              {props.data.mediaType != "video" ? (
+                enableFullScreen2 && props.data.thumbnailImage2 != null ? (
+                  <img
+                    alt="Top image"
+                    onClick={() => {
+                      imagePreviewer(props.data.thumbnailImage2);
+                    }}
+                    src={props.data.thumbnailImage2 || holderImage}
+                  />
+                ) : (
+                  <img alt="Top image" src={props.data.thumbnailImage2 || holderImage} />
+                )) : (
                 <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
               )}
             </div>
@@ -57,14 +65,14 @@ function Index(props) {
               className="mainImage-container"
               id="mainImage-container"
               onClick={() => {
-                enableFullScreen && props.data.thumbnailImage != null?
-                imagePreviewer(props.data.thumbnailImage):
-                undefined
+                enableFullScreen && props.data.thumbnailImage != null ?
+                  imagePreviewer(props.data.thumbnailImage) :
+                  undefined
               }}
             >
               {enableFullScreen3 && props.data.thumbnailImage3 != null ? (
                 <img
-                alt="Main image" 
+                  alt="Main image"
                   className="secondImage"
                   onClick={() => {
                     imagePreviewer(props.data.thumbnailImage3);
@@ -73,7 +81,7 @@ function Index(props) {
                 />
               ) : (
                 <img
-                alt="Main image" 
+                  alt="Main image"
                   className="secondImage"
                   src={props.data.thumbnailImage3 || holderImage}
                 />
@@ -91,7 +99,7 @@ function Index(props) {
         </div>
       </div>
       {props.data.showInfoRibbon && <>
-     <ProgressRibbon/>
+        <ProgressRibbon />
       </>
       }
     </>

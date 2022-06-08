@@ -25,22 +25,10 @@ function Index(props) {
     setEnableFullScreen3(props.data.enableFullScreen3);
     setEnableFullScreen4(props.data.enableFullScreen4);
 
-    if(props.data.showInfoRibbon){
-      var ele = document.getElementsByClassName("column");
-for (var i = 0; i < ele.length; i++) {
-   ele[i].classList.add("with-ribbon")
-   ele[i].classList.remove("without-ribbon")
-}
-      // document.getElementsByTagName("img")[0].classList.add("with-ribbon")
-
-    }else{
-      // document.getElementsByTagName("img")[0].classList.remove("with-ribbon")
-      var ele = document.getElementsByClassName("column");
-      for (var i = 0; i < ele.length; i++) {
-        ele[i].classList.remove("with-ribbon")
-        ele[i].classList.add("without-ribbon")
-      }
-
+    if (props.data.showInfoRibbon) {
+      lowerContainer.style.height = "11.5rem"
+    } else {
+      lowerContainer.style.height = "14.5rem"
     }
 
   }, [props]);
@@ -50,14 +38,13 @@ for (var i = 0; i < ele.length; i++) {
       <div className="layout-8-container">
         <div className="mdc-layout-grid Maincontainer " id="container">
           <div className="mdc-layout-grid__inner">
-            <div className="mdc-layout-grid__cell--span-8 row">
+            <div className="mdc-layout-grid__cell--span-8 row verticalLayOut">
               <div className="upperContainer">
                 <div className="mdc-layout-grid__cell--span-8 row">
-                  <div className="rowmContainer">
                     {props.data.mediaType != "video" ? (
                       enableFullScreen && props.data.thumbnailImage != null ? (
                         <img
-                        alt="Top image" 
+                          alt="Top image"
                           className="column img"
                           onClick={() => {
                             imagePreviewer(props.data.thumbnailImage);
@@ -66,7 +53,7 @@ for (var i = 0; i < ele.length; i++) {
                         />
                       ) : (
                         <img
-                        alt="Top image" 
+                          alt="Top image"
                           className="column img"
                           src={props.data.thumbnailImage || holderImage}
                         />
@@ -81,7 +68,6 @@ for (var i = 0; i < ele.length; i++) {
                     <p className="column bodyContent mdc-card ">
                       {props.data.BodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
                     </p>
-                  </div>
                 </div>
                 <div className="mdc-layout-grid__cell--span-8 row">
                   <p className="column bodyContent mid-text mdc-card">
@@ -90,7 +76,7 @@ for (var i = 0; i < ele.length; i++) {
                   {props.data.mediaType2 != "video" ? (
                     enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                       <img
-                      alt="Main image" 
+                        alt="Main image"
                         className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage2);
@@ -99,7 +85,7 @@ for (var i = 0; i < ele.length; i++) {
                       />
                     ) : (
                       <img
-                      alt="Main image" 
+                        alt="Main image"
                         className="column img"
                         src={props.data.thumbnailImage2 || holderImage}
                       />
@@ -116,7 +102,7 @@ for (var i = 0; i < ele.length; i++) {
                   {props.data.mediaType3 != "video" ? (
                     enableFullScreen3 && props.data.thumbnailImage3 != null ? (
                       <img
-                      alt="Main image" 
+                        alt="Main image"
                         className="column img"
                         onClick={() => {
                           imagePreviewer(props.data.thumbnailImage3);
@@ -125,7 +111,7 @@ for (var i = 0; i < ele.length; i++) {
                       />
                     ) : (
                       <img
-                      alt="Main image" 
+                        alt="Main image"
                         className="column img"
                         src={props.data.thumbnailImage3 || holderImage}
                       />
@@ -139,10 +125,10 @@ for (var i = 0; i < ele.length; i++) {
                   </p>
                 </div>
               </div>
-              <div className="lowerContainer">
+              <div id="lowerContainer" className="lowerContainer">
                 {enableFullScreen4 && props.data.thumbnailImage4 ? (
                   <img
-                  alt="Bottom image" 
+                    alt="Bottom image"
                     className=" img"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage4);
@@ -151,7 +137,7 @@ for (var i = 0; i < ele.length; i++) {
                   />
                 ) : (
                   <img
-                  alt="Bottom image" 
+                    alt="Bottom image"
                     className="img"
                     src={props.data.thumbnailImage4 || holderImage}
                   />
@@ -162,7 +148,7 @@ for (var i = 0; i < ele.length; i++) {
         </div>
       </div>
       {props.data.showInfoRibbon && <>
-     <ProgressRibbon/>
+        <ProgressRibbon />
       </>
       }
     </>

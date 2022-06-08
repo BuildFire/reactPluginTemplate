@@ -14,14 +14,15 @@ function Index(props) {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableFullScreen2(props.data.enableFullScreen2);
 
-    document.getElementById("my_container_div").innerHTML =
+    my_container_div.innerHTML =
       props.data.wysiwygData ||
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor. ";
 
-    document.getElementById("my_container_div2").innerHTML =
+    my_container_div2.innerHTML =
       props.data.wysiwygData2 ||
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor. ";
 
+      my_container_div2.style.marginBottom = "8rem"
   }, [props]);
 
 

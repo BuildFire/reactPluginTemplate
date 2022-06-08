@@ -10,7 +10,11 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-
+    if (props.data.showInfoRibbon) {
+      bottomBody.style.paddingBottom = "14rem";
+    } else {
+      bottomBody.style.paddingBottom = "7rem";
+    }
   }, [props])
 
   return (
@@ -26,7 +30,7 @@ function Index(props) {
                       (
                         props.data.enableFullScreen && props.data.thumbnailImage != null ? (
                           <img
-                          alt="Top image"
+                            alt="Top image"
                             onClick={() => {
                               imagePreviewer(props.data.thumbnailImage);
                             }}
@@ -44,21 +48,23 @@ function Index(props) {
                   <p className="subtitle">{props.data.subTitle || "SubTitle"}</p>
                 </div>
               </div>
-              <div className="dataContainer mdc-card">
+              <div id="bottomBody" className="dataContainer mdc-card">
                 <p className="bodyContent">{props.data.BodyContent1 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
                 <p className="bodyContent">{props.data.BodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
                 <p className="bodyContent">{props.data.BodyContent3 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
+
+                {
+                  props.data.ExternalURL &&
+                  <a className="learnMoreLink">learn more </a>
+                }
               </div>
-              {
-                props.data.ExternalURL &&
-                <a className="learnMoreLink">learn more </a>
-              }
+
             </div>
           </div>
         </div>
       </div>
       {props.data.showInfoRibbon && <>
-     <ProgressRibbon/>
+        <ProgressRibbon />
       </>
       }
     </>
