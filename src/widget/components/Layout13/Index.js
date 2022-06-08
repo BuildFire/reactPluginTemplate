@@ -12,7 +12,12 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
+    if(props.data.showInfoRibbon){
+      document.getElementById("card").style.marginBottom="4.5rem"
+    }else{
+      document.getElementById("card").style.marginBottom="0.5rem"
 
+    }
   }, [props]);
   return (
     <>
@@ -47,7 +52,7 @@ function Index(props) {
               />
             )}
             <div className="info-container">
-              <div className="mdc-card">
+              <div className="mdc-card" id="card">
                 <p className="title">{props.data.title || "Title"}</p>
                 <p className="subtitle">{props.data.subtitle || "Subtitle"}</p>
                 <p className="bodyContent">

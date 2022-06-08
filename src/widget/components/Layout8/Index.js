@@ -24,6 +24,25 @@ function Index(props) {
     setEnableFullScreen2(props.data.enableFullScreen2);
     setEnableFullScreen3(props.data.enableFullScreen3);
     setEnableFullScreen4(props.data.enableFullScreen4);
+
+    if(props.data.showInfoRibbon){
+      var ele = document.getElementsByClassName("column");
+for (var i = 0; i < ele.length; i++) {
+   ele[i].classList.add("with-ribbon")
+   ele[i].classList.remove("without-ribbon")
+}
+      // document.getElementsByTagName("img")[0].classList.add("with-ribbon")
+
+    }else{
+      // document.getElementsByTagName("img")[0].classList.remove("with-ribbon")
+      var ele = document.getElementsByClassName("column");
+      for (var i = 0; i < ele.length; i++) {
+        ele[i].classList.remove("with-ribbon")
+        ele[i].classList.add("without-ribbon")
+      }
+
+    }
+
   }, [props]);
 
   return (
@@ -124,7 +143,7 @@ function Index(props) {
                 {enableFullScreen4 && props.data.thumbnailImage4 ? (
                   <img
                   alt="Bottom image" 
-                    className="column img"
+                    className=" img"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage4);
                     }}
@@ -133,7 +152,7 @@ function Index(props) {
                 ) : (
                   <img
                   alt="Bottom image" 
-                    className="column img"
+                    className="img"
                     src={props.data.thumbnailImage4 || holderImage}
                   />
                 )}
