@@ -5,7 +5,7 @@ const dummyObjects = [
         enableFullScreen: true,
         subtitle: "Subtitle ext. 1",
         title: "ext. 1",
-        videoURL: "https://publicfiles.buildfire.com/file/629f5bfa9b662d0380530669",
+        videoURL: "https://publicfiles.buildfire.com/file/62a098d59b662d03805306ec",
         date: new Date(2022, 4, 20),
         pages: [
             {
