@@ -36,20 +36,7 @@ function Index(props) {
                 ) : (
                   <img alt="Top image" src={props.data.thumbnailImage || holderImage} />
                 )}
-              </div>
-            ) : (
-              <div className="topImage-container">
-              <VideoUI
-                data={props.data}
-                enableAutoPlay={props.data.enableAutoPlay1}
-                enableFullScreen={props.data.enableFullScreen}
-                url={props.data.videoURL}
-                index={1}
-              />
-              </div>
-            )}
-
-            <div className="info-container-top">
+                 <div className="info-container-top">
               <div className="mdc-card">
                 <h1 className="title">{props.data.title || "Title"}</h1>
                 <h3 className="subtitle">
@@ -60,7 +47,29 @@ function Index(props) {
                 </p>
               </div>
             </div>
-
+              </div>
+            ) : (
+              <div className="topImage-container">
+              <VideoUI
+                data={props.data}
+                enableAutoPlay={props.data.enableAutoPlay1}
+                enableFullScreen={props.data.enableFullScreen}
+                url={props.data.videoURL}
+                index={1}
+              />
+               <div className="info-container-top">
+              <div className="mdc-card">
+                <h1 className="title">{props.data.title || "Title"}</h1>
+                <h3 className="subtitle">
+                  {props.data.subtitle || "Subtitle"}
+                </h3>
+                <p className="bodyContent">
+                  {props.data.bodyContent || "Top Body Content"}
+                </p>
+              </div>
+            </div>
+              </div>
+            )}
             {props.data.mainMediaType !== "video" ? (
               <div className="mainImage-container">
                 {enableMainFullScreen && props.data.thumbnailImage2 != null ? (

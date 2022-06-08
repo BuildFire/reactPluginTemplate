@@ -25,17 +25,22 @@ function LayoutManager() {
     backgroundColor: "#000000",
     titleBar: "rgb(0 0 0 / 90%)",
   });
-  const [testData, setTestData] = useState({})
+  const [testData, setTestData] = useState({});
   useEffect(() => {
     buildfire.messaging.onReceivedMessage = (message) => {
       if (message.selectedLayout) {
         setSelectedLayout(message.selectedLayout);
-        setTestData(message)
+        setTestData(message);
       } else {
         setData(message);
       }
     };
   }, []);
+
+  const setAll = () => {
+    setSelectedLayout("test");
+    console.log("test");
+  };
   return (
     <>
       <div className="widget-layouts-container">
@@ -82,9 +87,76 @@ function LayoutManager() {
           <Layout14 themeState={themeState} data={data} />
         )}
         {selectedLayout === "external1" && (
-          <ExternalLayout themeState={themeState} data={data} testData={testData} />
+          <ExternalLayout
+            setAll={setAll}
+            themeState={themeState}
+            data={data}
+            testData={testData}
+          />
         )}
       </div>
+      {selectedLayout === "test" && (
+        <>
+          <div className="all-layout container">
+              <h1 className="header-title"> Layout 1</h1>
+            <div className="row item">
+              <Layout1 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 2</h1>
+            <div className="row item">
+              <Layout2 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 3</h1>
+            <div className="row item">
+              <Layout3 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 4</h1>
+            <div className="row item">
+              <Layout4 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 5</h1>
+            <div className="row item">
+              <Layout5 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 6</h1>
+            <div className="row item">
+              <Layout6 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 7</h1>
+            <div className="row item">
+              <Layout7 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 8</h1>
+            <div className="row item">
+              <Layout8 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 9</h1>
+            <div className="row item">
+              <Layout9 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 10</h1>
+            <div className="row item">
+              <Layout10 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 11</h1>
+            <div className="row item">
+              <Layout11 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 12</h1>
+            <div className="row item">
+              <Layout12 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 13</h1>
+            <div className="row item">
+              <Layout13 themeState={themeState} data={data} />
+            </div>
+              <h1 className="header-title"> Layout 14</h1>
+            <div className="row item">
+              <Layout14 themeState={themeState} data={data} />
+            </div>
+          </div>
+        </>
+      )}
       <div className="navigation-container"></div>
     </>
   );
