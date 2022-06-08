@@ -24,6 +24,12 @@ function Index(props) {
       img.style.background = "#d2cfcf";
     }
     img.style.backgroundPosition = "center";
+
+    if (props.data.showInfoRibbon) {
+      bottomBody.style.marginBottom = "11rem";
+    } else {
+      bottomBody.style.marginBottom = "7rem";
+    }
   }, [props]);
   return (
     <>
@@ -59,7 +65,7 @@ function Index(props) {
                 <p className="title">{props.data.title || "Title"}</p>
                 <p className="subtitle">{props.data.subTitle || "Sub Title"}</p>
                 <p className="bodyContent">{props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan cursus nibh. Phasellus vulputate luctus mauris, sit amet rutrum sapien pulvinar id. Donec id tortor ut neque semper convallis. Nullam non libero lacinia ipsum dignissim ornare. Aliquam at nisi nec est aliquam volutpat et non nulla. Proin imperdiet ullamcorper neque, eget commodo turpis placerat ac. "}</p>
-                <p className="bodyContent">{props.data.bodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan cursus nibh. Phasellus vulputate luctus mauris, sit amet rutrum sapien pulvinar id. Donec id tortor ut neque semper convallis. Nullam non libero lacinia ipsum dignissim ornare. Aliquam at nisi nec est aliquam volutpat et non nulla. Proin imperdiet ullamcorper neque, eget commodo turpis placerat ac. "}</p>
+                <p className="bodyContent" id="bottomBody">{props.data.bodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan cursus nibh. Phasellus vulputate luctus mauris, sit amet rutrum sapien pulvinar id. Donec id tortor ut neque semper convallis. Nullam non libero lacinia ipsum dignissim ornare. Aliquam at nisi nec est aliquam volutpat et non nulla. Proin imperdiet ullamcorper neque, eget commodo turpis placerat ac. "}</p>
               </div>
             </div>
           </div>
