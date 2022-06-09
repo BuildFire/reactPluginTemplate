@@ -10,11 +10,15 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    if (props.data.showInfoRibbon) {
-      bottomBody.style.paddingBottom = "14rem";
-    } else {
-      bottomBody.style.paddingBottom = "7rem";
+    console.log(">>>>>",props.data);
+    if(Object.keys(props.data).length !== 0){
+      if (props.data.showInfoRibbon) {
+        document.getElementById("bottomBody").style.paddingBottom = "14rem";
+      } else {
+        document.getElementById("bottomBody").style.paddingBottom = "7rem";
+      }
     }
+   
   }, [props])
 
   return (

@@ -101,62 +101,62 @@ function LayoutManager() {
       {selectedLayout === "test" && (
         <>
           <div className="all-layout container">
-            <h1 className="header-title"> Layout 1</h1>
+              <h1 className="header-title"> Layout 1</h1>
             <div className="row item">
               <Layout1 themeState={themeState} data={internalDummyData[0]} />
             </div>
-            <h1 className="header-title"> Layout 2</h1>
+              <h1 className="header-title"> Layout 2</h1>
             <div className="row item">
               <Layout2 themeState={themeState} data={internalDummyData[1]} />
             </div>
-            <h1 className="header-title"> Layout 3</h1>
+              <h1 className="header-title"> Layout 3</h1>
             <div className="row item">
               <Layout3 themeState={themeState} data={internalDummyData[2]} />
             </div>
-            <h1 className="header-title"> Layout 4</h1>
+              <h1 className="header-title"> Layout 4</h1>
             <div className="row item">
               <Layout4 themeState={themeState} data={internalDummyData[3]} />
             </div>
-            <h1 className="header-title"> Layout 5</h1>
+              <h1 className="header-title"> Layout 5</h1>
             <div className="row item">
               <Layout5 themeState={themeState} data={internalDummyData[4]} />
             </div>
-            <h1 className="header-title"> Layout 6</h1>
+              <h1 className="header-title"> Layout 6</h1>
             <div className="row item">
-              <Layout6 themeState={themeState} data={data} />
+              <Layout6 themeState={themeState} data={internalDummyData[5]} />
             </div>
-            <h1 className="header-title"> Layout 7</h1>
+              <h1 className="header-title"> Layout 7</h1>
             <div className="row item">
               <Layout7 themeState={themeState} data={internalDummyData[6]} />
             </div>
-            <h1 className="header-title"> Layout 8</h1>
+              <h1 className="header-title"> Layout 8</h1>
             <div className="row item">
               <Layout8 themeState={themeState} data={internalDummyData[7]} />
             </div>
-            <h1 className="header-title"> Layout 9</h1>
+              <h1 className="header-title"> Layout 9</h1>
             <div className="row item">
               <Layout9 themeState={themeState} data={internalDummyData[8]} />
             </div>
-            <h1 className="header-title"> Layout 10</h1>
+              <h1 className="header-title"> Layout 10</h1>
             <div className="row item">
               <Layout10 themeState={themeState} data={internalDummyData[9]} />
             </div>
-            <h1 className="header-title"> Layout 11</h1>
+              <h1 className="header-title"> Layout 11</h1>
             <div className="row item">
               <Layout11 themeState={themeState} data={internalDummyData[10]} />
             </div>
-            <h1 className="header-title"> Layout 12</h1>
+              <h1 className="header-title"> Layout 12</h1>
             <div className="row item">
               <Layout12 themeState={themeState} data={internalDummyData[11]} />
             </div>
-            <h1 className="header-title"> Layout 13</h1>
+              <h1 className="header-title"> Layout 13</h1>
             <div className="row item">
               <Layout13 themeState={themeState} data={internalDummyData[12]} />
             </div>
-            <h1 className="header-title"> Layout 14</h1>
+              <h1 className="header-title"> Layout 14</h1>
             <div className="row item">
               <Layout14 themeState={themeState} data={internalDummyData[13]} />
-            </div>
+            </div> 
           </div>
         </>
       )}

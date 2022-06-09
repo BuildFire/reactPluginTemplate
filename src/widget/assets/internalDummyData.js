@@ -15,7 +15,6 @@ const data = [
         enableAutoPlay1: true,
         enableFullScreen: true,
         mediaType: "video",
-        showInfoRibbon: true,
         videoURL: "https://publicfiles.buildfire.com/file/62a1fcb89b662d03805307ce",
     }, {
         bodyContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\\ndolore magna aliqua. Massa tempor nec.",
@@ -58,7 +57,6 @@ const data = [
         videoURL: "",
     }, {
         enableFullScreen1: true,
-        showInfoRibbon: true,
         thumbnailImage: "https://alnnibitpo.cloudimg.io/v7/https://images.unsplash.com/photo-1515705576963-95cad62945b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0NDA1fDB8MXxzZWFyY2h8M3x8c3RhcnN8ZW58MHx8fHwxNjU0NzA4NzQ0&ixlib=rb-1.2.1&q=80&w=1080&func=crop&width=810&height=1440",
         thumbnailImage2: "https://alnnibitpo.cloudimg.io/v7/https://images.unsplash.com/photo-1515705576963-95cad62945b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0NDA1fDB8MXxzZWFyY2h8M3x8c3RhcnN8ZW58MHx8fHwxNjU0NzA4NzQ0&ixlib=rb-1.2.1&q=80&w=1080&func=crop&width=810&height=455",
         thumbnailImage3: "https://alnnibitpo.cloudimg.io/v7/https://images.unsplash.com/photo-1519681393784-d120267933ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0NDA1fDB8MXxzZWFyY2h8MzB8fHN0YXJzfGVufDB8fHx8MTY1NDcwODc0NA&ixlib=rb-1.2.1&q=80&w=1080&func=crop&width=810&height=455",
@@ -71,7 +69,6 @@ const data = [
         enableFullScreen3: true,
         enableFullScreen4: true,
         mediaType3: "video",
-        showInfoRibbon: false,
         thumbnailImage: "https://alnnibitpo.cloudimg.io/v7/https://images.unsplash.com/photo-1464802686167-b939a6910659?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0NDA1fDB8MXxzZWFyY2h8MXx8Z2FsYXh5fGVufDB8fHx8MTY1NDQyMTcwOQ&ixlib=rb-1.2.1&q=80&w=1080&func=crop&width=480&height=480",
         thumbnailImage2: "https://alnnibitpo.cloudimg.io/v7/https://images.unsplash.com/photo-1619995745882-f4128ac82ad6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0NDA1fDB8MXxzZWFyY2h8NDl8fGltYWdlfGVufDB8fHx8MTY1NDUyOTAzMA&ixlib=rb-1.2.1&q=80&w=1080&func=crop&width=480&height=480",
         thumbnailImage3: null,

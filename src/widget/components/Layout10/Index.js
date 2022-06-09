@@ -24,12 +24,14 @@ function Index(props) {
       img.style.background = "#d2cfcf";
     }
     img.style.backgroundPosition = "center";
-
-    if (props.data.showInfoRibbon) {
-      bottomBody.style.marginBottom = "11rem";
-    } else {
-      bottomBody.style.marginBottom = "7rem";
+    if(Object.keys(props.data).length !== 0){
+      if (props.data.showInfoRibbon) {
+          document.getElementById("bottomBody").style.marginBottom = "11rem";
+        } else {
+          document.getElementById("bottomBody").style.marginBottom = "7rem";
+        }
     }
+ 
   }, [props]);
   return (
     <>

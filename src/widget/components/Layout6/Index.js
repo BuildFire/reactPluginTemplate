@@ -22,14 +22,18 @@ function Index(props) {
       title: "image",
     },
   ]);
-  const [carouselView, setCarouselView] = useState(null);
+  
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer, fullScreenVideoHandler } = useHelper();
+
+
   useEffect(() => {
-    if (props.data.allImages) {
-      carouselView.loadItems(props.data.allImages);
-    }
+    let carouselView;
+    
     if (props.data.allImages && props.data.allImages.length > 0) {
+      carouselView = new buildfire.components.carousel.view("#carousel");
+      carouselView.loadItems(props.data.allImages);
+
       document.getElementById(
         "ImageCarousel-container"
       ).style.backgroundImage = `none`;
@@ -42,11 +46,6 @@ function Index(props) {
     }
     setEnableFullScreen(props.data.enableFullScreen);
   }, [props]);
-
-  useEffect(() => {
-    let view = new buildfire.components.carousel.view("#carousel");
-    setCarouselView(view);
-  }, []);
 
   return (
     <>
