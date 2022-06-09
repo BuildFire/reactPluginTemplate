@@ -26,9 +26,9 @@ function Index(props) {
     img.style.backgroundPosition = "center";
     if(Object.keys(props.data).length !== 0){
       if (props.data.showInfoRibbon) {
-          bottomBody.style.marginBottom = "11rem";
+          document.getElementById("bottomBody").style.marginBottom = "11rem";
         } else {
-          bottomBody.style.marginBottom = "7rem";
+          document.getElementById("bottomBody").style.marginBottom = "7rem";
         }
     }
  

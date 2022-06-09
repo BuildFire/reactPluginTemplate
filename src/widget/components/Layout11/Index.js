@@ -13,9 +13,9 @@ function Index(props) {
     console.log(">>>>>",props.data);
     if(Object.keys(props.data).length !== 0){
       if (props.data.showInfoRibbon) {
-        bottomBody.style.paddingBottom = "14rem";
+        document.getElementById("bottomBody").style.paddingBottom = "14rem";
       } else {
-        bottomBody.style.paddingBottom = "7rem";
+        document.getElementById("bottomBody").style.paddingBottom = "7rem";
       }
     }
    

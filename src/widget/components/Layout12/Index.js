@@ -13,9 +13,9 @@ function Index(props) {
     document.getElementById("my_container_div").innerHTML = props.data.wysiwygData || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.";
     if(Object.keys(props.data).length !== 0){
       if (props.data.showInfoRibbon) {
-            my_container_div.style.marginBottom = "14rem";
+            document.getElementById("my_container_div").style.marginBottom = "14rem";
           } else {
-            my_container_div.style.marginBottom = "7rem";
+            document.getElementById("my_container_div").style.marginBottom = "7rem";
           }
     }
     
