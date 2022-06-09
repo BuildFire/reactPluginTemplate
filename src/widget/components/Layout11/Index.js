@@ -10,7 +10,6 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    console.log(">>>>>",props.data);
     if(Object.keys(props.data).length !== 0){
       if (props.data.showInfoRibbon) {
         bottomBody.style.paddingBottom = "14rem";

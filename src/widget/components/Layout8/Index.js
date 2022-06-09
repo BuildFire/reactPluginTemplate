@@ -6,7 +6,7 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-1x1.png"
+    "./assets/images/holder-1x1.png"
   );
   const [holderVideo, setHolderVideo] = useState(
     "./shared/img/video_player_placeholder.png"
