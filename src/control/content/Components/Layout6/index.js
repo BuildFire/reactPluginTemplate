@@ -155,11 +155,11 @@ function index(props) {
             <div className="col-md-9">
               <textarea
                 maxLength={300}
-                placeholder="Body Content"
+                placeholder= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."
                 className="form-control bodyContent"
                 name="bodyContent"
                 onChange={handleChange}
-                defaultValue={props.data.bodyContent}
+                defaultValue={props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
               ></textarea>
             </div>
           </div>

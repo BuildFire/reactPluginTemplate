@@ -7,10 +7,11 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 function Index(props) {
 
   const [holderImage, setHolderImage] = useState("./assets/images/holder-16x9.png");
+  const [url, setUrl] = useState(null);
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    if(Object.keys(props.data).length !== 0){
+    if (Object.keys(props.data).length !== 0) {
       if (props.data.showInfoRibbon) {
         document.getElementById("bottomBody").style.paddingBottom = "14rem";
       } else {
@@ -18,7 +19,17 @@ function Index(props) {
       }
     }
     document.body.style.background = `black`;
-   
+
+    if (props.data.ExternalURL) {
+      const matchPattern = /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/;
+
+      if (matchPattern.test(props.data.ExternalURL)) {
+        setUrl(props.data.ExternalURL)
+      } else {
+        setUrl(null)
+      }
+
+    }
   }, [props])
 
   return (
@@ -47,10 +58,14 @@ function Index(props) {
                         <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
                       )}
                 </div>
-                <div className="titleContainer mdc-card">
-                  <p className="title">{props.data.title }</p>
-                  <p className="subtitle">{props.data.subTitle }</p>
-                </div>
+                {
+                  ((props.data.title != "" && props.data.title) || (props.data.subTitle != "" && props.data.subTitle)) &&
+
+                  <div className="titleContainer mdc-card">
+                    <p className="title">{props.data.title}</p>
+                    <p className="subtitle">{props.data.subTitle}</p>
+                  </div>
+                }
               </div>
               <div id="bottomBody" className="dataContainer mdc-card">
                 <p className="bodyContent">{props.data.BodyContent1}</p>
@@ -58,8 +73,8 @@ function Index(props) {
                 <p className="bodyContent">{props.data.BodyContent3}</p>
 
                 {
-                  props.data.ExternalURL &&
-                  <a className="learnMoreLink">learn more </a>
+                  (url) &&
+                  <a href={props.data.ExternalURL} className="learnMoreLink">learn more </a>
                 }
               </div>
 

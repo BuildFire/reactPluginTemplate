@@ -125,7 +125,7 @@ function Index(props) {
                 className="form-control fullWidth"
                 type="input"
                 name="subtitle"
-                placeholder="Summary"
+                placeholder= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."
                 maxLength={100}
                 onChange={handleChange}
                 defaultValue={props.data.subtitle ||  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
@@ -142,7 +142,7 @@ function Index(props) {
                 onChange={handleChange}
                 name="bodyContent"
                 className="form-control bodyContent"
-                placeholder="Body Content"
+                placeholder= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."
                 defaultValue={props.data.bodyContent ||  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
                 ></textarea>
             </div>

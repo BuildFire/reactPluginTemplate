@@ -208,7 +208,7 @@ function index(props) {
             <textarea
               name="bodyContent"
               maxLength={140}
-              placeholder="Body content"
+              placeholder= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."
               onChange={handleChange}
               className="form-control bodyContent"
               defaultValue={props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}

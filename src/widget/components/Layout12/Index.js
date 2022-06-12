@@ -10,16 +10,16 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData;
-    if(Object.keys(props.data).length !== 0){
+    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData || "";
+    if (Object.keys(props.data).length !== 0) {
       if (props.data.showInfoRibbon) {
-            document.getElementById("my_container_div").style.marginBottom = "14rem";
-          } else {
-            document.getElementById("my_container_div").style.marginBottom = "7rem";
-          }
+        document.getElementById("my_container_div").style.marginBottom = "14rem";
+      } else {
+        document.getElementById("my_container_div").style.marginBottom = "7rem";
+      }
     }
     document.body.style.background = `black`;
-    
+
   }, [props])
 
   return (
@@ -35,7 +35,7 @@ function Index(props) {
                       (
                         props.data.enableFullScreen && props.data.thumbnailImage != null ? (
                           <img
-                          alt="Top image"
+                            alt="Top image"
                             onClick={() => {
                               imagePreviewer(props.data.thumbnailImage);
                             }}
@@ -48,10 +48,13 @@ function Index(props) {
                         <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen} url={props.data.videoURL} index={1} />
                       )}
                 </div>
-                <div className="titleContainer mdc-card">
-                  <p className="title">{props.data.title }</p>
-                  <p className="subtitle">{props.data.subTitle}</p>
-                </div>
+                {
+                  ((props.data.title != "" && props.data.title) || (props.data.subTitle != "" && props.data.subTitle)) &&
+                  <div className="titleContainer mdc-card">
+                    <p className="title">{props.data.title}</p>
+                    <p className="subtitle">{props.data.subTitle}</p>
+                  </div>
+                }
               </div>
               <div className="dataContainer mdc-card">
                 <div id="my_container_div" className="bodyContent"></div>
@@ -61,7 +64,7 @@ function Index(props) {
         </div>
       </div>
       {props.data.showInfoRibbon && <>
-     <ProgressRibbon/>
+        <ProgressRibbon />
       </>
       }
     </>

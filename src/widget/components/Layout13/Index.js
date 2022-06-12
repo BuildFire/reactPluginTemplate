@@ -12,11 +12,13 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
   useEffect(() => {
     setEnableFullScreen(props.data.enableFullScreen);
-    if(props.data.showInfoRibbon){
-      document.getElementById("card").style.marginBottom="4.5rem"
-    }else{
-      document.getElementById("card").style.marginBottom="0.5rem"
-
+    let card = document.getElementById("card");
+    if(card){
+      if (props.data.showInfoRibbon) {
+        document.getElementById("card").style.marginBottom = "4.5rem"
+      } else {
+        document.getElementById("card").style.marginBottom = "0.5rem"
+      }
     }
   }, [props]);
   return (
@@ -51,15 +53,18 @@ function Index(props) {
                 placeholder={"9x16"}
               />
             )}
-            <div className="info-container">
-              <div className="mdc-card" id="card">
-                <p className="title">{props.data.title }</p>
-                <p className="subtitle">{props.data.subtitle }</p>
-                <p className="bodyContent">
-                  {props.data.bodyContent}
-                </p>
+            {
+              ((props.data.title != "" && props.data.title) || (props.data.subtitle != "" && props.data.subtitle) || (props.data.bodyContent != "" && props.data.bodyContent)) &&
+              <div className="info-container">
+                <div className="mdc-card" id="card">
+                  <p className="title">{props.data.title}</p>
+                  <p className="subtitle">{props.data.subtitle}</p>
+                  <p className="bodyContent">
+                    {props.data.bodyContent}
+                  </p>
+                </div>
               </div>
-            </div>
+            }
           </div>
         </div>
       </div>
