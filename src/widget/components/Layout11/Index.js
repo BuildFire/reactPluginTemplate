@@ -59,19 +59,17 @@ function Index(props) {
                       )}
                 </div>
                 {
-                  ((props.data.title != "" && props.data.title) || (props.data.subTitle != "" && props.data.subTitle)) &&
-
+                  (props.data.title != "" || props.data.subTitle != "") &&
                   <div className="titleContainer mdc-card">
-                    <p className="title">{props.data.title}</p>
-                    <p className="subtitle">{props.data.subTitle}</p>
+                    <p className="title">{props.data.title||props.data.title==""?props.data.title:"Title"}</p>
+                    <p className="subtitle">{props.data.subTitle||props.data.subTitle==""?props.data.subTitle:"Subtitle"}</p>
                   </div>
                 }
               </div>
               <div id="bottomBody" className="dataContainer mdc-card">
-                <p className="bodyContent">{props.data.BodyContent1}</p>
-                <p className="bodyContent">{props.data.BodyContent2}</p>
-                <p className="bodyContent">{props.data.BodyContent3}</p>
-
+                <p className="bodyContent">{props.data.BodyContent1||props.data.BodyContent1==""?props.data.BodyContent1:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}</p>
+                <p className="bodyContent">{props.data.BodyContent2||props.data.BodyContent2==""?props.data.BodyContent2:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}</p>
+                <p className="bodyContent">{props.data.BodyContent3||props.data.BodyContent3==""?props.data.BodyContent3:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}</p>
                 {
                   (url) &&
                   <a href={props.data.ExternalURL} className="learnMoreLink">learn more </a>

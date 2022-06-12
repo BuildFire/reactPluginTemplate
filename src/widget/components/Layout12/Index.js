@@ -49,10 +49,10 @@ function Index(props) {
                       )}
                 </div>
                 {
-                  ((props.data.title != "" && props.data.title) || (props.data.subTitle != "" && props.data.subTitle)) &&
+                  (props.data.title != "" || props.data.subTitle != "" ) &&
                   <div className="titleContainer mdc-card">
-                    <p className="title">{props.data.title}</p>
-                    <p className="subtitle">{props.data.subTitle}</p>
+                    <p className="title">{props.data.title ||props.data.title==""? props.data.title : "Title"}</p>
+                    <p className="subtitle">{props.data.subTitle ||props.data.subTitle==""?props.data.subTitle: "Subtitle"}</p>
                   </div>
                 }
               </div>
