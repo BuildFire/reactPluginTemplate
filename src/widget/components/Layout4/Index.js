@@ -18,9 +18,16 @@ function Index(props) {
     setEnableMainFullScreen(props.data.enableMainFullScreen);
   }, [props]);
 
+  const layout4Style = {
+    height: " 78.5vh",
+    overflow: "scroll",
+  };
   return (
     <>
-      <div className="mdc-layout-grid layout-4-container">
+      <div
+        className="mdc-layout-grid layout-4-container"
+        style={props.data.showInfoRibbon ? layout4Style : {}}
+      >
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             {props.data.topMediaType !== "video" ? (
@@ -40,10 +47,10 @@ function Index(props) {
                   />
                 )}
                 <div className="info-container-top">
-                {(props.data.title !== "" ||
+                  {(props.data.title !== "" ||
                     props.data.subtitle !== "" ||
                     props.data.bodyContent !== "") && (
-                      <div className="mdc-card">
+                    <div className="mdc-card">
                       <h1 className="title">
                         {props.data.title || props.data.title == ""
                           ? props.data.title
@@ -76,7 +83,7 @@ function Index(props) {
                   {(props.data.title !== "" ||
                     props.data.subtitle !== "" ||
                     props.data.bodyContent !== "") && (
-                      <div className="mdc-card">
+                    <div className="mdc-card">
                       <h1 className="title">
                         {props.data.title || props.data.title == ""
                           ? props.data.title
@@ -114,16 +121,16 @@ function Index(props) {
                   />
                 )}
                 <div className="mainBody-container">
-                {props.data.mainBodyContent !== "" && (
-                      <div className="mdc-card">
-                        <p className="bodyContent">
-                          {props.data.mainBodyContent ||
-                          props.data.mainBodyContent == ""
-                            ? props.data.mainBodyContent
-                            : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
-                        </p>
-                      </div>
-                    )}
+                  {props.data.mainBodyContent !== "" && (
+                    <div className="mdc-card">
+                      <p className="bodyContent">
+                        {props.data.mainBodyContent ||
+                        props.data.mainBodyContent == ""
+                          ? props.data.mainBodyContent
+                          : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (

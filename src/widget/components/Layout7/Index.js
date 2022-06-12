@@ -43,8 +43,12 @@ function Index(props) {
 
   const layout7Style={
     position: "relative",
-    overflow: "auto",
-    height: "83vh"
+    overflow: "scroll",
+    height: "81.5vh"
+  }
+  const mainContainerStyle={
+    overflow: "scroll",
+    height: "88vh"
   }
   return (
     <>
@@ -55,6 +59,7 @@ function Index(props) {
         <div
           className="mdc-layout-grid  Maincontainer "
           id="container"
+          style={mainContainerStyle}
           onClick={() => {
             enableFullScreen1 && props.data.thumbnailImage != null
               ? imagePreviewer(props.data.thumbnailImage)

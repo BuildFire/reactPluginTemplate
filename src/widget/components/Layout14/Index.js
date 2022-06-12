@@ -15,20 +15,29 @@ function Index(props) {
     setEnableFullScreen2(props.data.enableFullScreen2);
 
     if (props.data.wysiwygData) {
-      my_container_div.innerHTML =
-        props.data.wysiwygData;
+      my_container_div.innerHTML = props.data.wysiwygData;
     }
     if (props.data.wysiwygData2) {
-      my_container_div2.innerHTML =
-        props.data.wysiwygData2;
-      my_container_div2.style.marginBottom = "8rem"
+      my_container_div2.innerHTML = props.data.wysiwygData2;
+      my_container_div2.style.marginBottom = "8rem";
     }
   }, [props]);
-
+  const layout14Style = {
+    position: "relative",
+    overflow: "scroll",
+    height: "78.5vh",
+  };
 
   return (
     <>
-      <div className="mdc-layout-grid layout-14-container">
+      <div
+        className="mdc-layout-grid layout-14-container"
+        style={
+          props.data.showInfoRibbon
+            ? layout14Style
+            : { position: "relative", overflow: "scroll", height: "87.5vh" }
+        }
+      >
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             <div className="top-section">
@@ -60,19 +69,25 @@ function Index(props) {
                   />
                 </div>
               )}
-              {
-                (props.data.title != "" ||  props.data.subtitle != "" ||  props.data.wysiwygData!="") &&
+              {(props.data.title != "" ||
+                props.data.subtitle != "" ||
+                props.data.wysiwygData != "") && (
                 <div className="info-container">
                   <div className="mdc-card">
-                    <p className="title">{props.data.title || props.data.title==""?props.data.title: "Title"}</p>
-                    <p className="subtitle">
-                      {props.data.subtitle || props.data.subtitle==""?props.data.subtitle: "Subtitle"}
+                    <p className="title">
+                      {props.data.title || props.data.title == ""
+                        ? props.data.title
+                        : "Title"}
                     </p>
-                    <div className="bodyContent" id="my_container_div">
-                    </div>
+                    <p className="subtitle">
+                      {props.data.subTitle || props.data.subTile == ""
+                        ? props.data.subTitle
+                        : "Subtitle"}
+                    </p>
+                    <div className="bodyContent" id="my_container_div"></div>
                   </div>
                 </div>
-              }
+              )}
             </div>
             <div className="bottom-section">
               {props.data.bottomMediaType !== "video" ? (
@@ -103,21 +118,21 @@ function Index(props) {
                   />
                 </div>
               )}
-              {
-                (props.data.BottomTitle != "" ||  props.data.BottomSubTitle != "" || props.data.wysiwygData2!="") &&
+              {(props.data.BottomTitle != "" ||
+                props.data.BottomSubTitle != "" ||
+                props.data.wysiwygData2 != "") && (
                 <div className="info-container">
                   <div className="mdc-card">
                     <p className="title">{props.data.BottomTitle || "Title"}</p>
                     <p className="subtitle">
                       {props.data.BottomSubTitle || "Subtitle"}
                     </p>
-                    {props.data.wysiwygData2 &&
-                      <div className="bodyContent" id="my_container_div2">
-                      </div>
-                    }
+                    {props.data.wysiwygData2 && (
+                      <div className="bodyContent" id="my_container_div2"></div>
+                    )}
                   </div>
                 </div>
-              }
+              )}
             </div>
           </div>
         </div>
