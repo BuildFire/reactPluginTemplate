@@ -114,9 +114,16 @@ function Index(props) {
                   />
                 )}
                 <div className="mainBody-container">
-                  <div className="mdc-card">
-                    <p className="bodyContent">{props.data.mainBodyContent}</p>
-                  </div>
+                {props.data.mainBodyContent !== "" && (
+                      <div className="mdc-card">
+                        <p className="bodyContent">
+                          {props.data.mainBodyContent ||
+                          props.data.mainBodyContent == ""
+                            ? props.data.mainBodyContent
+                            : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
+                        </p>
+                      </div>
+                    )}
                 </div>
               </div>
             ) : (
