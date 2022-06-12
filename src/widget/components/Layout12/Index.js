@@ -10,7 +10,7 @@ function Index(props) {
   const { imagePreviewer } = useHelper();
 
   useEffect(() => {
-    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor.";
+    document.getElementById("my_container_div").innerHTML = props.data.wysiwygData;
     if(Object.keys(props.data).length !== 0){
       if (props.data.showInfoRibbon) {
             document.getElementById("my_container_div").style.marginBottom = "14rem";
@@ -18,6 +18,7 @@ function Index(props) {
             document.getElementById("my_container_div").style.marginBottom = "7rem";
           }
     }
+    document.body.style.background = `black`;
     
   }, [props])
 
@@ -48,8 +49,8 @@ function Index(props) {
                       )}
                 </div>
                 <div className="titleContainer mdc-card">
-                  <p className="title">{props.data.title || "Title"}</p>
-                  <p className="subtitle">{props.data.subTitle || "SubTitle"}</p>
+                  <p className="title">{props.data.title }</p>
+                  <p className="subtitle">{props.data.subTitle}</p>
                 </div>
               </div>
               <div className="dataContainer mdc-card">

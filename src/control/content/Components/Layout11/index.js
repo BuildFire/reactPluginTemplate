@@ -120,7 +120,7 @@ function index(props) {
               id="title"
               name="title"
               className="form-control fullWidth"
-              defaultValue={props.data.title}
+              defaultValue={props.data.title || "Title"}
             ></input>
           </div>
         </div>
@@ -136,7 +136,7 @@ function index(props) {
               id="subTitle"
               name="subTitle"
               className="form-control fullWidth"
-              defaultValue={props.data.subTitle}
+              defaultValue={props.data.subTitle || "Subtitle"}
               ></input>
           </div>
         </div>
@@ -148,10 +148,10 @@ function index(props) {
             <textarea
               placeholder="Body content 1"
               onChange={handleChange}
-              maxLength="250"
+              maxLength="200"
               name="BodyContent1"
               className="form-control bodyContent"
-              defaultValue={props.data.BodyContent1}
+              defaultValue={props.data.BodyContent1 ||  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
               ></textarea>
           </div>
         </div>
@@ -166,7 +166,7 @@ function index(props) {
               maxLength="200"
               name="BodyContent2"
               className="form-control bodyContent"
-              defaultValue={props.data.BodyContent2}
+              defaultValue={props.data.BodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
               ></textarea>
           </div>
         </div>
@@ -181,7 +181,7 @@ function index(props) {
               maxLength="200"
               name="BodyContent3"
               className="form-control bodyContent"
-              defaultValue={props.data.BodyContent3}
+              defaultValue={props.data.BodyContent3 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
               ></textarea>
           </div>
         </div>

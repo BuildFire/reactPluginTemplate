@@ -152,7 +152,7 @@ function index(props) {
               placeholder="Title"
               onChange={handleChange}
               className="form-control fullWidth"
-              defaultValue={props.data.title}
+              defaultValue={props.data.title || "Title"}
             ></input>
           </div>
         </div>
@@ -167,7 +167,7 @@ function index(props) {
               placeholder="SubTitle"
               onChange={handleChange}
               className="form-control fullWidth"
-              defaultValue={props.data.subTitle}
+              defaultValue={props.data.subTitle || "Subtitle"}
               ></input>
           </div>
         </div>
@@ -182,7 +182,7 @@ function index(props) {
               placeholder="Body content 1"
               onChange={handleChange}
               className="form-control bodyContent"
-              defaultValue={props.data.bodyContent}
+              defaultValue={props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
               ></textarea>
           </div>
         </div>
@@ -197,7 +197,7 @@ function index(props) {
               placeholder="Body content 2"
               onChange={handleChange}
               className="form-control bodyContent"
-              defaultValue={props.data.bodyContent2}
+              defaultValue={props.data.bodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
               ></textarea>
           </div>
         </div>

@@ -88,10 +88,10 @@ function Index(props) {
               )}
 
               <div className="info-container mdc-card ">
-                <p className="title">{props.data.title || "Title"}</p>
-                <p className="subtitle">{props.data.subTitle || "subT itle"}</p>
+                <p className="title">{props.data.title}</p>
+                <p className="subtitle">{props.data.subTitle}</p>
                 <p className="bodyContent">
-                  {props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
+                  {props.data.bodyContent}
                 </p>
               </div>
             </div>

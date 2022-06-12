@@ -141,7 +141,7 @@ function Index(props) {
                 placeholder="Title"
                 onChange={handleChange}
                 className="form-control fullWidth"
-                defaultValue={props.data.title}
+                defaultValue={props.data.title || "Title"}
               ></input>
             </div>
           </div>
@@ -156,7 +156,7 @@ function Index(props) {
                 placeholder="Subtitle"
                 onChange={handleChange}
                 className="form-control fullWidth"
-                defaultValue={props.data.subTitle}
+                defaultValue={props.data.subTitle || "Subtitle"}
               ></input>
             </div>
           </div>
@@ -242,7 +242,7 @@ function Index(props) {
                 placeholder="Title"
                 onChange={handleChange}
                 className="form-control fullWidth"
-                defaultValue={props.data.BottomTitle}
+                defaultValue={props.data.BottomTitle || "Title"}
               ></input>
             </div>
           </div>
@@ -257,7 +257,7 @@ function Index(props) {
                 placeholder="Subtitle"
                 onChange={handleChange}
                 className="form-control fullWidth"
-                defaultValue={props.data.BottomSubTitle}
+                defaultValue={props.data.BottomSubTitle || "Subtitle"}
               ></input>
             </div>
           </div>
