@@ -44,13 +44,27 @@ function Index(props) {
             />)}
 
             <div className="info-container">
-              <div className="mdc-card">
-                <h1 className="title">{props.data.title}</h1>
-                <h3 className="subtitle">{props.data.subtitle}</h3>
-                <p className="bodyContent">
-                  {props.data.bodyContent}
-                </p>
-              </div>
+            {(props.data.title !== "" ||
+                    props.data.subtitle !== "" ||
+                    props.data.bodyContent !== "") && (
+                      <div className="mdc-card">
+                      <h1 className="title">
+                        {props.data.title || props.data.title == ""
+                          ? props.data.title
+                          : "Title"}
+                      </h1>
+                      <h3 className="subtitle">
+                        {props.data.subtitle || props.data.subtitle == ""
+                          ? props.data.subtitle
+                          : "Subtitle"}
+                      </h3>
+                      <p className="bodyContent">
+                        {props.data.bodyContent || props.data.bodyContent == ""
+                          ? props.data.bodyContent
+                          : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
+                      </p>
+                    </div>
+                  )}
             </div>
             {props.data.mainMediaType !== "video" ? (
               <div className="mainImage-container">
