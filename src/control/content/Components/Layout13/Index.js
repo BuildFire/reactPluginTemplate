@@ -112,7 +112,7 @@ function Index(props) {
                 type="text"
                 name="title"
                 placeholder="Title"
-                defaultValue={props.data.title}
+                defaultValue={props.data.title || "Title"}
               />
             </div>
           </div>
@@ -128,7 +128,7 @@ function Index(props) {
                 placeholder="Summary"
                 maxLength={100}
                 onChange={handleChange}
-                defaultValue={props.data.subtitle}
+                defaultValue={props.data.subtitle ||  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
               />
             </div>
           </div>
@@ -143,7 +143,7 @@ function Index(props) {
                 name="bodyContent"
                 className="form-control bodyContent"
                 placeholder="Body Content"
-                defaultValue={props.data.bodyContent}
+                defaultValue={props.data.bodyContent ||  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
                 ></textarea>
             </div>
           </div>

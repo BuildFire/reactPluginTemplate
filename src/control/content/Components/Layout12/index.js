@@ -122,7 +122,7 @@ function index(props) {
               id="title"
               name="title"
               className="form-control fullWidth"
-              defaultValue={props.data.title}
+              defaultValue={props.data.title || "Title"}
             ></input>
           </div>
         </div>
@@ -138,7 +138,7 @@ function index(props) {
               id="subTitle"
               name="subTitle"
               className="form-control fullWidth"
-              defaultValue={props.data.subTitle}
+              defaultValue={props.data.subTitle || "Subtitle"}
               ></input>
           </div>
         </div>

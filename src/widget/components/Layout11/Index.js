@@ -18,6 +18,7 @@ function Index(props) {
         document.getElementById("bottomBody").style.paddingBottom = "7rem";
       }
     }
+    document.body.style.background = `black`;
    
   }, [props])
 
@@ -48,14 +49,14 @@ function Index(props) {
                       )}
                 </div>
                 <div className="titleContainer mdc-card">
-                  <p className="title">{props.data.title || "Title"}</p>
-                  <p className="subtitle">{props.data.subTitle || "SubTitle"}</p>
+                  <p className="title">{props.data.title }</p>
+                  <p className="subtitle">{props.data.subTitle }</p>
                 </div>
               </div>
               <div id="bottomBody" className="dataContainer mdc-card">
-                <p className="bodyContent">{props.data.BodyContent1 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
-                <p className="bodyContent">{props.data.BodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
-                <p className="bodyContent">{props.data.BodyContent3 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}</p>
+                <p className="bodyContent">{props.data.BodyContent1}</p>
+                <p className="bodyContent">{props.data.BodyContent2}</p>
+                <p className="bodyContent">{props.data.BodyContent3}</p>
 
                 {
                   props.data.ExternalURL &&

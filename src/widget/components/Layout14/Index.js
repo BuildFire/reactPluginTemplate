@@ -15,13 +15,9 @@ function Index(props) {
     setEnableFullScreen2(props.data.enableFullScreen2);
 
     my_container_div.innerHTML =
-      props.data.wysiwygData ||
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor. ";
-
+      props.data.wysiwygData;
     my_container_div2.innerHTML =
-      props.data.wysiwygData2 ||
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor. ";
-
+      props.data.wysiwygData2 ;
       my_container_div2.style.marginBottom = "8rem"
   }, [props]);
 
@@ -62,12 +58,12 @@ function Index(props) {
               )}
               <div className="info-container">
                 <div className="mdc-card">
-                  <p className="title">{props.data.title || "Title"}</p>
+                  <p className="title">{props.data.title}</p>
                   <p className="subtitle">
-                    {props.data.subtitle || "Subtitle"}
+                    {props.data.subtitle }
                   </p>
                   <p className="bodyContent" id="my_container_div">
-                    {props.data.wysiwygData || "Body Content"}
+                    {props.data.wysiwygData }
                   </p>
                 </div>
               </div>
@@ -103,12 +99,12 @@ function Index(props) {
               )}
               <div className="info-container">
                 <div className="mdc-card">
-                  <p className="title">{props.data.BottomTitle || "Title"}</p>
+                  <p className="title">{props.data.BottomTitle}</p>
                   <p className="subtitle">
-                    {props.data.BottomSubTitle || "Subtitle"}
+                    {props.data.BottomSubTitle}
                   </p>
                   <p className="bodyContent" id="my_container_div2">
-                    {props.data.wysiwygData2 || "Body Content"}
+                    {props.data.wysiwygData2}
                   </p>
                 </div>
               </div>
