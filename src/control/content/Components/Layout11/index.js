@@ -146,7 +146,7 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <textarea
-              placeholder="Body content 1"
+              placeholder= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."
               onChange={handleChange}
               maxLength="200"
               name="BodyContent1"
@@ -161,7 +161,7 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <textarea
-              placeholder="Body content 2"
+              placeholder= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."
               onChange={handleChange}
               maxLength="200"
               name="BodyContent2"
@@ -176,7 +176,7 @@ function index(props) {
           </div>
           <div className="col-md-9">
             <textarea
-              placeholder="Body content 3"
+              placeholder= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."
               onChange={handleChange}
               maxLength="200"
               name="BodyContent3"

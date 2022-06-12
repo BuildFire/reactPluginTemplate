@@ -14,11 +14,15 @@ function Index(props) {
     setEnableFullScreen(props.data.enableFullScreen);
     setEnableFullScreen2(props.data.enableFullScreen2);
 
-    my_container_div.innerHTML =
-      props.data.wysiwygData;
-    my_container_div2.innerHTML =
-      props.data.wysiwygData2 ;
+    if (props.data.wysiwygData) {
+      my_container_div.innerHTML =
+        props.data.wysiwygData;
+    }
+    if (props.data.wysiwygData2) {
+      my_container_div2.innerHTML =
+        props.data.wysiwygData2;
       my_container_div2.style.marginBottom = "8rem"
+    }
   }, [props]);
 
 
@@ -56,17 +60,20 @@ function Index(props) {
                   />
                 </div>
               )}
-              <div className="info-container">
-                <div className="mdc-card">
-                  <p className="title">{props.data.title}</p>
-                  <p className="subtitle">
-                    {props.data.subtitle }
-                  </p>
-                  <p className="bodyContent" id="my_container_div">
-                    {props.data.wysiwygData }
-                  </p>
+              {
+                ((props.data.title && props.data.title != "") || (props.data.subtitle && props.data.subtitle != "") || props.data.wysiwygData) &&
+                <div className="info-container">
+                  <div className="mdc-card">
+                    <p className="title">{props.data.title}</p>
+                    <p className="subtitle">
+                      {props.data.subtitle}
+                    </p>
+                    <p className="bodyContent" id="my_container_div">
+                      {props.data.wysiwygData}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              }
             </div>
             <div className="bottom-section">
               {props.data.bottomMediaType !== "video" ? (
@@ -97,17 +104,22 @@ function Index(props) {
                   />
                 </div>
               )}
-              <div className="info-container">
-                <div className="mdc-card">
-                  <p className="title">{props.data.BottomTitle}</p>
-                  <p className="subtitle">
-                    {props.data.BottomSubTitle}
-                  </p>
-                  <p className="bodyContent" id="my_container_div2">
-                    {props.data.wysiwygData2}
-                  </p>
+              {
+                ((props.data.BottomTitle && props.data.BottomTitle != "") || (props.data.BottomSubTitle && props.data.BottomSubTitle != "") || props.data.wysiwygData2) &&
+                <div className="info-container">
+                  <div className="mdc-card">
+                    <p className="title">{props.data.BottomTitle}</p>
+                    <p className="subtitle">
+                      {props.data.BottomSubTitle}
+                    </p>
+                    {props.data.wysiwygData2 &&
+                      <p className="bodyContent" id="my_container_div2">
+                        {props.data.wysiwygData2}
+                      </p>
+                    }
+                  </div>
                 </div>
-              </div>
+              }
             </div>
           </div>
         </div>

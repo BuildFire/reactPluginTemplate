@@ -87,20 +87,24 @@ function Index(props) {
                 />
               )}
 
-              <div className="info-container mdc-card ">
-                <p className="title">{props.data.title}</p>
-                <p className="subtitle">{props.data.subTitle}</p>
-                <p className="bodyContent">
-                  {props.data.bodyContent}
-                </p>
-              </div>
+              {
+                ((props.data.title != "" && props.data.title) || (props.data.subTitle != "" && props.data.subTitle) || (props.data.bodyContent != "" && props.data.bodyContent)) &&
+                < div className="info-container mdc-card ">
+                  <p className="title">{props.data.title}</p>
+                  <p className="subtitle">{props.data.subTitle}</p>
+                  <p className="bodyContent">
+                    {props.data.bodyContent}
+                  </p>
+                </div>
+              }
             </div>
           </div>
         </div>
       </div>
-      {props.data.showInfoRibbon && <>
-        <ProgressRibbon />
-      </>
+      {
+        props.data.showInfoRibbon && <>
+          <ProgressRibbon />
+        </>
       }
     </>
   );
