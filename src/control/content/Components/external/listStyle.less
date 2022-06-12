@@ -1,0 +1,121 @@
+.listContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .listedItem {
+    align-items: center;
+    height: 60px;
+    display: flex;
+    padding: 20px;
+    padding-right: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+
+    .layout-Name-Container {
+      p {
+        margin: 0;
+      }
+      .layout-Name {
+        color: var(--bf-theme-primary);
+        cursor: pointer;
+        margin: 0;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: -webkit-fill-available;
+    }
+  }
+  .control-List-Icon {
+    margin-right: 20px;
+  }
+
+  .controlsList {
+    display: flex;
+  }
+  
+}
+.button-switch {
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+    margin-left: auto;
+    margin-right: 1rem;
+    justify-content: start;
+  }
+  .button-switch > label {
+    cursor: pointer;
+    height: 0;
+    position: relative;
+    width: 40px;
+    text-align: left;
+  }
+  .button-switch > label::before {
+    background: #909090;
+    border-radius: 18px;
+    content: "";
+    height: 27px;
+    margin-top: -13.5px;
+    position: absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 46px;
+  }
+  .button-switch > label::after {
+    background: var(--c-white);
+    border-radius: 16px;
+    box-shadow: 0 0 5px rgb(0 0 0/30%);
+    content: "";
+    height: 24px;
+    left: 0;
+    margin-top: -9px;
+    position: absolute;
+    top: -3px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+  }
+  .button-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+  }
+  .button-switch > input[type="checkbox"] {
+    display: none;
+    margin: 4px 0 0;
+  }
+  .button-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 23px;
+  }
+  .button-switch.switch-sm > input[type="checkbox"]:checked + label::after {
+    left: 17px;
+  }
+  .button-switch.switch-sm > label::before {
+    background: #909090;
+    border-radius: 18px;
+    content: "";
+    height: 1rem;
+    margin-top: 0;
+    position: absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 2rem;
+  }
+  .button-switch.switch-sm > label::after {
+    background: var(--c-white);
+    border-radius: 16px;
+    box-shadow: 0 0 5px rgb(0 0 0/30%);
+    content: "";
+    height: 1rem;
+    left: 0;
+    margin-top: 0;
+    position: absolute;
+    top: -8px;
+    transition: all 0.3s ease-in-out;
+    width: 1rem;
+  }
+  .button-switch.switch-sm > label {
+    display: flex;
+    align-items: center;
+    width: 2rem;
+  }

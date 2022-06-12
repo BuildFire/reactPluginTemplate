@@ -1,0 +1,96 @@
+body{
+  background-color:black;
+.layout-8-container {
+  word-break: break-word;
+
+  .Maincontainer {
+    position: absolute;
+    left: 0rem;
+    top: 0;
+    padding: 0rem;
+    padding-top: 1rem;
+
+
+    .mdc-layout-grid__inner {
+      .verticalLayOut{
+        min-height: 37.5rem;
+      }
+      .row {
+        margin: auto;
+        display: block;
+
+        .upperContainer {
+          margin: auto;
+          display: block;
+          width: fit-content;
+
+          .img,video {
+            width: 15rem;
+            height: 15rem;
+            align-self: stretch;
+            overflow: hidden;
+            flex-grow: 1;
+            background-color:rgba(121, 121, 121, 0.87);
+          }
+
+          p {
+            width: 15rem;
+            height: 15rem;
+            // background-color: black;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #ffffff;
+
+            line-height: 1.5rem;
+            flex: none;
+            order: 0;
+            align-self: stretch;
+            flex-grow: 1;
+            overflow: hidden;
+            word-wrap: break-word;
+            white-space: normal;
+            text-overflow: ellipsis;
+            margin-bottom: 0;
+            padding: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+          }
+          .mid-text {
+            text-align: right;
+          }
+
+          .column {
+            float: left;
+            display: block;
+            margin: auto;
+          }
+
+          .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            margin: 0rem;
+          }
+        }
+
+        .lowerContainer {
+          overflow: hidden;
+          width: 100%;
+          display: block;
+          flex: none;
+          order: 0;
+          align-self: stretch;
+          flex-grow: 1;
+          margin-top: 0.5rem;
+          height: 11.2rem;
+
+          .buttomImg {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+}

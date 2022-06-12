@@ -1,0 +1,89 @@
+.layout-5-container {
+  padding: 0 !important;
+  position: relative;
+  .topImage-container,.video-container {
+    img,video {
+      width: 100%;
+      height: 17rem;
+      flex: none;
+      order: 0;
+      align-self: stretch;
+      flex-grow: 1;
+    }
+    video {
+      width: 102% !important;
+      height: 14.6875em;
+    }
+  }
+  .info-container {
+    padding: 0 1rem;
+    position: absolute;
+    width: 100%;
+    bottom: -11.5rem;
+    .mdc-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 1.5rem;
+      gap: 1rem;
+      width: 100%;
+      color: #fff;
+      background: var(--mdc-theme-on-surface);
+      border-radius: 0;
+      background-color: rgb(0, 0, 0, 0.9);
+      .title {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 1.7rem;
+        letter-spacing: 0.03125rem;
+        word-wrap: break-word;
+        white-space: normal;
+        margin: 0rem;
+      }
+      .subtitle {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.355rem;
+        line-height: 1.7rem;
+        word-wrap: break-word;
+        white-space: normal;
+        margin: 0;
+      }
+      .bodyContent {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.355rem;
+        line-height: 1.7rem;
+        overflow: hidden;
+        word-wrap: break-word;
+        white-space: normal;
+        text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        margin-top: 1.2rem;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+  .mainImage-container,.video-container2 {
+    position: absolute;
+    top: 300px;
+    width: 100%;
+    img,video {
+      width: 45em;
+      height: 21.5625em;
+      flex: none;
+      order: 0;
+      align-self: stretch;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+    video{
+      width: 100%;
+    }
+  }
+}

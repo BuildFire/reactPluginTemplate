@@ -1,8 +1,11 @@
-import React from 'react';
-import { hot } from 'react-hot-loader/root';
+import React from 'react'
+import LayoutManager from '../shared/LayoutManager';
 
-const Widget = () => (
-  <h1>Widget - Hello World!</h1>
-);
+export default function Widget() {
+  return (
+    <>
+    <LayoutManager/>
+    </>
+  )
+}
 
-export default hot(Widget);
