@@ -54,13 +54,13 @@ function Index(props) {
               />
             )}
             {
-              ((props.data.title != "" && props.data.title) || (props.data.subtitle != "" && props.data.subtitle) || (props.data.bodyContent != "" && props.data.bodyContent)) &&
+              (props.data.title != "" || props.data.subtitle != "" || props.data.bodyContent != "" )&&
               <div className="info-container">
                 <div className="mdc-card" id="card">
-                  <p className="title">{props.data.title}</p>
-                  <p className="subtitle">{props.data.subtitle}</p>
+                  <p className="title">{props.data.title || props.data.title==""?props.data.title: "Title"}</p>
+                  <p className="subtitle">{props.data.subtitle ||props.data.subtitle==""?props.data.subtitle: "Subtitle"}</p>
                   <p className="bodyContent">
-                    {props.data.bodyContent}
+                    {props.data.bodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
                   </p>
                 </div>
               </div>

@@ -88,12 +88,12 @@ function Index(props) {
               )}
 
               {
-                ((props.data.title != "" && props.data.title) || (props.data.subTitle != "" && props.data.subTitle) || (props.data.bodyContent != "" && props.data.bodyContent)) &&
+                (props.data.title != ""  || props.data.subTitle != "" || props.data.bodyContent != "") &&
                 < div className="info-container mdc-card ">
-                  <p className="title">{props.data.title}</p>
-                  <p className="subtitle">{props.data.subTitle}</p>
+                  <p className="title">{props.data.title||props.data.title==""?props.data.title:"Title"}</p>
+                  <p className="subtitle">{props.data.subTitle||props.data.subTitle==""?props.data.subTitle:"Subtitle"}</p>
                   <p className="bodyContent">
-                    {props.data.bodyContent}
+                    {props.data.bodyContent||props.data.bodyContent==""?props.data.bodyContent:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}
                   </p>
                 </div>
               }

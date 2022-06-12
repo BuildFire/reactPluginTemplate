@@ -64,13 +64,13 @@ function Index(props) {
               }
             </div>
             {
-              ((props.data.title != "" && props.data.title) || (props.data.subTitle != "" && props.data.subTitle) || (props.data.bodyContent != "" && props.data.bodyContent) || (props.data.bodyContent2 != "" && props.data.bodyContent2)) &&
+              (props.data.title != "" || props.data.subTitle != "" || props.data.bodyContent != ""|| props.data.bodyContent2 != "" ) &&
               <div className="info-container " >
                 <div className="frontInfo mdc-card ">
-                  <p className="title">{props.data.title}</p>
-                  <p className="subtitle">{props.data.subTitle}</p>
-                  <p className="bodyContent">{props.data.bodyContent}</p>
-                  <p className="bodyContent" id="bottomBody">{props.data.bodyContent2}</p>
+                  <p className="title">{props.data.title||props.data.title==""?props.data.title:"Title"}</p>
+                  <p className="subtitle">{props.data.subTitle || props.data.subTitle==""?props.data.subTitle:"Subtitle"}</p>
+                  <p className="bodyContent">{props.data.bodyContent||props.data.bodyContent==""?props.data.bodyContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}</p>
+                  <p className="bodyContent" id="bottomBody">{props.data.bodyContent2||props.data.bodyContent2==""?props.data.bodyContent2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor."}</p>
                 </div>
               </div>
             }
