@@ -119,7 +119,7 @@ function index(props) {
               setThumbnailImage={setThumbnailImage}
               imageTag={"Top Image"}
               classList={"thumbnail sequare"}
-              aspectRatio={"16x9"}
+              aspectRatio={"1x1"}
             />
           ) : (
             <>

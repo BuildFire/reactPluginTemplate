@@ -6,7 +6,7 @@ import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "../../../../../../styles/media/holder-1x1.png"
+    "./assets/images/holder-1x1.png"
   );
   const [holderVideo, setHolderVideo] = useState(
     "./shared/img/video_player_placeholder.png"
@@ -66,12 +66,12 @@ function Index(props) {
                     )}
 
                     <p className="column bodyContent mdc-card ">
-                      {props.data.BodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
+                      {props.data.BodyContent }
                     </p>
                 </div>
                 <div className="mdc-layout-grid__cell--span-8 row">
                   <p className="column bodyContent mid-text mdc-card">
-                    {props.data.BodyContent2 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
+                    {props.data.BodyContent2 }
                   </p>
                   {props.data.mediaType2 != "video" ? (
                     enableFullScreen2 && props.data.thumbnailImage2 != null ? (
@@ -121,7 +121,7 @@ function Index(props) {
                     </div>
                   )}
                   <p className="column bodyContent mdc-card">
-                    {props.data.BodyContent3 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
+                    {props.data.BodyContent3}
                   </p>
                 </div>
               </div>

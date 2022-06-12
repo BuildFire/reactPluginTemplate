@@ -36,12 +36,12 @@
 
   .info-container {
     padding: 0.5rem 0.5rem 1rem 0.5rem;
-    //margin: 0.75rem;
-    position: absolute;
-    bottom: -26px;
+    /* position: absolute; */
+    /* bottom: -26px; */
     z-index: 8;
     width: 100%;
     height: fit-content;
+    margin-top: -2rem;
     opacity: 0.8;
     .mdc-card {
       display: flex;
@@ -53,7 +53,7 @@
       width: 100%;
       color: #fff;
       border-radius: 0;
-      padding: 1.5rem;
+      padding: 1.5rem 1.5rem 0.5rem 1.5rem;
       background-color: rgb(0, 0, 0, 0.9);
       .bodyContent {
         font-style: normal;
@@ -63,9 +63,10 @@
         overflow: hidden;
         word-wrap: break-word;
         white-space: normal;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
+        // max-height: 8.5rem;
+        // display: -webkit-box;
+        // -webkit-line-clamp: 5;
+        // -webkit-box-orient: vertical;
       }
     }
   }
