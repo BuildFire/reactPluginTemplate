@@ -66,11 +66,16 @@ function Index(props) {
                   <img  alt="Top image"  src={props.data.thumbnailImage || holderImage} />
                 )}
                 <div className="info-container">
-                  <div className="mdc-card">
-                    <p className="bodyContent">
-                      {props.data.bodyContent }
-                    </p>
-                  </div>
+                {(
+                    props.data.bodyContent !== "" && 
+                      <div className="mdc-card">
+                      <p className="bodyContent">
+                        {props.data.bodyContent || props.data.bodyContent == ""
+                          ? props.data.bodyContent
+                          : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             ) :(
@@ -83,11 +88,16 @@ function Index(props) {
               index={1}
             />
                <div className="info-container">
-                  <div className="mdc-card">
-                    <p className="bodyContent">
-                      {props.data.bodyContent}
-                    </p>
-                  </div>
+               {(
+                    props.data.bodyContent !== "" && 
+                      <div className="mdc-card">
+                      <p className="bodyContent">
+                        {props.data.bodyContent || props.data.bodyContent == ""
+                          ? props.data.bodyContent
+                          : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
+                      </p>
+                    </div>
+                  )}
                 </div>
             </div>
             )}

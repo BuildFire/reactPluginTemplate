@@ -4,12 +4,12 @@ import useHelper from "../../shared/Helper/Helper";
 import VideoUI from "../../shared/VideoUI";
 import ProgressRibbon from "../../shared/Ui_components/ProgressRibbon";
 
-
 function Index(props) {
   const [holderImage, setHolderImage] = useState(
-    "./assets/images/holder-16x9.png");
-    const [holderVideo, setHolderVideo] = useState(
-      "./shared/img/video_player_placeholder.png"
+    "./assets/images/holder-16x9.png"
+  );
+  const [holderVideo, setHolderVideo] = useState(
+    "./shared/img/video_player_placeholder.png"
   );
 
   const [enableFullScreen1, setEnableFullScreen1] = useState(false);
@@ -28,7 +28,7 @@ function Index(props) {
           ).style.backgroundImage = `url(${holderImage})`);
     }
     document.getElementById("container").style.backgroundPosition = "center";
-    document.getElementById("container").style.backgroundSize="cover";
+    document.getElementById("container").style.backgroundSize = "cover";
 
     setEnableFullScreen1(props.data.enableFullScreen1);
     setEnableFullScreen2(props.data.enableFullScreen2);
@@ -58,50 +58,76 @@ function Index(props) {
               {props.data.mediaType2 != "video" ? (
                 enableFullScreen2 && props.data.thumbnailImage2 != null ? (
                   <img
-                  alt="Background image" 
+                    alt="Background image"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage2);
                     }}
                     src={props.data.thumbnailImage2 || holderImage}
                   />
                 ) : (
-                  <img alt="Background image"  src={props.data.thumbnailImage2 || holderImage} />
+                  <img
+                    alt="Background image"
+                    src={props.data.thumbnailImage2 || holderImage}
+                  />
                 )
               ) : (
-                <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay1} enableFullScreen={props.data.enableFullScreen2} url={props.data.videoURL2} index={1} />
+                <VideoUI
+                  data={props.data}
+                  enableAutoPlay={props.data.enableAutoPlay1}
+                  enableFullScreen={props.data.enableFullScreen2}
+                  url={props.data.videoURL2}
+                  index={1}
+                />
               )}
-
-              <p className="bodyContent mdc-card">
-                {props.data.TopBodyContent}
-              </p>
+              {props.data.TopBodyContent !== "" && (
+                <p className="bodyContent mdc-card">
+                  {props.data.TopBodyContent || props.data.TopBodyContent == ""
+                    ? props.data.TopBodyContent
+                    : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
+                </p>
+              )}
 
               {props.data.mediaType3 != "video" ? (
                 enableFullScreen3 && props.data.thumbnailImage3 != null ? (
                   <img
-                  alt="Main image" 
+                    alt="Main image"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage3);
                     }}
                     src={props.data.thumbnailImage3 || holderImage}
                   />
                 ) : (
-                  <img alt="Main image"  src={props.data.thumbnailImage3 || holderImage} />
+                  <img
+                    alt="Main image"
+                    src={props.data.thumbnailImage3 || holderImage}
+                  />
                 )
               ) : (
-                <VideoUI data={props.data} enableAutoPlay={props.data.enableAutoPlay2} enableFullScreen={props.data.enableFullScreen3} url={props.data.videoURL3} index={2} />
+                <VideoUI
+                  data={props.data}
+                  enableAutoPlay={props.data.enableAutoPlay2}
+                  enableFullScreen={props.data.enableFullScreen3}
+                  url={props.data.videoURL3}
+                  index={2}
+                />
               )}
-
-              <p className="bodyContent mdc-card">
-                {props.data.MainBodyContent}
-              </p>
+              {props.data.MainBodyContent !== "" && (
+                <p className="bodyContent mdc-card">
+                  {props.data.MainBodyContent ||
+                  props.data.MainBodyContent == ""
+                    ? props.data.MainBodyContent
+                    : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
+                </p>
+              )}
             </div>
           </div>
         </div>
       </div>
-      {props.data.showInfoRibbon && <>
-     <ProgressRibbon/>
-      </>
-      }
+      {props.data.showInfoRibbon && (
+        <>
+          <ProgressRibbon />
+        </>
+      )}
     </>
   );
 }
