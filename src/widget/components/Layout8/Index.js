@@ -31,10 +31,14 @@ function Index(props) {
       lowerContainer.style.height = "14.5rem";
     }
   }, [props]);
-
+  const layout8Style={
+    position: "relative",
+    overflow: "scroll",
+    height: "78.5vh"
+  }
   return (
     <>
-      <div className="layout-8-container">
+      <div className="layout-8-container"   style={props.data.showInfoRibbon ? layout8Style: {}}>
         <div className="mdc-layout-grid Maincontainer " id="container">
           <div className="mdc-layout-grid__inner">
             <div className="mdc-layout-grid__cell--span-8 row verticalLayOut">

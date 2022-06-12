@@ -22,14 +22,12 @@ function Index(props) {
       title: "image",
     },
   ]);
-  
+
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer, fullScreenVideoHandler } = useHelper();
-
-
   useEffect(() => {
     let carouselView;
-    
+
     if (props.data.allImages && props.data.allImages.length > 0) {
       carouselView = new buildfire.components.carousel.view("#carousel");
       carouselView.loadItems(props.data.allImages);
@@ -47,28 +45,43 @@ function Index(props) {
     setEnableFullScreen(props.data.enableFullScreen);
   }, [props]);
 
+  const layout6Style = {
+    height: " 78.5vh",
+    overflow: "scroll",
+    position: "relative",
+  };
+
   return (
     <>
-      <div className="mdc-layout-grid layout-6-container">
+      <div
+        className="mdc-layout-grid layout-6-container"
+        style={
+          props.data.showInfoRibbon
+            ? layout6Style
+            : { position: "relative", overflow: "scroll", height: "87.5vh" }
+        }
+      >
         <div className="mdc-layout-grid__inner">
           <div className="mdc-layout-grid__cell--span-8">
             {props.data.topMediaType !== "video" ? (
               <div className="topImage-container">
                 {enableFullScreen && props.data.thumbnailImage != null ? (
                   <img
-                  alt="Top image" 
+                    alt="Top image"
                     onClick={() => {
                       imagePreviewer(props.data.thumbnailImage);
                     }}
                     src={props.data.thumbnailImage || holderImage}
                   />
                 ) : (
-                  <img  alt="Top image"  src={props.data.thumbnailImage || holderImage} />
+                  <img
+                    alt="Top image"
+                    src={props.data.thumbnailImage || holderImage}
+                  />
                 )}
                 <div className="info-container">
-                {(
-                    props.data.bodyContent !== "" && 
-                      <div className="mdc-card">
+                  {props.data.bodyContent !== "" && (
+                    <div className="mdc-card">
                       <p className="bodyContent">
                         {props.data.bodyContent || props.data.bodyContent == ""
                           ? props.data.bodyContent
@@ -78,19 +91,18 @@ function Index(props) {
                   )}
                 </div>
               </div>
-            ) :(
+            ) : (
               <div className="topImage-container">
-              <VideoUI
-              data={props.data}
-              enableAutoPlay={props.data.enableAutoPlay1}
-              enableFullScreen={props.data.enableFullScreen}
-              url={props.data.videoURL}
-              index={1}
-            />
-               <div className="info-container">
-               {(
-                    props.data.bodyContent !== "" && 
-                      <div className="mdc-card">
+                <VideoUI
+                  data={props.data}
+                  enableAutoPlay={props.data.enableAutoPlay1}
+                  enableFullScreen={props.data.enableFullScreen}
+                  url={props.data.videoURL}
+                  index={1}
+                />
+                <div className="info-container">
+                  {props.data.bodyContent !== "" && (
+                    <div className="mdc-card">
                       <p className="bodyContent">
                         {props.data.bodyContent || props.data.bodyContent == ""
                           ? props.data.bodyContent
@@ -99,7 +111,7 @@ function Index(props) {
                     </div>
                   )}
                 </div>
-            </div>
+              </div>
             )}
 
             <div
@@ -111,10 +123,11 @@ function Index(props) {
           </div>
         </div>
       </div>
-      {props.data.showInfoRibbon && <>
-     <ProgressRibbon/>
-      </>
-      }
+      {props.data.showInfoRibbon && (
+        <>
+          <ProgressRibbon />
+        </>
+      )}
     </>
   );
 }
