@@ -216,7 +216,7 @@ function ExternalLayout(props) {
                           type="text"
                           name="title"
                           placeholder="Title"
-                          defaultValue={props.activeObject.title}
+                          defaultValue={props.activeObject.title || "Title"}
                         />
                       </div>
                     </div>
@@ -232,7 +232,7 @@ function ExternalLayout(props) {
                           placeholder="Subtitle"
                           maxLength={100}
                           onChange={handleChange}
-                          defaultValue={props.activeObject.subtitle}
+                          defaultValue={props.activeObject.subtitle || "Subtitle"}
                         />
                       </div>
                     </div>
@@ -246,8 +246,8 @@ function ExternalLayout(props) {
                           onChange={handleChange}
                           name="BodyContent"
                           className="form-control bodyContent"
-                          placeholder="Body Content"
-                          defaultValue={props.activeObject.BodyContent}
+                          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"
+                          defaultValue={props.activeObject.BodyContent || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massaa tempor"}
                         ></textarea>
                       </div>
                     </div>
