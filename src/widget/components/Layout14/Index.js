@@ -61,16 +61,15 @@ function Index(props) {
                 </div>
               )}
               {
-                ((props.data.title && props.data.title != "") || (props.data.subtitle && props.data.subtitle != "") || props.data.wysiwygData) &&
+                (props.data.title != "" ||  props.data.subtitle != "" ||  props.data.wysiwygData!="") &&
                 <div className="info-container">
                   <div className="mdc-card">
-                    <p className="title">{props.data.title}</p>
+                    <p className="title">{props.data.title || props.data.title==""?props.data.title: "Title"}</p>
                     <p className="subtitle">
-                      {props.data.subtitle}
+                      {props.data.subtitle || props.data.subtitle==""?props.data.subtitle: "Subtitle"}
                     </p>
-                    <p className="bodyContent" id="my_container_div">
-                      {props.data.wysiwygData}
-                    </p>
+                    <div className="bodyContent" id="my_container_div">
+                    </div>
                   </div>
                 </div>
               }
@@ -105,17 +104,16 @@ function Index(props) {
                 </div>
               )}
               {
-                ((props.data.BottomTitle && props.data.BottomTitle != "") || (props.data.BottomSubTitle && props.data.BottomSubTitle != "") || props.data.wysiwygData2) &&
+                (props.data.BottomTitle != "" ||  props.data.BottomSubTitle != "" || props.data.wysiwygData2!="") &&
                 <div className="info-container">
                   <div className="mdc-card">
-                    <p className="title">{props.data.BottomTitle}</p>
+                    <p className="title">{props.data.BottomTitle || "Title"}</p>
                     <p className="subtitle">
-                      {props.data.BottomSubTitle}
+                      {props.data.BottomSubTitle || "Subtitle"}
                     </p>
                     {props.data.wysiwygData2 &&
-                      <p className="bodyContent" id="my_container_div2">
-                        {props.data.wysiwygData2}
-                      </p>
+                      <div className="bodyContent" id="my_container_div2">
+                      </div>
                     }
                   </div>
                 </div>
