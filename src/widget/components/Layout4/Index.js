@@ -38,12 +38,12 @@ function Index(props) {
                 )}
                  <div className="info-container-top">
               <div className="mdc-card">
-                <h1 className="title">{props.data.title || "Title"}</h1>
+                <h1 className="title">{props.data.title}</h1>
                 <h3 className="subtitle">
-                  {props.data.subtitle || "Subtitle"}
+                  {props.data.subtitle }
                 </h3>
                 <p className="bodyContent">
-                  {props.data.bodyContent || "Top Body Content"}
+                  {props.data.bodyContent}
                 </p>
               </div>
             </div>
@@ -59,12 +59,12 @@ function Index(props) {
               />
                <div className="info-container-top">
               <div className="mdc-card">
-                <h1 className="title">{props.data.title || "Title"}</h1>
+                <h1 className="title">{props.data.title}</h1>
                 <h3 className="subtitle">
-                  {props.data.subtitle || "Subtitle"}
+                  {props.data.subtitle}
                 </h3>
                 <p className="bodyContent">
-                  {props.data.bodyContent || "Top Body Content"}
+                  {props.data.bodyContent}
                 </p>
               </div>
             </div>
@@ -86,7 +86,7 @@ function Index(props) {
                 <div className="mainBody-container">
                   <div className="mdc-card">
                     <p className="bodyContent">
-                      {props.data.mainBodyContent || "Main Body Content"}
+                      {props.data.mainBodyContent}
                     </p>
                   </div>
                 </div>
@@ -105,7 +105,7 @@ function Index(props) {
                 <div className="mainBody-container">
                   <div className="mdc-card">
                     <p className="bodyContent">
-                      {props.data.mainBodyContent || "Main Body Content"}
+                      {props.data.mainBodyContent}
                     </p>
                   </div>
                 </div>
