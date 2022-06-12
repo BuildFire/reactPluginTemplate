@@ -169,7 +169,7 @@ function index(props) {
                 name="mainMediaType"
                 value="image"
                 onChange={handleChangeInputType}
-                defaultValue={props.data.mainMediaType!="video"?true:false}
+                defaultChecked={props.data.mainMediaType!="video"?true:false}
               />
               <label className="lable">Image</label>
               <input
@@ -178,7 +178,7 @@ function index(props) {
                 name="mainMediaType"
                 value="video"
                 onChange={handleChangeInputType}
-                defaultValue={props.data.mainMediaType=="video"?true:false}
+                defaultChecked={props.data.mainMediaType=="video"?true:false}
 
               />
               <label className="lable">Video</label>
