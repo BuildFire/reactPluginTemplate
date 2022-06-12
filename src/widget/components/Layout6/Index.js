@@ -68,7 +68,7 @@ function Index(props) {
                 <div className="info-container">
                   <div className="mdc-card">
                     <p className="bodyContent">
-                      {props.data.bodyContent || "Body Content"}
+                      {props.data.bodyContent }
                     </p>
                   </div>
                 </div>
@@ -85,7 +85,7 @@ function Index(props) {
                <div className="info-container">
                   <div className="mdc-card">
                     <p className="bodyContent">
-                      {props.data.bodyContent || "Body Content"}
+                      {props.data.bodyContent}
                     </p>
                   </div>
                 </div>

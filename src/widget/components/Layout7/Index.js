@@ -72,8 +72,7 @@ function Index(props) {
               )}
 
               <p className="bodyContent mdc-card">
-                {props.data.TopBodyContent ||
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
+                {props.data.TopBodyContent}
               </p>
 
               {props.data.mediaType3 != "video" ? (
@@ -93,8 +92,7 @@ function Index(props) {
               )}
 
               <p className="bodyContent mdc-card">
-                {props.data.MainBodyContent ||
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tempor."}
+                {props.data.MainBodyContent}
               </p>
             </div>
           </div>

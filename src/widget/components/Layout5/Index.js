@@ -45,10 +45,10 @@ function Index(props) {
 
             <div className="info-container">
               <div className="mdc-card">
-                <h1 className="title">{props.data.title || "Title"}</h1>
-                <h3 className="subtitle">{props.data.subtitle || "Subtitle"}</h3>
+                <h1 className="title">{props.data.title}</h1>
+                <h3 className="subtitle">{props.data.subtitle}</h3>
                 <p className="bodyContent">
-                  {props.data.bodyContent || "Body Content"}
+                  {props.data.bodyContent}
                 </p>
               </div>
             </div>
