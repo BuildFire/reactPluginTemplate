@@ -118,7 +118,7 @@ function Index(props) {
           </div>
           <div className="row">
             <div className="col-md-3">
-              <label className="lable">Summary</label>
+              <label className="lable">Subtitle</label>
             </div>
             <div className="col-md-9">
               <input

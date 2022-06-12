@@ -41,9 +41,17 @@ function Index(props) {
     document.body.style.backgroundPosition = "center";
   }, [props]);
 
+  const layout7Style={
+    position: "relative",
+    overflow: "auto",
+    height: "83vh"
+  }
   return (
     <>
-      <div className="layout-7-container">
+      <div
+        className="layout-7-container"
+        style={props.data.showInfoRibbon ? layout7Style: {}}
+      >
         <div
           className="mdc-layout-grid  Maincontainer "
           id="container"
