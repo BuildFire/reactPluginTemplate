@@ -43,7 +43,6 @@ function Index(props) {
 
   const layout7Style={
     position: "relative",
-    overflow: "scroll",
     height: "81.5vh"
   }
   const mainContainerStyle={

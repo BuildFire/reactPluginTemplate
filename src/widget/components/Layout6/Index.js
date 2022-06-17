@@ -22,20 +22,29 @@ function Index(props) {
       title: "image",
     },
   ]);
-
+  const [carouselCreated, setCarouselCreated] = useState(false);
+  const [carousel, setCarousel] = useState({});
   const [enableFullScreen, setEnableFullScreen] = useState(false);
   const { imagePreviewer, fullScreenVideoHandler } = useHelper();
   useEffect(() => {
     let carouselView;
 
     if (props.data.allImages && props.data.allImages.length > 0) {
-      carouselView = new buildfire.components.carousel.view("#carousel");
+      if(!carouselCreated) {
+        carouselView = new buildfire.components.carousel.view("#carousel");
+        setCarousel(carouselView);
       carouselView.loadItems(props.data.allImages);
-
+      setCarouselCreated(true);
+      } else {
+        carousel.loadItems(props.data.allImages)
+      }
       document.getElementById(
         "ImageCarousel-container"
       ).style.backgroundImage = `none`;
     } else {
+      if(carouselCreated) {
+        carousel.loadItems([]);
+      }
       document.getElementById(
         "ImageCarousel-container"
       ).style.backgroundImage = `url(${holderImage})`;
@@ -47,7 +56,6 @@ function Index(props) {
 
   const layout6Style = {
     height: " 78.5vh",
-    overflow: "scroll",
     position: "relative",
   };
 
